@@ -1,3 +1,13 @@
 {
-	"name" : "aviato-lib-php/aviato-lib-php"
+	"name" : "aviato-soft/avi-lib",
+	"description": "Aviato Soft php dust library",
+	"keywords": ["php", "dust"],
+	"homepage": "https://github.com/aviato-soft/aviato-lib",
+	"license": "GNU",
+	"authors": [{
+        "name": "Vasile Giorgi",
+        "email": "vasile@aviato.ro",
+        "homepage": "https://www.aviato.ro",
+        "role": "developer"
+	}]
 }
