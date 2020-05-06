@@ -99,7 +99,8 @@ Class Ui
 		if($return) {
 			return ob_get_clean();
 		}
-		else
+		else {
 			ob_get_flush();
+		}
 	}
 }
