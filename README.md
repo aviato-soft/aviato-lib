@@ -6,4 +6,4 @@
 
 [![License](https://poser.pugx.org/aviato-soft/avi-lib/license)](https://packagist.org/packages/aviato-soft/avi-lib)
 
-Aviato Soft Library used for old projects
+Aviato Soft Library php dust collection
