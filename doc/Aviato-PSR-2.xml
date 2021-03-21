@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--
-PSR2/Aviato branch
-- Identation / General settings / Tab policy: Tab
-- Blank Lines / Before function/method declaration: 2
--->
 <profiles>
     <profile name="Aviato branch of PSR-2">
         <setting id="indentationChar" value="&#9;"/>
@@ -201,8 +196,8 @@ PSR2/Aviato branch
         <setting id="org.eclipse.php.formatter.core.formatter.keep_elseif_statement_on_same_line" value="true"/>
         <setting id="org.eclipse.php.formatter.core.formatter.keep_imple_if_on_one_line" value="false"/>
         <setting id="org.eclipse.php.formatter.core.formatter.keep_then_statement_on_same_line" value="false"/>
-        <setting id="org.eclipse.php.formatter.core.formatter.keep_trailing_comma_in_list" value="false"/>
-        <setting id="org.eclipse.php.formatter.core.formatter.lineSplit" value="9999"/>
+        <setting id="org.eclipse.php.formatter.core.formatter.keep_trailing_comma_in_list" value="true"/>
+        <setting id="org.eclipse.php.formatter.core.formatter.lineSplit" value="120"/>
         <setting id="org.eclipse.php.formatter.core.formatter.never_indent_block_comments_on_first_column" value="false"/>
         <setting id="org.eclipse.php.formatter.core.formatter.never_indent_line_comments_on_first_column" value="false"/>
         <setting id="org.eclipse.php.formatter.core.formatter.number_of_blank_lines_after_namespace" value="1"/>
