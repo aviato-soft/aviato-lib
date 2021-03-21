@@ -215,7 +215,8 @@ class Tools
 	 */
 	public static function enc($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
 	{
-		$qEncoded = substr(base64_encode(openssl_encrypt($q, 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16))), 0, - 1);
+		$qEncoded = substr(
+			base64_encode(openssl_encrypt($q, 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16))), 0, - 1);
 		return ($qEncoded);
 	}
 
@@ -229,14 +230,15 @@ class Tools
 	 */
 	public static function dec($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
 	{
-		$qDecoded = rtrim(openssl_decrypt(base64_decode($q . '='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
+		$qDecoded = rtrim(
+			openssl_decrypt(base64_decode($q . '='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
 		return ($qDecoded);
 	}
 
 
 	/**
 	 * Just test ajax Aviato Request/Response rule:
-	 * 		If page has action parameter, it is come from ajax call
+	 * If page has action parameter, it is come from ajax call
 	 *
 	 * @return boolean
 	 */
@@ -252,13 +254,59 @@ class Tools
 
 	/**
 	 * Simple redirect method (shortcut to header('location: [page]'))
-	 * @param string $page - the page name(url, permalink)
-	 * @param string [$extension] - the page extension (default is html)
+	 *
+	 * @param string $page
+	 *        	- the page name(url, permalink)
+	 * @param
+	 *        	string [$extension] - the page extension (default is html)
 	 */
-	public static function redirect($page = '', $extension = '') {
-
+	public static function redirect($page = '', $extension = '')
+	{
 		session_write_close();
-		header('Location: /'.$page.$extension, true, 302);
+		header('Location: /' . $page . $extension, true, 302);
 		exit();
+	}
+
+
+	/**
+	 * Return an mysql synthax temporary table based on values
+	 *
+	 * @param string $name
+	 *        	- the name of the table
+	 * @param array $values
+	 *        	- the values of the array
+	 * @return string sql
+	 *        
+	 * @example :
+	 *          | @param $name = 'test'
+	 *          | @param $values = array(
+	 *          | array('id' => 1, 'type' => 'Offer'),
+	 *          | array('id' => 2, 'type' => 'Hotel'),
+	 *          | array('id' => 3, 'type' => 'Upsell'),
+	 *          | );
+	 *          | @return "(SELECT * FROM (VALUES
+	 *          | ROW(1,'Offer'),
+	 *          | ROW(2,'Hotel'),
+	 *          | ROW(3,'Upsell')) AS `Test` (`id`,`type`)) `Test`"
+	 *          |
+	 *          |
+	 */
+	public static function mysqlTableFromValues($name, $values)
+	{
+		$columns = array_keys($values[0]);
+		$rowPattern = "ROW(";
+		foreach ($values[0] as $k => $v) {
+			if (is_numeric($v)) {
+				$rowPattern .= "{" . $k . "},";
+			} else {
+				$rowPattern .= "'{" . $k . "}',";
+			}
+		}
+		$rowPattern = substr($rowPattern, 0, - 1) . '),';
+
+		$sql = "(SELECT * FROM (VALUES " . substr(self::atos($values, $rowPattern), 0, - 1) . ") AS `" . $name . "` " .
+			"(`" . implode("`,`", $columns) . "`)) `" . $name . "` ";
+
+		return $sql;
 	}
 }
