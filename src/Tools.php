@@ -31,4 +31,20 @@ class Tools
 		}
 		return($attributes);
 	}
+
+	/**
+	 * @return string Return a string produced according to the pattern by replaceing {*} with array member
+	 * @param string $pattern
+	 * @param array $array
+	 *
+	 * @example
+	 * |	str_suplant('<div id="{id}">{text}</div>', array('id' => 1, 'text' => 'aviato'))
+	 * |	will return: <div id="1">aviato</div>
+	 */
+	public function str_supplant($pattern, $array) {
+		foreach ($array as $k => $v) {
+			$pattern = str_replace(sprintf('{%s}', $k), $v, $pattern);
+		}
+		return $pattern;
+	}
 }
