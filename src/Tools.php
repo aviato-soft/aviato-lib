@@ -70,7 +70,8 @@ class Tools
 	 *
 	 * @param string $pattern
 	 * @param array $array
-	 * @param boolean $returnOnly, (default = false, will echo result)
+	 * @param boolean $returnOnly,
+	 *        	(default = false, will echo result)
 	 * @return string
 	 */
 	public static function printa($pattern, $array, $returnOnly = false)
@@ -85,6 +86,7 @@ class Tools
 
 	/**
 	 * Aplay sprinta to a 2 dimensional array
+	 *
 	 * @param string $pattern
 	 * @param array $array
 	 */
@@ -98,5 +100,105 @@ class Tools
 			$result .= self::sprinta($pattern, $v, true);
 		}
 		return $result;
+	}
+
+
+	/**
+	 * As sprintaa with optional output dispatch
+	 *
+	 * @param string $pattern
+	 * @param array $array
+	 * @param boolean $returnOnly,
+	 *        	(optional = false result in output the buffer content)
+	 * @return string
+	 */
+	public function printaa($pattern, $array, $returnOnly = false)
+	{
+		$result = self::sprintaa($pattern, $array);
+		if (! $returnOnly) {
+			echo $result;
+		}
+		return $result;
+	}
+
+
+	/**
+	 * atos = Array TO String
+	 *
+	 * @return string formated using a loop trough $array and apply $pattern
+	 * @param $array array
+	 *        	- the data to be parsed
+	 * @param $pattern string
+	 *        	- the template
+	 * @param $configuration array
+	 *        	- optional parameters
+	 *        	- isPrintFormat:[true|false] = use sprintf format
+	 *        	- startTag:[any char] = the start tag default = '{'
+	 *        	- endTag:[any char] = the start tag default = '}'
+	 * @example :
+	 *          | @param $array = array(
+	 *          | 0 => array('id' => 1.0, 'slug' => 'One'),
+	 *          | 1 => array('id' => '2', 'slug' => 'Two')
+	 *          | );
+	 *          | @param $pattern = '<p data-id="{id}">{slug}</p>';
+	 *          |--> @return '<p data-id="1">One</p><p data-id="2">Two</p>';
+	 */
+	public static function atos($array, $pattern, $config = array())
+	{
+		$result = '';
+
+		if (! is_array($array)) {
+			return $result;
+		}
+
+		if (! is_string($pattern)) {
+			return $result;
+		}
+
+		if (! is_array($config)) {
+			$config = array();
+		}
+		$config = self::applyDefault($config, array(
+			'startTag' => '{',
+			'endTag' => '}',
+			'isPrintFormat' => false
+		));
+
+		if (! isset($array[0])) {
+			$data = array(
+				0 => $array
+			);
+		} else {
+			$data = $array;
+		}
+
+		$keys = array_keys($data[0]);
+
+		foreach ($data as $v) {
+			if ($config['isPrintFormat']) {
+				$result .= @vsprintf($pattern, $v);
+			} else {
+				$res = $pattern;
+				foreach ($keys as $key) {
+					if (isset($v[$key])) {
+						if (is_integer($v[$key]) || is_double($v[$key])) {
+							$v[$key] = (string) $v[$key];
+						} else {
+							if (is_bool($v[$key])) {
+								$v[$key] = $v[$key] ? 'true' : 'false';
+							}
+						}
+						if (is_string($v[$key])) {
+							$res = str_replace($config['startTag'] . $key . $config['endTag'], $v[$key], $res);
+						} else {
+							$res = str_replace($config['startTag'] . $key . $config['endTag'], gettype($v[$key]), $res);
+						}
+					}
+				}
+				$result .= $res;
+			}
+		}
+
+		return ($result);
 	}
 }
