@@ -205,6 +205,7 @@ class Tools
 
 	/**
 	 * Safety encrypt function
+	 *
 	 * @credit: https://stackoverflow.com/questions/15194663/encrypt-and-decrypt-md5
 	 * @param string $q
 	 * @param string $key
@@ -212,36 +213,52 @@ class Tools
 	 *
 	 * @see https://linuxconfig.org/how-to-install-mcrypt-php-module-on-ubuntu-18-04-linux for cli
 	 */
-	public static function enc($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6') {
-		$qEncoded = substr(
-			base64_encode(
-				openssl_encrypt(
-					$q,
-					'aes-256-cbc',
-					md5( $key ),
-					0,
-					substr(md5( md5( $key )), 3, 16))),
-			0, -1);
-		return( $qEncoded );
+	public static function enc($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
+	{
+		$qEncoded = substr(base64_encode(openssl_encrypt($q, 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16))), 0, - 1);
+		return ($qEncoded);
 	}
 
 
 	/**
 	 * Safety decrypt function
+	 *
 	 * @param string $q
 	 * @param string $key
 	 * @return string
 	 */
-	public static function dec($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6') {
-		$qDecoded = rtrim(
-			openssl_decrypt(base64_decode($q.'='),
-				'aes-256-cbc',
-				md5( $key ),
-				0,
-				substr(md5( md5( $key )), 3, 16)),
-			"\0"
-			);
-		return( $qDecoded );
+	public static function dec($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
+	{
+		$qDecoded = rtrim(openssl_decrypt(base64_decode($q . '='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
+		return ($qDecoded);
 	}
 
+
+	/**
+	 * Just test ajax Aviato Request/Response rule:
+	 * 		If page has action parameter, it is come from ajax call
+	 *
+	 * @return boolean
+	 */
+	public static function isAjaxCall($param = 'action')
+	{
+		if (isset($_REQUEST[$param])) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+
+	/**
+	 * Simple redirect method (shortcut to header('location: [page]'))
+	 * @param string $page - the page name(url, permalink)
+	 * @param string [$extension] - the page extension (default is html)
+	 */
+	public static function redirect($page = '', $extension = '') {
+
+		session_write_close();
+		header('Location: /'.$page.$extension, true, 302);
+		exit();
+	}
 }
