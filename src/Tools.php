@@ -10,6 +10,7 @@ namespace Avi;
 class Tools
 {
 
+
 	/**
 	 * Apply default values to the array,
 	 * mainly used for arrays which can't have specific default values defined
@@ -32,6 +33,7 @@ class Tools
 		return ($attributes);
 	}
 
+
 	/**
 	 *
 	 * @return string Return a string produced according to the pattern by replaceing {*} with array member
@@ -48,6 +50,7 @@ class Tools
 		}
 		return $pattern;
 	}
+
 
 	/**
 	 * Alias of str_supplant easy to remember sprinta
