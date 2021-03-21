@@ -63,4 +63,20 @@ class Tools
 	{
 		return self::str_supplant($pattern, $array);
 	}
+
+
+	/**
+	* As sprinta, with optional dispatch
+	* @param string $pattern
+	* @param array $array
+	* @param boolean $returnOnly (default = false, will echo result)
+	* @return string
+	*/
+	public function printa($pattern, $array, $returnOnly = false) {
+		$result = self::sprinta($pattern, $array);
+		if (!$returnOnly) {
+			echo $result;
+		}
+		return $result;
+	}
 }
