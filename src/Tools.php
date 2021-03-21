@@ -19,7 +19,7 @@ class Tools
 	 * @param $attributes array
 	 * @param $defaultAttributes array
 	 */
-	public function applyDefault($attributes, $defaultAttributes)
+	public static function applyDefault($attributes, $defaultAttributes)
 	{
 		if (! is_array($attributes) || ! is_array($defaultAttributes)) {
 			return false;
@@ -43,7 +43,7 @@ class Tools
 	 * @example | str_suplant('<div id="{id}">{text}</div>', array('id' => 1, 'text' => 'aviato'))
 	 *          | will return: <div id="1">aviato</div>
 	 */
-	public function str_supplant($pattern, $array)
+	public static function str_supplant($pattern, $array)
 	{
 		foreach ($array as $k => $v) {
 			$pattern = str_replace(sprintf('{%s}', $k), $v, $pattern);
@@ -59,7 +59,7 @@ class Tools
 	 * @param array $array
 	 * @return string
 	 */
-	public function sprinta($pattern, $array)
+	public static function sprinta($pattern, $array)
 	{
 		return self::str_supplant($pattern, $array);
 	}
@@ -72,7 +72,7 @@ class Tools
 	* @param boolean $returnOnly (default = false, will echo result)
 	* @return string
 	*/
-	public function printa($pattern, $array, $returnOnly = false) {
+	public static function printa($pattern, $array, $returnOnly = false) {
 		$result = self::sprinta($pattern, $array);
 		if (!$returnOnly) {
 			echo $result;
