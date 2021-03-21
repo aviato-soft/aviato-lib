@@ -66,16 +66,36 @@ class Tools
 
 
 	/**
-	* As sprinta, with optional dispatch
-	* @param string $pattern
-	* @param array $array
-	* @param boolean $returnOnly (default = false, will echo result)
-	* @return string
-	*/
-	public static function printa($pattern, $array, $returnOnly = false) {
+	 * As sprinta, with optional dispatch
+	 *
+	 * @param string $pattern
+	 * @param array $array
+	 * @param boolean $returnOnly, (default = false, will echo result)
+	 * @return string
+	 */
+	public static function printa($pattern, $array, $returnOnly = false)
+	{
 		$result = self::sprinta($pattern, $array);
-		if (!$returnOnly) {
+		if (! $returnOnly) {
 			echo $result;
+		}
+		return $result;
+	}
+
+
+	/**
+	 * Aplay sprinta to a 2 dimensional array
+	 * @param string $pattern
+	 * @param array $array
+	 */
+	public function sprintaa($pattern, $array)
+	{
+		$result = '';
+		foreach ($array as $k => $v) {
+			if (! isset($v['index'])) {
+				$v['index'] = $k;
+			}
+			$result .= self::sprinta($pattern, $v, true);
 		}
 		return $result;
 	}
