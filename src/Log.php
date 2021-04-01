@@ -24,9 +24,9 @@ class Log
 	public $toSystem = false;
 
 
-	public function __construct($options = array())
+	public function __construct($options = [])
 	{
-		if ($options === array()) {
+		if ($options === []) {
 			$options = array(
 				'path' => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs'
 			);
@@ -40,13 +40,18 @@ class Log
 	 *
 	 * @param array $options
 	 */
-	private function setProperties($options)
+	private function setProperties($options = null)
 	{
+		if ($options === null || $options === []) {
+			return false;
+		}
+
 		$classVars = array_keys(get_class_vars(get_class($this)));
 
 		foreach ($classVars as $key) {
-			if (isset($options[$key]))
+			if (isset($options[$key])) {
 				$this->{$key} = $options[$key];
+			}
 		}
 	}
 
@@ -63,8 +68,11 @@ class Log
 
 		if ($header) {
 			if ($this->serverInfo) {
-				$messageHeader .= @$_SERVER['REMOTE_ADDR'] . '|' . @$_SERVER['HTTP_X_FORWARDED_FOR'] . '|' .
-					@$_SERVER['HTTP_CLIENT_IP'] . ' - ' . $_SERVER['HTTP_USER_AGENT'] . "\n>";
+				$messageHeader .=
+					@$_SERVER['REMOTE_ADDR'] . '|' .
+					@$_SERVER['HTTP_X_FORWARDED_FOR'] . '|' .
+					@$_SERVER['HTTP_CLIENT_IP'] . ' - ' .
+					@$_SERVER['HTTP_USER_AGENT'] . "\n>";
 			}
 
 			$backtrace = debug_backtrace();
@@ -95,7 +103,7 @@ class Log
 			$oldPriority = $this->priority;
 			$this->priority = $priority;
 		}
-		$this->format($message);
+		$this->format($message, $header);
 
 		if ($this->toFile) {
 			$this->toFile();

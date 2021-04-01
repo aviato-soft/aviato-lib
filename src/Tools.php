@@ -40,7 +40,7 @@ class Tools
 	 * @param string $pattern
 	 * @param array $array
 	 *
-	 * @example | str_suplant('<div id="{id}">{text}</div>', array('id' => 1, 'text' => 'aviato'))
+	 * @example | str_suplant('<div id="{id}">{text}</div>', ['id' => 1, 'text' => 'aviato'])
 	 *          | will return: <div id="1">aviato</div>
 	 */
 	public static function str_supplant($pattern, $array)
@@ -136,14 +136,14 @@ class Tools
 	 *        	- startTag:[any char] = the start tag default = '{'
 	 *        	- endTag:[any char] = the start tag default = '}'
 	 * @example :
-	 *          | @param $array = array(
-	 *          | 0 => array('id' => 1.0, 'slug' => 'One'),
-	 *          | 1 => array('id' => '2', 'slug' => 'Two')
-	 *          | );
+	 *          | @param $array = [
+	 *          | 	0 => ['id' => 1.0, 'slug' => 'One'],
+	 *          | 	1 => ['id' => '2', 'slug' => 'Two']
+	 *          | ];
 	 *          | @param $pattern = '<p data-id="{id}">{slug}</p>';
 	 *          |--> @return '<p data-id="1">One</p><p data-id="2">Two</p>';
 	 */
-	public static function atos($array, $pattern, $config = array())
+	public static function atos($array, $pattern, $config = [])
 	{
 		$result = '';
 
@@ -156,18 +156,18 @@ class Tools
 		}
 
 		if (! is_array($config)) {
-			$config = array();
+			$config = [];
 		}
-		$config = self::applyDefault($config, array(
+		$config = self::applyDefault($config, [
 			'startTag' => '{',
 			'endTag' => '}',
 			'isPrintFormat' => false
-		));
+		]);
 
 		if (! isset($array[0])) {
-			$data = array(
+			$data = [
 				0 => $array
-			);
+			];
 		} else {
 			$data = $array;
 		}
@@ -276,14 +276,14 @@ class Tools
 	 * @param array $values
 	 *        	- the values of the array
 	 * @return string sql
-	 *        
+	 *
 	 * @example :
 	 *          | @param $name = 'test'
-	 *          | @param $values = array(
-	 *          | array('id' => 1, 'type' => 'Offer'),
-	 *          | array('id' => 2, 'type' => 'Hotel'),
-	 *          | array('id' => 3, 'type' => 'Upsell'),
-	 *          | );
+	 *          | @param $values = [
+	 *          | 	['id' => 1, 'type' => 'Offer'],
+	 *          | 	['id' => 2, 'type' => 'Hotel')]
+	 *          | 	['id' => 3, 'type' => 'Upsell'],
+	 *          | ];
 	 *          | @return "(SELECT * FROM (VALUES
 	 *          | ROW(1,'Offer'),
 	 *          | ROW(2,'Hotel'),

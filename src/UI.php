@@ -2,6 +2,12 @@
 declare(strict_types = 1);
 namespace Avi;
 
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Log.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tools.php';
+
+use Avi\Log as AviLog;
+use Avi\Tools as AviTools;
+
 /**
  * User Interface class.
  *
@@ -10,10 +16,26 @@ namespace Avi;
 class UI
 {
 
+	// public $head = [];
+
+	// public $content = [];
+	// public $header = [];
+	public $page = [
+		'style' => [],
+		'javascript' => []
+	];
+
+	public $response;
+
+	public $log;
+
+
 	public function __construct($options = [])
 	{
 		$this->setProperties($options);
+		$this->log = new AviLog();
 	}
+
 
 	private function setProperties($options = null)
 	{
@@ -30,49 +52,72 @@ class UI
 		}
 	}
 
-	public function Section($sectionName, $attributes, $return = false)
+
+	/**
+	 * Generate a section
+	 *
+	 * @param string $sectionName
+	 * @param array $attributes
+	 * @param boolean $return
+	 * @return string
+	 */
+	public function Section($sectionName, $attributes = [], $return = false)
 	{
-		$AviTools = new \Avi\Tools();
 		ob_start();
 
-		$attributes = $AviTools->applyDefault($attributes, [
-			'class' => 'section',
-			'id' => $sectionName,
-			'javascript' => [],
-			// 'type' => 'php',
-			'obj' => 'Sections',
-			'type' => 'obj',
-			'wrapper' => true,
-			'tag' => 'section',
-			'close' => true,
-			'root' => '/'
-		]);
+		$attributes = AviTools::applyDefault($attributes,
+			[
+				'class' => 'section',
+				'id' => $sectionName,
+				'javascript' => [],
+				// 'type' => 'php',
+				'obj' => 'Sections',
+				'type' => 'obj',
+				'wrapper' => true,
+				'tag' => 'section',
+				'close' => true,
+				'root' => dirname(__FILE__)
+			]);
 
 		// pre-computation:
 		// class:
 		if ($attributes['class'] === 'section') {
-			$attributes['class'] = 'sec-' . $attributes['type'] . '-' . $sectionName;
-		} else {
-			$attributes['class'] .= ' sec-' . $attributes['type'] . '-' . $sectionName;
+			$attributes['class'] = '';
 		}
+		if (strlen($attributes['class']) > 0) {
+			$attributes['class'] .= ' ';
+		}
+		$attributes['class'] .= 'sec-' . $attributes['type'] . '-' . $sectionName;
 
 		// open tag:
 		if ($attributes['wrapper']) {
 			echo '<' . $attributes['tag'] . ' ';
-			if ($attributes['type'] !== 'box') {
+			if ($attributes['type'] !== 'box') { // depricated condition
 				echo 'id="' . $attributes['id'] . '" ';
 			}
 			echo 'class="' . $attributes['class'] . '">';
 		}
 
 		// generate content:
+		$path = $attributes['root'] . DIRECTORY_SEPARATOR . 'sections' . DIRECTORY_SEPARATOR . $sectionName . '.' .
+			$attributes['type'];
+		$this->log->trace($path, LOG_DEBUG);
 		switch ($attributes['type']) {
+			case 'htm':
 			case 'html':
-			case 'php':
-				include $attributes['root']
-					. DIRECTORY_SEPARATOR . 'sections'
-					. DIRECTORY_SEPARATOR . $sectionName . $attributes['type'];
+				$content = @file_get_contents($path);
+				if ($content === false) {
+					$this->log->trace('Missing html file on inclide in [section]: ' . $path, LOG_ERR);
+				} else {
+					echo $content;
+				}
+				break;
 
+			case 'php':
+			case 'phtml':
+				if ((@include $path) === false) {
+					$this->log->trace('Missing php file on inclide in [section]:' . $path);
+				}
 				break;
 
 			case 'obj':
@@ -88,7 +133,9 @@ class UI
 							$sectionName
 						]);
 					} else {
-						$this->response->log('Error: missing object definition', 'error');
+						if (method_exists($this->responose, 'log')) {
+							$this->response->log('UI: Missing object definition', 'warning', 251);
+						}
 					}
 				}
 
