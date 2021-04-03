@@ -125,7 +125,7 @@ class Response
 				$page = new UI([
 					'response' => &$this
 				]);
-				$attrSection = array();
+				$attrSection =[];
 				if (isset($_REQUEST['params'])) {
 					$attrSection['params'] = explode(',', $_REQUEST['params']);
 				}
@@ -134,16 +134,16 @@ class Response
 				break;
 
 			case 'upload':
-				$this->data = array(
+				$this->data = [
 					'files' => $_FILES,
 					'req' => $_REQUEST
-				);
+				];
 				if (isset($_REQUEST['handler'])) {
 					if (method_exists($this, $_REQUEST['handler'])) {
-						call_user_func(array(
+						call_user_func([
 							$this,
 							$_REQUEST['handler']
-						), $_FILES);
+						]);
 						$this->success = true;
 					} else {
 						$this->logMessage(203);
@@ -224,6 +224,12 @@ class Response
 	}
 
 
+	/**
+	 * Return the result
+	 * @param boolean $success
+	 * @param boolean $returnOnly
+	 * @return string
+	 */
 	public function result($success = null, $returnOnly = false)
 	{
 		if ($success === null) {
@@ -286,11 +292,12 @@ class Response
 			if ($this->action === null) {
 				$this->action = '';
 			}
-			foreach ($this->log as $v) {
+			foreach ($this->log as $k => $v) {
 				if ($v['type'] === 'error') {
-					$v['type'] = 'warning';
+					$this->log[$k]['type'] = 'warning';
 				}
 			}
+			$this -> response['log'] = $this -> log;
 		}
 
 		return $this->success;
@@ -352,16 +359,22 @@ class Response
 	 *
 	 * @param integer $messageId
 	 */
-	private function logMessage($messageId)
+	protected function logMessage($messageId)
 	{
+		//get type:
 		if ($messageId < 200) {
 			$type = 'error';
 		} else if ($messageId >= 200 && $messageId < 300) {
 			$type = 'warning';
-		} else if ($messageId >= 300) {
+		}
+		else if ($messageId >= 300) {
 			$type = 'info';
 		}
-		$this->log($this->getMessage($messageId), $type, $messageId);
+
+		//get message:
+		$message = $this -> getMessage($messageId);
+
+		$this->log($message, $type, $messageId);
 	}
 
 
@@ -372,8 +385,8 @@ class Response
 	 */
 	private function removeLogByMessageId($messageId)
 	{
-		foreach ($this->log as $k => $v) {
-			if ($v['id'] === $messageId) {
+		foreach ($this -> log as $k => $v) {
+			if ($messageId === $v['id']) {
 				unset($this->log[$k]);
 			}
 		}
@@ -388,19 +401,13 @@ class Response
 	private function validate()
 	{
 		// raise error on missing action:
-		if ($this->action === null) {
-			$this->logMessage(100);
-		}
+		$this -> validityLog(($this -> action === null), 100);
 
 		// raise warning on empty action:
-		if ($this->action === '') {
-			$this->logMessage(200);
-		}
+		$this -> validityLog(($this -> action === ''), 200);
 
 		// raise warning in case of empty data:
-		if ($this->data === array()) {
-			$this->logMessage(201);
-		}
+		$this -> validityLog(($this->data === []), 201);
 
 		// check if we have at least one error and set success as false in this case:
 		foreach ($this->log as $v) {
@@ -413,5 +420,21 @@ class Response
 		$this->cleanupLog();
 
 		return $this->success;
+	}
+
+
+	/**
+	 * Add or remove log on specified condition
+	 * @param boolean $condition
+	 * @param integer $logId
+	 */
+	private function validityLog($condition, $logId)
+	{
+		if ($condition) {
+			$this->logMessage($logId);
+		}
+		else {
+			$this -> removeLogByMessageId($logId);
+		}
 	}
 }

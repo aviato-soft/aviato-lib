@@ -264,7 +264,7 @@ class Tools
 	{
 		session_write_close();
 		header('Location: /' . $page . $extension, true, 302);
-		exit();
+		//exit();
 	}
 
 
