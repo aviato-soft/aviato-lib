@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<project name="test" default="run">
+	<property name="project-root" value="/home/aviato-vasile/workplace/projects/aviato/avi-lib" />
+
+	<target name="run">
+		<echo>Testing: Tools...</echo>
+		<exec executable="phpunit">
+			<arg value="${project-root}/test/AviTools-Test.php" />
+		</exec>
+		<echo>^---------
+		</echo>
+
+		<echo>Testing: Log...</echo>
+		<exec executable="phpunit">
+			<arg value="${project-root}/test/AviLog-Test.php" />
+		</exec>
+		<echo>^---------
+		</echo>
+
+		<echo>Testing: Response...</echo>
+		<exec executable="phpunit">
+			<arg value="${project-root}/test/AviResponse-Test.php" />
+		</exec>
+		<echo>^---------
+		</echo>
+
+		<echo>Testing: UI...</echo>
+		<exec executable="phpunit">
+			<arg value="${project-root}/test/AviUi-Test.php" />
+		</exec>
+		<echo>^---------
+		</echo>
+
+	</target>
+
+</project>
