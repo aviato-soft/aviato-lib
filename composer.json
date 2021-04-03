@@ -1,26 +1,30 @@
 {
 	"name" : "aviato-soft/avi-lib",
-	"description": "Aviato Soft php dust library",
-	"keywords": ["php", "dust"],
-	"homepage": "https://github.com/aviato-soft/aviato-lib",
-	"license": "GPL-3.0-or-later",
-	"authors": [{
-		"name": "Vasile Giorgi",
-		"email": "vasile@aviato.ro",
-		"homepage": "https://www.aviato.ro",
-		"role": "developer"
-	}],
-	"require": {
-		"php": ">=7.3"
+	"description" : "Aviato Soft php dust library",
+	"keywords" : [
+		"php",
+		"dust"
+	],
+	"homepage" : "https://github.com/aviato-soft/aviato-lib",
+	"license" : "GPL-3.0-or-later",
+	"authors" : [{
+			"name" : "Vasile Giorgi",
+			"email" : "vasile@aviato.ro",
+			"homepage" : "https://www.aviato.ro",
+			"role" : "developer"
+		}
+	],
+	"require" : {
+		"php" : ">=7.3"
 	},
-	"require-dev":{
-		"friendsofphp/php-cs-fixer": "^2.16",
-		"phpcompatibility/php-compatibility": "^9.3",
-		"phpunit/phpunit": "^8.5"
+	"require-dev" : {
+		"friendsofphp/php-cs-fixer" : "^2.16",
+		"phpcompatibility/php-compatibility" : "^9.3",
+		"phpunit/phpunit" : "^8.5"
 	},
-	"autoload": {
-		"psr-4": {
-			"Avi\\": "avi-lib\\src"
+	"autoload" : {
+		"psr-4" : {
+			"Avi\\" : "src"
 		}
 	}
 }

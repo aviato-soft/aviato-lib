@@ -2,9 +2,6 @@
 declare(strict_types = 1);
 namespace Avi;
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Log.php';
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'Tools.php';
-
 use Avi\Log as AviLog;
 use Avi\Tools as AviTools;
 
@@ -133,7 +130,7 @@ class UI
 							$sectionName
 						]);
 					} else {
-						if (method_exists($this->responose, 'log')) {
+						if (method_exists($this->response, 'log')) {
 							$this->response->log('UI: Missing object definition', 'warning', 251);
 						}
 					}

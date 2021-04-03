@@ -7,9 +7,13 @@
 Aviato Soft Library php dust collection
 
 
-## Documentation
+## Instalation
+```bash
+composer require aviato-soft/avi-lib
+```
 
-More about this library on /doc folder
+## Usage
+
 
 
 ## License
