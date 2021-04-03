@@ -157,14 +157,11 @@ class Log
 
 		$fileName = $this->path . DIRECTORY_SEPARATOR . $fileName . date('Ymd') . '.log'; // one log file per day
 
-		if (@file_put_contents($fileName, $this->message, FILE_APPEND | LOCK_EX) === false) {
-			// check if path exist:
-			if (! file_exists($this->path)) {
-				mkdir($this->path, 0777, true);
-				// try to write the log again:
-				file_put_contents($fileName, $this->message, FILE_APPEND | LOCK_EX);
-			}
+		if (! file_exists($this->path)) {
+			mkdir($this->path, 0777, true);
 		}
+
+		@file_put_contents($fileName, $this->message, FILE_APPEND | LOCK_EX);
 	}
 
 
