@@ -1,7 +1,6 @@
 /test
 /analysis
 /vendor/
-/phpunit.xml
 
 
 # Cache and logs (Symfony2)
@@ -128,3 +127,4 @@ local.properties
 # Annotation Processing
 .apt_generated
 .sts4-cache/
+/.phpunit.result.cache
