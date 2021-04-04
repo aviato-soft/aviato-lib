@@ -9,7 +9,7 @@ class Sections
 {
 
 
-	public function test()
+	public static function test()
 	{
 		echo 'test section';
 	}
