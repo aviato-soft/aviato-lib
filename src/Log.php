@@ -68,11 +68,23 @@ class Log
 
 		if ($header) {
 			if ($this->serverInfo) {
-				$messageHeader .=
-					@$_SERVER['REMOTE_ADDR'] . '|' .
-					@$_SERVER['HTTP_X_FORWARDED_FOR'] . '|' .
-					@$_SERVER['HTTP_CLIENT_IP'] . ' - ' .
-					@$_SERVER['HTTP_USER_AGENT'] . "\n>";
+				//remote address
+				if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
+					$messageHeader .= $_SERVER['REMOTE_ADDR'];
+				}
+				$messageHeader .= '|';
+				if (array_key_exists('HTTP_X_FORWARDED_FOR', $_SERVER)) {
+					$messageHeader .= $_SERVER['HTTP_X_FORWARDED_FOR'];
+				}
+				$messageHeader .= '|';
+				if (array_key_exists('HTTP_CLIENT_IP', $_SERVER)) {
+					$messageHeader .= $_SERVER['HTTP_CLIENT_IP'];
+				}
+				$messageHeader .= ' - ';
+				if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
+					$messageHeader .= $_SERVER['HTTP_USER_AGENT'];
+				}
+				$messageHeader .= "\n>";
 			}
 
 			$backtrace = debug_backtrace();
