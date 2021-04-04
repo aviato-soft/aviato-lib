@@ -176,7 +176,11 @@ class Tools
 
 		foreach ($data as $v) {
 			if ($config['isPrintFormat']) {
-				$result .= @vsprintf($pattern, $v);
+				try {
+					$result .= vsprintf($pattern, $v);
+				} catch (\Exception $e) {
+					//do nothing...it is fine!
+				}
 			} else {
 				$res = $pattern;
 				foreach ($keys as $key) {
