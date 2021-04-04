@@ -46,7 +46,7 @@ class Tools
 	public static function str_supplant($pattern, $array)
 	{
 		foreach ($array as $k => $v) {
-			$pattern = str_replace(sprintf('{%s}', $k), $v, $pattern);
+			$pattern = str_replace(sprintf('{%s}', $k), (string)$v, $pattern);
 		}
 		return $pattern;
 	}
@@ -90,7 +90,7 @@ class Tools
 	 * @param string $pattern
 	 * @param array $array
 	 */
-	public function sprintaa($pattern, $array)
+	public static function sprintaa($pattern, $array)
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
@@ -112,7 +112,7 @@ class Tools
 	 *        	(optional = false result in output the buffer content)
 	 * @return string
 	 */
-	public function printaa($pattern, $array, $returnOnly = false)
+	public static function printaa($pattern, $array, $returnOnly = false)
 	{
 		$result = self::sprintaa($pattern, $array);
 		if (! $returnOnly) {
@@ -176,7 +176,11 @@ class Tools
 
 		foreach ($data as $v) {
 			if ($config['isPrintFormat']) {
-				$result .= @vsprintf($pattern, $v);
+				try {
+					$result .= vsprintf($pattern, $v);
+				} catch (\Exception $e) {
+					//do nothing...it is fine!
+				}
 			} else {
 				$res = $pattern;
 				foreach ($keys as $key) {
