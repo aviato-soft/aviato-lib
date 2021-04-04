@@ -46,7 +46,7 @@ class Tools
 	public static function str_supplant($pattern, $array)
 	{
 		foreach ($array as $k => $v) {
-			$pattern = str_replace(sprintf('{%s}', $k), $v, $pattern);
+			$pattern = str_replace(sprintf('{%s}', $k), (string)$v, $pattern);
 		}
 		return $pattern;
 	}
