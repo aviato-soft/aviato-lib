@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" bootstrap="vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./src</directory>
+    </include>
+    <report>
+      <clover outputFile="./tests/logs/tmp/coverage.xml"/>
+      <html outputDirectory="./tests/logs/tmp/report" lowUpperBound="35" highLowerBound="70"/>
+      <php outputFile="./tests/logs/tmp/coverage.serialized"/>
+      <text outputFile="php://stdout" showUncoveredFiles="false"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Unit">
+      <directory suffix="-Test.php">./tests/</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="APP_ENV" value="test"/>
+  </php>
+  <logging>
+    <junit outputFile="./tests/logs/tmp/logfile.xml"/>
+    <testdoxHtml outputFile="./tests/logs/tmp/testdox.html"/>
+    <testdoxText outputFile="./tests/logs/tmp/testdox.txt"/>
+  </logging>
+</phpunit>
