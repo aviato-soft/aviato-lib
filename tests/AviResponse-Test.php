@@ -103,7 +103,9 @@ final class testAviatoResponse extends TestCase
 		// var_dump($result); // <-- uncomment this line to see the result!
 
 		//get(section) with params:
+		$_REQUEST['section'] = 'test';
 		$_REQUEST['params'] = 'a=1,b=2';
+		// var_dump($_REQUEST);
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
 		$this->assertEquals($test, $result['data']);

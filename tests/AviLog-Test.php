@@ -105,6 +105,11 @@ final class testAviatoLog extends TestCase
 		$test = true;
 		$this -> assertEquals($result, $test);
 
+		$_SERVER['REMOTE_ADDR'] = '0.0.0.0';
+		$_SERVER['HTTP_X_FORWARDED_FOR'] = '0.0.0.0';
+		$_SERVER['HTTP_CLIENT_IP'] = '0.0.0.0';
+		$_SERVER['HTTP_USER_AGENT'] = 'eclipse browser';
+
 		//test random path:
 		$rndDir = str_shuffle('aviato-soft');
 		$aviLog -> path = $aviLog -> path . DIRECTORY_SEPARATOR . $rndDir;
