@@ -337,7 +337,8 @@ final class testAviatoTools extends TestCase
 		$result = '<p data-id="1">One</p>';
 		// $this->expectException();
 		$test = AviTools::atos($array, $pattern, [
-			'isPrintFormat' => true
+			'isPrintFormat' => true,
+			'nrArgs' => 2
 		]);
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
