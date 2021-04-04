@@ -90,7 +90,7 @@ class Tools
 	 * @param string $pattern
 	 * @param array $array
 	 */
-	public function sprintaa($pattern, $array)
+	public static function sprintaa($pattern, $array)
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
@@ -112,7 +112,7 @@ class Tools
 	 *        	(optional = false result in output the buffer content)
 	 * @return string
 	 */
-	public function printaa($pattern, $array, $returnOnly = false)
+	public static function printaa($pattern, $array, $returnOnly = false)
 	{
 		$result = self::sprintaa($pattern, $array);
 		if (! $returnOnly) {
