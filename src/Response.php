@@ -126,7 +126,7 @@ class Response
 					'response' => &$this
 				]);
 				$attrSection =[];
-				if (isset($_REQUEST['params'])) {
+				if (array_key_exists('params', $_REQUEST)) {
 					$attrSection['params'] = explode(',', $_REQUEST['params']);
 				}
 				$this->data = $page->section($_REQUEST['section'], $attrSection, true);
