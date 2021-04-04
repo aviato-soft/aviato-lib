@@ -174,12 +174,14 @@ class Tools
 
 		$keys = array_keys($data[0]);
 
+		if ($config['isPrintFormat'] && ! isset($config['nrArgs'])) {
+			$config['nrArgs'] = count($keys);
+		}
+
 		foreach ($data as $v) {
 			if ($config['isPrintFormat']) {
-				try {
+				if (count($v) === $config['nrArgs']) {
 					$result .= vsprintf($pattern, $v);
-				} catch (\Exception $e) {
-					//do nothing...it is fine!
 				}
 			} else {
 				$res = $pattern;
