@@ -14,8 +14,8 @@ class UI
 {
 
 	// public $head = [];
-
 	public $content = [];
+
 	public $header = [];
 
 	public $page = [
@@ -169,24 +169,70 @@ class UI
 
 	/**
 	 * Dispach a page structure based on class parameters and call attributes
+	 *
 	 * @param array $attributes
 	 */
 	public function Page($attributes = [])
 	{
-		$attributes = AviTools::applyDefault($attributes,
-			[
-				'options' => [
-					'ie8encoding' => true,
-					'xssProtection' => true
+		$defaults = [
+			'options' => [
+				'ie8encoding' => true,
+				'xssProtection' => true
+			],
+			'favico' => '//www.aviato.ro/favicon.ico',
+			'lang' => 'en-EN',
+			'meta' => [
+				//charset
+				1 => [
+					'charset' => 'UTF-8'
 				],
-				'favico' => '//www.aviato.ro/favicon.ico',
-				'lang' => 'en-EN',
-				'meta' => [
-					0 => ['charset' => 'UTF-8'],
-					5 => ['http-equiv' => 'content-type', 'content' => 'text/html'],
+
+				//content
+				// 2 => ['content' => 'text'],
+
+				//http-equiv
+				31 => [
+					'http-equiv' => 'content-type',
+					'content' => 'text/html'
 				],
-				'title' => 'website'
-			]);
+				// 32 => ['http-equiv' => 'content-security-policy', content=>'default-src \'self\''],
+				// 33 => ['http-equiv' => 'default-style', 'content' => '/css/aviato.css'],
+				// 34 => ['http-equiv' => 'refresh', 'content' => '300'],
+
+				//name
+				41 => [
+					'name' => 'application-name',
+					'content' => 'AviLib'
+				],
+				42 => [
+					'name' => 'author',
+					'content' => 'Aviato Soft'
+				],
+				43 => [
+					'name' => 'description',
+					'content' => 'Web dust library'
+				],
+				44 => [
+					'name' => 'generator',
+					'content' => 'AviatoWebBuilder'
+				],
+				45 => [
+					'name' => 'keywords',
+					'content' => 'Aviato, Aviato Soft, Aviato Web'
+				],
+				46 => [
+					'name' => 'viewport',
+					'content' => 'width=device-width, initial-scale=1.0'
+				],
+			],
+			'title' => 'website'
+		];
+
+		if (isset($attributes['meta'])) {
+			$attributes['meta'] = AviTools::applyDefault($attributes['meta'], $defaults['meta']);
+			ksort($attributes['meta']);
+		}
+		$attributes = AviTools::applyDefault($attributes, $defaults);
 
 		$opt = $attributes['options'];
 		$this->page = AviTools::applyDefault($this->page, $attributes);
@@ -245,33 +291,31 @@ class UI
 		// end header
 		echo "</head>\n";
 
-
-		//start body content
+		// start body content
 		if (isset($this->page['class'])) {
-			echo '<body class="'.$this->page['class']."\">\n";
-		}
-		else {
+			echo '<body class="' . $this->page['class'] . "\">\n";
+		} else {
 			echo "<body>\n";
 		}
 
 		// - content
-		if (count($this -> content) > 0) {
+		if (count($this->content) > 0) {
 			foreach ($this->content as $content) {
 				echo $content;
 			}
 		}
 
-		//JavaScript before the body end
+		// JavaScript before the body end
 		echo "\n";
-		ksort($this -> page['javascript']);
-		foreach ($this -> page['javascript'] as $javascript) {
+		ksort($this->page['javascript']);
+		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';
 			echo AviTools::atoattr($javascript);
 			echo "></script>\n";
 		}
 
 		// end body
-		echo "<\body>\n";
+		echo "</body>\n";
 		echo '</html>';
 	}
 }
