@@ -116,4 +116,48 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 	}
+
+
+	public function testFn_Page(): void
+	{
+		$template = '<!DOCTYPE html>'."\n";
+		$template .= '<html lang="en-EN">'."\n";
+		$template .= '<head><meta charset="UTF-8"><meta http-equiv="content-type" content="text/html"><title>website</title><link rel="shortcut icon" href="//www.aviato.ro/favicon.ico"/>%s</head>'."\n";
+		$template .= '<body%s>'."\n";
+		$template .= '%s'."\n";
+		$template .= '%s<\body>'."\n";
+		$template .= '</html>';
+
+		$testv = ['', '', '', ''];
+		$test = vsprintf($template, $testv);
+
+		//var_dump($test);
+		ob_start();
+		$aviUi = new AviUi();
+		$aviUi -> Page();
+		$result = ob_get_clean();
+
+		// var_dump($result); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $result);
+
+		ob_start();
+		$testv = [
+			'<link href="/css/aviato.css" rel="stylesheet" type="ext/css"/><script>;</script>',
+			' class="avi"',
+			'<div>test</div>',
+			'<script src="/js/aviato.js"></script>'."\n"
+		];
+		$test = vsprintf($template, $testv);
+		$aviUi = new AviUi();
+		$aviUi -> content = ['<div>test</div>'];
+		$aviUi -> header = ['<script>;</script>'];
+		$aviUi -> page['style'] = [0 => ['href' => '/css/aviato.css']];
+		$aviUi -> page['javascript'] = [0 => ['src' => '/js/aviato.js']];
+		$aviUi -> Page(['class' => 'avi']);
+		$result = ob_get_clean();
+
+		//var_dump($result); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $result);
+
+	}
 }
