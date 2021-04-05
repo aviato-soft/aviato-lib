@@ -15,8 +15,9 @@ class UI
 
 	// public $head = [];
 
-	// public $content = [];
-	// public $header = [];
+	public $content = [];
+	public $header = [];
+
 	public $page = [
 		'style' => [],
 		'javascript' => []
@@ -51,11 +52,20 @@ class UI
 
 
 	/**
-	 * Generate a section
+	 * Section is the core element of AviUi.
+	 * This method generate a section in a form of html element or text
 	 *
 	 * @param string $sectionName
+	 *        	(mandatory) The name of the section
 	 * @param array $attributes
+	 *        	the section properties
+	 *        	type: obj | html | php
+	 *        	class: the class atribute of html element
+	 *        	wrapper: true | false, specify if the section content is wrapped in html element
+	 *        	tag: section, the html element tag
 	 * @param boolean $return
+	 *        	(optional) default = false
+	 *        	The section content is returned only, not displayed
 	 * @return string
 	 */
 	public function Section($sectionName, $attributes = [], $return = false)
@@ -154,5 +164,114 @@ class UI
 		}
 
 		ob_get_flush();
+	}
+
+
+	/**
+	 * Dispach a page structure based on class parameters and call attributes
+	 * @param array $attributes
+	 */
+	public function Page($attributes = [])
+	{
+		$attributes = AviTools::applyDefault($attributes,
+			[
+				'options' => [
+					'ie8encoding' => true,
+					'xssProtection' => true
+				],
+				'favico' => '//www.aviato.ro/favicon.ico',
+				'lang' => 'en-EN',
+				'meta' => [
+					0 => ['charset' => 'UTF-8'],
+					5 => ['http-equiv' => 'content-type', 'content' => 'text/html'],
+				],
+				'title' => 'website'
+			]);
+
+		$opt = $attributes['options'];
+		$this->page = AviTools::applyDefault($this->page, $attributes);
+
+		// ie-8+ encoding:
+		if ($opt['ie8encoding']) {
+			header('Content-Type:text/html utf-8');
+		}
+
+		// xss protection
+		if ($opt['xssProtection']) {
+			header('x-content-type-options: nosniff');
+			header('x-frame-options: SAMEORIGIN');
+			header('x-xss-protection: 1; mode=block');
+		}
+
+		echo "<!DOCTYPE html>\n";
+		echo '<html lang="' . $this->page['lang'] . "\">\n";
+
+		// head
+		echo '<head>';
+
+		// -meta
+		foreach ($this->page['meta'] as $meta) {
+			echo '<meta ';
+			echo AviTools::atoattr($meta);
+			echo '>';
+		}
+
+		// -title
+		echo '<title>' . $this->page['title'] . '</title>';
+
+		// -favico
+		echo '<link ';
+		echo AviTools::atoattr([
+			'rel' => 'shortcut icon',
+			'href' => $this->page['favico']
+		]);
+		echo '/>';
+
+		// - cascading style sheets
+		foreach ($this->page['style'] as $style) {
+			$style['rel'] = 'stylesheet';
+			$style['type'] = 'ext/css';
+			echo '<link ';
+			echo AviTools::atoattr($style);
+			echo '/>';
+		}
+
+		// - reserved for custom header content (analitycs, trackers, ads, etc)
+		if (count($this->header) > 0) {
+			foreach ($this->header as $header) {
+				echo $header;
+			}
+		}
+		// end header
+		echo "</head>\n";
+
+
+		//start body content
+		if (isset($this->page['class'])) {
+			echo '<body class="'.$this->page['class']."\">\n";
+		}
+		else {
+			echo "<body>\n";
+		}
+
+		// - content
+		if (count($this -> content) > 0) {
+			foreach ($this->content as $content) {
+				echo $content;
+			}
+		}
+
+		//JavaScript before the body end
+		echo "\n";
+		ksort($this -> page['javascript']);
+		foreach ($this -> page['javascript'] as $javascript) {
+			echo '<script ';
+			echo AviTools::atoattr($javascript);
+			echo "></script>\n";
+		}
+
+		// end body
+		echo "<\body>\n";
+		echo '</html>';
 	}
 }
