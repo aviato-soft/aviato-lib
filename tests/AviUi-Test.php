@@ -18,7 +18,7 @@ final class testAviatoUi extends TestCase
 		// assert attribute page:
 		$this->assertObjectHasAttribute('page', $aviUi);
 		$test = [
-			'style' => [],
+			'stylesheet' => [],
 			'javascript' => []
 		];
 		$this->assertEquals($test, $aviUi->page);
@@ -158,7 +158,7 @@ final class testAviatoUi extends TestCase
 		// test 2: customized head:
 		$testv = [
 			'Test',
-			'<link href="/css/aviato.css" rel="stylesheet" type="ext/css"/><script>;</script>',
+			'<link href="/css/aviato.css" rel="stylesheet" type="text/css"/><script>;</script>',
 			' class="avi"',
 			'<div>test</div>',
 			'<script src="/js/aviato.js"></script>' . "\n"
@@ -173,7 +173,7 @@ final class testAviatoUi extends TestCase
 		$aviUi->header = [
 			'<script>;</script>'
 		];
-		$aviUi->page['style'] = [
+		$aviUi->page['stylesheet'] = [
 			0 => [
 				'href' => '/css/aviato.css'
 			]
