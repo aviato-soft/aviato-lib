@@ -19,7 +19,7 @@ class UI
 	public $header = [];
 
 	public $page = [
-		'style' => [],
+		'stylesheet' => [],
 		'javascript' => []
 	];
 
@@ -274,11 +274,11 @@ class UI
 		echo '/>';
 
 		// - cascading style sheets
-		foreach ($this->page['style'] as $style) {
-			$style['rel'] = 'stylesheet';
-			$style['type'] = 'ext/css';
+		foreach ($this->page['stylesheet'] as $stylesheet) {
+			$stylesheet['rel'] = 'stylesheet';
+			$stylesheet['type'] = 'text/css';
 			echo '<link ';
-			echo AviTools::atoattr($style);
+			echo AviTools::atoattr($stylesheet);
 			echo '/>';
 		}
 
