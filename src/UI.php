@@ -15,7 +15,7 @@ class UI
 
 	// public $head = [];
 
-	// public $content = [];
+	public $content = [];
 	public $header = [];
 
 	public $page = [
@@ -171,7 +171,7 @@ class UI
 	 * Dispach a page structure based on class parameters and call attributes
 	 * @param array $attributes
 	 */
-	public function page($attributes = [])
+	public function Page($attributes = [])
 	{
 		$attributes = AviTools::applyDefault($attributes,
 			[
@@ -181,7 +181,11 @@ class UI
 				],
 				'favico' => '//www.aviato.ro/favicon.ico',
 				'lang' => 'en-EN',
-				'title' => 'website',
+				'meta' => [
+					0 => ['charset' => 'UTF-8'],
+					5 => ['http-equiv' => 'content-type', 'content' => 'text/html'],
+				],
+				'title' => 'website'
 			]);
 
 		$opt = $attributes['options'];
