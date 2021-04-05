@@ -210,6 +210,21 @@ class Tools
 
 
 	/**
+	 * KISS function which convert an array to attributes
+	 * @param array $array
+	 * @return string
+	 */
+	public static function atoattr($array = [])
+	{
+		$result = '';
+		foreach ($array as $k => $v) {
+			$result .= $k.'="'.$v.'" ';
+		}
+		$result = rtrim($result, ' ');
+		return $result;
+	}
+
+	/**
 	 * Safety encrypt function
 	 *
 	 * @credit: https://stackoverflow.com/questions/15194663/encrypt-and-decrypt-md5
