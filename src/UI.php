@@ -14,8 +14,9 @@ namespace Avi;
 
 use Avi\Log as AviLog;
 use Avi\Tools as AviTools;
+use Avi\Version As AviVersion;
 
-use const AviVersion\JS_MD5_MD5 AS AVI_JS_MD5;
+use const \Avi\AVI_JS_MD5 as AVIJS;
 
 /**
  * User Interface class.
@@ -223,7 +224,7 @@ class UI
 				],
 				43 => [
 					'name' => 'description',
-					'content' => 'Web dust library'
+					'content' => 'Web dust library v.'.AviVersion::get()
 				],
 				44 => [
 					'name' => 'generator',
