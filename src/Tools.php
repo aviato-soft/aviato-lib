@@ -1,4 +1,14 @@
 <?php
+/*
+ * License
+ *
+ * @author Aviato Soft
+ * @copyright Aviato Soft
+ * @license GNUv3
+ * @version 00.04.00
+ * @since  20210407-195014
+ *
+ */
 declare(strict_types = 1);
 namespace Avi;
 
@@ -46,7 +56,7 @@ class Tools
 	public static function str_supplant($pattern, $array)
 	{
 		foreach ($array as $k => $v) {
-			$pattern = str_replace(sprintf('{%s}', $k), (string)$v, $pattern);
+			$pattern = str_replace(sprintf('{%s}', $k), (string) $v, $pattern);
 		}
 		return $pattern;
 	}
@@ -137,8 +147,8 @@ class Tools
 	 *        	- endTag:[any char] = the start tag default = '}'
 	 * @example :
 	 *          | @param $array = [
-	 *          | 	0 => ['id' => 1.0, 'slug' => 'One'],
-	 *          | 	1 => ['id' => '2', 'slug' => 'Two']
+	 *          | 0 => ['id' => 1.0, 'slug' => 'One'],
+	 *          | 1 => ['id' => '2', 'slug' => 'Two']
 	 *          | ];
 	 *          | @param $pattern = '<p data-id="{id}">{slug}</p>';
 	 *          |--> @return '<p data-id="1">One</p><p data-id="2">Two</p>';
@@ -211,6 +221,7 @@ class Tools
 
 	/**
 	 * KISS function which convert an array to attributes
+	 *
 	 * @param array $array
 	 * @return string
 	 */
@@ -218,11 +229,12 @@ class Tools
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
-			$result .= $k.'="'.$v.'" ';
+			$result .= $k . '="' . $v . '" ';
 		}
 		$result = rtrim($result, ' ');
 		return $result;
 	}
+
 
 	/**
 	 * Safety encrypt function
@@ -285,7 +297,7 @@ class Tools
 	{
 		session_write_close();
 		header('Location: /' . $page . $extension, true, 302);
-		//exit();
+		// exit();
 	}
 
 
@@ -301,9 +313,9 @@ class Tools
 	 * @example :
 	 *          | @param $name = 'test'
 	 *          | @param $values = [
-	 *          | 	['id' => 1, 'type' => 'Offer'],
-	 *          | 	['id' => 2, 'type' => 'Hotel')]
-	 *          | 	['id' => 3, 'type' => 'Upsell'],
+	 *          | ['id' => 1, 'type' => 'Offer'],
+	 *          | ['id' => 2, 'type' => 'Hotel')]
+	 *          | ['id' => 3, 'type' => 'Upsell'],
 	 *          | ];
 	 *          | @return "(SELECT * FROM (VALUES
 	 *          | ROW(1,'Offer'),

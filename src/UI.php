@@ -1,4 +1,14 @@
 <?php
+/*
+ * License
+ *
+ * @author Aviato Soft
+ * @copyright Aviato Soft
+ * @license GNUv3
+ * @version 00.04.00
+ * @since  20210407-195014
+ *
+ */
 declare(strict_types = 1);
 namespace Avi;
 
@@ -182,15 +192,15 @@ class UI
 			'favico' => '//www.aviato.ro/favicon.ico',
 			'lang' => 'en-EN',
 			'meta' => [
-				//charset
+				// charset
 				1 => [
 					'charset' => 'UTF-8'
 				],
 
-				//content
+				// content
 				// 2 => ['content' => 'text'],
 
-				//http-equiv
+				// http-equiv
 				31 => [
 					'http-equiv' => 'content-type',
 					'content' => 'text/html'
@@ -199,7 +209,7 @@ class UI
 				// 33 => ['http-equiv' => 'default-style', 'content' => '/css/aviato.css'],
 				// 34 => ['http-equiv' => 'refresh', 'content' => '300'],
 
-				//name
+				// name
 				41 => [
 					'name' => 'application-name',
 					'content' => 'AviLib'
@@ -307,6 +317,9 @@ class UI
 
 		// JavaScript before the body end
 		echo "\n";
+		$this->page['javascript'][] = [
+			'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js'
+		];
 		ksort($this->page['javascript']);
 		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';
