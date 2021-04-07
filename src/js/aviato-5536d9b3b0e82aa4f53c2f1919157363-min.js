@@ -1,4 +1,4 @@
-/* (c)${date-year} Aviato Soft, build #00.04.00 from 20210407-195014 */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
+/* (c)${date-year} Aviato Soft, build #00.04.01 from 2021-04-07 23:02:58 */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
 function isEmpty(o){var i,v;if(typeOf(o)==='object'){for(i in o){v=o[i];if(v!==undefined&&typeOf(v)!=='function'){return false;}}}
 return true;}

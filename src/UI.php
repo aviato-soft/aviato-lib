@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.00
- * @since  20210407-195014
+ * @version 00.04.01
+ * @since  2021-04-07 23:02:58
  *
  */
 declare(strict_types = 1);
@@ -14,6 +14,8 @@ namespace Avi;
 
 use Avi\Log as AviLog;
 use Avi\Tools as AviTools;
+
+use const AviVersion\JS_MD5_MD5 AS AVI_JS_MD5;
 
 /**
  * User Interface class.
@@ -187,7 +189,8 @@ class UI
 		$defaults = [
 			'options' => [
 				'ie8encoding' => true,
-				'xssProtection' => true
+				'xssProtection' => true,
+				'includeAviJs' => true
 			],
 			'favico' => '//www.aviato.ro/favicon.ico',
 			'lang' => 'en-EN',
@@ -317,9 +320,11 @@ class UI
 
 		// JavaScript before the body end
 		echo "\n";
-		$this->page['javascript'][] = [
-			'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js'
-		];
+		if ($opt['includeAviJs']) {
+			$this->page['javascript'][99] = [
+				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js'
+			];
+		}
 		ksort($this->page['javascript']);
 		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';

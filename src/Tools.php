@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.00
- * @since  20210407-195014
+ * @version 00.04.01
+ * @since  2021-04-07 23:02:58
  *
  */
 declare(strict_types = 1);
@@ -20,6 +20,7 @@ namespace Avi;
 class Tools
 {
 
+	const CR = "\n";
 
 	/**
 	 * Apply default values to the array,
