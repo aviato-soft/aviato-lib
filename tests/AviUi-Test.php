@@ -6,6 +6,7 @@ require_once dirname(__FILE__) . '/assets/Sections.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\UI as AviUi;
+use const Avi\AVI_JS_MD5;
 
 final class testAviatoUi extends TestCase
 {
@@ -127,14 +128,16 @@ final class testAviatoUi extends TestCase
 		$template .= '<html lang="en-EN">' . "\n";
 		$template .= '<head><meta charset="UTF-8"><meta http-equiv="content-type" content="text/html">' .
 			'<meta name="application-name" content="AviLib"><meta name="author" content="Aviato Soft">' .
-			'<meta name="description" content="Web dust library"><meta name="generator" content="AviatoWebBuilder">' .
-			'<meta name="keywords" content="%s">' .
+			'<meta name="description" content="Web dust library v.' . Avi\Version::get() . '">' .
+			'<meta name="generator" content="AviatoWebBuilder">' . '<meta name="keywords" content="%s">' .
 			'<meta name="viewport" content="width=device-width, initial-scale=1.0">';
 		$template .= '<title>website</title>';
 		$template .= '<link rel="shortcut icon" href="//www.aviato.ro/favicon.ico"/>%s</head>' . "\n";
 		$template .= '<body%s>' . "\n";
 		$template .= '%s' . "\n";
-		$template .= '%s</body>' . "\n";
+		$template .= '%s';
+		$template .= '<script src="/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js"></script>' . "\n";
+		$template .= '</body>' . "\n";
 		$template .= '</html>';
 
 		// test 1: empty default page
@@ -152,7 +155,8 @@ final class testAviatoUi extends TestCase
 		$aviUi = new AviUi();
 		$aviUi->Page();
 		$result = ob_get_clean();
-		// var_dump($result); // <-- uncomment this line to see the result!
+		echo ($result); // <-- uncomment this line to see the result!
+		echo ($test);
 		$this->assertEquals($test, $result);
 
 		// test 2: customized head:
