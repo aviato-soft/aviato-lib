@@ -1,4 +1,14 @@
 <?php
+/*
+ * License
+ *
+ * @author Aviato Soft
+ * @copyright Aviato Soft
+ * @license GNUv3
+ * @version 00.04.01
+ * @since  2021-04-07 23:02:58
+ *
+ */
 declare(strict_types = 1);
 namespace Avi;
 
@@ -125,7 +135,7 @@ class Response
 				$page = new UI([
 					'response' => &$this
 				]);
-				$attrSection =[];
+				$attrSection = [];
 				if (array_key_exists('params', $_REQUEST)) {
 					$attrSection['params'] = explode(',', $_REQUEST['params']);
 				}
@@ -226,6 +236,7 @@ class Response
 
 	/**
 	 * Return the result
+	 *
 	 * @param boolean $success
 	 * @param boolean $returnOnly
 	 * @return string
@@ -297,7 +308,7 @@ class Response
 					$this->log[$k]['type'] = 'warning';
 				}
 			}
-			$this -> response['log'] = $this -> log;
+			$this->response['log'] = $this->log;
 		}
 
 		return $this->success;
@@ -361,18 +372,17 @@ class Response
 	 */
 	protected function logMessage($messageId)
 	{
-		//get type:
+		// get type:
 		if ($messageId < 200) {
 			$type = 'error';
 		} else if ($messageId >= 200 && $messageId < 300) {
 			$type = 'warning';
-		}
-		else if ($messageId >= 300) {
+		} else if ($messageId >= 300) {
 			$type = 'info';
 		}
 
-		//get message:
-		$message = $this -> getMessage($messageId);
+		// get message:
+		$message = $this->getMessage($messageId);
 
 		$this->log($message, $type, $messageId);
 	}
@@ -385,7 +395,7 @@ class Response
 	 */
 	private function removeLogByMessageId($messageId)
 	{
-		foreach ($this -> log as $k => $v) {
+		foreach ($this->log as $k => $v) {
 			if ($messageId === $v['id']) {
 				unset($this->log[$k]);
 			}
@@ -401,13 +411,13 @@ class Response
 	private function validate()
 	{
 		// raise error on missing action:
-		$this -> validityLog(($this -> action === null), 100);
+		$this->validityLog(($this->action === null), 100);
 
 		// raise warning on empty action:
-		$this -> validityLog(($this -> action === ''), 200);
+		$this->validityLog(($this->action === ''), 200);
 
 		// raise warning in case of empty data:
-		$this -> validityLog(($this->data === []), 201);
+		$this->validityLog(($this->data === []), 201);
 
 		// check if we have at least one error and set success as false in this case:
 		foreach ($this->log as $v) {
@@ -425,6 +435,7 @@ class Response
 
 	/**
 	 * Add or remove log on specified condition
+	 *
 	 * @param boolean $condition
 	 * @param integer $logId
 	 */
@@ -432,9 +443,8 @@ class Response
 	{
 		if ($condition) {
 			$this->logMessage($logId);
-		}
-		else {
-			$this -> removeLogByMessageId($logId);
+		} else {
+			$this->removeLogByMessageId($logId);
 		}
 	}
 }

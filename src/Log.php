@@ -1,4 +1,14 @@
 <?php
+/*
+ * License
+ *
+ * @author Aviato Soft
+ * @copyright Aviato Soft
+ * @license GNUv3
+ * @version 00.04.01
+ * @since  2021-04-07 23:02:58
+ *
+ */
 declare(strict_types = 1);
 namespace Avi;
 
@@ -68,7 +78,7 @@ class Log
 
 		if ($header) {
 			if ($this->serverInfo) {
-				//remote address
+				// remote address
 				if (array_key_exists('REMOTE_ADDR', $_SERVER)) {
 					$messageHeader .= $_SERVER['REMOTE_ADDR'];
 				}
