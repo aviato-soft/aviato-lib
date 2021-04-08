@@ -155,8 +155,8 @@ final class testAviatoUi extends TestCase
 		$aviUi = new AviUi();
 		$aviUi->Page();
 		$result = ob_get_clean();
-		echo ($result); // <-- uncomment this line to see the result!
-		echo ($test);
+		// echo ($result); // <-- uncomment this line to see the result!
+		// echo ($test);
 		$this->assertEquals($test, $result);
 
 		// test 2: customized head:
