@@ -1,1 +1,6 @@
 Changelog
+
+v.0.4.2 - use PHP_EOL instead of "\n"
+
+v.0.4.1 - full migration of old aviato-lib
+
