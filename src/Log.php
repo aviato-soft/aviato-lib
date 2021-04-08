@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.01
- * @since  2021-04-07 23:02:58
+ * @version 00.04.02
+ * @since  2021-04-08 08:48:41
  *
  */
 declare(strict_types = 1);
@@ -94,14 +94,14 @@ class Log
 				if (array_key_exists('HTTP_USER_AGENT', $_SERVER)) {
 					$messageHeader .= $_SERVER['HTTP_USER_AGENT'];
 				}
-				$messageHeader .= "\n>";
+				$messageHeader .= PHP_EOL . '>';
 			}
 
 			$backtrace = debug_backtrace();
 
-			$messageHeader .= 'file:' . $backtrace[1]['file'] . ' ' . 'at line:' . $backtrace[1]['line'] . ' ' . "\n" .
+			$messageHeader .= 'file:' . $backtrace[1]['file'] . ' ' . 'at line:' . $backtrace[1]['line'] . ' ' . PHP_EOL .
 				'[class]' . $backtrace[2]['class'] . $backtrace[2]['type'] . $backtrace[2]['function'] . '{' .
-				print_r($backtrace[2]['args'], true) . '}' . "\n";
+				print_r($backtrace[2]['args'], true) . '}' . PHP_EOL;
 		}
 
 		if (is_array($message)) {
@@ -110,7 +110,7 @@ class Log
 			$this->message = $message;
 		}
 
-		$this->message = $messageHeader . $this->message . "\n----------\n\n";
+		$this->message = $messageHeader . $this->message . PHP_EOL . '----------' . PHP_EOL . PHP_EOL;
 	}
 
 

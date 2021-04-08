@@ -71,24 +71,6 @@ var aviato = {
 			});
 			//TODO: specific logic for radios
 		},
-
-		/**
-		 * convert json to html,
-		 * specials properties:
-		 * - tag = default = 'div'
-		 * - att = default = ''
-		 * - ch = default = null;
-		 */
-		jsToHtml: function (o) {
-			// [.. in progress...]
-			/*
-			var html = '';
-			for (elements in o) {
-
-			}
-			*/
-		}
-
 	},
 
 	/**
@@ -192,7 +174,7 @@ var aviato = {
 				if (selector === undefined) {
 					selector = '';
 				}
-				return ($(selector + '[data-type="button"][data-action]'));
+				return ($(selector + '[data-type="button"][data-'+ button +']'));
 			}
 		}
 	},
