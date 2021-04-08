@@ -16,11 +16,11 @@ const AVI_MAJOR = '00';
 
 const AVI_MINOR = '04';
 
-const AVI_PATCH = '01';
+const AVI_PATCH = '02';
 
-const AVI_DATE = '2021-04-07 23:02:58';
+const AVI_DATE = '2021-04-08 08:48:41';
 
-const AVI_JS_MD5 = '5536d9b3b0e82aa4f53c2f1919157363';
+const AVI_JS_MD5 = 'd41208fe05121135fcfafd65be89529f';
 
 /**
  * Version class

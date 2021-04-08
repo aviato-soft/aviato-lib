@@ -16,7 +16,7 @@ use Avi\Log as AviLog;
 use Avi\Tools as AviTools;
 use Avi\Version As AviVersion;
 
-use const \Avi\AVI_JS_MD5 as AVIJS;
+use const \Avi\AVI_JS_MD5;
 
 /**
  * User Interface class.
