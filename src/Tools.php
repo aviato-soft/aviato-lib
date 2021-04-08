@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.01
- * @since  2021-04-07 23:02:58
+ * @version 00.04.02
+ * @since  2021-04-08 08:48:41
  *
  */
 declare(strict_types = 1);
@@ -19,9 +19,6 @@ namespace Avi;
  */
 class Tools
 {
-
-	const CR = "\n";
-
 	/**
 	 * Apply default values to the array,
 	 * mainly used for arrays which can't have specific default values defined

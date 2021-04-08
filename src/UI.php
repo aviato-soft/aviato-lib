@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.01
- * @since  2021-04-07 23:02:58
+ * @version 00.04.02
+ * @since  2021-04-08 08:48:41
  *
  */
 declare(strict_types = 1);
@@ -263,8 +263,8 @@ class UI
 			header('x-xss-protection: 1; mode=block');
 		}
 
-		echo "<!DOCTYPE html>\n";
-		echo '<html lang="' . $this->page['lang'] . "\">\n";
+		echo '<!DOCTYPE html>'.PHP_EOL;
+		echo '<html lang="' . $this->page['lang'] . '">'.PHP_EOL;
 
 		// head
 		echo '<head>';
@@ -303,13 +303,13 @@ class UI
 			}
 		}
 		// end header
-		echo "</head>\n";
+		echo '</head>'.PHP_EOL;
 
 		// start body content
 		if (isset($this->page['class'])) {
-			echo '<body class="' . $this->page['class'] . "\">\n";
+			echo '<body class="' . $this->page['class'] . '">'.PHP_EOL;
 		} else {
-			echo "<body>\n";
+			echo '<body>'.PHP_EOL;
 		}
 
 		// - content
@@ -320,7 +320,7 @@ class UI
 		}
 
 		// JavaScript before the body end
-		echo "\n";
+		echo PHP_EOL;
 		if ($opt['includeAviJs']) {
 			$this->page['javascript'][99] = [
 				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js'
@@ -330,11 +330,11 @@ class UI
 		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';
 			echo AviTools::atoattr($javascript);
-			echo "></script>\n";
+			echo '></script>'.PHP_EOL;
 		}
 
 		// end body
-		echo "</body>\n";
+		echo '</body>'.PHP_EOL;
 		echo '</html>';
 	}
 }
