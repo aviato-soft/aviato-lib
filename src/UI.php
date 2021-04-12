@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright Aviato Soft
  * @license GNUv3
- * @version 00.04.03
- * @since  2021-04-12 16:54:26
+ * @version 00.04.05
+ * @since  2021-04-12 17:50:50
  *
  */
 declare(strict_types = 1);
@@ -14,9 +14,8 @@ namespace Avi;
 
 use Avi\Log as AviLog;
 use Avi\Tools as AviTools;
-use Avi\Version As AviVersion;
-
-use const \Avi\AVI_JS_MD5;
+use Avi\Version as AviVersion;
+use const Avi\AVI_JS_MD5;
 
 /**
  * User Interface class.
@@ -121,7 +120,6 @@ class UI
 		// generate content:
 		$path = $attributes['root'] . DIRECTORY_SEPARATOR . 'sections' . DIRECTORY_SEPARATOR . $sectionName . '.' .
 			$attributes['type'];
-		$this->log->trace($path, LOG_DEBUG);
 		switch ($attributes['type']) {
 			case 'htm':
 			case 'html':
@@ -155,6 +153,9 @@ class UI
 					} else {
 						if (method_exists($this->response, 'log')) {
 							$this->response->log('UI: Missing object definition', 'warning', 251);
+						} else {
+							$this->log->trace('UI: Missing object definition: ' . $attributes['obj'] . '::' .
+								$sectionName);
 						}
 					}
 				}
@@ -224,7 +225,7 @@ class UI
 				],
 				43 => [
 					'name' => 'description',
-					'content' => 'Web dust library v.'.AviVersion::get()
+					'content' => 'Web dust library v.' . AviVersion::get()
 				],
 				44 => [
 					'name' => 'generator',
@@ -263,8 +264,8 @@ class UI
 			header('x-xss-protection: 1; mode=block');
 		}
 
-		echo '<!DOCTYPE html>'.PHP_EOL;
-		echo '<html lang="' . $this->page['lang'] . '">'.PHP_EOL;
+		echo '<!DOCTYPE html>' . PHP_EOL;
+		echo '<html lang="' . $this->page['lang'] . '">' . PHP_EOL;
 
 		// head
 		echo '<head>';
@@ -303,13 +304,13 @@ class UI
 			}
 		}
 		// end header
-		echo '</head>'.PHP_EOL;
+		echo '</head>' . PHP_EOL;
 
 		// start body content
 		if (isset($this->page['class'])) {
-			echo '<body class="' . $this->page['class'] . '">'.PHP_EOL;
+			echo '<body class="' . $this->page['class'] . '">' . PHP_EOL;
 		} else {
-			echo '<body>'.PHP_EOL;
+			echo '<body>' . PHP_EOL;
 		}
 
 		// - content
@@ -330,11 +331,11 @@ class UI
 		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';
 			echo AviTools::atoattr($javascript);
-			echo '></script>'.PHP_EOL;
+			echo '></script>' . PHP_EOL;
 		}
 
 		// end body
-		echo '</body>'.PHP_EOL;
+		echo '</body>' . PHP_EOL;
 		echo '</html>';
 	}
 }
