@@ -36,13 +36,14 @@ final class testAviatoUi extends TestCase
 
 	public function testFn_Section(): void
 	{
-		// Object section
+		// Object section normal
 		$aviUi = new AviUi();
 		$response = $aviUi->Section('test', [], true);
 		$test = '<section id="test" class="sec-obj-test">test section</section>';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
+		//Object section no wrapper + including js file
 		$response = $aviUi->Section('test', [
 			'wrapper' => false,
 			'javascript' => [
@@ -55,6 +56,12 @@ final class testAviatoUi extends TestCase
 
 		$test = 'test.js';
 		$this->assertEquals($test, $aviUi->page['javascript'][0]);
+
+		//section  type = Object undefined
+		$response = $aviUi->Section('test7', ['wrapper' => false], true);
+		$test = '';
+		$this->assertEquals($test, $response);
+
 
 		// Html section
 		$response = $aviUi->Section('test',

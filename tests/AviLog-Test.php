@@ -61,49 +61,25 @@ final class testAviatoLog extends TestCase
 		$test = true;
 		$this -> assertEquals($result, $test);
 
-		//test log to system & alert:
+		$logTypes = [
+			['id' => 22, 'prefix' => 'unknonw_'],
+			['id' => LOG_ALERT, 'prefix' => 'alert_'],
+			['id' => LOG_CRIT, 'prefix' => 'crit_'],
+			['id' => LOG_DEBUG, 'prefix' => 'debug_'],
+			['id' => LOG_ERR, 'prefix' => 'err_'],
+			['id' => LOG_EMERG, 'prefix' => 'emerg_'],
+			['id' => LOG_INFO, 'prefix' => 'info_'],
+			['id' => LOG_NOTICE, 'prefix' => 'notice_'],
+			['id' => LOG_WARNING, 'prefix' => 'warning_'],
+		];
+
+		//multiple test log to system & alert:
 		$aviLog -> toSystem = true;
-		$test = $aviLog -> trace($message, LOG_ALERT);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'alert_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$aviLog -> toSystem = false;
-		$test = $aviLog -> trace($message, LOG_ERR);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'err_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$test = $aviLog -> trace($message, LOG_EMERG);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'emerg_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$test = $aviLog -> trace($message, LOG_WARNING);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'warning_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$test = $aviLog -> trace($message, LOG_NOTICE);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'notice_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$test = $aviLog -> trace($message, LOG_CRIT);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'crit_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
-
-		//test priority
-		$test = $aviLog -> trace([$message], 22);
-		$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . 'unknonw_' . date('Ymd') .'.log');
-		$test = true;
-		$this -> assertEquals($result, $test);
+		foreach ($logTypes as $logType) {
+			$test = $aviLog -> trace($message, $logType['id']);
+			$result = file_exists($aviLog -> path . DIRECTORY_SEPARATOR . $logType['prefix'] . date('Ymd') .'.log');
+			$this -> assertTrue($result);
+		}
 
 		$_SERVER['REMOTE_ADDR'] = '0.0.0.0';
 		$_SERVER['HTTP_X_FORWARDED_FOR'] = '0.0.0.0';
