@@ -1,5 +1,7 @@
 Changelog
 
+v.0.4.4 - fix aviato.js: invalid main
+
 v.0.4.3 - add test unit for Version class
 
 v.0.4.2 - use PHP_EOL instead of "\n"
