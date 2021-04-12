@@ -58,6 +58,7 @@ final class testAviatoUi extends TestCase
 		$this->assertEquals($test, $aviUi->page['javascript'][0]);
 
 		//section  type = Object undefined
+		$aviUi->response = 'test22';
 		$response = $aviUi->Section('test7', ['wrapper' => false], true);
 		$test = '';
 		$this->assertEquals($test, $response);
