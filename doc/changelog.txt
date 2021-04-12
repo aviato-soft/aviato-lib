@@ -1,5 +1,7 @@
 Changelog
 
+v.0.4.6 - fix compatibility with php8.0 on UI->$response
+
 v.0.4.5 - removed unused debugging log
 
 v.0.4.4 - fix aviato.js: invalid main
