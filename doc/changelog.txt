@@ -1,4 +1,5 @@
 Changelog
+v.0.4.7 - Turkey version: fixes for js based on jest tests
 
 v.0.4.6 - fix compatibility with php8.0 on UI->$response
 
