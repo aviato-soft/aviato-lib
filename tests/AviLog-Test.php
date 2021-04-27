@@ -1,6 +1,6 @@
 <?php
-/**     .___
- * /\\///\|0
+/**
+ * Copyright 2014-present Aviato Soft. All Rights Reserved.
  */
 declare(strict_types = 1);
 
