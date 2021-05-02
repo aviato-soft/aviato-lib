@@ -6,14 +6,14 @@
  * Copyright Aviato Soft
  *
  * Date: 2016-11-11T11:11:11z
- */
+**/
 
 "use strict";
 
 const aviato = {
 	/**
 	 * <b>extending bootstrap with some usefull methodes</b>
-	 */
+	**/
 	bootstrap: {},
 
 	call: {},
@@ -21,13 +21,20 @@ const aviato = {
 	display: {},
 
 	/**
-	*/
+	 * Usefull general functions
+	**/
 	fn: {},
 
+	/**
+	 * extend jQuery in need
+	**/
 	jq: {
 		element: {}
 	},
 
+	/**
+	 * actions
+	 */
 	on: {}
 };
 
@@ -102,7 +109,7 @@ aviato.fn.localStorageToForm = function(selector) {
  * DO NOT use it if there is not a navbar on the page because will return always false
  * @returns {Boolean}
  * @author Vasile Giorgi
- **/
+**/
 aviato.bootstrap.isXs = function() { // require navbar to return correct result
 	return ($('.navbar-toggle:visible').length > 0);
 };
@@ -111,8 +118,8 @@ aviato.bootstrap.isXs = function() { // require navbar to return correct result
 /**
  * <b>Open(show) a bootstrap collapsable panel based on location hash
  * @param parentId
- *  * @author Vasile Giorgi
- */
+ * @author Vasile Giorgi
+**/
 aviato.bootstrap.showCollapseByLocationHash = function(parentId, closeOthers) {
 	if (closeOthers === undefined) {
 		closeOthers = false;
@@ -121,7 +128,7 @@ aviato.bootstrap.showCollapseByLocationHash = function(parentId, closeOthers) {
 	//check if there is something on location hash:
 	if (window.location.hash.length > 1) {
 		//check if exist the specified id and it is an collapse trigger:
-		if ($('#' + parentId + ' a[href=' + window.location.hash + ']').data('toggle') === 'collapse') {
+		if ($('#' + parentId + ' a[href="' + window.location.hash + '"]').data('toggle') === 'collapse') {
 			//close (show) all colapsible panels if some are opened(shown)
 			if (closeOthers === true) {
 				$('#' + parentId + ' .panel-collapse.in').collapse('hide');
@@ -150,7 +157,7 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 	}
 
 	//apply default properties:
-	$.extend(false, oItemProperties, {
+	let itemProperties = {
 		'class': 'default', //default|primary|success|info|warning|danger
 		'content': '',
 		'id': 'collapseItem',
@@ -158,7 +165,9 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 		'isCurrent': '',//'' | 'current'
 		'parentId': 'accordion',
 		'title': 'Collapsible Group Item'
-	});
+	};
+	$.extend(itemProperties, oItemProperties);
+
 	var sPattern =
 		'<div class="panel panel-{class}">' +
 		'<div class="panel-heading {isCurrent}">' +
@@ -170,12 +179,14 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 		'<div class="panel-body">{content}</div>' +
 		'</div>' +
 		'</div>';
+	let item = sPattern.supplant(itemProperties);
+
 	if (bAppendToParent) {
-		$('#' + oItemProperties.parentId).append(sPattern.supplant(oItemProperties));
+		$('#' + itemProperties.parentId).append(item);
 		return true;
 	}
 	else {
-		return sPattern.supplant(oItemProperties);
+		return item;
 	}
 };
 
@@ -303,6 +314,10 @@ aviato.on.click = function(oTrigger) {
 
 
 aviato.call.ajax = function(o) {
+	if (o === undefined) {
+		return false;
+	}
+
 	if (o.before !== undefined) {
 		o.before(o);
 	}
@@ -363,7 +378,8 @@ aviato.display.alert = function(data) {
 	console.log(alerts.length);
 };
 
-
+/*
 $(function() {
 	aviato.bind();
 });
+*/

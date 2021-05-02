@@ -3,10 +3,10 @@
  * License
  *
  * @author Aviato Soft
- * @copyright Aviato Soft
+ * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.04.06
- * @since  2021-04-12 18:05:56
+ * @version 00.04.08
+ * @since  2021-05-02 14:38:34
  *
  */
 declare(strict_types = 1);

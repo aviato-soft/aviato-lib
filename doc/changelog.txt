@@ -1,6 +1,9 @@
 Changelog
+v.0.4.8 - Allow custom atributes to section
 
-v.0.4.6 - fix compatibility with php8.0 on UI->$response
+v.0.4.7 - Turkey version: fixes for js based on jest tests
+
+v.0.4.6 - Fix compatibility with php8.0 on UI->$response
 
 v.0.4.5 - removed unused debugging log
 
@@ -12,3 +15,12 @@ v.0.4.2 - use PHP_EOL instead of "\n"
 
 v.0.4.1 - full migration of old aviato-lib
 
+v.0.4.0 - add javascript component
+
+v.0.3.0 - add UI component
+
+v.0.2.0 - add Response + Log components
+
+v.0.1.0 - add Tools component
+
+v.0.0.1 - start
