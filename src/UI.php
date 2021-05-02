@@ -6,7 +6,7 @@
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
  * @version 00.04.07
- * @since  2021-04-27 09:26:50
+ * @since 2021-04-27 09:26:50
  *
  */
 declare(strict_types = 1);
@@ -69,7 +69,7 @@ class UI
 	 *
 	 * @param string $sectionName
 	 *        	(mandatory) The name of the section
-	 * @param array $attributes
+	 * @param array $properties
 	 *        	the section properties
 	 *        	type: obj | html | php
 	 *        	class: the class atribute of html element
@@ -80,12 +80,13 @@ class UI
 	 *        	The section content is returned only, not displayed
 	 * @return string
 	 */
-	public function Section($sectionName, $attributes = [], $return = false)
+	public function Section($sectionName, $properties = [], $return = false)
 	{
 		ob_start();
 
-		$attributes = AviTools::applyDefault($attributes,
+		$properties = AviTools::applyDefault($properties,
 			[
+				'attributes' => [],
 				'class' => 'section',
 				'id' => $sectionName,
 				'javascript' => [],
@@ -99,28 +100,39 @@ class UI
 			]);
 
 		// pre-computation:
+		$attributes = $properties['attributes'];
+
 		// class:
-		if ($attributes['class'] === 'section') {
-			$attributes['class'] = '';
+		if ($properties['class'] === 'section') {
+			// $properties['class'] = '';
+			$attributes['class'] = [];
+		} else {
+			$attributes['class'] = [
+				$properties['class']
+			];
 		}
-		if (strlen($attributes['class']) > 0) {
-			$attributes['class'] .= ' ';
+
+		$attributes['class'][] = 'sec-' . $properties['type'] . '-' . $sectionName;
+
+		$attributes['class'] = implode(' ', $attributes['class']);
+
+		// id
+		if ($properties['type'] !== 'box') { // depricated condition
+			$attributes['id'] = $properties['id'];
 		}
-		$attributes['class'] .= 'sec-' . $attributes['type'] . '-' . $sectionName;
+
+		// order attributes a-z
+		ksort($attributes);
 
 		// open tag:
-		if ($attributes['wrapper']) {
-			echo '<' . $attributes['tag'] . ' ';
-			if ($attributes['type'] !== 'box') { // depricated condition
-				echo 'id="' . $attributes['id'] . '" ';
-			}
-			echo 'class="' . $attributes['class'] . '">';
+		if ($properties['wrapper']) {
+			echo '<' . $properties['tag'] . ' ' . AviTools::atoattr($attributes) . '>';
 		}
 
 		// generate content:
-		$path = $attributes['root'] . DIRECTORY_SEPARATOR . 'sections' . DIRECTORY_SEPARATOR . $sectionName . '.' .
-			$attributes['type'];
-		switch ($attributes['type']) {
+		$path = $properties['root'] . DIRECTORY_SEPARATOR . 'sections' . DIRECTORY_SEPARATOR . $sectionName . '.' .
+			$properties['type'];
+		switch ($properties['type']) {
 			case 'htm':
 			case 'html':
 				$content = @file_get_contents($path);
@@ -139,23 +151,23 @@ class UI
 				break;
 
 			case 'obj':
-				if (isset($attributes['params'])) {
+				if (isset($properties['params'])) {
 					call_user_func_array([
-						$attributes['obj'],
+						$properties['obj'],
 						$sectionName
-					], $attributes['params']);
+					], $properties['params']);
 				} else {
-					if (method_exists($attributes['obj'], $sectionName)) {
+					if (method_exists($properties['obj'], $sectionName)) {
 						call_user_func([
-							$attributes['obj'],
+							$properties['obj'],
 							$sectionName
 						]);
 					} else {
 						if (method_exists($this->response, 'log')) {
 							$this->response->log('UI: Missing object definition', 'warning', 251);
 						} else {
-							$this->log->trace('UI: Missing object definition: ' . $attributes['obj'] . '::' .
-								$sectionName);
+							$this->log->trace(
+								'UI: Missing object definition: ' . $properties['obj'] . '::' . $sectionName);
 						}
 					}
 				}
@@ -164,13 +176,13 @@ class UI
 		}
 
 		// close section tag:
-		if ($attributes['wrapper'] && $attributes['close']) {
-			echo '</' . $attributes['tag'] . '>';
+		if ($properties['wrapper'] && $properties['close']) {
+			echo '</' . $properties['tag'] . '>';
 		}
 
 		// after content logic
-		if (count($attributes['javascript']) > 0) {
-			$this->page['javascript'] = array_merge($this->page['javascript'], $attributes['javascript']);
+		if (count($properties['javascript']) > 0) {
+			$this->page['javascript'] = array_merge($this->page['javascript'], $properties['javascript']);
 		}
 
 		if ($return) {
