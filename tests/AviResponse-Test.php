@@ -89,15 +89,15 @@ final class testAviatoResponse extends TestCase
 
 		// get(section) - non existent object
 		$_REQUEST['section'] = 'testInvalid';
-		$test = '<section id="testInvalid" class="sec-obj-testInvalid"></section>';
+		$expected = '<section class="sec-obj-testInvalid" id="testInvalid"></section>';
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
-		$this->assertEquals($test, $result['data']);
+		$this->assertEquals($expected, $result['data']);
 		$this->assertTrue($result['success']);
 
 		// get(section)
 		$_REQUEST['section'] = 'test';
-		$test = '<section id="test" class="sec-obj-test">test section</section>';
+		$test = '<section class="sec-obj-test" id="test">test section</section>';
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
 		$this->assertEquals($test, $result['data']);

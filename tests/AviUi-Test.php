@@ -41,9 +41,20 @@ final class testAviatoUi extends TestCase
 		// Object section normal
 		$aviUi = new AviUi();
 		$response = $aviUi->Section('test', [], true);
-		$test = '<section id="test" class="sec-obj-test">test section</section>';
+		$test = '<section class="sec-obj-test" id="test">test section</section>';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
+
+		$response = $aviUi->Section('test', [
+			'attributes' => [
+				'src' => 'javascript:;',
+				'data-role' => 'test'
+			]
+		], true);
+		$test = '<section class="sec-obj-test" data-role="test" id="test" src="javascript:;">test section</section>';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
 
 		//Object section no wrapper + including js file
 		$response = $aviUi->Section('test', [
