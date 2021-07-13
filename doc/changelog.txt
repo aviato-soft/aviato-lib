@@ -1,4 +1,7 @@
 Changelog
+v.0.4.9 - Add method: Tools::dtFormatToFormat
+		- Generate documentation using phpdoc
+
 v.0.4.8 - Allow custom atributes to section
 
 v.0.4.7 - Turkey version: fixes for js based on jest tests
