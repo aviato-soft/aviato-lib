@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.04.08
- * @since  2021-05-02 14:38:34
+ * @version 00.04.09
+ * @since  2021-07-13 18:00:36
  *
  */
 declare(strict_types = 1);
@@ -67,10 +67,10 @@ class Log
 
 
 	/**
-	 * Format the message
+	 * Format the message(s)
 	 *
-	 * @param
-	 *        	unknown(string | array) $message
+	 * @param string | array $message - one message (string) or multiple messages (array of strings)
+	 * @param bool $header
 	 */
 	protected function format($message, $header = false)
 	{
