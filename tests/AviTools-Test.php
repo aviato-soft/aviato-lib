@@ -476,6 +476,26 @@ final class testAviatoTools extends TestCase
 	}
 
 
+	public function testfn_dtFormatToFormat(): void
+	{
+		$test = '11.09.2013';
+		$result = AviTools::dtFormatToFormat('2013-09-11', 'yyyy-mm-dd', 'dd.mm.yyyy');
+		$this->assertEquals($result, $test);
+
+		$test = '2013-09-11';
+		$result = AviTools::dtFormatToFormat('2013-09-11', 'yyyy-mm-dd', 'yyyy-mm-dd');
+		$this->assertEquals($result, $test);
+
+		$test = false;
+		$result = AviTools::dtFormatToFormat('2013-09-11', 'yyyy:mm:dd', 'dd.mm.yyyy');
+		$this->assertEquals($result, $test);
+
+		$test = false;
+		$result = AviTools::dtFormatToFormat('2013-09-11', 'yyyy-mm-dd', 'dd:mm:yyyy');
+		$this->assertEquals($result, $test);
+	}
+
+
 	public function testFn_mysqlTableFromValues(): void
 	{
 		// test assertion normal usage:
