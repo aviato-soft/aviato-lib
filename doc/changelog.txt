@@ -1,6 +1,7 @@
 Changelog
+v.0.5.0 - Generate documentation using phpdoc
+
 v.0.4.9 - Add method: Tools::dtFormatToFormat
-		- Generate documentation using phpdoc
 
 v.0.4.8 - Allow custom atributes to section
 
