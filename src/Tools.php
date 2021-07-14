@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.04.08
- * @since  2021-05-02 14:38:34
+ * @version 00.05.00
+ * @since  2021-07-14 10:27:38
  *
  */
 declare(strict_types = 1);
@@ -19,6 +19,8 @@ namespace Avi;
  */
 class Tools
 {
+
+
 	/**
 	 * Apply default values to the array,
 	 * mainly used for arrays which can't have specific default values defined
@@ -78,8 +80,7 @@ class Tools
 	 *
 	 * @param string $pattern
 	 * @param array $array
-	 * @param boolean $returnOnly,
-	 *        	(default = false, will echo result)
+	 * @param boolean $returnOnly, (default = false, will echo result)
 	 * @return string
 	 */
 	public static function printa($pattern, $array, $returnOnly = false)
@@ -116,8 +117,7 @@ class Tools
 	 *
 	 * @param string $pattern
 	 * @param array $array
-	 * @param boolean $returnOnly,
-	 *        	(optional = false result in output the buffer content)
+	 * @param boolean $returnOnly, (optional = false result in output the buffer content)
 	 * @return string
 	 */
 	public static function printaa($pattern, $array, $returnOnly = false)
@@ -134,15 +134,12 @@ class Tools
 	 * atos = Array TO String
 	 *
 	 * @return string formated using a loop trough $array and apply $pattern
-	 * @param $array array
-	 *        	- the data to be parsed
-	 * @param $pattern string
-	 *        	- the template
-	 * @param $configuration array
-	 *        	- optional parameters
-	 *        	- isPrintFormat:[true|false] = use sprintf format
-	 *        	- startTag:[any char] = the start tag default = '{'
-	 *        	- endTag:[any char] = the start tag default = '}'
+	 * @param $array array - the data to be parsed
+	 * @param $pattern string - the template
+	 * @param $configuration array - optional parameters
+	 *        - isPrintFormat:[true|false] = use sprintf format
+	 *        - startTag:[any char] = the start tag default = '{'
+	 *        - endTag:[any char] = the start tag default = '}'
 	 * @example :
 	 *          | @param $array = [
 	 *          | 0 => ['id' => 1.0, 'slug' => 'One'],
@@ -203,9 +200,9 @@ class Tools
 							}
 						}
 						if (is_string($v[$key])) {
-							$res = str_replace($config['startTag'] . $key . $config['endTag'], $v[$key], $res);
+							$res = str_replace($config['startTag'].$key.$config['endTag'], $v[$key], $res);
 						} else {
-							$res = str_replace($config['startTag'] . $key . $config['endTag'], gettype($v[$key]), $res);
+							$res = str_replace($config['startTag'].$key.$config['endTag'], gettype($v[$key]), $res);
 						}
 					}
 				}
@@ -227,7 +224,7 @@ class Tools
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
-			$result .= $k . '="' . $v . '" ';
+			$result .= $k.'="'.$v.'" ';
 		}
 		$result = rtrim($result, ' ');
 		return $result;
@@ -262,7 +259,7 @@ class Tools
 	public static function dec($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
 	{
 		$qDecoded = rtrim(
-			openssl_decrypt(base64_decode($q . '='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
+			openssl_decrypt(base64_decode($q.'='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
 		return ($qDecoded);
 	}
 
@@ -286,26 +283,93 @@ class Tools
 	/**
 	 * Simple redirect method (shortcut to header('location: [page]'))
 	 *
-	 * @param string $page
-	 *        	- the page name(url, permalink)
-	 * @param
-	 *        	string [$extension] - the page extension (default is html)
+	 * @param string $page - the page name(url, permalink)
+	 * @param string [$extension] - the page extension (default is html)
 	 */
 	public static function redirect($page = '', $extension = '')
 	{
 		session_write_close();
-		header('Location: /' . $page . $extension, true, 302);
+		header('Location: /'.$page.$extension, true, 302);
 		// exit();
+	}
+
+
+	/**
+	 * Convert 2 strings representing dates from one format to another
+	 *
+	 * @param string $date = date to be formated
+	 * @param string $format = the format of initial date
+	 * @param string $formatResult = the format of the result
+	 * @param array $separator = the permited separators
+	 * @return string representing the date in new format or false on error
+	 * 	or false on invalid parameters
+	 *
+	 *         exampe: Avi\Tools::dtFormatToFormat('2013-09-11', 'y-m-d', 'd/m/y') will return '11/09/2013'
+	 */
+	public static function dtFormatToFormat($date, $format, $formatResult, $separator = [
+		'/',
+		'-',
+		'.'
+	])
+	{
+		if ($formatResult === $format) {
+			return $date;
+		}
+		$dateSeparator = false;
+		$resultDateSeparator = false;
+
+		//get date separator
+		foreach ($separator as $v) {
+			if (strpos($format, $v) !== false) {
+				$dateSeparator = $v;
+				break;
+			}
+		}
+		// invalid date separator
+		if ($dateSeparator === false) {
+			return false;
+		}
+
+		//get result date separator
+		foreach ($separator as $v) {
+			if (strpos($formatResult, $v) !== false) {
+				$resultDateSeparator = $v;
+				break;
+			}
+		}
+		//invalid result date separator
+		if ($resultDateSeparator === false) {
+			return false;
+		}
+
+		//strings to arrays
+		$arDate = [
+			explode($dateSeparator, $date),
+			explode($dateSeparator, $format)
+		];
+		$iMax = count($arDate[0]);
+		for ($i = 0; $i < $iMax; $i ++) {
+			$arDate[2][$arDate[1][$i]] = $arDate[0][$i];
+		}
+		$arDate = $arDate[2];
+		$arNewDate = [
+			explode($resultDateSeparator, $formatResult),
+			[]
+		];
+		$iMax = count($arNewDate[0]);
+		for ($i = 0; $i < $iMax; $i ++) {
+			$arNewDate[1][$i] = $arDate[$arNewDate[0][$i]];
+		}
+
+		return (implode($resultDateSeparator, $arNewDate[1]));
 	}
 
 
 	/**
 	 * Return an mysql synthax temporary table based on values
 	 *
-	 * @param string $name
-	 *        	- the name of the table
-	 * @param array $values
-	 *        	- the values of the array
+	 * @param string $name - the name of the table
+	 * @param array $values - the values of the array
 	 * @return string sql
 	 *
 	 * @example :
@@ -328,15 +392,15 @@ class Tools
 		$rowPattern = "ROW(";
 		foreach ($values[0] as $k => $v) {
 			if (is_numeric($v)) {
-				$rowPattern .= "{" . $k . "},";
+				$rowPattern .= "{".$k."},";
 			} else {
-				$rowPattern .= "'{" . $k . "}',";
+				$rowPattern .= "'{".$k."}',";
 			}
 		}
-		$rowPattern = substr($rowPattern, 0, - 1) . '),';
+		$rowPattern = substr($rowPattern, 0, - 1).'),';
 
-		$sql = "(SELECT * FROM (VALUES " . substr(self::atos($values, $rowPattern), 0, - 1) . ") AS `" . $name . "` " .
-			"(`" . implode("`,`", $columns) . "`)) `" . $name . "` ";
+		$sql = "(SELECT * FROM (VALUES ".substr(self::atos($values, $rowPattern), 0, - 1).") AS `".$name."` "."(`".
+			implode("`,`", $columns)."`)) `".$name."` ";
 
 		return $sql;
 	}
