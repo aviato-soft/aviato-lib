@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.05.00
- * @since  2021-07-14 10:27:38
+ * @version 00.05.01
+ * @since  2021-07-21 09:04:07
  *
  */
 declare(strict_types = 1);
@@ -291,6 +291,22 @@ class Tools
 		session_write_close();
 		header('Location: /'.$page.$extension, true, 302);
 		// exit();
+	}
+
+
+	/**
+	 * Short validator for datetime using DateTime native class
+	 * @param string $date - the string to be validated
+	 * @param string $format - optional the format of $date
+	 * @return boolean - is format valid yes/no
+	 *
+	 * @author glavic at gmail dot com
+	 * @example https://www.php.net/manual/en/function.checkdate.php#113205
+	 */
+	public static function validateDate(string $date, string $format = 'Y-m-d H:i:s')
+	{
+		$d = \DateTime::createFromFormat($format, $date);
+		return $d && $d->format($format) == $date;
 	}
 
 
