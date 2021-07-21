@@ -295,6 +295,22 @@ class Tools
 
 
 	/**
+	 * Short validator for datetime using DateTime native class
+	 * @param string $date - the string to be validated
+	 * @param string $format - optional the format of $date
+	 * @return boolean - is format valid yes/no
+	 *
+	 * @author glavic at gmail dot com
+	 * @example https://www.php.net/manual/en/function.checkdate.php#113205
+	 */
+	public static function validateDate(string $date, string $format = 'Y-m-d H:i:s')
+	{
+		$d = \DateTime::createFromFormat($format, $date);
+		return $d && $d->format($format) == $date;
+	}
+
+
+	/**
 	 * Convert 2 strings representing dates from one format to another
 	 *
 	 * @param string $date = date to be formated
