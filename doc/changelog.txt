@@ -1,4 +1,6 @@
 Changelog
+v.0.5.1 - Add method: Tools::validateDate
+
 v.0.5.0 - Generate documentation using phpdoc
 
 v.0.4.9 - Add method: Tools::dtFormatToFormat
