@@ -221,6 +221,11 @@ Search.appendIndex(
             "summary": "Simple\u0020redirect\u0020method\u0020\u0028shortcut\u0020to\u0020header\u0028\u0027location\u003A\u0020\u005Bpage\u005D\u0027\u0029\u0029",
             "url": "classes/Avi-Tools.html#method_redirect"
         },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003AvalidateDate\u0028\u0029",
+            "name": "validateDate",
+            "summary": "Short\u0020validator\u0020for\u0020datetime\u0020using\u0020DateTime\u0020native\u0020class",
+            "url": "classes/Avi-Tools.html#method_validateDate"
+        },                {
             "fqsen": "\\Avi\\Tools\u003A\u003AdtFormatToFormat\u0028\u0029",
             "name": "dtFormatToFormat",
             "summary": "Convert\u00202\u0020strings\u0020representing\u0020dates\u0020from\u0020one\u0020format\u0020to\u0020another",
