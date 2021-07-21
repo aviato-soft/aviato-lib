@@ -476,6 +476,14 @@ final class testAviatoTools extends TestCase
 	}
 
 
+	public function testFn_validateDate(): void
+	{
+		$test = true;
+		$result = AviTools::validateDate('2013-09-11 13:12:11');
+		$this -> assertEquals($test, $result);
+	}
+
+
 	public function testfn_dtFormatToFormat(): void
 	{
 		$test = '11.09.2013';
