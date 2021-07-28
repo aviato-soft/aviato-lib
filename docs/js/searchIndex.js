@@ -321,6 +321,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Version.html#method_get"
         },                {
+            "fqsen": "\\Avi\\Version\u003A\u003AgetJsMd5\u0028\u0029",
+            "name": "getJsMd5",
+            "summary": "Return\u0020MD5\u0020hash\u0020of\u0020aviato.js",
+            "url": "classes/Avi-Version.html#method_getJsMd5"
+        },                {
             "fqsen": "\\Avi\\Filter",
             "name": "Filter",
             "summary": "Filter\u0020class",
