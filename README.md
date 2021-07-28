@@ -1,6 +1,6 @@
 # avi-lib
 
-##Aviato Soft Library php dust collection
+## Aviato Soft Library php dust collection
 
 Avi-Lib is a Web Library used for various web project made by Aviato Team.
 
@@ -27,6 +27,6 @@ avi-lib is licensed under [GNU LGPLv3.0](https://github.com/aviato-soft/aviato-l
 
 ## Links
 
-[Changelog](https://github.com/aviato-soft/aviato-lib/blob/master/docs/changelog.txt)
+[Changelog](https://github.com/aviato-soft/aviato-lib/raw/master/docs/changelog.txt)
 
-API Documentation is on /docs/index.html
+[Documentation](https://aviato-soft.github.io/aviato-lib/)
