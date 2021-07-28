@@ -1,4 +1,0 @@
-PSR2/Aviato branch
-- Identation / General settings / Tab policy: Tab
-- Blank Lines / Before function/method declaration: 2
-- Line maximum width: 120
