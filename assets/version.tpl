@@ -21,17 +21,3 @@ const AVI_PATCH = '@build-patch@';
 const AVI_DATE = '@datetime@';
 
 const AVI_JS_MD5 = '@js-release-md5@';
-
-/**
- * Version class
- *
- * @author aviato-vasile
- *
- */
-class Version
-{
-	public static function get() {
-		return AVI_MAJOR.'.'.AVI_MINOR.'.'.AVI_PATCH;
-	}
-}
-?>
