@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.06.02
- * @since  2021-07-28 12:32:38
+ * @version 00.06.03
+ * @since  2021-07-28 13:23:08
  *
  */
 declare(strict_types = 1);
@@ -16,9 +16,9 @@ const AVI_MAJOR = '00';
 
 const AVI_MINOR = '06';
 
-const AVI_PATCH = '02';
+const AVI_PATCH = '03';
 
-const AVI_DATE = '2021-07-28 12:32:38';
+const AVI_DATE = '2021-07-28 13:23:08';
 
 const AVI_JS_MD5 = '4195aa75428858c7a06079f785730462';
 
@@ -30,8 +30,26 @@ const AVI_JS_MD5 = '4195aa75428858c7a06079f785730462';
  */
 class Version
 {
-	public static function get() {
+
+
+	/**
+	 *
+	 * @return string formated build version using notation {Major}.{Minor}.{Patch}
+	 */
+	public static function get()
+	{
 		return AVI_MAJOR.'.'.AVI_MINOR.'.'.AVI_PATCH;
+	}
+
+
+	/**
+	 * Return MD5 hash of aviato.js
+	 *
+	 * @return string
+	 */
+	public static function getJsMd5()
+	{
+		return AVI_JS_MD5;
 	}
 }
 ?>
