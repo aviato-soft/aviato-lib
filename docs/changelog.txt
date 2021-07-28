@@ -1,4 +1,6 @@
 Changelog
+v.0.6.2 - doc -> docs
+
 v.0.6.1 - Add new class: Filter
 
 v.0.5.1 - Add method: Tools::validateDate
