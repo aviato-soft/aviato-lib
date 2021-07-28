@@ -24,6 +24,14 @@ final class testAviatoVersion extends TestCase
 		$test = AVI_MAJOR.'.'.AVI_MINOR.'.'.AVI_PATCH;
 
 		$this -> assertEquals($test, $result);
+	}
+
+
+	public function testFn_GetJsMd5(): void
+	{
+		$result = AviVersion::getJsMd5();
+		$test = AVI_JS_MD5;
+		$this -> assertEquals($test, $result);
 
 		//this test will pove that deploy build was create the right file:
 		$result = file_exists(dirname(__FILE__) . '/../src/js/aviato-'.AVI_JS_MD5.'-min.js');

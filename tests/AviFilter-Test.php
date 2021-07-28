@@ -128,7 +128,7 @@ final class testAviatoFilter extends TestCase
 			]
 		)
 		-> check();
-		var_dump([$test, $result]);
+		//var_dump([$test, $result]);
 
 		$this->assertEquals($test, $result);
 	}
