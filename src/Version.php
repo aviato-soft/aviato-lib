@@ -30,8 +30,26 @@ const AVI_JS_MD5 = '4195aa75428858c7a06079f785730462';
  */
 class Version
 {
-	public static function get() {
+
+
+	/**
+	 *
+	 * @return string formated build version using notation {Major}.{Minor}.{Patch}
+	 */
+	public static function get()
+	{
 		return AVI_MAJOR.'.'.AVI_MINOR.'.'.AVI_PATCH;
+	}
+
+
+	/**
+	 * Return MD5 hash of aviato.js
+	 *
+	 * @return string
+	 */
+	public static function getJsMd5()
+	{
+		return AVI_JS_MD5;
 	}
 }
 ?>
