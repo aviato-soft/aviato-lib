@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.06.04 from 2021-07-28 16:26:14.
+Aviato-Lib.js, build #00.06.05 from 2021-10-15 11:29:39.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -37,7 +37,7 @@ if(aviato.jq.element.button('action',selector).length>0){aviato.jq.element.butto
 return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:{action:$(oTrigger).data('action')},on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')!==undefined){aviato.display.section.selector=$(oTrigger).data('target');}
 else{aviato.display.section.selector='#main';}
 if($(oTrigger).data('params')!==undefined){action.data.params=$(oTrigger).data('params');}
-action.on.success=aviato.display.section;break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];action.data=new FormData();action.data.append('action',$(oForm).data('handler'));var dataForm=$(oForm).serializeArray();$(dataForm).each(function(){action.data.append(this.name,this.value);})
+$(aviato.display.section.selector).html('').addClass("pending");action.on.success=aviato.display.section;break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];action.data=new FormData();action.data.append('action',$(oForm).data('handler'));var dataForm=$(oForm).serializeArray();$(dataForm).each(function(){action.data.append(this.name,this.value);})
 $.each($('#fileUpload')[0].files,function(k,v){action.data.append(k,v);})
 break;}
 if($(oTrigger).data('serialize')!==undefined&&$(oTrigger).data('serialize')===true){var dataForm=$(oTrigger).closest("form").serializeArray();$(dataForm).each(function(){action.data[this.name]=this.value;})}
@@ -51,7 +51,7 @@ if(o.before!==undefined){o.before(o);}
 var ajaxSettings=o.ajax;ajaxSettings.data=o.data;ajaxSettings.error=function(XMLHttpRequest,textStatus,errorThrown){if(o.on.error!==undefined){o.on.error(XMLHttpRequest,textStatus,errorThrown);}}
 ajaxSettings.success=function(data,textStatus,errorThrown){if(o.on.success!==undefined){o.on.success(data,textStatus,errorThrown);}
 if(data.success!==true){$.each(data.log,function(){aviato.display.alert(this);})}}
-ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.section=function(data){$(this.success.selector).html(data.data);aviato.bind(this.success.selector+' ');};aviato.display.alert=function(data){var style=data.type;if(style==='error'){style='danger';}
+ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.section=function(data){$(this.success.selector).html(data.data).removeClass("pending");aviato.bind(this.success.selector+' ');};aviato.display.alert=function(data){var style=data.type;if(style==='error'){style='danger';}
 $('#alerts').append('<div class="alert alert-dismissible alert-'+style+'" role="alert">'
 +'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
 +'<span aria-hidden="true">&times;</span></button>'
