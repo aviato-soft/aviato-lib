@@ -251,6 +251,7 @@ aviato.on.click = function(oTrigger) {
 				if ($(oTrigger).data('params') !== undefined) {
 					action.data.params = $(oTrigger).data('params');
 				}
+				$(aviato.display.section.selector).html('').addClass("pending");
 
 				action.on.success = aviato.display.section;
 				break;
@@ -354,7 +355,7 @@ aviato.call.ajax = function(o) {
 
 
 aviato.display.section = function(data) {
-	$(this.success.selector).html(data.data);
+	$(this.success.selector).html(data.data).removeClass("pending");
 	aviato.bind(this.success.selector + ' ');
 };
 
