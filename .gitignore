@@ -129,3 +129,4 @@ local.properties
 .sts4-cache/
 /.phpunit.result.cache
 node_modules
+/package-lock.json
