@@ -1,5 +1,7 @@
 Changelog
-v.0.6.4 = signed branch - stable
+v.0.6.5 - Use pending class for ajax call waiting
+
+v.0.6.4 - signed branch - stable
 
 v.0.6.3 - add Avi\Version::getJsMd5()
 
