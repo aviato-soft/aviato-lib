@@ -19,7 +19,7 @@ final class testAviatoTracker extends TestCase
 	}
 
 
-	public function testFn_Google(): void
+	public function testFn_Parse(): void
 	{
 		$params = [
 			'{GTM-ID}' => 'GTM-AVI123'
