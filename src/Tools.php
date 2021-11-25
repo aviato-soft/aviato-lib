@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.07.00
- * @since  2021-11-25 16:36:14
+ * @version 00.07.01
+ * @since  2021-11-25 18:28:16
  *
  */
 declare(strict_types = 1);
@@ -281,6 +281,27 @@ class Tools
 
 
 	/**
+	 * Return true if gdpr cookie is enabled for specific service
+	 *
+	 * @param $service string Service enabled or disabled on $_COOKIE['gdpr']
+	 * @example $_COOKIE['gdpr']='["esential","google"]'
+	 */
+	public static function isGdprSet(string $service)
+	{
+		if (! isset($_COOKIE['gdpr']) || ! $_COOKIE['gdpr']) {
+			return false;
+		}
+
+		$gdpr = json_decode($_COOKIE['gdpr']);
+		if (!\is_array($gdpr)) {
+			return false;
+		}
+
+		return (in_array($service, $gdpr, true));
+	}
+
+
+	/**
 	 * Simple redirect method (shortcut to header('location: [page]'))
 	 *
 	 * @param string $page - the page name(url, permalink)
@@ -296,6 +317,7 @@ class Tools
 
 	/**
 	 * Short validator for datetime using DateTime native class
+	 *
 	 * @param string $date - the string to be validated
 	 * @param string $format - optional the format of $date
 	 * @return boolean - is format valid yes/no
@@ -318,7 +340,7 @@ class Tools
 	 * @param string $formatResult = the format of the result
 	 * @param array $separator = the permited separators
 	 * @return string representing the date in new format or false on error
-	 * 	or false on invalid parameters
+	 *         or false on invalid parameters
 	 *
 	 *         exampe: Avi\Tools::dtFormatToFormat('2013-09-11', 'y-m-d', 'd/m/y') will return '11/09/2013'
 	 */
@@ -334,7 +356,7 @@ class Tools
 		$dateSeparator = false;
 		$resultDateSeparator = false;
 
-		//get date separator
+		// get date separator
 		foreach ($separator as $v) {
 			if (strpos($format, $v) !== false) {
 				$dateSeparator = $v;
@@ -346,19 +368,19 @@ class Tools
 			return false;
 		}
 
-		//get result date separator
+		// get result date separator
 		foreach ($separator as $v) {
 			if (strpos($formatResult, $v) !== false) {
 				$resultDateSeparator = $v;
 				break;
 			}
 		}
-		//invalid result date separator
+		// invalid result date separator
 		if ($resultDateSeparator === false) {
 			return false;
 		}
 
-		//strings to arrays
+		// strings to arrays
 		$arDate = [
 			explode($dateSeparator, $date),
 			explode($dateSeparator, $format)

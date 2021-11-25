@@ -216,6 +216,11 @@ Search.appendIndex(
             "summary": "Just\u0020test\u0020ajax\u0020Aviato\u0020Request\/Response\u0020rule\u003A\nIf\u0020page\u0020has\u0020action\u0020parameter,\u0020it\u0020is\u0020come\u0020from\u0020ajax\u0020call",
             "url": "classes/Avi-Tools.html#method_isAjaxCall"
         },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003AisGdprSet\u0028\u0029",
+            "name": "isGdprSet",
+            "summary": "Return\u0020true\u0020if\u0020gdpr\u0020cookie\u0020is\u0020enabled\u0020for\u0020specific\u0020service",
+            "url": "classes/Avi-Tools.html#method_isGdprSet"
+        },                {
             "fqsen": "\\Avi\\Tools\u003A\u003Aredirect\u0028\u0029",
             "name": "redirect",
             "summary": "Simple\u0020redirect\u0020method\u0020\u0028shortcut\u0020to\u0020header\u0028\u0027location\u003A\u0020\u005Bpage\u005D\u0027\u0029\u0029",

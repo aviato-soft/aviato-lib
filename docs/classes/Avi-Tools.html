@@ -174,6 +174,13 @@ mainly used for arrays which can&#039;t have specific default values defined</dd
 If page has action parameter, it is come from ajax call</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Avi-Tools.html#method_isGdprSet">isGdprSet()</a>
+    <span>
+                        &nbsp;: mixed    </span>
+</dt>
+<dd>Return true if gdpr cookie is enabled for specific service</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-Tools.html#method_mysqlTableFromValues">mysqlTableFromValues()</a>
     <span>
                         &nbsp;: string    </span>
@@ -493,7 +500,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Tools.php"><a href="files/tools.html"><abbr title="Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">325</span>
+    <span class="phpdocumentor-element-found-in__line">347</span>
 </aside>
 
         <p class="phpdocumentor-summary">Convert 2 strings representing dates from one format to another</p>
@@ -551,8 +558,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
             &mdash;
             <section class="phpdocumentor-description"><p>representing the date in new format or false on error
 or false on invalid parameters</p>
-<pre class="prettyprint"><code class="prettyprint">   exampe: Avi\Tools::dtFormatToFormat('2013-09-11', 'y-m-d', 'd/m/y') will return '11/09/2013'
-</code></pre>
+<p>exampe: Avi\Tools::dtFormatToFormat('2013-09-11', 'y-m-d', 'd/m/y') will return '11/09/2013'</p>
 </section>
 
     
@@ -686,6 +692,66 @@ If page has action parameter, it is come from ajax call</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_isGdprSet">
+        isGdprSet()
+        <a href="classes/Avi-Tools.html#method_isGdprSet" class="headerlink"><i class="fas fa-link"></i></a>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="Tools.php"><a href="files/tools.html"><abbr title="Tools.php">Tools.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">289</span>
+</aside>
+
+        <p class="phpdocumentor-summary">Return true if gdpr cookie is enabled for specific service</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>    <span class="phpdocumentor-signature__name">isGdprSet</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$service</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+        <section class="phpdocumentor-description"></section>
+
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$service</span>
+                : <span class="phpdocumentor-signature__argument__return-type"><a href=""><abbr title=""></abbr></a></span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>string Service enabled or disabled on $_COOKIE['gdpr']</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                    <dt class="phpdocumentor-tag-list__entry">
+                    <span class="phpdocumentor-tag__name">example</span>
+                </dt>
+                <dd class="phpdocumentor-tag-list__definition">
+                                                                                
+                                                 <section class="phpdocumentor-description"></section>
+
+                                    </dd>
+                        </dl>
+
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+    <span class="phpdocumentor-signature__response_type">mixed</span>
+            &mdash;
+            <section class="phpdocumentor-description"></section>
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_mysqlTableFromValues">
         mysqlTableFromValues()
         <a href="classes/Avi-Tools.html#method_mysqlTableFromValues" class="headerlink"><i class="fas fa-link"></i></a>
@@ -693,7 +759,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Tools.php"><a href="files/tools.html"><abbr title="Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">405</span>
+    <span class="phpdocumentor-element-found-in__line">427</span>
 </aside>
 
         <p class="phpdocumentor-summary">Return an mysql synthax temporary table based on values</p>
@@ -899,7 +965,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Tools.php"><a href="files/tools.html"><abbr title="Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">289</span>
+    <span class="phpdocumentor-element-found-in__line">310</span>
 </aside>
 
         <p class="phpdocumentor-summary">Simple redirect method (shortcut to header(&#039;location: [page]&#039;))</p>
@@ -1129,7 +1195,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="Tools.php"><a href="files/tools.html"><abbr title="Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">306</span>
+    <span class="phpdocumentor-element-found-in__line">328</span>
 </aside>
 
         <p class="phpdocumentor-summary">Short validator for datetime using DateTime native class</p>
