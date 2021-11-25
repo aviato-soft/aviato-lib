@@ -46,6 +46,10 @@ class Tracker
 	 */
 	public function parse()
 	{
+		if ($this -> cookie !== '' && !AviTools::isGdprSet($this -> cookie)) {
+			return '';
+		}
+
 		return str_replace(array_keys($this->params), array_values($this->params), $this->pattern);
 	}
 
@@ -55,10 +59,6 @@ class Tracker
 	 */
 	public function dispatch()
 	{
-		if ($this -> cookie !== '' && !AviTools::isGdprSet($this -> cookie)) {
-			return false;
-		}
-
 		echo $this->parse();
 	}
 }
