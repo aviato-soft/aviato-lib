@@ -40,7 +40,7 @@ class Tracker
 	/**
 	 * Replace pattern variables with params values
 	 */
-	protected function parse()
+	public function parse()
 	{
 		return str_replace(array_keys($this->params), array_values($this->params), $this->pattern);
 	}
