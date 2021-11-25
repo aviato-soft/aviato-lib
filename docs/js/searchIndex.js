@@ -416,6 +416,36 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Filter.html#property_data"
         },                {
+            "fqsen": "\\Avi\\Tracker",
+            "name": "Tracker",
+            "summary": "Tracker\u0020class",
+            "url": "classes/Avi-Tracker.html"
+        },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-Tracker.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003Aparse\u0028\u0029",
+            "name": "parse",
+            "summary": "Replace\u0020pattern\u0020variables\u0020with\u0020params\u0020values",
+            "url": "classes/Avi-Tracker.html#method_parse"
+        },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003Adispatch\u0028\u0029",
+            "name": "dispatch",
+            "summary": "Output\u0020the\u0020result",
+            "url": "classes/Avi-Tracker.html#method_dispatch"
+        },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003A\u0024pattern",
+            "name": "pattern",
+            "summary": "",
+            "url": "classes/Avi-Tracker.html#property_pattern"
+        },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-Tracker.html#property_params"
+        },                {
             "fqsen": "\\",
             "name": "\\",
             "summary": "",

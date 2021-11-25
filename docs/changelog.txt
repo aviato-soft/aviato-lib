@@ -1,4 +1,6 @@
 Changelog
+v.0.7.0 - Add new class: Tracker
+
 v.0.6.6 - v.0.6.5 re-tag
 
 v.0.6.5 - Use pending class for ajax call waiting
