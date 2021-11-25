@@ -12,6 +12,8 @@
 declare(strict_types = 1);
 namespace Avi;
 
+use Avi\Tools as AviTools;
+
 /**
  * Tracker class
  *
@@ -19,7 +21,7 @@ namespace Avi;
  */
 class Tracker
 {
-
+	private $cookie;
 	private $pattern;
 
 	protected $params;
@@ -29,11 +31,13 @@ class Tracker
 	 *
 	 * @param $patternFileLocation string location of the tracker pattern
 	 * @param $params array format key => value of parameters to be replaced on pattern
+	 * @param $cookie string optional specify the gdpr service cookie
 	 */
-	public function __construct(string $PatternFileLocation, array $Params)
+	public function __construct(string $patternFileLocation, array $params, string $cookie = '')
 	{
-		$this->params = $Params;
-		$this->pattern = file_get_contents($PatternFileLocation);
+		$this->params = $params;
+		$this->pattern = file_get_contents($patternFileLocation);
+		$this -> cookie = $cookie;
 	}
 
 
@@ -51,6 +55,10 @@ class Tracker
 	 */
 	public function dispatch()
 	{
+		if ($this -> cookie !== '' && !AviTools::isGdprSet($this -> cookie)) {
+			return false;
+		}
+
 		echo $this->parse();
 	}
 }
