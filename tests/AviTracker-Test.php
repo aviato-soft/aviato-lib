@@ -10,6 +10,15 @@ use Avi\Tracker as AviTracker;
 
 final class testAviatoTracker extends TestCase
 {
+	public function testFn_Parse(): void
+	{
+		$patternFile = dirname(__FILE__) . '/assets/tracker-googleTagManagerHead.html';
+		$tracker = new AviTracker($patternFile, [], 'invalid');
+		$expected = '';
+		$result = $tracker -> parse();
+		$this->assertEquals($expected, $result);
+	}
+
 
 	public function testFn_Dispatch(): void
 	{
@@ -31,8 +40,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 		$result = ob_get_clean();
 
-		echo $expected;
-		echo $result;
 		$this->assertEquals($expected, $result);
 	}
 }
