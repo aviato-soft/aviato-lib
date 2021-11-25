@@ -441,6 +441,11 @@ Search.appendIndex(
             "summary": "Output\u0020the\u0020result",
             "url": "classes/Avi-Tracker.html#method_dispatch"
         },                {
+            "fqsen": "\\Avi\\Tracker\u003A\u003A\u0024cookie",
+            "name": "cookie",
+            "summary": "",
+            "url": "classes/Avi-Tracker.html#property_cookie"
+        },                {
             "fqsen": "\\Avi\\Tracker\u003A\u003A\u0024pattern",
             "name": "pattern",
             "summary": "",
