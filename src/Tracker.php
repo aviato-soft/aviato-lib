@@ -23,17 +23,11 @@ class Tracker {
 	protected $params;
 
 /**
- * @param = array key => value of parameters to be replaced on pattern
+ * @param $patternFileLocation string location of the tracker pattern
+ * @param $params array format key => value of parameters to be replaced on pattern
  */
-	public function __construct(array $params) {
+	public function __construct(string $patternFileLocation, array $params) {
 		$this -> params = $params;
-	}
-
-/**
- * Get the pattern content from file
- */
-	public function setPattern($fileLocation)
-	{
 		$this -> pattern = file_get_contents($fileLocation);
 	}
 
@@ -51,6 +45,9 @@ class Tracker {
 	}
 
 
+/**
+ * Output the result
+ */
 	public function dispatch()
 	{
 		echo $this -> parse();
