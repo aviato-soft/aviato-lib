@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.06.06
- * @since  2021-10-15 12:12:24
+ * @version 00.07.00
+ * @since  2021-11-25 16:36:14
  *
  */
 declare(strict_types = 1);
@@ -14,11 +14,11 @@ namespace Avi;
 
 const AVI_MAJOR = '00';
 
-const AVI_MINOR = '06';
+const AVI_MINOR = '07';
 
-const AVI_PATCH = '06';
+const AVI_PATCH = '00';
 
-const AVI_DATE = '2021-10-15 12:12:24';
+const AVI_DATE = '2021-11-25 16:36:14';
 
 const AVI_JS_MD5 = '2a27faf53ecccaf688e9db1bde167f3c';
 

@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.06.06
- * @since  2021-10-15 12:12:24
+ * @version 00.07.00
+ * @since  2021-11-25 16:36:14
  *
  */
 declare(strict_types = 1);
