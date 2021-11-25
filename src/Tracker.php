@@ -17,40 +17,41 @@ namespace Avi;
  *
  * @author aviato-vasile
  */
+class Tracker
+{
 
-class Tracker {
 	private $pattern;
+
 	protected $params;
 
-/**
- * @param $patternFileLocation string location of the tracker pattern
- * @param $params array format key => value of parameters to be replaced on pattern
- */
-	public function __construct(string $patternFileLocation, array $params) {
-		$this -> params = $params;
-		$this -> pattern = file_get_contents($fileLocation);
+
+	/**
+	 *
+	 * @param $patternFileLocation string location of the tracker pattern
+	 * @param $params array format key => value of parameters to be replaced on pattern
+	 */
+	public function __construct(string $PatternFileLocation, array $Params)
+	{
+		$this->params = $Params;
+		$this->pattern = file_get_contents($PatternFileLocation);
 	}
 
 
-/**
- * Replace pattern variables with params values
- */
+	/**
+	 * Replace pattern variables with params values
+	 */
 	protected function parse()
 	{
-		return str_replace(
-			array_keys($this -> params),
-			array_values($this -> params),
-			$this -> pattern
-		);
+		return str_replace(array_keys($this->params), array_values($this->params), $this->pattern);
 	}
 
 
-/**
- * Output the result
- */
+	/**
+	 * Output the result
+	 */
 	public function dispatch()
 	{
-		echo $this -> parse();
+		echo $this->parse();
 	}
 }
 ?>
