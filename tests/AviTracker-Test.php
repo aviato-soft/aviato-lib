@@ -11,14 +11,6 @@ use Avi\Tracker as AviTracker;
 final class testAviatoTracker extends TestCase
 {
 
-	public function testFn_Construct(): void
-	{
-		$tracker = new AviTracker('', []);
-		$this->assertObjectHasAttribute('patternFileLocation', $tracker);
-		$this->assertObjectHasAttribute('params', $tracker);
-	}
-
-
 	public function testFn_Parse(): void
 	{
 		$params = [
