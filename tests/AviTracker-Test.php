@@ -11,7 +11,7 @@ use Avi\Tracker as AviTracker;
 final class testAviatoTracker extends TestCase
 {
 
-	public function testFn_Parse(): void
+	public function testFn_Dispatch(): void
 	{
 		$params = [
 			'{GTM-ID}' => 'GTM-AVI123'
@@ -22,12 +22,17 @@ final class testAviatoTracker extends TestCase
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','{GTM-AVI123}');</script>
-<!-- End Google Tag Manager -->'";
+})(window,document,'script','dataLayer','GTM-AVI123');</script>
+<!-- End Google Tag Manager -->";
 
+		ob_start();
 		$tracker = new AviTracker($patternFile, $params);
-		$result = $tracker -> parse();
+		$tracker -> dispatch();
 
+		$result = ob_get_clean();
+
+		echo $expected;
+		echo $result;
 		$this->assertEquals($expected, $result);
 	}
 }
