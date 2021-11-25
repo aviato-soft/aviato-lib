@@ -464,6 +464,31 @@ final class testAviatoTools extends TestCase
 	}
 
 
+	public function testFn_isGdprSet(): void
+	{
+		$service = 'google';
+		$result = false; //gdpr cookie is not set => result = false
+		$test = AviTools::isGdprSet($service);
+		$this->assertEquals($result, $test);
+		// var_dump($test); // <-- uncomment this line to see the result!
+
+		$_COOKIE['gdpr'] = "invalid value";
+		$result = false; //gdpr cookie has not service => result = false
+		$test = AviTools::isGdprSet($service);
+		$this->assertEquals($result, $test);
+
+		$_COOKIE['gdpr'] = "[]";
+		$result = false; //gdpr cookie has not service => result = false
+		$test = AviTools::isGdprSet($service);
+		$this->assertEquals($result, $test);
+
+		$_COOKIE['gdpr'] = '["aviato","essential","facebook","google","tradetracker"]';
+
+		$result = true; //gdpr cookie has service => result = true
+		$test = AviTools::isGdprSet($service);
+		$this->assertEquals($result, $test);
+	}
+
 	public function testFn_Redirect(): void
 	{
 		ob_start();
