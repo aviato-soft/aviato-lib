@@ -177,6 +177,18 @@ final class testAviatoTools extends TestCase
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
 
+
+		//test assertion list usage
+		$array = [
+			0 => 'apple',
+			1 => 'orange',
+			2 => 'pear'
+		];
+		$pattern = '<li>%s</li>';
+		$result = '<li>apple</li><li>orange</li><li>pear</li>';
+		$test = AviTools::atos($array, $pattern, ['isPrintFormat' => true]);
+
+
 		// test assertion missing one parameter usage:
 		$array = [
 			0 => [
