@@ -177,7 +177,13 @@ class Tools
 			$data = $array;
 		}
 
-		$keys = array_keys($data[0]);
+		if (\is_string($data[0])) {
+			//$data can be a list like: [0=>'apple', 1='orange', 2=>'pear']
+			$keys = [0];
+		}
+		else {
+			$keys = array_keys($data[0]);
+		}
 
 		if ($config['isPrintFormat'] && ! isset($config['nrArgs'])) {
 			$config['nrArgs'] = count($keys);
@@ -185,8 +191,15 @@ class Tools
 
 		foreach ($data as $v) {
 			if ($config['isPrintFormat']) {
-				if (count($v) === $config['nrArgs']) {
-					$result .= vsprintf($pattern, $v);
+				if (is_string($v)) {
+					if ($config['nrArgs'] === 1) {
+						$result .= sprintf($pattern, $v);
+					}
+				}
+				else {
+					if (count($v) === $config['nrArgs']) {
+						$result .= vsprintf($pattern, $v);
+					}
 				}
 			} else {
 				$res = $pattern;
