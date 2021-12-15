@@ -1,10 +1,9 @@
 <?php
 // Copyright 2014-present Aviato Soft. All Rights Reserved.
-
 declare(strict_types = 1);
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
-require_once dirname(__FILE__) . '/assets/Sections.php';
+require_once dirname(__FILE__).'/../vendor/autoload.php';
+require_once dirname(__FILE__).'/assets/Sections.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\UI as AviUi;
@@ -55,8 +54,7 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
-
-		//Object section no wrapper + including js file
+		// Object section no wrapper + including js file
 		$response = $aviUi->Section('test', [
 			'wrapper' => false,
 			'javascript' => [
@@ -70,12 +68,13 @@ final class testAviatoUi extends TestCase
 		$test = 'test.js';
 		$this->assertEquals($test, $aviUi->page['javascript'][0]);
 
-		//section  type = Object undefined
-		//$aviUi->response = 'test22';
-		$response = $aviUi->Section('test7', ['wrapper' => false], true);
+		// section type = Object undefined
+		// $aviUi->response = 'test22';
+		$response = $aviUi->Section('test7', [
+			'wrapper' => false
+		], true);
 		$test = '';
 		$this->assertEquals($test, $response);
-
 
 		// Html section
 		$response = $aviUi->Section('test',
@@ -145,24 +144,31 @@ final class testAviatoUi extends TestCase
 
 	public function testFn_Page(): void
 	{
-		$template = '<!DOCTYPE html>' . "\n";
-		$template .= '<html lang="en-EN">' . "\n";
-		$template .= '<head><meta charset="UTF-8"><meta http-equiv="content-type" content="text/html">' .
-			'<meta name="application-name" content="AviLib"><meta name="author" content="Aviato Soft">' .
-			'<meta name="description" content="Web dust library v.' . Avi\Version::get() . '">' .
-			'<meta name="generator" content="AviatoWebBuilder">' . '<meta name="keywords" content="%s">' .
-			'<meta name="viewport" content="width=device-width, initial-scale=1.0">';
-		$template .= '<title>website</title>';
-		$template .= '<link rel="shortcut icon" href="//www.aviato.ro/favicon.ico"/>%s</head>' . "\n";
-		$template .= '<body%s>' . "\n";
-		$template .= '%s' . "\n";
-		$template .= '%s';
-		$template .= '<script src="/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js"></script>' . "\n";
-		$template .= '</body>' . "\n";
-		$template .= '</html>';
+		$template = implode('',
+			[
+				'<!DOCTYPE html>'.PHP_EOL,
+				'<html %slang="en-EN">'.PHP_EOL,
+				'<head><meta charset="UTF-8">',
+				'<meta http-equiv="content-type" content="text/html">',
+				'<meta name="application-name" content="AviLib">',
+				'<meta name="author" content="Aviato Soft">',
+				'<meta name="description" content="Web dust library v.'.Avi\Version::get().'">',
+				'<meta name="generator" content="AviatoWebBuilder">',
+				'<meta name="keywords" content="%s">',
+				'<meta name="viewport" content="width=device-width, initial-scale=1.0">'.PHP_EOL,
+				'<title>website</title>'.PHP_EOL,
+				'<link rel="shortcut icon" href="//www.aviato.ro/favicon.ico"/>%s</head>'.PHP_EOL,
+				'<body%s>'.PHP_EOL,
+				'%s'.PHP_EOL,
+				'%s',
+				'<script src="/vendor/aviato-soft/avi-lib/src/js/aviato-'.AVI_JS_MD5.'-min.js"></script>'.PHP_EOL,
+				'</body>'.PHP_EOL,
+				'</html>'
+			]);
 
 		// test 1: empty default page
 		$testv = [
+			'',
 			'Aviato, Aviato Soft, Aviato Web',
 			'',
 			'',
@@ -182,11 +188,12 @@ final class testAviatoUi extends TestCase
 
 		// test 2: customized head:
 		$testv = [
+			'class="avi" ',
 			'Test',
 			'<link href="/css/aviato.css" rel="stylesheet" type="text/css"/><script>;</script>',
 			' class="avi"',
 			'<div>test</div>',
-			'<script src="/js/aviato.js"></script>' . "\n"
+			'<script src="/js/aviato.js"></script>'."\n"
 		];
 		$test = vsprintf($template, $testv);
 		// var_dump($test);
@@ -208,15 +215,21 @@ final class testAviatoUi extends TestCase
 				'src' => '/js/aviato.js'
 			]
 		];
-		$aviUi->Page([
-			'class' => 'avi',
-			'meta' => [
-				45 => [
-					'name' => 'keywords',
-					'content' => 'Test'
+		$aviUi->Page(
+			[
+				'class' => 'avi',
+				'meta' => [
+					45 => [
+						'name' => 'keywords',
+						'content' => 'Test'
+					]
+				],
+				'options' => [
+					'htmlAttr' => [
+						'class' => 'avi'
+					]
 				]
-			]
-		]);
+			]);
 		$result = ob_get_clean();
 
 		// var_dump($result); // <-- uncomment this line to see the result!
