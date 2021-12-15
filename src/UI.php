@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.07.03
- * @since  2021-12-14 20:01:10
+ * @version 00.07.04
+ * @since  2021-12-15 11:15:19
  *
  */
 declare(strict_types = 1);
@@ -67,17 +67,14 @@ class UI
 	 * Section is the core element of AviUi.
 	 * This method generate a section in a form of html element or text
 	 *
-	 * @param string $sectionName
-	 *        	(mandatory) The name of the section
-	 * @param array $properties
-	 *        	the section properties
-	 *        	type: obj | html | php
-	 *        	class: the class atribute of html element
-	 *        	wrapper: true | false, specify if the section content is wrapped in html element
-	 *        	tag: section, the html element tag
-	 * @param boolean $return
-	 *        	(optional) default = false
-	 *        	The section content is returned only, not displayed
+	 * @param string $sectionName (mandatory) The name of the section
+	 * @param array $properties the section properties
+	 *        type: obj | html | php
+	 *        class: the class atribute of html element
+	 *        wrapper: true | false, specify if the section content is wrapped in html element
+	 *        tag: section, the html element tag
+	 * @param boolean $return (optional) default = false
+	 *        The section content is returned only, not displayed
 	 * @return string
 	 */
 	public function Section($sectionName, $properties = [], $return = false)
@@ -112,7 +109,7 @@ class UI
 			];
 		}
 
-		$attributes['class'][] = 'sec-' . $properties['type'] . '-' . $sectionName;
+		$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
 
 		$attributes['class'] = implode(' ', $attributes['class']);
 
@@ -126,18 +123,18 @@ class UI
 
 		// open tag:
 		if ($properties['wrapper']) {
-			echo '<' . $properties['tag'] . ' ' . AviTools::atoattr($attributes) . '>';
+			echo '<'.$properties['tag'].' '.AviTools::atoattr($attributes).'>';
 		}
 
 		// generate content:
-		$path = $properties['root'] . DIRECTORY_SEPARATOR . 'sections' . DIRECTORY_SEPARATOR . $sectionName . '.' .
+		$path = $properties['root'].DIRECTORY_SEPARATOR.'sections'.DIRECTORY_SEPARATOR.$sectionName.'.'.
 			$properties['type'];
 		switch ($properties['type']) {
 			case 'htm':
 			case 'html':
 				$content = @file_get_contents($path);
 				if ($content === false) {
-					$this->log->trace('Missing html file on inclide in [section]: ' . $path, LOG_ERR);
+					$this->log->trace('Missing html file on inclide in [section]: '.$path, LOG_ERR);
 				} else {
 					echo $content;
 				}
@@ -146,7 +143,7 @@ class UI
 			case 'php':
 			case 'phtml':
 				if ((@include $path) === false) {
-					$this->log->trace('Missing php file on inclide in [section]:' . $path);
+					$this->log->trace('Missing php file on inclide in [section]:'.$path);
 				}
 				break;
 
@@ -167,7 +164,7 @@ class UI
 							$this->response->log('UI: Missing object definition', 'warning', 251);
 						} else {
 							$this->log->trace(
-								'UI: Missing object definition: ' . $properties['obj'] . '::' . $sectionName);
+								'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
 						}
 					}
 				}
@@ -177,7 +174,7 @@ class UI
 
 		// close section tag:
 		if ($properties['wrapper'] && $properties['close']) {
-			echo '</' . $properties['tag'] . '>';
+			echo '</'.$properties['tag'].'>';
 		}
 
 		// after content logic
@@ -204,7 +201,8 @@ class UI
 			'options' => [
 				'ie8encoding' => true,
 				'xssProtection' => true,
-				'includeAviJs' => true
+				'includeAviJs' => true, // require jQuery
+				'htmlAttributes' => []
 			],
 			'favico' => '//www.aviato.ro/favicon.ico',
 			'lang' => 'en-EN',
@@ -237,7 +235,7 @@ class UI
 				],
 				43 => [
 					'name' => 'description',
-					'content' => 'Web dust library v.' . AviVersion::get()
+					'content' => 'Web dust library v.'.AviVersion::get()
 				],
 				44 => [
 					'name' => 'generator',
@@ -260,8 +258,10 @@ class UI
 			ksort($attributes['meta']);
 		}
 		$attributes = AviTools::applyDefault($attributes, $defaults);
+		$attributes['options'] = AviTools::applyDefault($attributes['options'], $defaults['options']);
 
 		$opt = $attributes['options'];
+		$opt['htmlAttr']['lang'] = $opt['htmlAttr']['lang'] ?? $attributes['lang'];
 		$this->page = AviTools::applyDefault($this->page, $attributes);
 
 		// ie-8+ encoding:
@@ -276,8 +276,8 @@ class UI
 			header('x-xss-protection: 1; mode=block');
 		}
 
-		echo '<!DOCTYPE html>' . PHP_EOL;
-		echo '<html lang="' . $this->page['lang'] . '">' . PHP_EOL;
+		echo '<!DOCTYPE html>'.PHP_EOL;
+		echo '<html '.AviTools::atoattr($opt['htmlAttr']).'>'.PHP_EOL;
 
 		// head
 		echo '<head>';
@@ -290,7 +290,7 @@ class UI
 		}
 
 		// -title
-		echo '<title>' . $this->page['title'] . '</title>';
+		echo PHP_EOL.'<title>'.$this->page['title'].'</title>'.PHP_EOL;
 
 		// -favico
 		echo '<link ';
@@ -316,13 +316,13 @@ class UI
 			}
 		}
 		// end header
-		echo '</head>' . PHP_EOL;
+		echo '</head>'.PHP_EOL;
 
 		// start body content
 		if (isset($this->page['class'])) {
-			echo '<body class="' . $this->page['class'] . '">' . PHP_EOL;
+			echo '<body class="'.$this->page['class'].'">'.PHP_EOL;
 		} else {
-			echo '<body>' . PHP_EOL;
+			echo '<body>'.PHP_EOL;
 		}
 
 		// - content
@@ -336,18 +336,18 @@ class UI
 		echo PHP_EOL;
 		if ($opt['includeAviJs']) {
 			$this->page['javascript'][99] = [
-				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-' . AVI_JS_MD5 . '-min.js'
+				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AVI_JS_MD5.'-min.js'
 			];
 		}
 		ksort($this->page['javascript']);
 		foreach ($this->page['javascript'] as $javascript) {
 			echo '<script ';
 			echo AviTools::atoattr($javascript);
-			echo '></script>' . PHP_EOL;
+			echo '></script>'.PHP_EOL;
 		}
 
 		// end body
-		echo '</body>' . PHP_EOL;
+		echo '</body>'.PHP_EOL;
 		echo '</html>';
 	}
 }
