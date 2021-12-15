@@ -1,4 +1,6 @@
 Changelog
+v.0.7.4 - add attributes for html page tag
+
 v.0.7.3 - Fix Avi\Tools::atos - return correct format from list array instead of warning
 
 v.0.7.2 - Add new parameter on Avi\Tracker constructor: cookie
