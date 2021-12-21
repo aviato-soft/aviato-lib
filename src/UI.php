@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.07.04
- * @since  2021-12-15 11:15:19
+ * @version 00.07.05
+ * @since  2021-12-21 16:35:09
  *
  */
 declare(strict_types = 1);
@@ -148,15 +148,16 @@ class UI
 				break;
 
 			case 'obj':
-				if (isset($properties['params'])) {
+				if (isset($properties['params'])  && $properties['params'] !== []) {
 					call_user_func_array([
 						$properties['obj'],
 						$sectionName
 					], $properties['params']);
 				} else {
 					if (method_exists($properties['obj'], $sectionName)) {
+						$callObj = new $properties['obj']();
 						call_user_func([
-							$properties['obj'],
+							$callObj,
 							$sectionName
 						]);
 					} else {
