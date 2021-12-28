@@ -14,16 +14,16 @@ const aviato = {
 	/**
 	 * <b>extending bootstrap with some usefull methodes</b>
 	**/
-	bootstrap: {},
+	bootstrap,
 
-	call: {},
+	call,
 
-	display: {},
+	display,
 
 	/**
 	 * Usefull general functions
 	**/
-	fn: {},
+	fn,
 
 	/**
 	 * extend jQuery in need
@@ -42,7 +42,7 @@ const aviato = {
 /**
  * ArrayTOString - extend supplant functionality
  */
-aviato.fn.atos = function(a, p) {
+aviato.fn.prototype.atos = function(a, p) {
 	var i, r = '', iCount = a.length;
 	for (i = 0; i < iCount; i++) {
 		r += p.supplant(a[i]);
@@ -54,7 +54,7 @@ aviato.fn.atos = function(a, p) {
 /**
  * add mapping 2 arrays into one object
  */
-aviato.fn.arrayMap = function(arNames, arValues) {
+aviato.fn.prototype.arrayMap = function(arNames, arValues) {
 	var oReturn = {};
 	var i;
 	var iMax = Math.min(arNames.length, arValues.length);
@@ -68,7 +68,7 @@ aviato.fn.arrayMap = function(arNames, arValues) {
 /**
  * add get vars from url
  */
-aviato.fn.getUrlVars = function(sUrl) {
+aviato.fn.prototype.getUrlVars = function(sUrl) {
 	if (typeof (sUrl) === 'undefined') {
 		sUrl = window.location.href;
 	}
@@ -86,7 +86,7 @@ aviato.fn.getUrlVars = function(sUrl) {
 /**
  * save form values to localStorage
  */
-aviato.fn.formToLocalStorage = function(selector) {
+aviato.fn.prototype.formToLocalStorage = function(selector) {
 	var oFormValues = $(selector).serializeArray();
 	localStorage.setItem(selector, JSON.stringify(oFormValues));
 };
@@ -95,7 +95,7 @@ aviato.fn.formToLocalStorage = function(selector) {
 /**
  * load form values from localStorage
  */
-aviato.fn.localStorageToForm = function(selector) {
+aviato.fn.prototype.localStorageToForm = function(selector) {
 	var oFormValues = JSON.parse(localStorage.getItem(selector));
 	$(oFormValues).each(function() {
 		$(selector + ' [name="' + this.name + '"]').val(this.value);
@@ -105,12 +105,32 @@ aviato.fn.localStorageToForm = function(selector) {
 
 
 /**
+ * Filter properties from an object
+ * aviato.fn.prototype.filterProperties({
+	a:3,
+	b:"3",
+	c:function(o){return (o*3)},
+	d:{d1:3, d2:"3"},
+	e:null,
+	f:undefined,
+	g:[1,2,3,4]})
+
+	will return:
+		{a:3,b:"3"}
+ */
+aviato.fn.prototype.filterProperties = function (obj) {
+	let entries = Object.entries(obj);
+	let filter = entries.filter(function (item){return (typeof(item[1] === "number" || item[1] === "string"))});
+	return (Object.fromEntries(filter));
+}
+
+/**
  * Check if we are on xs(mobile) resolution mode, it is based to navbar to work fine
  * DO NOT use it if there is not a navbar on the page because will return always false
  * @returns {Boolean}
  * @author Vasile Giorgi
 **/
-aviato.bootstrap.isXs = function() { // require navbar to return correct result
+aviato.bootstrap.prototype.isXs = function() { // require navbar to return correct result
 	return ($('.navbar-toggle:visible').length > 0);
 };
 
@@ -120,7 +140,7 @@ aviato.bootstrap.isXs = function() { // require navbar to return correct result
  * @param parentId
  * @author Vasile Giorgi
 **/
-aviato.bootstrap.showCollapseByLocationHash = function(parentId, closeOthers) {
+aviato.bootstrap.prototype.showCollapseByLocationHash = function(parentId, closeOthers) {
 	if (closeOthers === undefined) {
 		closeOthers = false;
 	}
@@ -151,7 +171,7 @@ aviato.bootstrap.showCollapseByLocationHash = function(parentId, closeOthers) {
  *
  * @author Vasile Giorgi
  */
-aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
+aviato.bootstrap.prototype.addCollapseItem = function(oItemProperties, bAppendToParent) {
 	if (bAppendToParent === undefined) {
 		bAppendToParent = false;
 	}
@@ -194,7 +214,7 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 /**
  *
  */
-aviato.bind = function(selector) {
+aviato.prototype.bind = function(selector) {
 	if (selector === undefined) {
 		selector = '';
 	}
@@ -211,7 +231,7 @@ aviato.bind = function(selector) {
 /**
 
  */
-aviato.jq.element.button = function(button, selector) {
+aviato.jq.element.prototype.button = function(button, selector) {
 	if (selector === undefined) {
 		selector = '';
 	}
@@ -221,10 +241,10 @@ aviato.jq.element.button = function(button, selector) {
 
 /**
  */
-aviato.on.click = function(oTrigger) {
+aviato.on.prototype.click = function(oTrigger) {
 	if ($(oTrigger).data('action') !== undefined) {
 		var action = {
-			data: $(oTrigger).data(),
+			data: aviato.fn.filterProperties($(oTrigger).data()),
 			on: {},
 			ajax: {
 				async: true,
@@ -312,7 +332,7 @@ aviato.on.click = function(oTrigger) {
 };
 
 
-aviato.call.ajax = function(o) {
+aviato.call.prototype.ajax = function(o) {
 	if (o === undefined) {
 		return false;
 	}
@@ -352,13 +372,13 @@ aviato.call.ajax = function(o) {
 };
 
 
-aviato.display.section = function(data) {
+aviato.display.prototype.section = function(data) {
 	$(this.success.selector).html(data.data).removeClass("pending");
 	aviato.bind(this.success.selector + ' ');
 };
 
 
-aviato.display.alert = function(data) {
+aviato.display.prototype.alert = function(data) {
 	var style = data.type;
 	if (style === 'error') {
 		style = 'danger';
