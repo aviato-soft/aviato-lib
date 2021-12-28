@@ -1,3 +1,5 @@
+const $ = require('jquery');
+require('bootstrap');
 /**
  * Aviato JavaScript library v.1.0.0
  *
@@ -389,4 +391,4 @@ aviato.display.alert = function(data) {
 $(function() {
 	aviato.bind();
 });
-*/
+*/module.exports = aviato;
