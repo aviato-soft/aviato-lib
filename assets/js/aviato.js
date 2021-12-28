@@ -10,7 +10,7 @@
 
 "use strict";
 
-const aviato = {
+let aviato = {
 	/**
 	 * <b>extending bootstrap with some usefull methodes</b>
 	**/
@@ -40,6 +40,20 @@ const aviato = {
 
 
 /**
+ * add mapping 2 arrays into one object
+ */
+aviato.fn.arrayMap = function(arNames, arValues) {
+	var oReturn = {};
+	var i;
+	var iMax = Math.min(arNames.length, arValues.length);
+	for (i = 0; i < iMax; i++) {
+		oReturn[arNames[i]] = arValues[i];
+	}
+	return oReturn;
+}
+
+
+/**
  * ArrayTOString - extend supplant functionality
  */
 aviato.fn.atos = function(a, p) {
@@ -52,17 +66,22 @@ aviato.fn.atos = function(a, p) {
 
 
 /**
- * add mapping 2 arrays into one object
+ * Filter properties from an object
  */
-aviato.fn.arrayMap = function(arNames, arValues) {
-	var oReturn = {};
-	var i;
-	var iMax = Math.min(arNames.length, arValues.length);
-	for (i = 0; i < iMax; i++) {
-		oReturn[arNames[i]] = arValues[i];
-	}
-	return oReturn;
+aviato.fn.filterProperties = function (obj) {
+	let entries = Object.entries(obj);
+	let filter = entries.filter(function (item){return (typeof(item[1]) === "number" || typeof(item[1]) === "string")});
+	return (Object.fromEntries(filter));
 }
+
+
+/**
+ * save form values to localStorage
+ */
+aviato.fn.formToLocalStorage = function(selector) {
+	var oFormValues = $(selector).serializeArray();
+	localStorage.setItem(selector, JSON.stringify(oFormValues));
+};
 
 
 /**
@@ -80,15 +99,6 @@ aviato.fn.getUrlVars = function(sUrl) {
 		vars[hash[0]] = hash[1];
 	}
 	return vars;
-};
-
-
-/**
- * save form values to localStorage
- */
-aviato.fn.formToLocalStorage = function(selector) {
-	var oFormValues = $(selector).serializeArray();
-	localStorage.setItem(selector, JSON.stringify(oFormValues));
 };
 
 
@@ -224,7 +234,7 @@ aviato.jq.element.button = function(button, selector) {
 aviato.on.click = function(oTrigger) {
 	if ($(oTrigger).data('action') !== undefined) {
 		var action = {
-			data: $(oTrigger).data(),
+			data: aviato.fn.filterProperties($(oTrigger).data()),
 			on: {},
 			ajax: {
 				async: true,
@@ -371,10 +381,8 @@ aviato.display.alert = function(data) {
 		+ data.message
 		+ '</div>');
 
-	var alerts = $("#alerts>div").get();
-	console.log(alerts.length);
-	alerts = jQuery.unique(alerts);
-	console.log(alerts.length);
+//	var alerts = $("#alerts>div").get();
+//	alerts = jQuery.unique(alerts);
 };
 
 /*
