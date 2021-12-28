@@ -224,9 +224,7 @@ aviato.jq.element.button = function(button, selector) {
 aviato.on.click = function(oTrigger) {
 	if ($(oTrigger).data('action') !== undefined) {
 		var action = {
-			data: {
-				action: $(oTrigger).data('action')
-			},
+			data: $(oTrigger).data(),
 			on: {},
 			ajax: {
 				async: true,

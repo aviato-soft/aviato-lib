@@ -1,4 +1,6 @@
 Changelog
+v.0.7.6 - js send all data from trigger as payload if action is set
+
 v.0.7.5 - UI - allow non statical sections
 
 v.0.7.4 - add attributes for html page tag

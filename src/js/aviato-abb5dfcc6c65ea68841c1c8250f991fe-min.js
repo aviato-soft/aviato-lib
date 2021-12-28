@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.07.05 from 2021-12-21 16:35:09.
+Aviato-Lib.js, build #00.07.06 from 2021-12-28 17:58:52.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -34,7 +34,7 @@ if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('sh
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
 else{return item;}};aviato.bind=function(selector){if(selector===undefined){selector='';}
 if(aviato.jq.element.button('action',selector).length>0){aviato.jq.element.button('action',selector).on('click',function(){var $btn=$(this).button('loading...');aviato.on.click(this);$btn.button('reset');});}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
-return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:{action:$(oTrigger).data('action')},on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')!==undefined){aviato.display.section.selector=$(oTrigger).data('target');}
+return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:$(oTrigger).data(),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')!==undefined){aviato.display.section.selector=$(oTrigger).data('target');}
 else{aviato.display.section.selector='#main';}
 if($(oTrigger).data('params')!==undefined){action.data.params=$(oTrigger).data('params');}
 $(aviato.display.section.selector).html('').addClass("pending");action.on.success=aviato.display.section;break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];action.data=new FormData();action.data.append('action',$(oForm).data('handler'));var dataForm=$(oForm).serializeArray();$(dataForm).each(function(){action.data.append(this.name,this.value);})
