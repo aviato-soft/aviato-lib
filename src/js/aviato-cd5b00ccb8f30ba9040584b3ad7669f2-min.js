@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.07.06 from 2021-12-28 17:58:52.
+Aviato-Lib.js, build #00.07.07 from 2021-12-28 19:54:14.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -23,18 +23,19 @@ var n=+fromIndex||0;if(Math.abs(n)===Infinity){n=0;}
 if(n>=len){return-1;}
 k=Math.max(n>=0?n:len-Math.abs(n),0);while(k<len){if(k in o&&o[k]===searchElement){return k;}
 k++;}
-return-1;};}"use strict";const aviato={bootstrap:{},call:{},display:{},fn:{},jq:{element:{}},on:{}};aviato.fn.atos=function(a,p){var i,r='',iCount=a.length;for(i=0;i<iCount;i++){r+=p.supplant(a[i]);}
-return r;};aviato.fn.arrayMap=function(arNames,arValues){var oReturn={};var i;var iMax=Math.min(arNames.length,arValues.length);for(i=0;i<iMax;i++){oReturn[arNames[i]]=arValues[i];}
+return-1;};}"use strict";let aviato={bootstrap:{},call:{},display:{},fn:{},jq:{element:{}},on:{}};aviato.fn.arrayMap=function(arNames,arValues){var oReturn={};var i;var iMax=Math.min(arNames.length,arValues.length);for(i=0;i<iMax;i++){oReturn[arNames[i]]=arValues[i];}
 return oReturn;}
-aviato.fn.getUrlVars=function(sUrl){if(typeof(sUrl)==='undefined'){sUrl=window.location.href;}
+aviato.fn.atos=function(a,p){var i,r='',iCount=a.length;for(i=0;i<iCount;i++){r+=p.supplant(a[i]);}
+return r;};aviato.fn.filterProperties=function(obj){let entries=Object.entries(obj);let filter=entries.filter(function(item){return(typeof(item[1])==="number"||typeof(item[1])==="string")});return(Object.fromEntries(filter));}
+aviato.fn.formToLocalStorage=function(selector){var oFormValues=$(selector).serializeArray();localStorage.setItem(selector,JSON.stringify(oFormValues));};aviato.fn.getUrlVars=function(sUrl){if(typeof(sUrl)==='undefined'){sUrl=window.location.href;}
 var vars=[],hash;var hashes=sUrl.slice(sUrl.indexOf('?')+1).split('&');for(var i=0;i<hashes.length;i++){hash=hashes[i].split('=');vars.push(hash[0]);vars[hash[0]]=hash[1];}
-return vars;};aviato.fn.formToLocalStorage=function(selector){var oFormValues=$(selector).serializeArray();localStorage.setItem(selector,JSON.stringify(oFormValues));};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};aviato.bootstrap.showCollapseByLocationHash=function(parentId,closeOthers){if(closeOthers===undefined){closeOthers=false;}
+return vars;};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};aviato.bootstrap.showCollapseByLocationHash=function(parentId,closeOthers){if(closeOthers===undefined){closeOthers=false;}
 if(window.location.hash.length>1){if($('#'+parentId+' a[href="'+window.location.hash+'"]').data('toggle')==='collapse'){if(closeOthers===true){$('#'+parentId+' .panel-collapse.in').collapse('hide');}
 if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('show');}}}};aviato.bootstrap.addCollapseItem=function(oItemProperties,bAppendToParent){if(bAppendToParent===undefined){bAppendToParent=false;}
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
 else{return item;}};aviato.bind=function(selector){if(selector===undefined){selector='';}
 if(aviato.jq.element.button('action',selector).length>0){aviato.jq.element.button('action',selector).on('click',function(){var $btn=$(this).button('loading...');aviato.on.click(this);$btn.button('reset');});}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
-return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:$(oTrigger).data(),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')!==undefined){aviato.display.section.selector=$(oTrigger).data('target');}
+return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:aviato.fn.filterProperties($(oTrigger).data()),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')!==undefined){aviato.display.section.selector=$(oTrigger).data('target');}
 else{aviato.display.section.selector='#main';}
 if($(oTrigger).data('params')!==undefined){action.data.params=$(oTrigger).data('params');}
 $(aviato.display.section.selector).html('').addClass("pending");action.on.success=aviato.display.section;break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];action.data=new FormData();action.data.append('action',$(oForm).data('handler'));var dataForm=$(oForm).serializeArray();$(dataForm).each(function(){action.data.append(this.name,this.value);})
@@ -57,4 +58,4 @@ $('#alerts').append('<div class="alert alert-dismissible alert-'+style+'" role="
 +'<span aria-hidden="true">&times;</span></button>'
 +'<strong>'+data.type.toUpperCase()+'!</strong> '
 +data.message
-+'</div>');var alerts=$("#alerts>div").get();console.log(alerts.length);alerts=jQuery.unique(alerts);console.log(alerts.length);};
++'</div>');};
