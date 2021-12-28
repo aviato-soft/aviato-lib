@@ -102,3 +102,12 @@ aviato.fn.formToLocalStorage = function(selector) {
 };
 */
 
+//aviato.fn.filterProperties
+test ('aviato.fn.filterProperties', () => {
+	let data = {
+		'test': {a:3, b:"3", c:function(o){return (o*3)}, d:{d1:3, d2:"3"}, e:null, f:undefined, g:[1,2,3,4]},
+		'expected': {a:3, b:"3"}
+	};
+
+	expect (avi.fn.filterProperties(data.test)).toEqual(data.expected);
+});
