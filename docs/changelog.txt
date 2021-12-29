@@ -1,4 +1,6 @@
 Changelog
+v.0.7.8 - js use target as generic call with result on ajax complete
+
 v.0.7.7 - js add new code method: aviato.fn.filterProperties
 
 v.0.7.6 - js send all data from trigger as payload if action is set

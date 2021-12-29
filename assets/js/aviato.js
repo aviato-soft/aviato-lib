@@ -250,18 +250,11 @@ aviato.on.click = function(oTrigger) {
 		switch ($(oTrigger).data('action')) {
 			case 'section':
 				action.data.section = $(oTrigger).data('section');
-				if ($(oTrigger).data('target') !== undefined) {
-					aviato.display.section.selector = $(oTrigger).data('target');
-				}
-				else {
-					aviato.display.section.selector = '#main';
-				}
-				if ($(oTrigger).data('params') !== undefined) {
-					action.data.params = $(oTrigger).data('params');
-				}
-				$(aviato.display.section.selector).html('').addClass("pending");
 
-				action.on.success = aviato.display.section;
+				if ($(oTrigger).data('target') === undefined) {
+					aviato.display.content.selector = '#main';
+				}
+				$(aviato.display.content.selector).html('');
 				break;
 
 			case 'upload':
@@ -291,6 +284,12 @@ aviato.on.click = function(oTrigger) {
 				break;
 		}
 
+		if ($(oTrigger).data('target') !== undefined) {
+			aviato.display.content.selector = $(oTrigger).data('target');
+			$(aviato.display.content.selector).addClass("pending");
+			action.on.complete = aviato.display.content;
+		}
+
 		if ($(oTrigger).data('serialize') !== undefined && $(oTrigger).data('serialize') === true) {
 			var dataForm = $(oTrigger).closest("form").serializeArray();
 			$(dataForm).each(function() {
@@ -304,6 +303,10 @@ aviato.on.click = function(oTrigger) {
 
 		if ($(oTrigger).data('success') !== undefined) {
 			action.on.success = $(oTrigger).data('success');
+		}
+
+		if ($(oTrigger).data('complete') !== undefined) {
+			action.on.complete = $(oTrigger).data('complete');
 		}
 
 		if ($(oTrigger).data('error') !== undefined) {
@@ -341,6 +344,12 @@ aviato.call.ajax = function(o) {
 		if (o.on.success !== undefined) {
 			o.on.success(data, textStatus, errorThrown);
 		}
+	}
+	ajaxSettings.complete = function(data, textStatus) {
+		if (o.on.complete !== undefined) {
+			o.on.complete(data, textStatus);
+		}
+
 		if (data.success !== true) {
 			$.each(data.log, function() {
 				aviato.display.alert(this);
@@ -362,9 +371,9 @@ aviato.call.ajax = function(o) {
 };
 
 
-aviato.display.section = function(data) {
-	$(this.success.selector).html(data.data).removeClass("pending");
-	aviato.bind(this.success.selector + ' ');
+aviato.display.content = function(data) {
+	$(this.complete.selector).html(data.data).removeClass("pending");
+	aviato.bind(this.complete.selector + ' ');
 };
 
 
