@@ -208,13 +208,9 @@ aviato.bind = function(selector) {
 	if (selector === undefined) {
 		selector = '';
 	}
-	if (aviato.jq.element.button('action', selector).length > 0) {
-		aviato.jq.element.button('action', selector).on('click', function() {
-			var $btn = $(this).button('loading...');
-			aviato.on.click(this);
-			$btn.button('reset');
-		});
-	}
+	$('[data-action]').on('click', function () {
+		aviato.on.click(this);
+	});
 };
 
 
@@ -229,8 +225,6 @@ aviato.jq.element.button = function(button, selector) {
 };
 
 
-/**
- */
 aviato.on.click = function(oTrigger) {
 	if ($(oTrigger).data('action') !== undefined) {
 		var action = {
@@ -252,7 +246,7 @@ aviato.on.click = function(oTrigger) {
 				action.data.section = $(oTrigger).data('section');
 
 				if ($(oTrigger).data('target') === undefined) {
-					aviato.display.content.selector = '#main';
+					$(oTrigger).data('target', '#main');
 				}
 				$(aviato.display.content.selector).html('');
 				break;
@@ -287,7 +281,7 @@ aviato.on.click = function(oTrigger) {
 		if ($(oTrigger).data('target') !== undefined) {
 			aviato.display.content.selector = $(oTrigger).data('target');
 			$(aviato.display.content.selector).addClass("pending");
-			action.on.complete = aviato.display.content;
+			action.on.success = aviato.display.content;
 		}
 
 		if ($(oTrigger).data('serialize') !== undefined && $(oTrigger).data('serialize') === true) {
@@ -344,16 +338,15 @@ aviato.call.ajax = function(o) {
 		if (o.on.success !== undefined) {
 			o.on.success(data, textStatus, errorThrown);
 		}
-	}
-	ajaxSettings.complete = function(data, textStatus) {
-		if (o.on.complete !== undefined) {
-			o.on.complete(data, textStatus);
-		}
-
 		if (data.success !== true) {
 			$.each(data.log, function() {
 				aviato.display.alert(this);
 			})
+		}
+	}
+	ajaxSettings.complete = function(jqXHR, textStatus) {
+		if (o.on.complete !== undefined) {
+			o.on.complete(jqXHR, textStatus);
 		}
 	}
 	ajaxSettings.url = o.url;
@@ -372,8 +365,8 @@ aviato.call.ajax = function(o) {
 
 
 aviato.display.content = function(data) {
-	$(this.complete.selector).html(data.data).removeClass("pending");
-	aviato.bind(this.complete.selector + ' ');
+	$(this.success.selector).html(data.data).removeClass("pending");
+	aviato.bind(this.success.selector + ' ');
 };
 
 
@@ -382,16 +375,18 @@ aviato.display.alert = function(data) {
 	if (style === 'error') {
 		style = 'danger';
 	}
-	$('#alerts').append(
-		'<div class="alert alert-dismissible alert-' + style + '" role="alert">'
-		+ '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'
-		+ '<span aria-hidden="true">&times;</span></button>'
-		+ '<strong>' + data.type.toUpperCase() + '!</strong> '
-		+ data.message
-		+ '</div>');
 
-//	var alerts = $("#alerts>div").get();
-//	alerts = jQuery.unique(alerts);
+	if ($('#alerts').length === 0) {
+		$('body').append('<div id="alerts" class="p-3"></div>');
+	}
+
+	let alertHtml = ''
+		+ '<div class="alert alert-' + data.type + ' alert-dismissible" role="alert">'
+		+ '<span>' + data.message + '</span>'
+		+ '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
+		+ '</div>';
+
+	$('#alerts').append(alertHtml);
 };
 
 /*
