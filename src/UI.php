@@ -85,15 +85,15 @@ class UI
 			[
 				'attributes' => [],
 				'class' => 'section',
+				'close' => true,
+				'folder' => 'sections',
 				'id' => $sectionName,
 				'javascript' => [],
-				// 'type' => 'php',
 				'obj' => 'Sections',
-				'type' => 'obj',
-				'wrapper' => true,
+				'root' => dirname(__FILE__),
 				'tag' => 'section',
-				'close' => true,
-				'root' => dirname(__FILE__)
+				'type' => 'obj',
+				'wrapper' => true
 			]);
 
 		// pre-computation:
@@ -101,7 +101,6 @@ class UI
 
 		// class:
 		if ($properties['class'] === 'section') {
-			// $properties['class'] = '';
 			$attributes['class'] = [];
 		} else {
 			$attributes['class'] = [
@@ -127,8 +126,11 @@ class UI
 		}
 
 		// generate content:
-		$path = $properties['root'].DIRECTORY_SEPARATOR.'sections'.DIRECTORY_SEPARATOR.$sectionName.'.'.
-			$properties['type'];
+		$path = implode(DIRECTORY_SEPARATOR, [
+			$properties['root'],
+			$properties['folder'],
+			$sectionName.'.'.$properties['type']
+		]);
 		switch ($properties['type']) {
 			case 'htm':
 			case 'html':
@@ -148,7 +150,7 @@ class UI
 				break;
 
 			case 'obj':
-				if (isset($properties['params'])  && $properties['params'] !== []) {
+				if (isset($properties['params']) && $properties['params'] !== []) {
 					call_user_func_array([
 						$properties['obj'],
 						$sectionName
@@ -164,13 +166,23 @@ class UI
 						if (method_exists($this->response, 'log')) {
 							$this->response->log('UI: Missing object definition', 'warning', 251);
 						} else {
-							$this->log->trace(
-								'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
+							$this->log->trace('UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
 						}
 					}
 				}
-
 				break;
+
+			//inline script
+			case 'script':
+				echo '<script>';
+				$content = @file_get_contents(\str_replace('.script', '.js', $path));
+				if ($content === false) {
+					$this->log->trace('Missing inline script file to inclide in [section]: '.$path, LOG_ERR);
+				} else {
+					echo $content;
+				}
+				echo '</script>';
+
 		}
 
 		// close section tag:
@@ -179,7 +191,7 @@ class UI
 		}
 
 		// after content logic
-		if (count($properties['javascript']) > 0) {
+		if (count($properties['javascript']) > 0 && $properties['type'] !== 'script') {
 			$this->page['javascript'] = array_merge($this->page['javascript'], $properties['javascript']);
 		}
 
