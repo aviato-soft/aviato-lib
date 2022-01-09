@@ -39,19 +39,123 @@ final class testAviatoUi extends TestCase
 	{
 		// Object section normal
 		$aviUi = new AviUi();
-		$response = $aviUi->Section('test', [], true);
+		$response = $aviUi->Section('test', [
+			'folder' => 'assets',
+			'root' => dirname(__FILE__)
+		], true);
 		$test = '<section class="sec-obj-test" id="test">test section</section>';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
+		// Attributes
 		$response = $aviUi->Section('test', [
 			'attributes' => [
 				'src' => 'javascript:;',
 				'data-role' => 'test'
-			]
+			],
+			'folder' => 'assets',
+			'root' => dirname(__FILE__)
 		], true);
 		$test = '<section class="sec-obj-test" data-role="test" id="test" src="javascript:;">test section</section>';
 		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+/*
+		// Object section no wrapper + including js file
+		$response = $aviUi->Section('test', [
+			'wrapper' => false,
+			'javascript' => [
+				'test.js'
+			]
+		], true);
+		$test = 'test section';
+		var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+		$test = 'test.js';
+		$this->assertEquals($test, $aviUi->page['javascript'][0]);
+
+		// section type = Object undefined
+		// $aviUi->response = 'test22';
+		$response = $aviUi->Section('test7', [
+			'wrapper' => false
+		], true);
+		$test = '';
+		$this->assertEquals($test, $response);
+*/
+		// Html section
+		$response = $aviUi->Section('test',
+			[
+				'class' => 'test',
+				'folder' => 'assets',
+				'root' => dirname(__FILE__),
+				'type' => 'html',
+				'wrapper' => false
+			], true);
+		$test = '<div class="html">Test</div>';
+		//var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+		// Missing Html section
+		$response = $aviUi->Section('missing',
+			[
+				'type' => 'html',
+			], true);
+		$test = '<section class="sec-html-missing" id="missing"></section>';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+		// Missing PHP section
+		$response = $aviUi->Section('missing', [
+			'type' => 'php',
+			'wrapper' => false
+		], true);
+		$test = '';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+		// Missing object
+		$aviUi = new AviUi();
+		$response = $aviUi->Section('missingObject', [
+			'wrapper' => false
+		], true);
+		$test = '';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+
+		// section type = Object undefined
+		$aviUi->response = 'test22';
+		$response = $aviUi->Section('test7', [
+			'wrapper' => false
+		], true);
+		$test = '';
+		$this->assertEquals($test, $response);
+
+		//Inline SCRIPT section
+		$aviUi = new AviUi();
+		$response = $aviUi -> Section('test', [
+			'folder' => 'assets',
+			'root' => dirname(__FILE__),
+			'type' => 'script',
+			'wrapper' => false,
+		], true);
+		$test = implode(PHP_EOL, [
+			'<script>var test = {',
+			'	info: \'this is a test\'',
+			'};</script>'
+		]);
+		$this->assertEquals($test, $response);
+
+		//MIssing Inline SCRIPT section
+		$aviUi = new AviUi();
+		$response = $aviUi -> Section('testX', [
+			'folder' => 'assets',
+			'root' => dirname(__FILE__),
+			'type' => 'script',
+			'wrapper' => false,
+		], true);
+		$test = '<script></script>';
 		$this->assertEquals($test, $response);
 
 		// Object section no wrapper + including js file
@@ -65,29 +169,17 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
-		$test = 'test.js';
-		$this->assertEquals($test, $aviUi->page['javascript'][0]);
-
-		// section type = Object undefined
-		// $aviUi->response = 'test22';
-		$response = $aviUi->Section('test7', [
+		// Test section echo response
+		ob_start();
+		$aviUi = new AviUi();
+		$aviUi->Section('test', [
 			'wrapper' => false
-		], true);
-		$test = '';
-		$this->assertEquals($test, $response);
-
-		// Html section
-		$response = $aviUi->Section('test',
-			[
-				'wrapper' => false,
-				'class' => 'test',
-				'type' => 'html',
-				'root' => dirname(__FILE__)
-			], true);
-		$test = '<div class="html">Test</div>';
+		], false);
+		$response = ob_get_clean();
+		$test = 'test section';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
-
+/*
 		// PHP section
 		$response = $aviUi->Section('test', [
 			'wrapper' => false,
@@ -97,6 +189,14 @@ final class testAviatoUi extends TestCase
 		$test = '<div class="php">Test</div>';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
+
+		//Inline SCRIPT section
+		$response = $aviUi -> Section('test', [
+			'wrapper' => false,
+			'type' => 'script',
+			'root' => dirname(__FILE__),
+			'folder' => 'sections'
+		], true);
 
 		// Missing Html section
 		$response = $aviUi->Section('missing',
@@ -139,6 +239,7 @@ final class testAviatoUi extends TestCase
 		$test = 'test section';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
+*/
 	}
 
 
