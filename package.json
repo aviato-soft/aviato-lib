@@ -13,6 +13,7 @@
   },
   "jest": {
     "testEnvironment": "jsdom",
+    "testPathIgnorePatterns": ["assets"],
     "resetMocks": false,
     "setupFiles": [
       "jest-localstorage-mock"
