@@ -1,4 +1,6 @@
 Changelog
+v.0.22.10 - [omicron] transitional for bootstrap 5.1
+
 v.0.7.9 - js update aviato.display.alert to use bootstrap v.5
 
 v.0.7.8 - js use target as generic call with result on ajax complete

@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.07.09 from 2021-12-29 14:52:56.
+Aviato-Lib.js, build #00.22.10 from 2022-01-10 22:43:07.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -34,29 +34,42 @@ if(window.location.hash.length>1){if($('#'+parentId+' a[href="'+window.location.
 if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('show');}}}};aviato.bootstrap.addCollapseItem=function(oItemProperties,bAppendToParent){if(bAppendToParent===undefined){bAppendToParent=false;}
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
 else{return item;}};aviato.bind=function(selector){if(selector===undefined){selector='';}
-$('[data-action]').on('click',function(){aviato.on.click(this);});};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
-return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:aviato.fn.filterProperties($(oTrigger).data()),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if($(oTrigger).data('target')===undefined){$(oTrigger).data('target','#main');}
-$(aviato.display.content.selector).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];action.data=new FormData();action.data.append('action',$(oForm).data('handler'));var dataForm=$(oForm).serializeArray();$(dataForm).each(function(){action.data.append(this.name,this.value);})
-$.each($('#fileUpload')[0].files,function(k,v){action.data.append(k,v);})
-break;}
-if($(oTrigger).data('target')!==undefined){aviato.display.content.selector=$(oTrigger).data('target');$(aviato.display.content.selector).addClass("pending");action.on.success=aviato.display.content;}
+else{selector+=' ';}
+$(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
+else{selector+=' ';}
+return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:aviato.fn.filterProperties($(oTrigger).data()),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};var target=$(oTrigger).data('target');switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if(target===undefined){target='main';action.data.target=target;}
+$(target).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];var formData=new FormData();for(var key in action.data){formData.append(key,action.data[key]);}
+formData.append('handler',$(oForm).data('handler'));dataForm=$(oForm).serializeArray();$(dataForm).each(function(){formData.append(this.name,this.value);})
+$.each($('#fileUpload')[0].files,function(k,v){formData.append(k,v);})
+action.data=formData;break;}
 if($(oTrigger).data('serialize')!==undefined&&$(oTrigger).data('serialize')===true){var dataForm=$(oTrigger).closest("form").serializeArray();$(dataForm).each(function(){action.data[this.name]=this.value;})}
+if(target!==undefined){aviato.display.selector=target;$(aviato.display.selector).addClass('pending');}
+if($(oTrigger).data('dyn')!==undefined){$(oTrigger).removeData('dyn');}
 if($(oTrigger).data('before')!==undefined){action.before=$(oTrigger).data('before');}
-if($(oTrigger).data('success')!==undefined){action.on.success=$(oTrigger).data('success');}
-if($(oTrigger).data('complete')!==undefined){action.on.complete=$(oTrigger).data('complete');}
-if($(oTrigger).data('error')!==undefined){action.on.error=$(oTrigger).data('error');}
+if($(oTrigger).data('success')!==undefined){var fname=$(oTrigger).data('success')
+if(typeof fname==='string'||fname instanceof String){if(fname.indexOf('.')!==-1){fname=fname.split('.');action.on.success=window[fname[0]];for(var i=1;i<fname.length;i++){action.on.success=action.on.success[fname[i]];}}
+else{action.on.success=window[fname];}}}
+if($(oTrigger).data('complete')!==undefined){action.on.complete=window[$(oTrigger).data('complete')];}
+if($(oTrigger).data('error')!==undefined){action.on.error=window[$(oTrigger).data('error')];}
 if($(oTrigger).data('url')!==undefined){action.url=$(oTrigger).data('url');}
 else{action.url=location.href;}
-aviato.call.ajax(action);}};aviato.call.ajax=function(o){if(o===undefined){return false;}
+if($(oTrigger).data('verbose')!==undefined){action.verbose=($(oTrigger).data('verbose')===true);}
+aviato.call.ajax(action);}};aviato.on.clickAgain=function(o){aviato.offcanvas.hide();let trigger=$(o).data('trigger');$(trigger).data('dyn',$(o).data('dyn'));setTimeout(function(){aviato.on.click(trigger);},500);}
+aviato.call.ajax=function(o){if(o===undefined){return false;}
 if(o.before!==undefined){o.before(o);}
 var ajaxSettings=o.ajax;ajaxSettings.data=o.data;ajaxSettings.error=function(XMLHttpRequest,textStatus,errorThrown){if(o.on.error!==undefined){o.on.error(XMLHttpRequest,textStatus,errorThrown);}}
-ajaxSettings.success=function(data,textStatus,errorThrown){if(o.on.success!==undefined){o.on.success(data,textStatus,errorThrown);}
-if(data.success!==true){$.each(data.log,function(){aviato.display.alert(this);})}}
+ajaxSettings.success=function(data,textStatus,jqXHR){if(data.location!==undefined){location=data.location;}
+if(typeof data.data==='string'||data.data instanceof String){aviato.display.content(data.data);}
+if(data.success!==true||(o.verbose!==undefined&&o.verbose===true)){aviato.display.logs(data.log);}
+if(o.on.success!==undefined){o.on.success(data,textStatus,jqXHR);}}
 ajaxSettings.complete=function(jqXHR,textStatus){if(o.on.complete!==undefined){o.on.complete(jqXHR,textStatus);}}
-ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){$(this.success.selector).html(data.data).removeClass("pending");aviato.bind(this.success.selector+' ');};aviato.display.alert=function(data){var style=data.type;if(style==='error'){style='danger';}
-if($('#alerts').length===0){$('body').append('<div id="alerts" class="p-3"></div>');}
+ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){if(this.selector!==undefined){$(this.selector).html(data);$(this.selector).removeClass("pending");aviato.bind(this.selector+' ');}
+delete this.selector;};aviato.display.logs=function(logs,targetSelector='#alerts'){$.each(logs,function(){aviato.display.alert(this,targetSelector);})
+aviato.offcanvas.show();}
+aviato.display.alert=function(data,targetSelector='#alerts'){var style=data.type;if(style==='error'){style='danger';}
+if($(targetSelector).length===0){$('body').append('<div id="alerts" class="p-3" data-role="alerts"></div>');}
 let alertHtml=''
-+'<div class="alert alert-'+data.type+' alert-dismissible" role="alert">'
++'<div class="alert alert-'+style+' alert-dismissible" role="alert">'
 +'<span>'+data.message+'</span>'
 +'<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
-+'</div>';$('#alerts').append(alertHtml);};
++'</div>';$(targetSelector).append(alertHtml);};aviato.fn.sort=function(triggerId){var a=[];$('#'+triggerId+' th>button.sort').each(function(){a.push($(this).data('sort'))});var options={valueNames:a};var table=new List(triggerId,options);}
