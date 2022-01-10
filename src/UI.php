@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.07.09
- * @since  2021-12-29 14:52:56
+ * @version 00.22.10
+ * @since  2022-01-10 22:43:07
  *
  */
 declare(strict_types = 1);
@@ -85,15 +85,15 @@ class UI
 			[
 				'attributes' => [],
 				'class' => 'section',
+				'close' => true,
+				'folder' => 'sections',
 				'id' => $sectionName,
 				'javascript' => [],
-				// 'type' => 'php',
 				'obj' => 'Sections',
-				'type' => 'obj',
-				'wrapper' => true,
+				'root' => dirname(__FILE__),
 				'tag' => 'section',
-				'close' => true,
-				'root' => dirname(__FILE__)
+				'type' => 'obj',
+				'wrapper' => true
 			]);
 
 		// pre-computation:
@@ -101,7 +101,6 @@ class UI
 
 		// class:
 		if ($properties['class'] === 'section') {
-			// $properties['class'] = '';
 			$attributes['class'] = [];
 		} else {
 			$attributes['class'] = [
@@ -109,26 +108,42 @@ class UI
 			];
 		}
 
-		$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
+		if (!\in_array($properties['type'], ['script'], true)) {
+			$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
+		}
 
-		$attributes['class'] = implode(' ', $attributes['class']);
+		if (count($attributes['class']) > 0) {
+			$attributes['class'] = implode(' ', $attributes['class']);
+		}
+		else {
+			unset ($attributes['class']);
+		}
+
 
 		// id
-		if ($properties['type'] !== 'box') { // depricated condition
+		if (!\in_array($properties['type'], ['box', 'script'], true)) {
 			$attributes['id'] = $properties['id'];
 		}
 
 		// order attributes a-z
 		ksort($attributes);
 
+		//overwrite tag for case of inline script
+		if ($properties['type'] === 'script'){
+			$properties['wrapper'] = true;
+			$properties['tag'] = 'script';
+		}
 		// open tag:
 		if ($properties['wrapper']) {
 			echo '<'.$properties['tag'].' '.AviTools::atoattr($attributes).'>';
 		}
 
 		// generate content:
-		$path = $properties['root'].DIRECTORY_SEPARATOR.'sections'.DIRECTORY_SEPARATOR.$sectionName.'.'.
-			$properties['type'];
+		$path = implode(DIRECTORY_SEPARATOR, [
+			$properties['root'],
+			$properties['folder'],
+			$sectionName.'.'.$properties['type']
+		]);
 		switch ($properties['type']) {
 			case 'htm':
 			case 'html':
@@ -148,7 +163,7 @@ class UI
 				break;
 
 			case 'obj':
-				if (isset($properties['params'])  && $properties['params'] !== []) {
+				if (isset($properties['params']) && $properties['params'] !== []) {
 					call_user_func_array([
 						$properties['obj'],
 						$sectionName
@@ -164,12 +179,21 @@ class UI
 						if (method_exists($this->response, 'log')) {
 							$this->response->log('UI: Missing object definition', 'warning', 251);
 						} else {
-							$this->log->trace(
-								'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
+							$this->log->trace('UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
 						}
 					}
 				}
+				break;
 
+			//inline script
+			case 'script':
+				$path = \str_replace('.script', '.js', $path);
+				$content = @file_get_contents($path);
+				if ($content === false) {
+					$this->log->trace('Missing inline script file to inclide in [section]: '.$path, LOG_ERR);
+				} else {
+					echo $content;
+				}
 				break;
 		}
 
@@ -179,7 +203,7 @@ class UI
 		}
 
 		// after content logic
-		if (count($properties['javascript']) > 0) {
+		if (count($properties['javascript']) > 0 && $properties['type'] !== 'script') {
 			$this->page['javascript'] = array_merge($this->page['javascript'], $properties['javascript']);
 		}
 

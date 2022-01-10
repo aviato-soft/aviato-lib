@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.07.09
- * @since  2021-12-29 14:52:56
+ * @version 00.22.10
+ * @since  2022-01-10 22:43:07
  *
  */
 declare(strict_types = 1);
@@ -25,6 +25,8 @@ class Response
 	public $data;
 
 	public $success;
+
+	public $location = null;
 
 	private $default = [];
 
@@ -150,11 +152,10 @@ class Response
 				];
 				if (isset($_REQUEST['handler'])) {
 					if (method_exists($this, $_REQUEST['handler'])) {
-						call_user_func([
+						$this->success = call_user_func([
 							$this,
 							$_REQUEST['handler']
 						]);
-						$this->success = true;
 					} else {
 						$this->logMessage(203);
 						$this->success = false;
@@ -169,12 +170,16 @@ class Response
 		// validate response
 		$this->validate();
 
-		$response = array(
+		$response = [
 			'action' => $this->action,
 			'data' => $this->data,
 			'log' => $this->log,
 			'success' => $this->success
-		);
+		];
+
+		if (is_string($this -> location)) {
+			$response['location'] = $this -> location;
+		}
 
 		if ($clearLogAfterCall) {
 			$this->clearLog();
