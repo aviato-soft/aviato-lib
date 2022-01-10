@@ -21,7 +21,7 @@ test ('aviato.jq.element.button', () => {
 
 	//test 3: params: button, selector
 	jq = avi.jq.element.button('action', '#btnTest');
-	expect (jq.length).toBe(1);
+	expect (jq.length).toBe(0);
 
 	//test 4: params: button, selector (invalid)
 	jq = avi.jq.element.button('aviato', '#wrapper');
