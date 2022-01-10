@@ -141,7 +141,7 @@ final class testAviatoUi extends TestCase
 			'wrapper' => false,
 		], true);
 		$test = implode(PHP_EOL, [
-			'<script>var test = {',
+			'<script >var test = {',
 			'	info: \'this is a test\'',
 			'};</script>'
 		]);
@@ -155,7 +155,7 @@ final class testAviatoUi extends TestCase
 			'type' => 'script',
 			'wrapper' => false,
 		], true);
-		$test = '<script></script>';
+		$test = '<script ></script>';
 		$this->assertEquals($test, $response);
 
 		// Object section no wrapper + including js file
@@ -179,67 +179,6 @@ final class testAviatoUi extends TestCase
 		$test = 'test section';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
-/*
-		// PHP section
-		$response = $aviUi->Section('test', [
-			'wrapper' => false,
-			'type' => 'php',
-			'root' => dirname(__FILE__)
-		], true);
-		$test = '<div class="php">Test</div>';
-		// var_dump($response); // <-- uncomment this line to see the result!
-		$this->assertEquals($test, $response);
-
-		//Inline SCRIPT section
-		$response = $aviUi -> Section('test', [
-			'wrapper' => false,
-			'type' => 'script',
-			'root' => dirname(__FILE__),
-			'folder' => 'sections'
-		], true);
-
-		// Missing Html section
-		$response = $aviUi->Section('missing',
-			[
-				'wrapper' => false,
-				'class' => 'test',
-				'type' => 'html',
-				'root' => dirname(__FILE__)
-			], true);
-		$test = '';
-		// var_dump($response); // <-- uncomment this line to see the result!
-		$this->assertEquals($test, $response);
-
-		// Missing PHP section
-		$response = $aviUi->Section('missing', [
-			'wrapper' => false,
-			'type' => 'php',
-			'root' => dirname(__FILE__)
-		], true);
-		$test = '';
-		// var_dump($response); // <-- uncomment this line to see the result!
-		$this->assertEquals($test, $response);
-
-		// Missing object
-		$aviUi = new AviUi();
-		$response = $aviUi->Section('test', [
-			'wrapper' => false
-		], true);
-		$test = 'test section';
-		// var_dump($response); // <-- uncomment this line to see the result!
-		$this->assertEquals($test, $response);
-
-		// Test section echo response
-		ob_start();
-		$aviUi = new AviUi();
-		$aviUi->Section('test', [
-			'wrapper' => false
-		], false);
-		$result = ob_get_clean();
-		$test = 'test section';
-		// var_dump($response); // <-- uncomment this line to see the result!
-		$this->assertEquals($test, $response);
-*/
 	}
 
 

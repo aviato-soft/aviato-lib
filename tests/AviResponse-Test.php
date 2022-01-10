@@ -113,6 +113,14 @@ final class testAviatoResponse extends TestCase
 		$this->assertEquals($test, $result['data']);
 		$this->assertTrue($result['success']);
 
+		//get location
+		$aviResponse = new AviResponseTest('section');
+		$aviResponse -> location = 'www.aviato.ro';
+		$result = json_decode($aviResponse->get(), true);
+		$this->assertEquals($test, $result['data']);
+		$this->assertTrue($result['success']);
+
+
 
 
 		// get(upload)
@@ -132,7 +140,7 @@ final class testAviatoResponse extends TestCase
 		$_FILES = ['a', 'b', 'c'];
 		$result = json_decode($aviResponse->get(), true);
 		//Missing Upload Handler Definition!
-		$this->assertTrue($result['success']);
+		$this->assertNull($result['success']);
 
 		//var_dump($result); // <-- uncomment this line to see the result!
 	}
