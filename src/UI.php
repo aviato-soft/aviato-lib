@@ -108,18 +108,31 @@ class UI
 			];
 		}
 
-		$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
+		if (!\in_array($properties['type'], ['script'], true)) {
+			$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
+		}
 
-		$attributes['class'] = implode(' ', $attributes['class']);
+		if (count($attributes['class']) > 0) {
+			$attributes['class'] = implode(' ', $attributes['class']);
+		}
+		else {
+			unset ($attributes['class']);
+		}
+
 
 		// id
-		if ($properties['type'] !== 'box') { // depricated condition
+		if (!\in_array($properties['type'], ['box', 'script'], true)) {
 			$attributes['id'] = $properties['id'];
 		}
 
 		// order attributes a-z
 		ksort($attributes);
 
+		//overwrite tag for case of inline script
+		if ($properties['type'] === 'script'){
+			$properties['wrapper'] = true;
+			$properties['tag'] = 'script';
+		}
 		// open tag:
 		if ($properties['wrapper']) {
 			echo '<'.$properties['tag'].' '.AviTools::atoattr($attributes).'>';
@@ -174,15 +187,14 @@ class UI
 
 			//inline script
 			case 'script':
-				echo '<script>';
-				$content = @file_get_contents(\str_replace('.script', '.js', $path));
+				$path = \str_replace('.script', '.js', $path);
+				$content = @file_get_contents($path);
 				if ($content === false) {
 					$this->log->trace('Missing inline script file to inclide in [section]: '.$path, LOG_ERR);
 				} else {
 					echo $content;
 				}
-				echo '</script>';
-
+				break;
 		}
 
 		// close section tag:

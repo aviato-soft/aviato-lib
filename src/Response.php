@@ -26,6 +26,8 @@ class Response
 
 	public $success;
 
+	public $location = null;
+
 	private $default = [];
 
 	private $defines = [
@@ -150,11 +152,10 @@ class Response
 				];
 				if (isset($_REQUEST['handler'])) {
 					if (method_exists($this, $_REQUEST['handler'])) {
-						call_user_func([
+						$this->success = call_user_func([
 							$this,
 							$_REQUEST['handler']
 						]);
-						$this->success = true;
 					} else {
 						$this->logMessage(203);
 						$this->success = false;
@@ -169,12 +170,16 @@ class Response
 		// validate response
 		$this->validate();
 
-		$response = array(
+		$response = [
 			'action' => $this->action,
 			'data' => $this->data,
 			'log' => $this->log,
 			'success' => $this->success
-		);
+		];
+
+		if (is_string($this -> location)) {
+			$response['location'] = $this -> location;
+		}
 
 		if ($clearLogAfterCall) {
 			$this->clearLog();

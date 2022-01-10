@@ -208,9 +208,19 @@ aviato.bind = function(selector) {
 	if (selector === undefined) {
 		selector = '';
 	}
-	$('[data-action]').on('click', function () {
+	else {
+		selector += ' ';
+	}
+	$(selector + '[data-action]').on('click', function () {
 		aviato.on.click(this);
 	});
+
+	if (this.offcanvas === undefined) {
+		this.offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
+		document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function () {
+			$('#alerts').html('');
+		})
+	}
 };
 
 
@@ -220,6 +230,9 @@ aviato.bind = function(selector) {
 aviato.jq.element.button = function(button, selector) {
 	if (selector === undefined) {
 		selector = '';
+	}
+	else {
+		selector += ' ';
 	}
 	return ($(selector + '[data-type="button"][data-' + button + ']'));
 };
@@ -241,14 +254,16 @@ aviato.on.click = function(oTrigger) {
 			}
 		};
 
+		var target = $(oTrigger).data('target');
+
 		switch ($(oTrigger).data('action')) {
 			case 'section':
 				action.data.section = $(oTrigger).data('section');
-
-				if ($(oTrigger).data('target') === undefined) {
-					$(oTrigger).data('target', '#main');
+				if (target === undefined) {
+					target = 'main';
+					action.data.target = target;
 				}
-				$(aviato.display.content.selector).html('');
+				$(target).html('');
 				break;
 
 			case 'upload':
@@ -259,29 +274,30 @@ aviato.on.click = function(oTrigger) {
 				var oForm = $(oTrigger).closest("form")[0];
 
 				//create form data object
-				action.data = new FormData();
+				var formData = new FormData();
+
+				//add existing form data:
+				for(var key in action.data) {
+					formData.append(key, action.data[key]);
+				}
 
 				//add handler method from form definition
-				action.data.append('action', $(oForm).data('handler'));
+				formData.append('handler', $(oForm).data('handler'));
 
 				//add rest of form elements
-				var dataForm = $(oForm).serializeArray();
+				dataForm = $(oForm).serializeArray();
 				$(dataForm).each(function() {
-					action.data.append(this.name, this.value);
+					formData.append(this.name, this.value);
 				})
 
 				//add files
 				$.each($('#fileUpload')[0].files, function(k, v) {
-					action.data.append(k, v);
+					formData.append(k, v);
 				})
 
-				break;
-		}
+				action.data = formData;
 
-		if ($(oTrigger).data('target') !== undefined) {
-			aviato.display.content.selector = $(oTrigger).data('target');
-			$(aviato.display.content.selector).addClass("pending");
-			action.on.success = aviato.display.content;
+				break;
 		}
 
 		if ($(oTrigger).data('serialize') !== undefined && $(oTrigger).data('serialize') === true) {
@@ -291,20 +307,42 @@ aviato.on.click = function(oTrigger) {
 			})
 		}
 
+		if (target !== undefined) {
+			aviato.display.selector = target;
+			$(aviato.display.selector).addClass('pending');
+		}
+
+//clenup dynamic data:
+		if ($(oTrigger).data('dyn') !== undefined) {
+			$(oTrigger).removeData('dyn');
+		}
+
 		if ($(oTrigger).data('before') !== undefined) {
 			action.before = $(oTrigger).data('before');
 		}
 
 		if ($(oTrigger).data('success') !== undefined) {
-			action.on.success = $(oTrigger).data('success');
+			var fname = $(oTrigger).data('success')
+			if (typeof fname === 'string' || fname instanceof String) {
+				if (fname.indexOf('.') !== -1) {
+					fname = fname.split('.');
+					action.on.success = window[fname[0]];
+					for (var i = 1; i < fname.length; i++) {
+						action.on.success = action.on.success[fname[i]];
+					}
+				}
+				else {
+					action.on.success = window[fname];
+				}
+			}
 		}
 
 		if ($(oTrigger).data('complete') !== undefined) {
-			action.on.complete = $(oTrigger).data('complete');
+			action.on.complete = window[$(oTrigger).data('complete')];
 		}
 
 		if ($(oTrigger).data('error') !== undefined) {
-			action.on.error = $(oTrigger).data('error');
+			action.on.error = window[$(oTrigger).data('error')];
 		}
 
 		if ($(oTrigger).data('url') !== undefined) {
@@ -314,9 +352,26 @@ aviato.on.click = function(oTrigger) {
 			action.url = location.href;
 		}
 
+		if ($(oTrigger).data('verbose') !== undefined) {
+			action.verbose = ($(oTrigger).data('verbose') === true);
+		}
+
 		aviato.call.ajax(action);
 	}
 };
+
+
+aviato.on.clickAgain = function (o) {
+	aviato.offcanvas.hide();
+	let trigger = $(o).data('trigger');
+	$(trigger).data('dyn', $(o).data('dyn'));
+	//wait to close the offcanvas...
+	setTimeout(function(){
+			//submit form again with dynamic option
+			aviato.on.click(trigger);
+		}, 500
+	);
+}
 
 
 aviato.call.ajax = function(o) {
@@ -334,14 +389,26 @@ aviato.call.ajax = function(o) {
 			o.on.error(XMLHttpRequest, textStatus, errorThrown);
 		}
 	}
-	ajaxSettings.success = function(data, textStatus, errorThrown) {
-		if (o.on.success !== undefined) {
-			o.on.success(data, textStatus, errorThrown);
+
+	ajaxSettings.success = function (data, textStatus, jqXHR) {
+		//redirect if location parameter is present
+		if(data.location !== undefined) {
+			location = data.location;
 		}
-		if (data.success !== true) {
-			$.each(data.log, function() {
-				aviato.display.alert(this);
-			})
+
+		//diplay data on target if it is string (most cases)
+		if (typeof data.data === 'string' || data.data instanceof String) {
+			aviato.display.content(data.data);
+		}
+
+		//display error from logs
+		if (data.success !== true || (o.verbose !== undefined && o.verbose === true)) {
+			aviato.display.logs(data.log);
+		}
+
+		//call succes function if defined
+		if (o.on.success !== undefined) {
+			o.on.success(data, textStatus, jqXHR);
 		}
 	}
 	ajaxSettings.complete = function(jqXHR, textStatus) {
@@ -365,29 +432,55 @@ aviato.call.ajax = function(o) {
 
 
 aviato.display.content = function(data) {
-	$(this.success.selector).html(data.data).removeClass("pending");
-	aviato.bind(this.success.selector + ' ');
+	if (this.selector !== undefined) {
+		$(this.selector).html(data);
+		$(this.selector).removeClass("pending");
+		aviato.bind(this.selector + ' ');
+	}
+	delete this.selector;
 };
 
 
-aviato.display.alert = function(data) {
+aviato.display.logs = function(logs, targetSelector = '#alerts') {
+	$.each(logs, function() {
+		aviato.display.alert(this, targetSelector);
+	})
+	aviato.offcanvas.show();
+}
+
+
+aviato.display.alert = function(data, targetSelector = '#alerts') {
 	var style = data.type;
 	if (style === 'error') {
 		style = 'danger';
 	}
 
-	if ($('#alerts').length === 0) {
-		$('body').append('<div id="alerts" class="p-3"></div>');
+	if ($(targetSelector).length === 0) {
+		$('body').append('<div id="alerts" class="p-3" data-role="alerts"></div>');
 	}
 
 	let alertHtml = ''
-		+ '<div class="alert alert-' + data.type + ' alert-dismissible" role="alert">'
+		+ '<div class="alert alert-' + style + ' alert-dismissible" role="alert">'
 		+ '<span>' + data.message + '</span>'
 		+ '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>'
 		+ '</div>';
 
-	$('#alerts').append(alertHtml);
+	$(targetSelector).append(alertHtml);
 };
+
+/**
+Bind sort using list js
+ */
+aviato.fn.sort = function(triggerId){
+	var a = [];
+	$('#' + triggerId + ' th>button.sort').each(function(){a.push($(this).data('sort'))});
+
+	var options = {
+		valueNames: a
+	};
+
+	var table = new List(triggerId, options);
+}
 
 /*
 $(function() {
