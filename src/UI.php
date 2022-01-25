@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.10
- * @since  2022-01-10 22:43:07
+ * @version 00.22.11
+ * @since  2022-01-25 16:19:30
  *
  */
 declare(strict_types = 1);
@@ -74,7 +74,7 @@ class UI
 	 *        wrapper: true | false, specify if the section content is wrapped in html element
 	 *        tag: section, the html element tag
 	 * @param boolean $return (optional) default = false
-	 *        The section content is returned only, not displayed
+	 *        If true the section content is returned only, not displayed
 	 * @return string
 	 */
 	public function Section($sectionName, $properties = [], $return = false)
@@ -108,28 +108,31 @@ class UI
 			];
 		}
 
-		if (!\in_array($properties['type'], ['script'], true)) {
+		if (! \in_array($properties['type'], [
+			'script'
+		], true)) {
 			$attributes['class'][] = 'sec-'.$properties['type'].'-'.$sectionName;
 		}
 
 		if (count($attributes['class']) > 0) {
 			$attributes['class'] = implode(' ', $attributes['class']);
+		} else {
+			unset($attributes['class']);
 		}
-		else {
-			unset ($attributes['class']);
-		}
-
 
 		// id
-		if (!\in_array($properties['type'], ['box', 'script'], true)) {
+		if (! \in_array($properties['type'], [
+			'box',
+			'script'
+		], true)) {
 			$attributes['id'] = $properties['id'];
 		}
 
 		// order attributes a-z
 		ksort($attributes);
 
-		//overwrite tag for case of inline script
-		if ($properties['type'] === 'script'){
+		// overwrite tag for case of inline script
+		if ($properties['type'] === 'script') {
 			$properties['wrapper'] = true;
 			$properties['tag'] = 'script';
 		}
@@ -139,17 +142,18 @@ class UI
 		}
 
 		// generate content:
-		$path = implode(DIRECTORY_SEPARATOR, [
-			$properties['root'],
-			$properties['folder'],
-			$sectionName.'.'.$properties['type']
-		]);
+		$path = implode(DIRECTORY_SEPARATOR,
+			[
+				$properties['root'],
+				$properties['folder'],
+				$sectionName.'.'.$properties['type']
+			]);
 		switch ($properties['type']) {
 			case 'htm':
 			case 'html':
 				$content = @file_get_contents($path);
 				if ($content === false) {
-					$this->log->trace('Missing html file on inclide in [section]: '.$path, LOG_ERR);
+					$this->log->trace('Missing html file on include in [section]: '.$path, LOG_ERR);
 				} else {
 					echo $content;
 				}
@@ -158,7 +162,12 @@ class UI
 			case 'php':
 			case 'phtml':
 				if ((@include $path) === false) {
-					$this->log->trace('Missing php file on inclide in [section]:'.$path);
+					$message = 'Missing php file on include in [section]:'.$path;
+					if (method_exists($this->log, 'trace')) {
+						$this->log->trace($message);
+					} else {
+						echo $message;
+					}
 				}
 				break;
 
@@ -176,16 +185,22 @@ class UI
 							$sectionName
 						]);
 					} else {
+						$message = 'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName;
+
 						if (method_exists($this->response, 'log')) {
-							$this->response->log('UI: Missing object definition', 'warning', 251);
+							$this->response->log($message, 'warning', 251);
 						} else {
-							$this->log->trace('UI: Missing object definition: '.$properties['obj'].'::'.$sectionName);
+							if (method_exists($this->log, 'trace')) {
+								$this->log->trace($message);
+							} else {
+								echo $message;
+							}
 						}
 					}
 				}
 				break;
 
-			//inline script
+			// inline script
 			case 'script':
 				$path = \str_replace('.script', '.js', $path);
 				$content = @file_get_contents($path);
@@ -352,15 +367,13 @@ class UI
 
 		// - content
 		if (count($this->content) > 0) {
-			foreach ($this->content as $content) {
-				echo $content;
-			}
+			echo implode('', $this->content);
 		}
 
 		// JavaScript before the body end
 		echo PHP_EOL;
 		if ($opt['includeAviJs']) {
-			$this->page['javascript'][99] = [
+			$this->page['javascript']['99avi'] = [
 				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AVI_JS_MD5.'-min.js'
 			];
 		}
