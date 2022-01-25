@@ -1,4 +1,8 @@
 Changelog
+v.0.22.11 - update UI:
+ - avi.js index changed from 999 to '999avi'
+ - error handlers for missing sections in case of missing log
+
 v.0.22.10 - [omicron] transitional for bootstrap 5.1
 
 v.0.7.9 - js update aviato.display.alert to use bootstrap v.5
