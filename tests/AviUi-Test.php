@@ -115,7 +115,7 @@ final class testAviatoUi extends TestCase
 		$this->assertEquals($test, $response);
 
 		//Missing php section no log message
-		$aviUi -> log = null;
+		$aviUi -> log = '';
 		$response = $aviUi->Section('missing', [
 			'type' => 'php',
 			'wrapper' => false
@@ -141,7 +141,7 @@ final class testAviatoUi extends TestCase
 		$test = '';
 		$this->assertEquals($test, $response);
 
-		$aviUi -> log = null;
+		$aviUi -> log = '';
 		$response = $aviUi->Section('missingObject', [
 			'wrapper' => false
 		], true);
