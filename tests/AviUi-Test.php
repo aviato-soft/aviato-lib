@@ -114,6 +114,16 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
+		//Missing php section no log message
+		$aviUi -> log = null;
+		$response = $aviUi->Section('missing', [
+			'type' => 'php',
+			'wrapper' => false
+		], true);
+		$test = 'Missing php file on include in [section]:'.dirname(dirname(__FILE__)).'/src/sections/missing.php';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
 		// Missing object
 		$aviUi = new AviUi();
 		$response = $aviUi->Section('missingObject', [
@@ -123,7 +133,6 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
-
 		// section type = Object undefined
 		$aviUi->response = 'test22';
 		$response = $aviUi->Section('test7', [
@@ -131,6 +140,16 @@ final class testAviatoUi extends TestCase
 		], true);
 		$test = '';
 		$this->assertEquals($test, $response);
+
+		$aviUi -> log = null;
+		$response = $aviUi->Section('missingObject', [
+			'wrapper' => false
+		], true);
+		$test = 'UI: Missing object definition: Sections::missingObject';
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($test, $response);
+
+
 
 		//Inline SCRIPT section
 		$aviUi = new AviUi();
