@@ -1,12 +1,13 @@
-dist: focal
 
 language: php
-
+dist: focal
 php:
-# - 7.3
-  - 7.4
-  - 8.0
-  - 8.1
+  - '8.1'
+  - '8.0'
+  - '7.4'
+  - '7.3'
+
+
 
 # blocklist
 branches:
