@@ -117,6 +117,27 @@ aviato.fn.localStorageToForm = function(selector) {
 
 
 /**
+ * Return the function from string.
+ * It parse the parents chain in case of one or multiple parents.
+ */
+aviato.fn.method = function(fname) {
+	var fn;
+	if (typeof fname === 'string' || fname instanceof String) {
+		if (fname.indexOf('.') !== -1) {
+			fname = fname.split('.');
+			fn = window[fname[0]];
+			for (var i = 1; i < fname.length; i++) {
+				fn = fn[fname[i]];
+			}
+		}
+		else {
+			fn = window[fname];
+		}
+	}
+	return fn;
+}
+
+/**
  * Check if we are on xs(mobile) resolution mode, it is based to navbar to work fine
  * DO NOT use it if there is not a navbar on the page because will return always false
  * @returns {Boolean}
@@ -241,10 +262,14 @@ aviato.jq.element.button = function(button, selector) {
 
 
 aviato.on.click = function(oTrigger) {
-	if ($(oTrigger).data('action') !== undefined) {
+	let $trigger = $(oTrigger);
+	if ($trigger.data('action') !== undefined) {
+		//visualy enable spinner
+		$trigger.find('[data-role="spinner"]').removeClass('d-none');
+		$trigger.find('[data-role="btn-icon"]').addClass('d-none');
+
+
 		var action = {
-			data: aviato.fn.filterProperties($(oTrigger).data()),
-			on: {},
 			ajax: {
 				async: true,
 				cache: false,
@@ -253,14 +278,17 @@ aviato.on.click = function(oTrigger) {
 					'cache-control': 'no-cache'
 				},
 				type: 'POST'
-			}
+			},
+			data: aviato.fn.filterProperties($trigger.data()),
+			on: {},
+			trigger: $trigger
 		};
 
-		var target = $(oTrigger).data('target');
+		var target = $trigger.data('target');
 
-		switch ($(oTrigger).data('action')) {
+		switch ($trigger.data('action')) {
 			case 'section':
-				action.data.section = $(oTrigger).data('section');
+				action.data.section = $trigger.data('section');
 				if (target === undefined) {
 					target = 'main';
 					action.data.target = target;
@@ -273,7 +301,7 @@ aviato.on.click = function(oTrigger) {
 				action.ajax.enctype = 'multipart/form-data';
 				action.ajax.processData = false;
 
-				var oForm = $(oTrigger).closest("form")[0];
+				var oForm = $trigger.closest("form")[0];
 
 				//create form data object
 				var formData = new FormData();
@@ -302,8 +330,8 @@ aviato.on.click = function(oTrigger) {
 				break;
 		}
 
-		if ($(oTrigger).data('serialize') !== undefined && $(oTrigger).data('serialize') === true) {
-			var dataForm = $(oTrigger).closest("form").serializeArray();
+		if ($trigger.data('serialize') !== undefined && $trigger.data('serialize') === true) {
+			var dataForm = $trigger.closest("form").serializeArray();
 			$(dataForm).each(function() {
 				action.data[this.name] = this.value;
 			})
@@ -315,47 +343,35 @@ aviato.on.click = function(oTrigger) {
 		}
 
 //clenup dynamic data:
-		if ($(oTrigger).data('dyn') !== undefined) {
-			$(oTrigger).removeData('dyn');
+		if ($trigger.data('dyn') !== undefined) {
+			$trigger.removeData('dyn');
 		}
 
-		if ($(oTrigger).data('before') !== undefined) {
-			action.before = $(oTrigger).data('before');
+		if ($trigger.data('before') !== undefined) {
+			action.before = $trigger.data('before');
 		}
 
-		if ($(oTrigger).data('success') !== undefined) {
-			var fname = $(oTrigger).data('success')
-			if (typeof fname === 'string' || fname instanceof String) {
-				if (fname.indexOf('.') !== -1) {
-					fname = fname.split('.');
-					action.on.success = window[fname[0]];
-					for (var i = 1; i < fname.length; i++) {
-						action.on.success = action.on.success[fname[i]];
-					}
-				}
-				else {
-					action.on.success = window[fname];
-				}
-			}
+		if ($trigger.data('success') !== undefined) {
+			action.on.success = aviato.fn.method($trigger.data('success'));
 		}
 
-		if ($(oTrigger).data('complete') !== undefined) {
-			action.on.complete = window[$(oTrigger).data('complete')];
+		if ($trigger.data('complete') !== undefined) {
+			action.on.complete = aviato.fn.method($trigger.data('complete'));
 		}
 
-		if ($(oTrigger).data('error') !== undefined) {
-			action.on.error = window[$(oTrigger).data('error')];
+		if ($trigger.data('error') !== undefined) {
+			action.on.error = aviato.fn.method($trigger.data('error'));
 		}
 
-		if ($(oTrigger).data('url') !== undefined) {
-			action.url = $(oTrigger).data('url');
+		if ($trigger.data('url') !== undefined) {
+			action.url = $trigger.data('url');
 		}
 		else {
 			action.url = location.href;
 		}
 
-		if ($(oTrigger).data('verbose') !== undefined) {
-			action.verbose = ($(oTrigger).data('verbose') === true);
+		if ($trigger.data('verbose') !== undefined) {
+			action.verbose = ($trigger.data('verbose') === true);
 		}
 
 		aviato.call.ajax(action);
@@ -380,9 +396,22 @@ aviato.call.ajax = function(o) {
 	if (o === undefined) {
 		return false;
 	}
+	
+	let $trigger = $(o.trigger);
 
 	if (o.before !== undefined) {
 		o.before(o);
+		//visualy show spinner
+		$trigger.find('[data-role="spinner"]').removeClass('d-none');
+		$trigger.find('[data-role="btn-icon"]').addClass('d-none');
+		
+		//visualy disable element
+		if ($trigger.prop('tagName') === 'A') {
+			$trigger.addClass('disabled')
+		}
+		if ($trigger.prop('tagName') === 'BUTTON') {
+			$trigger.prop('disabled', true);
+		}
 	}
 	var ajaxSettings = o.ajax;
 	ajaxSettings.data = o.data;
@@ -414,6 +443,18 @@ aviato.call.ajax = function(o) {
 		}
 	}
 	ajaxSettings.complete = function(jqXHR, textStatus) {
+		//visualy hide spinner
+		$trigger.find('[data-role="spinner"]').addClass('d-none');
+		$trigger.find('[data-role="btn-icon"]').removeClass('d-none');
+		
+		//visualy disable element
+		if ($trigger.prop('tagName') === 'A') {
+			$trigger.removeClass('disabled')
+		}
+		if ($trigger.prop('tagName') === 'BUTTON') {
+			$trigger.prop('disabled', false);
+		}
+		
 		if (o.on.complete !== undefined) {
 			o.on.complete(jqXHR, textStatus);
 		}

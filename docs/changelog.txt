@@ -1,4 +1,8 @@
 Changelog
+v.0.22.12 - add feedback on ajax triggers
+	- spinners
+	- disable element
+
 v.0.22.11 - update UI:
  - avi.js index changed from 999 to '999avi'
  - error handlers for missing sections in case of missing log
