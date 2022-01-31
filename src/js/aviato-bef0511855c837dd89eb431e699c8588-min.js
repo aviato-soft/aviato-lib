@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.22.11 from 2022-01-25 16:19:30.
+Aviato-Lib.js, build #00.22.12 from 2022-01-31 17:36:36.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -29,7 +29,10 @@ aviato.fn.atos=function(a,p){var i,r='',iCount=a.length;for(i=0;i<iCount;i++){r+
 return r;};aviato.fn.filterProperties=function(obj){let entries=Object.entries(obj);let filter=entries.filter(function(item){return(typeof(item[1])==="number"||typeof(item[1])==="string")});return(Object.fromEntries(filter));}
 aviato.fn.formToLocalStorage=function(selector){var oFormValues=$(selector).serializeArray();localStorage.setItem(selector,JSON.stringify(oFormValues));};aviato.fn.getUrlVars=function(sUrl){if(typeof(sUrl)==='undefined'){sUrl=window.location.href;}
 var vars=[],hash;var hashes=sUrl.slice(sUrl.indexOf('?')+1).split('&');for(var i=0;i<hashes.length;i++){hash=hashes[i].split('=');vars.push(hash[0]);vars[hash[0]]=hash[1];}
-return vars;};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};aviato.bootstrap.showCollapseByLocationHash=function(parentId,closeOthers){if(closeOthers===undefined){closeOthers=false;}
+return vars;};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.fn.method=function(fname){var fn;if(typeof fname==='string'||fname instanceof String){if(fname.indexOf('.')!==-1){fname=fname.split('.');fn=window[fname[0]];for(var i=1;i<fname.length;i++){fn=fn[fname[i]];}}
+else{fn=window[fname];}}
+return fn;}
+aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};aviato.bootstrap.showCollapseByLocationHash=function(parentId,closeOthers){if(closeOthers===undefined){closeOthers=false;}
 if(window.location.hash.length>1){if($('#'+parentId+' a[href="'+window.location.hash+'"]').data('toggle')==='collapse'){if(closeOthers===true){$('#'+parentId+' .panel-collapse.in').collapse('hide');}
 if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('show');}}}};aviato.bootstrap.addCollapseItem=function(oItemProperties,bAppendToParent){if(bAppendToParent===undefined){bAppendToParent=false;}
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
@@ -37,32 +40,33 @@ else{return item;}};aviato.bind=function(selector){if(selector===undefined){sele
 else{selector+=' ';}
 $(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
-return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){if($(oTrigger).data('action')!==undefined){var action={data:aviato.fn.filterProperties($(oTrigger).data()),on:{},ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'}};var target=$(oTrigger).data('target');switch($(oTrigger).data('action')){case'section':action.data.section=$(oTrigger).data('section');if(target===undefined){target='main';action.data.target=target;}
-$(target).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$(oTrigger).closest("form")[0];var formData=new FormData();for(var key in action.data){formData.append(key,action.data[key]);}
+return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){let $trigger=$(oTrigger);if($trigger.data('action')!==undefined){$trigger.find('[data-role="spinner"]').removeClass('d-none');$trigger.find('[data-role="btn-icon"]').addClass('d-none');var action={ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache'},type:'POST'},data:aviato.fn.filterProperties($trigger.data()),on:{},trigger:$trigger};var target=$trigger.data('target');switch($trigger.data('action')){case'section':action.data.section=$trigger.data('section');if(target===undefined){target='main';action.data.target=target;}
+$(target).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$trigger.closest("form")[0];var formData=new FormData();for(var key in action.data){formData.append(key,action.data[key]);}
 formData.append('handler',$(oForm).data('handler'));dataForm=$(oForm).serializeArray();$(dataForm).each(function(){formData.append(this.name,this.value);})
 $.each($('#fileUpload')[0].files,function(k,v){formData.append(k,v);})
 action.data=formData;break;}
-if($(oTrigger).data('serialize')!==undefined&&$(oTrigger).data('serialize')===true){var dataForm=$(oTrigger).closest("form").serializeArray();$(dataForm).each(function(){action.data[this.name]=this.value;})}
+if($trigger.data('serialize')!==undefined&&$trigger.data('serialize')===true){var dataForm=$trigger.closest("form").serializeArray();$(dataForm).each(function(){action.data[this.name]=this.value;})}
 if(target!==undefined){aviato.display.selector=target;$(aviato.display.selector).addClass('pending');}
-if($(oTrigger).data('dyn')!==undefined){$(oTrigger).removeData('dyn');}
-if($(oTrigger).data('before')!==undefined){action.before=$(oTrigger).data('before');}
-if($(oTrigger).data('success')!==undefined){var fname=$(oTrigger).data('success')
-if(typeof fname==='string'||fname instanceof String){if(fname.indexOf('.')!==-1){fname=fname.split('.');action.on.success=window[fname[0]];for(var i=1;i<fname.length;i++){action.on.success=action.on.success[fname[i]];}}
-else{action.on.success=window[fname];}}}
-if($(oTrigger).data('complete')!==undefined){action.on.complete=window[$(oTrigger).data('complete')];}
-if($(oTrigger).data('error')!==undefined){action.on.error=window[$(oTrigger).data('error')];}
-if($(oTrigger).data('url')!==undefined){action.url=$(oTrigger).data('url');}
+if($trigger.data('dyn')!==undefined){$trigger.removeData('dyn');}
+if($trigger.data('before')!==undefined){action.before=$trigger.data('before');}
+if($trigger.data('success')!==undefined){action.on.success=aviato.fn.method($trigger.data('success'));}
+if($trigger.data('complete')!==undefined){action.on.complete=aviato.fn.method($trigger.data('complete'));}
+if($trigger.data('error')!==undefined){action.on.error=aviato.fn.method($trigger.data('error'));}
+if($trigger.data('url')!==undefined){action.url=$trigger.data('url');}
 else{action.url=location.href;}
-if($(oTrigger).data('verbose')!==undefined){action.verbose=($(oTrigger).data('verbose')===true);}
+if($trigger.data('verbose')!==undefined){action.verbose=($trigger.data('verbose')===true);}
 aviato.call.ajax(action);}};aviato.on.clickAgain=function(o){aviato.offcanvas.hide();let trigger=$(o).data('trigger');$(trigger).data('dyn',$(o).data('dyn'));setTimeout(function(){aviato.on.click(trigger);},500);}
 aviato.call.ajax=function(o){if(o===undefined){return false;}
-if(o.before!==undefined){o.before(o);}
+let $trigger=$(o.trigger);if(o.before!==undefined){o.before(o);$trigger.find('[data-role="spinner"]').removeClass('d-none');$trigger.find('[data-role="btn-icon"]').addClass('d-none');if($trigger.prop('tagName')==='A'){$trigger.addClass('disabled')}
+if($trigger.prop('tagName')==='BUTTON'){$trigger.prop('disabled',true);}}
 var ajaxSettings=o.ajax;ajaxSettings.data=o.data;ajaxSettings.error=function(XMLHttpRequest,textStatus,errorThrown){if(o.on.error!==undefined){o.on.error(XMLHttpRequest,textStatus,errorThrown);}}
 ajaxSettings.success=function(data,textStatus,jqXHR){if(data.location!==undefined){location=data.location;}
 if(typeof data.data==='string'||data.data instanceof String){aviato.display.content(data.data);}
 if(data.success!==true||(o.verbose!==undefined&&o.verbose===true)){aviato.display.logs(data.log);}
 if(o.on.success!==undefined){o.on.success(data,textStatus,jqXHR);}}
-ajaxSettings.complete=function(jqXHR,textStatus){if(o.on.complete!==undefined){o.on.complete(jqXHR,textStatus);}}
+ajaxSettings.complete=function(jqXHR,textStatus){$trigger.find('[data-role="spinner"]').addClass('d-none');$trigger.find('[data-role="btn-icon"]').removeClass('d-none');if($trigger.prop('tagName')==='A'){$trigger.removeClass('disabled')}
+if($trigger.prop('tagName')==='BUTTON'){$trigger.prop('disabled',false);}
+if(o.on.complete!==undefined){o.on.complete(jqXHR,textStatus);}}
 ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){if(this.selector!==undefined){$(this.selector).html(data);$(this.selector).removeClass("pending");aviato.bind(this.selector+' ');}
 delete this.selector;};aviato.display.logs=function(logs,targetSelector='#alerts'){$.each(logs,function(){aviato.display.alert(this,targetSelector);})
 aviato.offcanvas.show();}
