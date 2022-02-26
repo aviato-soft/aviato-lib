@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.22.12 from 2022-01-31 17:36:36.
+Aviato-Lib.js, build #00.22.13 from 2022-02-26 17:11:47.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -32,6 +32,12 @@ var vars=[],hash;var hashes=sUrl.slice(sUrl.indexOf('?')+1).split('&');for(var i
 return vars;};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.fn.method=function(fname){var fn;if(typeof fname==='string'||fname instanceof String){if(fname.indexOf('.')!==-1){fname=fname.split('.');fn=window[fname[0]];for(var i=1;i<fname.length;i++){fn=fn[fname[i]];}}
 else{fn=window[fname];}}
 return fn;}
+aviato.fn.strech=function(o,p={}){let defaults={widthMargin:10,maxWidth:0,heightMargin:5,maxHeight:0,cloneId:'clone-'+o.id}
+for(let v in defaults){if(p[v]===undefined){p[v]=defaults[v];}}
+var elClone=document.getElementById(p.cloneId);if(elClone===null){elClone=document.createElement('pre');elClone.setAttribute('id',p.cloneId);elClone.style.display="inline-block";elClone.style.position="absolute";elClone.style.right="99999px";elClone.style.border="1px solid #99f";elClone.style.padding="2px";elClone.style.zIndex="-1";document.body.appendChild(elClone);o.addEventListener("blur",function(){elClone.parentElement.removeChild(elClone)},{once:true});}
+elClone.innerText=(o.value);let recall=false;if(p.maxWidth!==-1){if(p.maxWidth==0||o.clientWidth<p.maxWidth){if((elClone.clientWidth+p.widthMargin)>o.clientWidth){o.cols++;recall=true;}}}
+if(p.maxHeight!==-1){if(p.maxHeight==0||o.clientHeight<p.maxHeight){if((elClone.clientHeight+p.heightMargin)>o.clientHeight){o.rows++;recall=true;}}}
+if(recall){aviato.fn.strech(o,p);}}
 aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};aviato.bootstrap.showCollapseByLocationHash=function(parentId,closeOthers){if(closeOthers===undefined){closeOthers=false;}
 if(window.location.hash.length>1){if($('#'+parentId+' a[href="'+window.location.hash+'"]').data('toggle')==='collapse'){if(closeOthers===true){$('#'+parentId+' .panel-collapse.in').collapse('hide');}
 if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('show');}}}};aviato.bootstrap.addCollapseItem=function(oItemProperties,bAppendToParent){if(bAppendToParent===undefined){bAppendToParent=false;}
