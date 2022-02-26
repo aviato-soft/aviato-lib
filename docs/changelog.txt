@@ -1,7 +1,12 @@
 Changelog
-v.0.22.12 - add feedback on ajax triggers
-	- spinners
-	- disable element
+v.0.22.13
+	- add aviato.fn.strech
+
+
+v.0.22.12
+	- add feedback on ajax triggers
+		- spinners
+		- disable element
 
 v.0.22.11 - update UI:
  - avi.js index changed from 999 to '999avi'
