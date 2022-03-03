@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.13
- * @since  2022-02-26 17:11:47
+ * @version 00.22.14
+ * @since  2022-03-03 21:00:54
  *
  */
 declare(strict_types = 1);
@@ -152,7 +152,7 @@ class Tools
 	{
 		$result = '';
 
-		if (! is_array($array)) {
+		if (! is_array($array) || count($array) === 0) {
 			return $result;
 		}
 
