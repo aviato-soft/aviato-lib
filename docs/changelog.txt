@@ -1,4 +1,7 @@
 Changelog
+v.0.22.14
+	- use empty response on atos in case of empty array
+
 v.0.22.13
 	- add aviato.fn.strech
 
