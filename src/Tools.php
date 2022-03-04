@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.14
- * @since  2022-03-03 21:00:54
+ * @version 00.22.15
+ * @since  2022-03-04 18:31:50
  *
  */
 declare(strict_types = 1);
@@ -163,42 +163,43 @@ class Tools
 		if (! is_array($config)) {
 			$config = [];
 		}
+
 		$config = self::applyDefault($config, [
 			'startTag' => '{',
 			'endTag' => '}',
 			'isPrintFormat' => false
 		]);
 
-		if (! isset($array[0])) {
-			$data = [
-				0 => $array
-			];
+		if (! $config['isPrintFormat']) {
+			if (count($array, 0) === count($array, 1) || \is_string(current($array))) {
+				$data = [
+					0 => $array
+				];
+			} else {
+				$data = $array;
+			}
+			$keys = array_keys(current($data));
 		} else {
-			$data = $array;
-		}
-
-		if (\is_string($data[0])) {
-			//$data can be a list like: [0=>'apple', 1='orange', 2=>'pear']
-			$keys = [0];
-		}
-		else {
-			$keys = array_keys($data[0]);
-		}
-
-		if ($config['isPrintFormat'] && ! isset($config['nrArgs'])) {
-			$config['nrArgs'] = count($keys);
+			$data = array_values($array);
+			if (! isset($config['nrArgs'])) {
+				if (count($array, 0) === count($array, 1)) {
+					$config['nrArgs'] = 1;
+				} else {
+					$config['nrArgs'] = count(current($data));
+				}
+			}
 		}
 
 		foreach ($data as $v) {
 			if ($config['isPrintFormat']) {
-				if (is_string($v)) {
-					if ($config['nrArgs'] === 1) {
-						$result .= sprintf($pattern, $v);
+				if (is_array($v)) {
+					if (count($v) === $config['nrArgs']) {
+						$result .= vsprintf($pattern, $v);
 					}
 				}
 				else {
-					if (count($v) === $config['nrArgs']) {
-						$result .= vsprintf($pattern, $v);
+					if ($config['nrArgs'] === 1) {
+						$result .= sprintf($pattern, $v);
 					}
 				}
 			} else {
@@ -306,7 +307,7 @@ class Tools
 		}
 
 		$gdpr = json_decode($_COOKIE['gdpr']);
-		if (!\is_array($gdpr)) {
+		if (! \is_array($gdpr)) {
 			return false;
 		}
 
