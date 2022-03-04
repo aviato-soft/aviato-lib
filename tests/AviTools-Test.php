@@ -1,9 +1,8 @@
 <?php
 // Copyright 2014-present Aviato Soft. All Rights Reserved.
-
 declare(strict_types = 1);
 
-require_once dirname(__FILE__) . '/../vendor/autoload.php';
+require_once dirname(__FILE__).'/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\Tools as AviTools;
@@ -177,8 +176,7 @@ final class testAviatoTools extends TestCase
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
 
-
-		//test assertion list usage
+		// test assertion list usage = NON associative array
 		$array = [
 			0 => 'apple',
 			1 => 'orange',
@@ -186,19 +184,22 @@ final class testAviatoTools extends TestCase
 		];
 		$pattern = '<li>%s</li>';
 		$result = '<li>apple</li><li>orange</li><li>pear</li>';
-		$test = AviTools::atos($array, $pattern, ['isPrintFormat' => true]);
-
+		$test = AviTools::atos($array, $pattern, [
+			'isPrintFormat' => true
+		]);
+		$this->assertEquals($result, $test);
+		// var_dump($test); // <-- uncomment this line to see the result!
 
 		// test assertion missing one parameter usage:
 		$array = [
-			0 => [
+			'a' => [
 				'id' => 1,
 				'slug' => 'One'
 			],
-			1 => [
+			'b' => [
 				'id' => 2
 			],
-			2 => []
+			'x' => []
 		];
 		$pattern = '<p data-id="{id}">{slug}</p>';
 		$result = '<p data-id="1">One</p><p data-id="2">{slug}</p><p data-id="{id}">{slug}</p>';
@@ -256,11 +257,43 @@ final class testAviatoTools extends TestCase
 			]
 		];
 		$pattern = '<p data-id="{id}">{slug}</p>';
-		$result = '<p data-id="1">One</p>' . '<p data-id="2">array</p>' . '<p data-id="3">object</p>' .
+		$result = '<p data-id="1">One</p>'.'<p data-id="2">array</p>'.'<p data-id="3">object</p>'.
 			'<p data-id="4">true</p>';
 		$test = AviTools::atos($array, $pattern);
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
+
+		// test assertion invalid parameters types:
+		$testDateTime = new DateTime();
+		$array = [
+			'a1' => [
+				'id' => 1,
+				'slug' => 'One'
+			],
+			'a2' => [
+				'id' => "2",
+				'slug' => 'Two'
+			],
+			'a3' => [
+				'id' => 3.0,
+				'slug' => 'E3E'
+			],
+			3 => [
+				'id' => 4,
+				'slug' => true
+			]
+		];
+		$pattern = '<p data-id="{id}">{slug}</p>';
+		$result = implode('',
+			[
+				'<p data-id="1">One</p>',
+				'<p data-id="2">Two</p>',
+				'<p data-id="3">E3E</p>',
+				'<p data-id="4">true</p>'
+			]);
+		$test = AviTools::atos($array, $pattern);
+		$this->assertEquals($result, $test);
+//		var_dump($test); // <-- uncomment this line to see the result!
 
 		// test assertion invalid array return empty:
 		$array = false;
@@ -383,8 +416,8 @@ final class testAviatoTools extends TestCase
 			'id' => 1,
 			'slug' => 'One'
 		];
-		$pattern = '<p data-id="%s">%s</p>';
-		$result = '<p data-id="1">One</p>';
+		$pattern = '<p>%s</p>';
+		$result = '<p>1</p><p>One</p>';
 		$test = AviTools::atos($array, $pattern, [
 			'isPrintFormat' => true
 		]);
@@ -403,7 +436,7 @@ final class testAviatoTools extends TestCase
 		$microtime = microtime(true);
 		$test = AviTools::atos($array, $pattern);
 		$mt1 = microtime(true) - $microtime;
-		echo "\nATOS time for mustash:" . $mt1;
+		echo "\nATOS time for mustash:".$mt1;
 
 		$pattern = '<p data-id="%s">%s</p>';
 		$microtime = microtime(true);
@@ -411,15 +444,15 @@ final class testAviatoTools extends TestCase
 			'isPrintFormat' => true
 		));
 		$mt2 = microtime(true) - $microtime;
-		echo "\nATOS time for sprintf:" . $mt2;
+		echo "\nATOS time for sprintf:".$mt2;
 
 		$pattern = '<p data-id="{id}">{slug}</p>';
 		$microtime = microtime(true);
 		$test = AviTools::sprintaa($pattern, $array);
 		$mt3 = microtime(true) - $microtime;
-		echo "\nATOS time for sprintaa:" . $mt3;
+		echo "\nATOS time for sprintaa:".$mt3;
 
-		echo "\n sprintf is " . (int) ($mt1 / $mt2) . "x faster than mustash\n";
+		echo "\n sprintf is ".(int) ($mt1 / $mt2)."x faster than mustash\n";
 	}
 
 
@@ -479,27 +512,28 @@ final class testAviatoTools extends TestCase
 	public function testFn_isGdprSet(): void
 	{
 		$service = 'google';
-		$result = false; //gdpr cookie is not set => result = false
+		$result = false; // gdpr cookie is not set => result = false
 		$test = AviTools::isGdprSet($service);
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
 
 		$_COOKIE['gdpr'] = "invalid value";
-		$result = false; //gdpr cookie has not service => result = false
+		$result = false; // gdpr cookie has not service => result = false
 		$test = AviTools::isGdprSet($service);
 		$this->assertEquals($result, $test);
 
 		$_COOKIE['gdpr'] = "[]";
-		$result = false; //gdpr cookie has not service => result = false
+		$result = false; // gdpr cookie has not service => result = false
 		$test = AviTools::isGdprSet($service);
 		$this->assertEquals($result, $test);
 
 		$_COOKIE['gdpr'] = '["aviato","essential","facebook","google","tradetracker"]';
 
-		$result = true; //gdpr cookie has service => result = true
+		$result = true; // gdpr cookie has service => result = true
 		$test = AviTools::isGdprSet($service);
 		$this->assertEquals($result, $test);
 	}
+
 
 	public function testFn_Redirect(): void
 	{
@@ -517,7 +551,7 @@ final class testAviatoTools extends TestCase
 	{
 		$test = true;
 		$result = AviTools::validateDate('2013-09-11 13:12:11');
-		$this -> assertEquals($test, $result);
+		$this->assertEquals($test, $result);
 	}
 
 
