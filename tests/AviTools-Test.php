@@ -424,6 +424,30 @@ final class testAviatoTools extends TestCase
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
 
+
+		// test assertion missing one parameter usage with isPrintFormat:
+		$array = [
+			'x1' => [
+				'id' => 1,
+				'slug' => '<h1>One</h1>'
+			],
+			'x2' => [
+				'id' => 2,
+				'slug' => '<h2>Two</h2>'
+			]
+		];
+		$pattern = '<textarea data-id="{id}">{{slug}}</textarea>';
+		$result = implode('', [
+			'<textarea data-id="1">&lt;h1&gt;One&lt;/h1&gt;</textarea>',
+			'<textarea data-id="2">&lt;h2&gt;Two&lt;/h2&gt;</textarea>'
+		]);
+		$test = AviTools::atos($array, $pattern, [
+			'htmlentities' => true
+		]);
+		$this->assertEquals($result, $test);
+		//var_dump($test); // <-- uncomment this line to see the result!
+
+
 		// performance test
 		$array = [];
 		for ($i = 0; $i < 10000; $i ++) {
