@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.15
- * @since  2022-03-04 18:31:50
+ * @version 00.22.16
+ * @since  2022-03-05 18:29:18
  *
  */
 declare(strict_types = 1);
@@ -167,7 +167,8 @@ class Tools
 		$config = self::applyDefault($config, [
 			'startTag' => '{',
 			'endTag' => '}',
-			'isPrintFormat' => false
+			'isPrintFormat' => false,
+			'htmlentities' => false
 		]);
 
 		if (! $config['isPrintFormat']) {
@@ -213,11 +214,21 @@ class Tools
 								$v[$key] = $v[$key] ? 'true' : 'false';
 							}
 						}
-						if (is_string($v[$key])) {
-							$res = str_replace($config['startTag'].$key.$config['endTag'], $v[$key], $res);
-						} else {
-							$res = str_replace($config['startTag'].$key.$config['endTag'], gettype($v[$key]), $res);
+						if (!is_string($v[$key])) {
+							$value = \gettype($v[$key]);
 						}
+						else {
+							$value = $v[$key];
+						}
+
+						if ($config['htmlentities']){
+							$res = str_replace(
+								$config['startTag'].$config['startTag'].$key.$config['endTag'].$config['endTag'],
+								\htmlentities($value, ENT_QUOTES, "UTF-8"),
+								$res
+							);
+						}
+						$res = str_replace($config['startTag'].$key.$config['endTag'], $value, $res);
 					}
 				}
 				$result .= $res;
