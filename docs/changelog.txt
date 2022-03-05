@@ -1,4 +1,6 @@
 Changelog
+v.0.22.16
+	- add htmlentities on atos
 
 v.0.22.15
 	- fix atos bugs
