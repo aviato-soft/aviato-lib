@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.22.16 from 2022-03-05 18:29:18.
+Aviato-Lib.js, build #00.22.17 from 2022-03-22 18:51:01.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -73,7 +73,9 @@ if(o.on.success!==undefined){o.on.success(data,textStatus,jqXHR);}}
 ajaxSettings.complete=function(jqXHR,textStatus){$trigger.find('[data-role="spinner"]').addClass('d-none');$trigger.find('[data-role="btn-icon"]').removeClass('d-none');if($trigger.prop('tagName')==='A'){$trigger.removeClass('disabled')}
 if($trigger.prop('tagName')==='BUTTON'){$trigger.prop('disabled',false);}
 if(o.on.complete!==undefined){o.on.complete(jqXHR,textStatus);}}
-ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){if(this.selector!==undefined){$(this.selector).html(data);$(this.selector).removeClass("pending");aviato.bind(this.selector+' ');}
+ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){if(this.selector!==undefined){if($(this.selector).prop('tagName')==='INPUT'){$(this.selector).val(data);}
+else{$(this.selector).html(data);}
+$(this.selector).removeClass("pending");aviato.bind(this.selector+' ');}
 delete this.selector;};aviato.display.logs=function(logs,targetSelector='#alerts'){$.each(logs,function(){aviato.display.alert(this,targetSelector);})
 aviato.offcanvas.show();}
 aviato.display.alert=function(data,targetSelector='#alerts'){var style=data.type;if(style==='error'){style='danger';}

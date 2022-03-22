@@ -547,7 +547,12 @@ aviato.call.ajax = function(o) {
 
 aviato.display.content = function(data) {
 	if (this.selector !== undefined) {
-		$(this.selector).html(data);
+		if ($(this.selector).prop('tagName') === 'INPUT') {
+			$(this.selector).val(data);
+		}
+		else {
+			$(this.selector).html(data);
+		}
 		$(this.selector).removeClass("pending");
 		aviato.bind(this.selector + ' ');
 	}
