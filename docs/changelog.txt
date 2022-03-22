@@ -1,4 +1,7 @@
 Changelog
+v.0.22.17
+	- js update content will update values for inputs
+
 v.0.22.16
 	- add htmlentities on atos
 
