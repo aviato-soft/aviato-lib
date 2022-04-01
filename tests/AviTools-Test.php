@@ -487,6 +487,12 @@ final class testAviatoTools extends TestCase
 		$test = AviTools::dec('RnhnWDF3RXduUUF4RVFsOGQ5ancvdz0');
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
+
+		// test assertion for normal usage
+		$result = 'Aviato Soft';
+		$test = AviTools::dec('RnhnWDF3RXduUUF4RVFsOGQ5ancvd');
+		//var_dump($test); // <-- uncomment this line to see the result!
+		$this->assertEquals(false, $test);
 	}
 
 
