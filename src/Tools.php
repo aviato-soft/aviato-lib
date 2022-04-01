@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.17
- * @since  2022-03-22 18:51:01
+ * @version 00.22.18
+ * @since  2022-04-01 18:55:45
  *
  */
 declare(strict_types = 1);
@@ -283,9 +283,11 @@ class Tools
 	 */
 	public static function dec($q, $key = 'B1B2B65B5BBBA13CF5EC756CEF5055E6')
 	{
-		$qDecoded = rtrim(
-			openssl_decrypt(base64_decode($q.'='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16)), "\0");
-		return ($qDecoded);
+		$qDecoded = openssl_decrypt(base64_decode($q.'='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16));
+		if ($qDecoded === false) {
+			return false;
+		}
+		return rtrim($qDecoded, "\0");
 	}
 
 
