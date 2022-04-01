@@ -1,4 +1,7 @@
 Changelog
+v.0.22.18
+	- Tools::Dec return false instead of warning on bad decryption
+
 v.0.22.17
 	- js update content will update values for inputs
 
