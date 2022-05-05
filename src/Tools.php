@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.19
- * @since  2022-04-14 19:18:59
+ * @version 00.22.20
+ * @since  2022-05-05 14:03:45
  *
  */
 declare(strict_types = 1);
@@ -468,5 +468,24 @@ class Tools
 			implode("`,`", $columns)."`)) `".$name."` ";
 
 		return $sql;
+	}
+
+/**
+ * Build an email address using name + email
+ * @param string $email - valid email address
+ * @param string $name - optional name
+ * @return string email
+ */
+	public static function emailify($email, $name = null) {
+		//Sanitize email
+		$email = preg_replace("/[^a-zA-Z0-9_.-@]/u", '', $email);
+
+		//Sanitize name:
+		if (\is_string($name)) {
+			$name = preg_replace("/[^a-zA-Z0-9-_ ]/u", '', $name);
+			$email = sprintf('%s <%s>', $name, $email);
+		}
+
+		return $email;
 	}
 }

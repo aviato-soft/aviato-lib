@@ -1,4 +1,7 @@
 Changelog
+v.0.22.20
+	-add Tools:emailify just a basic sanitizer for email address
+
 v.0.22.19
 	Stand With Ukraine
 
