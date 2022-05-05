@@ -246,6 +246,11 @@ Search.appendIndex(
             "summary": "Return\u0020an\u0020mysql\u0020synthax\u0020temporary\u0020table\u0020based\u0020on\u0020values",
             "url": "classes/Avi-Tools.html#method_mysqlTableFromValues"
         },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003Aemailify\u0028\u0029",
+            "name": "emailify",
+            "summary": "Build\u0020an\u0020email\u0020address\u0020using\u0020name\u0020\u002B\u0020email",
+            "url": "classes/Avi-Tools.html#method_emailify"
+        },                {
             "fqsen": "\\Avi\\UI",
             "name": "UI",
             "summary": "User\u0020Interface\u0020class.",
