@@ -478,7 +478,7 @@ class Tools
  */
 	public static function emailify($email, $name = null) {
 		//Sanitize email
-		$email = preg_replace("/[^a-zA-Z0-9_.-@]/u", '', $email);
+		$email = preg_replace("/[^a-zA-Z0-9_.@-]/u", '', $email);
 
 		//Sanitize name:
 		if (\is_string($name)) {
