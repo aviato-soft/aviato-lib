@@ -1,4 +1,7 @@
 Changelog
+v.0.22.21
+	- fix Tools::emailify - allow minus (-) character for email
+
 v.0.22.20
 	-add Tools:emailify just a basic sanitizer for email address
 
