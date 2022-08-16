@@ -97,11 +97,14 @@ class Log
 				$messageHeader .= PHP_EOL . '>';
 			}
 
+			//backtrace
 			$backtrace = debug_backtrace();
-
-			$messageHeader .= 'file:' . $backtrace[1]['file'] . ' ' . 'at line:' . $backtrace[1]['line'] . ' ' . PHP_EOL .
-				'[class]' . $backtrace[2]['class'] . $backtrace[2]['type'] . $backtrace[2]['function'] . '{' .
-				print_r($backtrace[2]['args'], true) . '}' . PHP_EOL;
+			$messageHeader .= sprintf('file:%s at line:%s', $backtrace[1]['file'] ?? '-', $backtrace[1]['line'] ?? '-');
+			$messageHeader .= PHP_EOL;
+			$messageHeader .= sprintf('[class]%s{%s}', $backtrace[2]['class'] ?? '-', $backtrace[2]['type'] ?? '-');
+			$messageHeader .= PHP_EOL;
+			$messageHeader .= '[args]{'.print_r($backtrace[2]['args'] ?? [], true) . '}';
+			$messageHeader .= PHP_EOL;
 		}
 
 		if (is_array($message)) {
