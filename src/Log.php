@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.19
- * @since  2022-04-14 19:18:59
+ * @version 00.22.22
+ * @since  2022-08-16 18:13:46
  *
  */
 declare(strict_types = 1);
@@ -97,11 +97,14 @@ class Log
 				$messageHeader .= PHP_EOL . '>';
 			}
 
+			//backtrace
 			$backtrace = debug_backtrace();
-
-			$messageHeader .= 'file:' . $backtrace[1]['file'] . ' ' . 'at line:' . $backtrace[1]['line'] . ' ' . PHP_EOL .
-				'[class]' . $backtrace[2]['class'] . $backtrace[2]['type'] . $backtrace[2]['function'] . '{' .
-				print_r($backtrace[2]['args'], true) . '}' . PHP_EOL;
+			$messageHeader .= sprintf('file:%s at line:%s', $backtrace[1]['file'] ?? '-', $backtrace[1]['line'] ?? '-');
+			$messageHeader .= PHP_EOL;
+			$messageHeader .= sprintf('[class]%s{%s}', $backtrace[2]['class'] ?? '-', $backtrace[2]['type'] ?? '-');
+			$messageHeader .= PHP_EOL;
+			$messageHeader .= '[args]{'.print_r($backtrace[2]['args'] ?? [], true) . '}';
+			$messageHeader .= PHP_EOL;
 		}
 
 		if (is_array($message)) {
