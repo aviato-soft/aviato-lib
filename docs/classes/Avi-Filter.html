@@ -2,24 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>AviLib</title>
+            <title>Avi documentation</title>
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="../">
     <link rel="icon" href="images/favicon.ico"/>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/base.css">
-            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/template.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" integrity="sha256-ybRkN9dBjhcS2qrW1z+hfCxq+1aBdwyQM5wlQoQVt/0=" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism-okaidia.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.css">
                 <script src="https://cdn.jsdelivr.net/npm/fuse.js@3.4.6"></script>
         <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/js/all.min.js" integrity="sha256-0vuk8LXoyrmCjp1f0O300qo1M75ZQyhH9X3J6d+scmk=" crossorigin="anonymous"></script>
         <script src="js/search.js"></script>
         <script defer src="js/searchIndex.js"></script>
     </head>
 <body id="top">
     <header class="phpdocumentor-header phpdocumentor-section">
-    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">AviLib</a></h1>
+    <h1 class="phpdocumentor-title"><a href="" class="phpdocumentor-title__link">Avi documentation</a></h1>
     <input class="phpdocumentor-header__menu-button" type="checkbox" id="menu-button" name="menu-button" />
     <label class="phpdocumentor-header__menu-icon" for="menu-button">
         <i class="fas fa-bars"></i>
@@ -48,15 +53,21 @@
     Menu
 </label>
 <aside class="phpdocumentor-column -four phpdocumentor-sidebar">
-    
-    <section class="phpdocumentor-sidebar__category">
-        <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
-                                                <h4 class="phpdocumentor-sidebar__root-namespace"><a href="namespaces/avi.html"><abbr title="\Avi">Avi</abbr></a></h4>
-                <ul class="phpdocumentor-list">
-                                    </ul>
-                        </section>
+                    <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Namespaces</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="namespaces/avi.html" class="">Avi</a>
+</h4>
 
-    
+                        </section>
+                <section class="phpdocumentor-sidebar__category">
+            <h2 class="phpdocumentor-sidebar__category-header">Packages</h2>
+                                    <h4 class="phpdocumentor-sidebar__root-namespace">
+    <a href="packages/Application.html" class="">Application</a>
+</h4>
+
+                        </section>
+            
     <section class="phpdocumentor-sidebar__category">
         <h2 class="phpdocumentor-sidebar__category-header">Reports</h2>
                 <h3 class="phpdocumentor-sidebar__root-package"><a href="reports/deprecated.html">Deprecated</a></h3>
@@ -80,19 +91,25 @@
     Filter
 
     
+            <div class="phpdocumentor-element__package">
+            in package
+            <ul class="phpdocumentor-breadcrumbs">
+                                    <li class="phpdocumentor-breadcrumb"><a href="packages/Application.html">Application</a></li>
+                            </ul>
+        </div>
     
     
     </h2>
 
         <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">23</span>
-</aside>
+
+    </aside>
 
             <p class="phpdocumentor-summary">Filter class</p>
 
-    <section class="phpdocumentor-description"></section>
 
 
     <h5 class="phpdocumentor-tag-list__heading" id="tags">
@@ -109,7 +126,7 @@
 </section>
 
                                     </dd>
-                        </dl>
+                                            </dl>
 
 
 
@@ -125,119 +142,119 @@
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Avi-Filter.html#constant_FILTER_ACTIONS">FILTER_ACTIONS</a>
     <span>
-        &nbsp;= [&#039;validate&#039;, &#039;sanitize&#039;]                    </span>
+        &nbsp;= [&#039;validate&#039;, &#039;sanitize&#039;]                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Avi-Filter.html#constant_FILTER_DEF_GROUP_BY_TYPE">FILTER_DEF_GROUP_BY_TYPE</a>
     <span>
-        &nbsp;= 1                    </span>
+        &nbsp;= 1                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Avi-Filter.html#constant_FILTER_DEF_GROUP_BY_VAR">FILTER_DEF_GROUP_BY_VAR</a>
     <span>
-        &nbsp;= 2                    </span>
+        &nbsp;= 2                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Avi-Filter.html#constant_FILTER_DEF_INVALID">FILTER_DEF_INVALID</a>
     <span>
-        &nbsp;= 0                    </span>
+        &nbsp;= 0                            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="classes/Avi-Filter.html#constant_FILTER_INPUT_TYPE">FILTER_INPUT_TYPE</a>
     <span>
-        &nbsp;= [INPUT_POST, INPUT_GET, INPUT_COOKIE, INPUT_ENV, INPUT_SERVER]                    </span>
+        &nbsp;= [INPUT_POST, INPUT_GET, INPUT_COOKIE, INPUT_ENV, INPUT_SERVER]                            </span>
 </dt>
 <dd></dd>
 
-                <dt class="phpdocumentor-table-of-contents__entry -property -public">
+                    <dt class="phpdocumentor-table-of-contents__entry -property -public">
     <a href="classes/Avi-Filter.html#property_input">$input</a>
     <span>
-                &nbsp;: mixed            </span>
+                        &nbsp;: mixed            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Avi-Filter.html#property_data">$data</a>
     <span>
-                &nbsp;: mixed            </span>
+                        &nbsp;: mixed            </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Avi-Filter.html#property_definition">$definition</a>
     <span>
-                &nbsp;: mixed            </span>
+                        &nbsp;: mixed            </span>
 </dt>
 <dd></dd>
 
                 <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-Filter.html#method___construct">__construct()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-Filter.html#method_add">add()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-Filter.html#method_check">check()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_getDefinitionGroup">getDefinitionGroup()</a>
     <span>
-                        &nbsp;: string    </span>
+                                &nbsp;: string    </span>
 </dt>
 <dd>Determinate the definition group pattern (by variable | by input type } invalid)</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_parseDefinition">parseDefinition()</a>
     <span>
-                        &nbsp;: bool|array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: bool|array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Parse the definition array, return false on invalid definition</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_sanitizeData">sanitizeData()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd>Wrapper for finlter_var_array</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_transformDefGroupByVarToType">transformDefGroupByVarToType()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_validateAntiXss">validateAntiXss()</a>
     <span>
-                        &nbsp;: array&lt;string|int, mixed&gt;    </span>
+                                &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd></dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-Filter.html#method_validateInput">validateInput()</a>
     <span>
-                        &nbsp;: mixed    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 <dd>Simple wrapper for filter_input_array</dd>
 
@@ -258,22 +275,32 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">42</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FILTER_ACTIONS</span>
     = <span class="phpdocumentor-signature__default-value">[&#039;validate&#039;, &#039;sanitize&#039;]</span>
 </code>
 
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
@@ -283,22 +310,32 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">28</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FILTER_DEF_GROUP_BY_TYPE</span>
     = <span class="phpdocumentor-signature__default-value">1</span>
 </code>
 
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
@@ -308,22 +345,32 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">30</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FILTER_DEF_GROUP_BY_VAR</span>
     = <span class="phpdocumentor-signature__default-value">2</span>
 </code>
 
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
@@ -333,22 +380,32 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">26</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FILTER_DEF_INVALID</span>
-    = <span class="phpdocumentor-signature__default-value">""</span>
+    = <span class="phpdocumentor-signature__default-value">0</span>
 </code>
 
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article class="phpdocumentor-element -constant -public ">
@@ -358,22 +415,32 @@
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">32</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
-    <span class="phpdocumentor-signature__type">mixed</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">FILTER_INPUT_TYPE</span>
     = <span class="phpdocumentor-signature__default-value">[INPUT_POST, INPUT_GET, INPUT_COOKIE, INPUT_ENV, INPUT_SERVER]</span>
 </code>
 
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
             </section>
@@ -398,10 +465,11 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">40</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -410,8 +478,17 @@
     <span class="phpdocumentor-signature__name">$input</span>
      = <span class="phpdocumentor-signature__default-value">[]</span></code>
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article
@@ -428,10 +505,11 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">70</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -440,8 +518,17 @@
     <span class="phpdocumentor-signature__name">$data</span>
     </code>
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
                     <article
@@ -458,10 +545,11 @@
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">68</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
@@ -470,8 +558,17 @@
     <span class="phpdocumentor-signature__name">$definition</span>
     </code>
 
+        <section class="phpdocumentor-description"></section>
+
+        <section class="phpdocumentor-description"></section>
+
     
-    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
 </article>
             </section>
@@ -492,18 +589,18 @@
         <a href="classes/Avi-Filter.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">78</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -518,12 +615,17 @@
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -537,17 +639,19 @@
         <a href="classes/Avi-Filter.html#method_add" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">243</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">add</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input_type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filterVariable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">add</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$input_type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$action</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$filterVariable</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -555,31 +659,39 @@
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$action</span>
                 : <span class="phpdocumentor-signature__argument__return-type">string</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$filterVariable</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -593,17 +705,19 @@
         <a href="classes/Avi-Filter.html#method_check" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">251</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                <span class="phpdocumentor-signature__name">check</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">check</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -611,17 +725,23 @@
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -635,19 +755,19 @@
         <a href="classes/Avi-Filter.html#method_getDefinitionGroup" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">101</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Determinate the definition group pattern (by variable | by input type } invalid)</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">getDefinitionGroup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">getDefinitionGroup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -655,18 +775,22 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -680,19 +804,19 @@
         <a href="classes/Avi-Filter.html#method_parseDefinition" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">135</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Parse the definition array, return false on invalid definition</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">parseDefinition</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|array&lt;string|int, mixed&gt;</span></code>
+                    <span class="phpdocumentor-signature__name">parseDefinition</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">bool|array&lt;string|int, mixed&gt;</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -700,18 +824,22 @@
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">bool|array&lt;string|int, mixed&gt;</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -725,19 +853,19 @@
         <a href="classes/Avi-Filter.html#method_sanitizeData" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">215</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Wrapper for finlter_var_array</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">sanitizeData</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">sanitizeData</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -745,18 +873,22 @@
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -770,17 +902,19 @@
         <a href="classes/Avi-Filter.html#method_transformDefGroupByVarToType" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">151</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">transformDefGroupByVarToType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">transformDefGroupByVarToType</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$definition</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-    
+        <section class="phpdocumentor-description"></section>
+
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -788,17 +922,23 @@
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"></section>
+
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
             &mdash;
-            <section class="phpdocumentor-description"></section>
-
+        
     
 </article>
                     <article
@@ -812,20 +952,26 @@
         <a href="classes/Avi-Filter.html#method_validateAntiXss" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">197</span>
-</aside>
+
+    </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">validateAntiXss</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
-
-        <section class="phpdocumentor-description"></section>
+                    <span class="phpdocumentor-signature__name">validateAntiXss</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span></code>
 
     
     
+    
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">array&lt;string|int, mixed&gt;</span>
@@ -846,19 +992,19 @@
         <a href="classes/Avi-Filter.html#method_validateInput" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="Filter.php"><a href="files/filter.html"><abbr title="Filter.php">Filter.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Filter.php"><a href="files/src-filter.html"><abbr title="src/Filter.php">Filter.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">175</span>
-</aside>
+
+    </aside>
 
         <p class="phpdocumentor-summary">Simple wrapper for filter_input_array</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                <span class="phpdocumentor-signature__name">validateInput</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">validateInput</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$add_empty</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
@@ -866,12 +1012,17 @@
                 : <span class="phpdocumentor-signature__argument__return-type">bool</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"></section>
-
+                
             </dd>
             </dl>
 
     
+    <h5 class="phpdocumentor-tag-list__heading" id="tags">
+        Tags
+        <a href="#tags" class="headerlink"><i class="fas fa-link"></i></a>
+    </h5>
+    <dl class="phpdocumentor-tag-list">
+                                </dl>
 
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -882,6 +1033,98 @@
     
 </article>
             </section>
+
+        <div class="phpdocumentor-modal" id="source-view">
+    <div class="phpdocumentor-modal-bg" data-exit-button></div>
+    <div class="phpdocumentor-modal-container">
+        <div class="phpdocumentor-modal-content">
+            <pre style="max-height: 500px; overflow-y: scroll" data-src="files/src/Filter.php.txt" class="language-php line-numbers linkable-line-numbers"></pre>
+        </div>
+        <button data-exit-button class="phpdocumentor-modal__close">&times;</button>
+    </div>
+</div>
+
+    <script type="text/javascript">
+        (function () {
+            function loadExternalCodeSnippet(el, url, line) {
+                Array.prototype.slice.call(el.querySelectorAll('pre[data-src]')).forEach((pre) => {
+                    const src = url || pre.getAttribute('data-src').replace(/\\/g, '/');
+                    const language = 'php';
+
+                    const code = document.createElement('code');
+                    code.className = 'language-' + language;
+                    pre.textContent = '';
+                    pre.setAttribute('data-line', line)
+                    code.textContent = 'Loading…';
+                    pre.appendChild(code);
+
+                    var xhr = new XMLHttpRequest();
+
+                    xhr.open('GET', src, true);
+
+                    xhr.onreadystatechange = function () {
+                        if (xhr.readyState !== 4) {
+                            return;
+                        }
+
+                        if (xhr.status < 400 && xhr.responseText) {
+                            code.textContent = xhr.responseText;
+                            Prism.highlightElement(code);
+                            return;
+                        }
+
+                        if (xhr.status === 404) {
+                            code.textContent = '✖ Error: File could not be found';
+                            return;
+                        }
+
+                        if (xhr.status >= 400) {
+                            code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                            return;
+                        }
+
+                        code.textContent = '✖ Error: An unknown error occurred';
+                    };
+
+                    xhr.send(null);
+                });
+            }
+
+            const modalButtons = document.querySelectorAll("[data-modal]");
+            const openedAsLocalFile = window.location.protocol === 'file:';
+            if (modalButtons.length > 0 && openedAsLocalFile) {
+                console.warn(
+                    'Viewing the source code is unavailable because you are opening this page from the file:// scheme; ' +
+                    'browsers block XHR requests when a page is opened this way'
+                );
+            }
+
+            modalButtons.forEach(function (trigger) {
+                if (openedAsLocalFile) {
+                    trigger.setAttribute("hidden", "hidden");
+                }
+
+                trigger.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const modal = document.getElementById(trigger.dataset.modal);
+                    if (!modal) {
+                        console.error(`Modal with id "${trigger.dataset.modal}" could not be found`);
+                        return;
+                    }
+                    modal.classList.add("phpdocumentor-modal__open");
+
+                    loadExternalCodeSnippet(modal, trigger.dataset.src || null, trigger.dataset.line)
+                    const exits = modal.querySelectorAll("[data-exit-button]");
+                    exits.forEach(function (exit) {
+                        exit.addEventListener("click", function (event) {
+                            event.preventDefault();
+                            modal.classList.remove("phpdocumentor-modal__open");
+                        });
+                    });
+                });
+            });
+        })();
+    </script>
 
     </article>
                 <section data-search-results class="phpdocumentor-search-results phpdocumentor-search-results--hidden">
@@ -904,5 +1147,9 @@
     <script>
         cssVars({});
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/plugins/line-highlight/prism-line-highlight.min.js"></script>
 </body>
 </html>
