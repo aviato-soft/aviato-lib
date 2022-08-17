@@ -2,6 +2,12 @@
 
 ---
 
+> ## v.0.22.23
+> - remove documentation cache
+
+---
+
+
 > ## v.0.22.22
 > - add phpunit/php-code-coverage
 > - handling log backtrace level 2

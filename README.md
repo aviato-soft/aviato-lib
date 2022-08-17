@@ -28,8 +28,8 @@ avi-lib is licensed under [GNU LGPLv3.0](https://github.com/aviato-soft/aviato-l
 
 ## Links
 
-[Changelog](https://github.com/aviato-soft/aviato-lib/raw/master/docs/changelog.txt)
+[Changelog](https://github.com/aviato-soft/aviato-lib/raw/master/docs/changelog.md)
 |
-[Documentation](https://aviato-soft.github.io/aviato-lib/)
+[Documentation](https://github.com/aviato-soft/aviato-lib/raw/master/docs/index.html)
 |
 [Issues](https://github.com/aviato-soft/aviato-lib/issues)
