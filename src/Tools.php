@@ -469,4 +469,24 @@ class Tools
 
 		return $sql;
 	}
+
+
+	/**
+	 * Build an email address using name + email
+	 * @param string $email - valid email address
+	 * @param string $name - optional name
+	 * @return string email
+	 */
+	public static function emailify($email, $name = null) {
+		//Sanitize email
+		$email = preg_replace("/[^a-zA-Z0-9_.@-]/u", '', $email);
+
+		//Sanitize name:
+		if (\is_string($name)) {
+			$name = preg_replace("/[^a-zA-Z0-9-_ ]/u", '', $name);
+			$email = sprintf('%s <%s>', $name, $email);
+		}
+
+		return $email;
+	}
 }
