@@ -629,4 +629,16 @@ final class testAviatoTools extends TestCase
 		$this->assertEquals($result, $test);
 		// var_dump($test); // <-- uncomment this line to see the result!
 	}
+
+
+	public function testFn_emailify(): void
+	{
+		$name = 'John Doe';
+		$email = 'john@aviato.ro';
+		$test = sprintf('%s <%s>', $name, $email);
+		$result = AviTools::emailify($email, $name);
+
+		$this->assertEquals($result, $test);
+		// var_dump($result); // <-- uncomment this line to see the result!
+	}
 }
