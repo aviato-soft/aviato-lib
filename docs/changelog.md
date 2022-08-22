@@ -1,6 +1,11 @@
 # Changelog
 
 ---
+> ## v.0.22.24
+> - add Avi\Tools::emailify
+
+---
+
 
 > ## v.0.22.23
 > - remove documentation cache
