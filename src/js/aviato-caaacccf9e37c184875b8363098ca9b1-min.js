@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.22.23 from 2022-08-16 20:48:29.
+Aviato-Lib.js, build #00.22.24 from 2022-08-22 11:00:11.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
