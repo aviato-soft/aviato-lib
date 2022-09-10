@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+> ## v.0.22.25
+> - use jsonp for ajax calls to avoid Cross-Origin Read Blocking (CORB) for cross domains calls
+
+---
 > ## v.0.22.24
 > - add Avi\Tools::emailify
 
