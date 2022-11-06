@@ -344,11 +344,11 @@ aviato.on.click = function(oTrigger) {
 			ajax: {
 				async: true,
 				cache: false,
-				dataType: 'jsonp',
+				dataType: 'json',
 				headers: {
 					'cache-control': 'no-cache',
 					'Access-Control-Allow-Origin': '*',
-					'Content-Type':'application/json'
+					'Content-Type':'application/x-www-form-urlencoded',
 				},
 				type: 'POST'
 			},

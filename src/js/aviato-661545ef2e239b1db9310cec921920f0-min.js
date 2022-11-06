@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #00.22.25 from 2022-09-10 08:17:59.
+Aviato-Lib.js, build #00.22.26 from 2022-11-06 08:38:43.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -46,7 +46,7 @@ else{return item;}};aviato.bind=function(selector){if(selector===undefined){sele
 else{selector+=' ';}
 $(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
-return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){let $trigger=$(oTrigger);if($trigger.data('action')!==undefined){$trigger.find('[data-role="spinner"]').removeClass('d-none');$trigger.find('[data-role="btn-icon"]').addClass('d-none');var action={ajax:{async:true,cache:false,dataType:'jsonp',headers:{'cache-control':'no-cache','Access-Control-Allow-Origin':'*','Content-Type':'application/json'},type:'POST'},data:aviato.fn.filterProperties($trigger.data()),on:{},trigger:$trigger};var target=$trigger.data('target');switch($trigger.data('action')){case'section':action.data.section=$trigger.data('section');if(target===undefined){target='main';action.data.target=target;}
+return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){let $trigger=$(oTrigger);if($trigger.data('action')!==undefined){$trigger.find('[data-role="spinner"]').removeClass('d-none');$trigger.find('[data-role="btn-icon"]').addClass('d-none');var action={ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache','Access-Control-Allow-Origin':'*','Content-Type':'application/x-www-form-urlencoded',},type:'POST'},data:aviato.fn.filterProperties($trigger.data()),on:{},trigger:$trigger};var target=$trigger.data('target');switch($trigger.data('action')){case'section':action.data.section=$trigger.data('section');if(target===undefined){target='main';action.data.target=target;}
 $(target).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$trigger.closest("form")[0];var formData=new FormData();for(var key in action.data){formData.append(key,action.data[key]);}
 formData.append('handler',$(oForm).data('handler'));dataForm=$(oForm).serializeArray();$(dataForm).each(function(){formData.append(this.name,this.value);})
 $.each($('#fileUpload')[0].files,function(k,v){formData.append(k,v);})

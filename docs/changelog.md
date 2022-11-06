@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+> ## v.0.22.26
+> - use json for ajax calls to preserve the old compatibility
+
+
 > ## v.0.22.25
 > - use jsonp for ajax calls to avoid Cross-Origin Read Blocking (CORB) for cross domains calls
 
