@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.26
- * @since  2022-11-06 08:38:43
+ * @version 00.22.27
+ * @since  2022-11-16 12:25:32
  *
  */
 declare(strict_types = 1);
@@ -242,14 +242,15 @@ class Tools
 	/**
 	 * KISS function which convert an array to attributes
 	 *
-	 * @param array $array
-	 * @return string
+	 * @param array $array - the array of values
+	 * @param string $prefix - the prefix, need on some specific cases like data- or aria-
+	 * @return string - the resutled string of attributes+values concatenated by space.
 	 */
-	public static function atoattr($array = [])
+	public static function atoattr($array = [], $prefix = '')
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
-			$result .= $k.'="'.$v.'" ';
+			$result .= $prefix.$k.'="'.$v.'" ';
 		}
 		$result = rtrim($result, ' ');
 		return $result;
