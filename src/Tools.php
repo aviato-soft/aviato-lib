@@ -245,11 +245,11 @@ class Tools
 	 * @param array $array
 	 * @return string
 	 */
-	public static function atoattr($array = [])
+	public static function atoattr($array = [], $prefix = '')
 	{
 		$result = '';
 		foreach ($array as $k => $v) {
-			$result .= $k.'="'.$v.'" ';
+			$result .= $prefix.$k.'="'.$v.'" ';
 		}
 		$result = rtrim($result, ' ');
 		return $result;
