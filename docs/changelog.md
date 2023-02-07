@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+
+> ## v.0.23.01
+> - fix file upload encoding
+
 > ## v.0.22.27
 > - add prefix attribute to Tools\atoattr
 

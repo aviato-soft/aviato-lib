@@ -70,9 +70,9 @@ aviato.fn.atos = function(a, p) {
 /**
  * Filter properties from an object
  */
-aviato.fn.filterProperties = function (obj) {
+aviato.fn.filterProperties = function(obj) {
 	let entries = Object.entries(obj);
-	let filter = entries.filter(function (item){return (typeof(item[1]) === "number" || typeof(item[1]) === "string")});
+	let filter = entries.filter(function(item) { return (typeof (item[1]) === "number" || typeof (item[1]) === "string") });
 	return (Object.fromEntries(filter));
 }
 
@@ -135,6 +135,79 @@ aviato.fn.method = function(fname) {
 		}
 	}
 	return fn;
+}
+
+/**
+ * Strech a textarea by creating a hidden clone <pre> element
+ * Options:
+ * 	cloneId = the id of clonned pre element
+ *	maxWidth = -1 | 0 | int value in pixels
+ *	maxHeight = -1 | 0 | int value in pixels
+ *	widthMargin
+ *	heightMargin
+ */
+aviato.fn.strech = function(o, p = {}) {
+	let defaults = {
+		widthMargin: 10,
+		maxWidth: 0,
+		heightMargin: 5,
+		maxHeight: 0,
+		cloneId: 'clone-' + o.id
+	}
+
+	for (let v in defaults) {
+		if (p[v] === undefined) {
+			p[v] = defaults[v];
+		}
+	}
+
+	var elClone = document.getElementById(p.cloneId);
+	if (elClone === null) {
+		elClone = document.createElement('pre');
+		elClone.setAttribute('id', p.cloneId);
+		elClone.style.display = "inline-block";
+		elClone.style.position = "absolute";
+		elClone.style.right = "99999px";
+		elClone.style.border = "1px solid #99f";
+		elClone.style.padding = "2px";
+		elClone.style.zIndex = "-1";
+		document.body.appendChild(elClone);
+
+//remove element on textarea loose focus:
+		o.addEventListener ("blur", function (){
+			elClone.parentElement.removeChild(elClone)
+		}, {once: true});
+	}
+
+	elClone.innerText = (o.value);
+	let recall = false;
+
+	// -1 = ignore - not strech width
+	if (p.maxWidth !== -1) {
+		// 0 = no limit for strech width
+		if (p.maxWidth == 0 || o.clientWidth < p.maxWidth) {
+			if ((elClone.clientWidth + p.widthMargin) > o.clientWidth) {
+				o.cols++;
+				recall = true;
+			}
+		}
+	}
+
+	// -1 = ignore - not strech height
+	if (p.maxHeight !== -1) {
+		// 0 = no limit for strech height
+		if (p.maxHeight == 0 || o.clientHeight < p.maxHeight) {
+			if ((elClone.clientHeight + p.heightMargin) > o.clientHeight) {
+				o.rows++;
+				recall = true;
+			}
+		}
+	}
+
+	if(recall) {
+		aviato.fn.strech(o, p);
+	}
+
 }
 
 /**
@@ -234,13 +307,13 @@ aviato.bind = function(selector) {
 	else {
 		selector += ' ';
 	}
-	$(selector + '[data-action]').on('click', function () {
+	$(selector + '[data-action]').on('click', function() {
 		aviato.on.click(this);
 	});
 
 	if (this.offcanvas === undefined) {
 		this.offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
-		document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function () {
+		document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function() {
 			$('#alerts').html('');
 		})
 	}
@@ -275,7 +348,8 @@ aviato.on.click = function(oTrigger) {
 				cache: false,
 				dataType: 'json',
 				headers: {
-					'cache-control': 'no-cache'
+					'cache-control': 'no-cache',
+					'Access-Control-Allow-Origin': '*'
 				},
 				type: 'POST'
 			},
@@ -379,15 +453,15 @@ aviato.on.click = function(oTrigger) {
 };
 
 
-aviato.on.clickAgain = function (o) {
+aviato.on.clickAgain = function(o) {
 	aviato.offcanvas.hide();
 	let trigger = $(o).data('trigger');
 	$(trigger).data('dyn', $(o).data('dyn'));
 	//wait to close the offcanvas...
-	setTimeout(function(){
-			//submit form again with dynamic option
-			aviato.on.click(trigger);
-		}, 500
+	setTimeout(function() {
+		//submit form again with dynamic option
+		aviato.on.click(trigger);
+	}, 500
 	);
 }
 
@@ -396,7 +470,7 @@ aviato.call.ajax = function(o) {
 	if (o === undefined) {
 		return false;
 	}
-	
+
 	let $trigger = $(o.trigger);
 
 	if (o.before !== undefined) {
@@ -404,7 +478,7 @@ aviato.call.ajax = function(o) {
 		//visualy show spinner
 		$trigger.find('[data-role="spinner"]').removeClass('d-none');
 		$trigger.find('[data-role="btn-icon"]').addClass('d-none');
-		
+
 		//visualy disable element
 		if ($trigger.prop('tagName') === 'A') {
 			$trigger.addClass('disabled')
@@ -446,7 +520,7 @@ aviato.call.ajax = function(o) {
 		//visualy hide spinner
 		$trigger.find('[data-role="spinner"]').addClass('d-none');
 		$trigger.find('[data-role="btn-icon"]').removeClass('d-none');
-		
+
 		//visualy disable element
 		if ($trigger.prop('tagName') === 'A') {
 			$trigger.removeClass('disabled')
@@ -454,7 +528,7 @@ aviato.call.ajax = function(o) {
 		if ($trigger.prop('tagName') === 'BUTTON') {
 			$trigger.prop('disabled', false);
 		}
-		
+
 		if (o.on.complete !== undefined) {
 			o.on.complete(jqXHR, textStatus);
 		}
@@ -476,7 +550,12 @@ aviato.call.ajax = function(o) {
 
 aviato.display.content = function(data) {
 	if (this.selector !== undefined) {
-		$(this.selector).html(data);
+		if ($(this.selector).prop('tagName') === 'INPUT') {
+			$(this.selector).val(data);
+		}
+		else {
+			$(this.selector).html(data);
+		}
 		$(this.selector).removeClass("pending");
 		aviato.bind(this.selector + ' ');
 	}
