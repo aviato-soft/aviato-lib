@@ -347,8 +347,7 @@ aviato.on.click = function(oTrigger) {
 				dataType: 'json',
 				headers: {
 					'cache-control': 'no-cache',
-					'Access-Control-Allow-Origin': '*',
-					'Content-Type':'application/x-www-form-urlencoded',
+					'Access-Control-Allow-Origin': '*'
 				},
 				type: 'POST'
 			},
@@ -380,7 +379,7 @@ aviato.on.click = function(oTrigger) {
 				var formData = new FormData();
 
 				//add existing form data:
-				for (var key in action.data) {
+				for(var key in action.data) {
 					formData.append(key, action.data[key]);
 				}
 

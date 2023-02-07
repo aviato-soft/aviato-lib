@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.22.27
- * @since  2022-11-16 12:25:32
+ * @version 00.23.01
+ * @since  2023-02-07 12:49:36
  *
  */
 declare(strict_types = 1);
@@ -14,13 +14,13 @@ namespace Avi;
 
 const AVI_MAJOR = '00';
 
-const AVI_MINOR = '22';
+const AVI_MINOR = '23';
 
-const AVI_PATCH = '27';
+const AVI_PATCH = '01';
 
-const AVI_DATE = '2022-11-16 12:25:32';
+const AVI_DATE = '2023-02-07 12:49:36';
 
-const AVI_JS_MD5 = '661545ef2e239b1db9310cec921920f0';
+const AVI_JS_MD5 = '316fab9b63196beb9de42c7cac9c7bec';
 
 /**
  * Version class
