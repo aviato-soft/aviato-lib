@@ -18,20 +18,21 @@ final class testAviatoResponse extends TestCase
 	public function testFn_Construct(): void
 	{
 		$aviResponse = new AviResponse();
+		$this->assertIsObject($aviResponse);
 
 		// assert attribute action:
-		$this->assertObjectHasAttribute('action', $aviResponse);
+		$this->assertTrue(property_exists($aviResponse, 'action'));
 		$test = $aviResponse->action;
 		$this->assertNull($test);
 
 		// assert attribute data:
-		$this->assertObjectHasAttribute('data', $aviResponse);
+		$this->assertTrue(property_exists($aviResponse, 'data'));
 		$test = [];
 		$result = $aviResponse->data;
 		$this->assertEquals($test, $result);
 
 		// assert attribute success:
-		$this->assertObjectHasAttribute('success', $aviResponse);
+		$this->assertTrue(property_exists($aviResponse, 'success'));
 		$this->assertNull($aviResponse->success);
 	}
 

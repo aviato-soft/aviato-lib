@@ -13,8 +13,8 @@ final class testAviatoFilter extends TestCase
 
 	public function testFn_Construct(): void
 	{
-		$filter = new AviFilter([]);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$filter = new AviFilter();
+		$this->assertIsObject($filter);
 	}
 
 
@@ -25,21 +25,24 @@ final class testAviatoFilter extends TestCase
 			'test'
 		];
 		$filter = new AviFilter($defInvalid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 
 		//invalid definitions (incomplete structure)
 		$defInvalid = [
 			'test' => ''
 		];
 		$filter = new AviFilter($defInvalid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 
 		//invalid definitions (incomplete structure)
 		$defInvalid = [
 			'test' => []
 		];
 		$filter = new AviFilter($defInvalid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 
 		//invalid definitions (invalid structure: missing input type)
 		$defInvalid = [
@@ -49,7 +52,8 @@ final class testAviatoFilter extends TestCase
 			]
 		];
 		$filter = new AviFilter($defInvalid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 
 		//invalid definitions (incomplete structure)
 		$defInvalid = [
@@ -58,7 +62,8 @@ final class testAviatoFilter extends TestCase
 			]
 		];
 		$filter = new AviFilter($defInvalid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 
 
 		$defValid = [
@@ -71,7 +76,8 @@ final class testAviatoFilter extends TestCase
 			]
 		];
 		$filter = new AviFilter($defValid);
-		$this->assertObjectHasAttribute('definition', $filter);
+		$this->assertIsObject($filter);
+		$this->assertTrue(property_exists($filter, 'definition'));
 	}
 
 
@@ -113,7 +119,7 @@ final class testAviatoFilter extends TestCase
 			'sanitize',
 			[
 				'date' => [
-					'filter' => FILTER_SANITIZE_STRING,
+					'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
 					'options' => [
 						'flags' => FILTER_FLAG_STRIP_LOW | FILTER_FLAG_STRIP_HIGH | FILTER_FLAG_STRIP_BACKTICK |
 							FILTER_FLAG_ENCODE_LOW | FILTER_FLAG_ENCODE_HIGH

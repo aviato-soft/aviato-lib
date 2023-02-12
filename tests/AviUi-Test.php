@@ -16,9 +16,10 @@ final class testAviatoUi extends TestCase
 	public function testFn_Construct(): void
 	{
 		$aviUi = new AviUi();
+		$this->assertIsObject($aviUi);
 
 		// assert attribute page:
-		$this->assertObjectHasAttribute('page', $aviUi);
+		$this->assertTrue(property_exists($aviUi, 'page'));
 		$test = [
 			'stylesheet' => [],
 			'javascript' => []
@@ -26,6 +27,7 @@ final class testAviatoUi extends TestCase
 		$this->assertEquals($test, $aviUi->page);
 
 		// assert attribute response:
+		$this->assertTrue(property_exists($aviUi, 'response'));
 		$this->assertEmpty($aviUi->response);
 
 		$aviUi = new AviUi([
