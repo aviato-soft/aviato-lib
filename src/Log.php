@@ -55,9 +55,11 @@ class Log
 	 */
 	private function setProperties($options = null)
 	{
+		/*
 		if ($options === null || $options === []) {
 			return false;
 		}
+		*/
 
 		$classVars = array_keys(get_class_vars(get_class($this)));
 
