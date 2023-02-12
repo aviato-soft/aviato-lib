@@ -36,11 +36,14 @@ class Log
 
 	public function __construct($options = [])
 	{
-		if ($options === []) {
-			$options = array(
-				'path' => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs'
-			);
+		if (!isset($options['path'])) {
+			if (defined('AVI_LOG_PATH')) {
+				$options['path'] = AVI_LOG_PATH;
+			} else {
+				$options['path'] = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs';
+			}
 		}
+
 		$this->setProperties($options);
 	}
 
