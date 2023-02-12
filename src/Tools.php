@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.23.01
- * @since  2023-02-07 12:49:36
+ * @version 00.23.02
+ * @since  2023-02-12 15:03:53
  *
  */
 declare(strict_types = 1);
@@ -267,9 +267,9 @@ class Tools
 	 *
 	 * @see https://linuxconfig.org/how-to-install-mcrypt-php-module-on-ubuntu-18-04-linux for cli
 	 */
-	public static function enc(string $q, ?string $key = false): string
+	public static function enc(string $q, ?string $key = null): string
 	{
-		if ($key === false) {
+		if ($key === null) {
 			if (defined('AVI_KEY')) {
 				$key = AVI_KEY;
 			} else {
@@ -289,9 +289,9 @@ class Tools
 	 * @param string $key
 	 * @return string
 	 */
-	public static function dec(string $q, ?string $key = false): string
+	public static function dec(string $q, ?string $key = null): ?string
 	{
-		if ($key === false) {
+		if ($key === null) {
 			if (defined('AVI_KEY')) {
 				$key = AVI_KEY;
 			} else {
@@ -300,7 +300,7 @@ class Tools
 		}
 		$qDecoded = openssl_decrypt(base64_decode($q.'='), 'aes-256-cbc', md5($key), 0, substr(md5(md5($key)), 3, 16));
 		if ($qDecoded === false) {
-			return false;
+			return null;
 		}
 		return rtrim($qDecoded, "\0");
 	}
