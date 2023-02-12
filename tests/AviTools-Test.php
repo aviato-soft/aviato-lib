@@ -511,6 +511,10 @@ final class testAviatoTools extends TestCase
 		$result = 'Aviato';
 		$test = AviTools::dec(AviTools::enc($result));
 		$this->assertEquals($result, $test);
+
+		define('AVI_KEY', '123456abc');
+		$test = AviTools::dec(AviTools::enc($result));
+		$this->assertEquals($result, $test);
 	}
 
 
