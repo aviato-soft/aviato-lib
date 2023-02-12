@@ -75,7 +75,7 @@ class Filter
 	 * @param int $type is one of INPUT_GET, INPUT_POST, INPUT_COOKIE, INPUT_SERVER, or INPUT_ENV
 	 * @param array $definition is an array of filtering definitions
 	 */
-	public function __construct(array $definition)
+	public function __construct(?array $definition = null)
 	{
 		$this->input = [
 			INPUT_POST => $_POST,
@@ -86,7 +86,7 @@ class Filter
 		];
 		$this->data = [];
 
-		$this->definition = $this->parseDefinition($definition);
+		$this->definition = $this->parseDefinition($definition ?? []);
 
 		return $this;
 	}
