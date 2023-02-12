@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.23.01
- * @since  2023-02-07 12:49:36
+ * @version 00.23.02
+ * @since  2023-02-12 15:03:53
  *
  */
 declare(strict_types = 1);
@@ -36,11 +36,14 @@ class Log
 
 	public function __construct($options = [])
 	{
-		if ($options === []) {
-			$options = array(
-				'path' => dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs'
-			);
+		if (!isset($options['path'])) {
+			if (defined('AVI_LOG_PATH')) {
+				$options['path'] = AVI_LOG_PATH;
+			} else {
+				$options['path'] = dirname(__FILE__) . DIRECTORY_SEPARATOR . 'logs';
+			}
 		}
+
 		$this->setProperties($options);
 	}
 
@@ -52,9 +55,11 @@ class Log
 	 */
 	private function setProperties($options = null)
 	{
+		/*
 		if ($options === null || $options === []) {
 			return false;
 		}
+		*/
 
 		$classVars = array_keys(get_class_vars(get_class($this)));
 

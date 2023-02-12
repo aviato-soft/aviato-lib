@@ -2,6 +2,10 @@
 
 ---
 
+> ## v.0.23.02
+> - add possibility to define a global AVI_KEY constant used for decript / encrypt
+> - add posibility to define a global log path using AVI_LOG_PATH
+
 > ## v.0.23.01
 > - fix file upload encoding
 
