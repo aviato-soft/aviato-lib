@@ -62,6 +62,25 @@ class Tools
 	}
 
 
+/**
+ * Generate a random string
+ * @param int $length - the length of the needed string
+ * @param string $chr - the set of characters used for generating the string
+ * @return string
+ */
+	public static function str_random(
+		int $length = 20,
+		string $chr = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
+	): string
+	{
+		$chrlen = strlen($chr);
+		$result = [];
+		for($i = 0; $i < $length; $i++) {
+			$result[] = $chr[random_int(0, $chrlen - 1)];
+		}
+		return implode('', $result);
+	}
+
 	/**
 	 * Alias of str_supplant easy to remember sprinta
 	 *
