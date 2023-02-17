@@ -2,6 +2,8 @@
 declare(strict_types = 1);
 namespace Avi;
 
+use \Avi\Log;
+
 /**
  * Just another database wrapper
  *
@@ -502,6 +504,13 @@ class Db
 
 		if ($type === 'num') {
 			return sprintf('%F', floatval($var));
+		}
+
+		if($type === 'ip') {
+			if (filter_var($var, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4) === false) {
+				return 'NULL';
+			}
+			return (sprintf('INET_ATON(%s)', $this->parseVar($var, 'str')));
 		}
 
 		if ($type === 'json') {
