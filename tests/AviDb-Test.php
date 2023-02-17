@@ -3,7 +3,7 @@
 declare(strict_types = 1);
 
 require_once dirname(dirname(__FILE__)).'/vendor/autoload.php';
-require_once dirname(dirname(__FILE__)).'/config/test.php';
+require_once dirname(dirname(__FILE__)).'/config/'.$_ENV['APP_ENV'].'.php';
 
 use PHPUnit\Framework\TestCase;
 
@@ -309,8 +309,7 @@ final class testAviatoDb extends TestCase
 		}
 		$this->assertIsObject($gdb);
 		$this->assertTrue($gdb->isOpen());
-
-		print_r($gdb->getDebug());
+		$this->assertIsArray($gdb->getDebug());
 	}
 
 }

@@ -2,6 +2,9 @@
 
 language: php
 
+services: 
+  - mysql
+
 php:
  - '7.3'
  - '7.4'
@@ -24,6 +27,10 @@ branches:
 before_script:
   - composer self-update
   - composer install --no-interaction --ignore-platform-reqs
+
+before_install: 
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS `avi-lib-test`;'
+  - mysql < ./tests/assets/test.sql
 
 script:
   - ./vendor/bin/phpunit
