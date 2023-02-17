@@ -205,7 +205,7 @@ class UI
 				$path = \str_replace('.script', '.js', $path);
 				$content = @file_get_contents($path);
 				if ($content === false) {
-					$this->log->trace('Missing inline script file to inclide in [section]: '.$path, LOG_ERR);
+					$this->log->trace('Missing inline script file to include in [section]: '.$path, LOG_ERR);
 				} else {
 					echo $content;
 				}
