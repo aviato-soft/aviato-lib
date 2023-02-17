@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 00.23.02
- * @since  2023-02-12 15:03:53
+ * @version 01.23.03
+ * @since  2023-02-17 10:58:22
  *
  */
 declare(strict_types = 1);
@@ -61,6 +61,25 @@ class Tools
 		return $pattern;
 	}
 
+
+/**
+ * Generate a random string
+ * @param int $length - the length of the needed string
+ * @param string $chr - the set of characters used for generating the string
+ * @return string
+ */
+	public static function str_random(
+		int $length = 20,
+		string $chr = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ '
+	): string
+	{
+		$chrlen = strlen($chr);
+		$result = [];
+		for($i = 0; $i < $length; $i++) {
+			$result[] = $chr[random_int(0, $chrlen - 1)];
+		}
+		return implode('', $result);
+	}
 
 	/**
 	 * Alias of str_supplant easy to remember sprinta
