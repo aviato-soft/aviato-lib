@@ -238,6 +238,13 @@ final class testAviatoDb extends TestCase
 		$test = 'NULL';
 		$this->assertEquals($test, $result);
 
+		$result = $db->parseVar('123', 'ip');
+		$test = 'NULL';
+		$this->assertEquals($test, $result);
+
+		$result = $db->parseVar('123.45.67.89', 'ip');
+		$test = "INET_ATON('123.45.67.89')";
+		$this->assertEquals($test, $result);
 
 		$result = $db->parseVar('abc', 'xyz');
 		$test = 'abc';
