@@ -2,6 +2,11 @@
 
 ---
 
+> ## v.1.23.03
+> - major version change because there is a production use
+> - add MySQli database wrapper
+
+
 > ## v.0.23.02
 > - add possibility to define a global AVI_KEY constant used for decript / encrypt
 > - add posibility to define a global log path using AVI_LOG_PATH
