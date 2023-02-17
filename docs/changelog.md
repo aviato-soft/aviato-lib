@@ -1,6 +1,8 @@
 # Changelog
 
 ---
+> ## v.1.23.04
+> - rename brach master -> main
 
 > ## v.1.23.03
 > - major version change because there is a production use

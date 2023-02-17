@@ -17,7 +17,7 @@ branches:
   except:
   - demo
   - dev
-  - master
+  - main
 
 # safelist
 branches:

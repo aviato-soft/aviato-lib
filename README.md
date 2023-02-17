@@ -23,13 +23,13 @@ For usage examples: checkout samples from demo branch.
 ## License
 @copyright 2014-present Aviato Soft. All Rights Reserved.
 
-avi-lib is licensed under [GNU LGPLv3.0](https://github.com/aviato-soft/aviato-lib/blob/master/LICENSE).
+avi-lib is licensed under [GNU LGPLv3.0](https://github.com/aviato-soft/aviato-lib/blob/main/LICENSE).
 
 
 ## Links
 
-[Changelog](https://github.com/aviato-soft/aviato-lib/raw/master/docs/changelog.md)
+[Changelog](https://github.com/aviato-soft/aviato-lib/raw/main/docs/changelog.md)
 |
-[Documentation](https://github.com/aviato-soft/aviato-lib/raw/master/docs/index.html)
+[Documentation](https://github.com/aviato-soft/aviato-lib/raw/main/docs/index.html)
 |
 [Issues](https://github.com/aviato-soft/aviato-lib/issues)
