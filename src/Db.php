@@ -5,11 +5,16 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.06
- * @since  2023-02-21 17:01:38
+ * @version 01.23.07
+ * @since  2023-02-21 17:09:18
  *
  */
- */
+declare(strict_types = 1);
+namespace Avi;
+
+use Avi\Log as AviLog;
+use Avi\Tools as AviTools;
+
 class Db
 {
 
