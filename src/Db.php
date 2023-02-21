@@ -1,14 +1,14 @@
 <?php
-declare(strict_types = 1);
-namespace Avi;
-
-use \Avi\Log;
-
-/**
- * Just another database wrapper
+/*
+ * License
  *
- * @author aviato-vasile
+ * @author Aviato Soft
+ * @copyright 2014-present Aviato Soft. All Rights Reserved.
+ * @license GNUv3
+ * @version 01.23.06
+ * @since  2023-02-21 17:01:38
  *
+ */
  */
 class Db
 {
@@ -230,8 +230,12 @@ class Db
 	 * @param array $vars those vars will be replaced with their values on final query sting
 	 * @return string the query in string format
 	 */
-	public function parse($query, string $pattern = 'select', array $vars = []): string
+	public function parse($query, string $pattern = 'auto', array $vars = []): string
 	{
+		if(strtolower($pattern) === 'auto') {
+			$pattern = $this->getPatternFromQuery($query);
+		}
+
 		// parsing the query array to string
 		switch (strtolower($pattern)) {
 			case 'get':
@@ -273,6 +277,26 @@ class Db
 		return $result;
 	}
 
+
+	private function getPatternFromQuery($query)
+	{
+		$queryKeys = array_keys(array_change_key_case($query, CASE_LOWER));
+		$patterns = [
+			'select',
+			'insert',
+			'update',
+			'delete'
+		];
+
+		foreach($patterns as $v) {
+			if (in_array($v, $queryKeys, true)) {
+				return $v;
+			}
+		}
+
+		//if there is nothing there assume that a select * is needed
+		return 'select';
+	}
 
 	/**
 	 * Parse delete query
@@ -471,13 +495,29 @@ class Db
 	 */
 	public function parseVar($var, ?string $type = null)
 	{
-		$type = $type ?? 'str';
+		$type = $type ?? '?str';
 		$type = strtolower($type);
+
+		// Checking for allowed NULL value in specified types:
+		if ($type[0] === '?') {
+			if (is_null($var)) {
+				return 'NULL';
+			}
+
+			if(empty($var)) {
+				//exceptions:
+				if (!(in_array($type, ['?int', '?num'], true) && is_numeric($var))) {
+					return 'NULL';
+				}
+			}
+
+			$type = ltrim($type, '?');
+		}
 
 		// string can be specified the length of the string using any char sample: str#10 or str?25
 		if (substr($type, 0, 3) === 'str') {
-			if (empty($var)) {
-				return 'NULL';
+			if (is_null($var) || empty($var)) {
+				return '';
 			}
 
 			$result = (strlen($type) > 3) ? substr($var, 0, intval(substr($type, 4))) : $var;

@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.06
+> - add parse Var for ?type for columns wich allow NULL data
+> - add parse auto to detect query type
 
 > ## v.1.23.05
 > - add parse IP for Avi\Db
