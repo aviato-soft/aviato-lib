@@ -353,6 +353,6 @@ final class testAviatoDb extends TestCase
 		$this->assertTrue($db->isOpen());
 		$this->assertIsArray($db->getDebug());
 
-		print_r($db->getDebug());
+		//print_r($db->getDebug());
 	}
 }
