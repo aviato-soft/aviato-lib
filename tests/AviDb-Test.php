@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types = 1);
 
 require_once dirname(dirname(__FILE__)).'/vendor/autoload.php';
@@ -9,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 
 use Avi\Db as AviDb;
 
+
 final class xDb extends AviDb
 {
 	public function setOc($v)
@@ -17,15 +17,16 @@ final class xDb extends AviDb
 	}
 }
 
+
 final class testAviatoDb extends TestCase
 {
 
 	public function testFn_Construct(): void
 	{
-		global $gdb;
-		$gdb = new AviDb();
-		$this->assertIsObject($gdb);
-		$this->assertTrue($gdb->isOpen());
+		global $_AviDb;
+		$_AviDb = $_AviDb ?? new AviDb();
+		$this->assertIsObject($_AviDb);
+		$this->assertTrue($_AviDb->isOpen());
 
 		//invalid connection:
 		$db = new AviDb(['server'=>'db-avi']);
@@ -36,12 +37,15 @@ final class testAviatoDb extends TestCase
 		$this->assertIsObject($xDb);
 		$xDb->setOc('v');
 		$this->assertFalse($xDb->isOpen());
+
+//
 	}
 
 
 	public function testFn_Insert(): void
 	{
-		$db = new AviDb();
+		global $_AviDb;
+		$db = $_AviDb ?? new AviDb();
 		$this->assertIsObject($db);
 		$this->assertTrue($db->isOpen());
 
@@ -95,9 +99,9 @@ final class testAviatoDb extends TestCase
 //		echo 'COMPARISON:'.PHP_EOL.'test:'.$test.PHP_EOL.'result:'.$result.PHP_EOL.'rows:'.$nr; //=> uncomment this line for debug
 		$this->assertEquals($test, $result);
 
-
 		//insert select
 
+		//print_r($db->getDebug());
 	}
 
 
@@ -226,15 +230,41 @@ final class testAviatoDb extends TestCase
 
 		$nr = random_int(0, 9);
 
-		$result = $db->parseVar(null, 'str');
+		//numeric test
+		$test = 0;
+		$result = $db->parseVar('0', '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 'NULL';
+		$result = $db->parseVar('', '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 65536;
+		$result = $db->parseVar('65536', '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 0.123;
+		$result = $db->parseVar(0.123, 'num');
+		$this->assertEquals($test, $result);
+
+		$test = 0.123;
+		$result = $db->parseVar(0.123, '?num');
+		$this->assertEquals($test, $result);
+
+		$test = 0.123;
+		$result = $db->parseVar('0.123', 'num');
+		$this->assertEquals($test, $result);
+
+
+		$result = $db->parseVar(null, '?str');
 		$test = 'NULL';
 		$this->assertEquals($test, $result);
 
 		$result = $db->parseVar('', 'str');
-		$test = 'NULL';
+		$test = '';
 		$this->assertEquals($test, $result);
 
-		$result = $db->parseVar('', 'str_0');
+		$result = $db->parseVar('', '?str_0');
 		$test = 'NULL';
 		$this->assertEquals($test, $result);
 
@@ -246,15 +276,22 @@ final class testAviatoDb extends TestCase
 		$test = "INET_ATON('123.45.67.89')";
 		$this->assertEquals($test, $result);
 
-		$result = $db->parseVar('abc', 'xyz');
 		$test = 'abc';
+		$result = $db->parseVar($test, 'xyz');
+		$this->assertEquals($test, $result);
+
+		$test = 'SELECT * FROM `table`';
+		$query = [
+			'from' => 'table'
+		];
+		$result = $db->parse($query);
 		$this->assertEquals($test, $result);
 
 		$query = [
 			'insert' => 'table',
 			'values' => '1,2,3'
 		];
-		$result = $db->parse($query, 'insert');
+		$result = $db->parse($query);
 		$test = '';
 		$this->assertEquals($test, $result);
 
@@ -310,13 +347,12 @@ final class testAviatoDb extends TestCase
 
 	public function testFn_Debug()
 	{
-		global $gdb;
-		if ($gdb === null) {
-			$gdb = new AviDb();
-		}
-		$this->assertIsObject($gdb);
-		$this->assertTrue($gdb->isOpen());
-		$this->assertIsArray($gdb->getDebug());
-	}
+		global $_AviDb;
+		$db = $_AviDb ?? new AviDb();
+		$this->assertIsObject($db);
+		$this->assertTrue($db->isOpen());
+		$this->assertIsArray($db->getDebug());
 
+		print_r($db->getDebug());
+	}
 }

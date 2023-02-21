@@ -11,5 +11,5 @@ define('AVI_DB_NAME', 'avi-lib-test');
  define('DB_ENGINE', 'mysqli');
  define('AVI_KEY', 'be4d5a116b065d84cc92165fcd4884a52775aa15');
  */
-global $gdb;
+global $_AviDb;
 
