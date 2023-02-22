@@ -1,4 +1,5 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+<h1 align="center">🇺🇦 <a href="https://www.aviato.ro/stand-with-ukraine.htm">UKRAINE NEEDS YOUR HELP NOW!</a></h1>
+
 # avi-lib
 
 ## Aviato Soft Library php dust collection
@@ -8,7 +9,7 @@ Avi-Lib is a Web Library used for various web project made by Aviato Team.
 [![Latest Stable Version](https://poser.pugx.org/aviato-soft/avi-lib/v/stable)](https://packagist.org/packages/aviato-soft/avi-lib)
 [![Total Downloads](https://poser.pugx.org/aviato-soft/avi-lib/downloads)](https://packagist.org/packages/aviato-soft/avi-lib)
 [![License](https://poser.pugx.org/aviato-soft/avi-lib/license)](https://packagist.org/packages/aviato-soft/avi-lib)
-[![Build Status](https://api.travis-ci.com/aviato-soft/aviato-lib.svg?branch=test)](https://travis-ci.org/aviato-soft/aviato-lib)
+[![PHP Version Require](http://poser.pugx.org/aviato-soft/avi-lib/require/php)](https://packagist.org/packages/aviato-soft/avi-lib)
 
 
 ## Instalation
@@ -23,13 +24,13 @@ For usage examples: checkout samples from demo branch.
 ## License
 @copyright 2014-present Aviato Soft. All Rights Reserved.
 
-avi-lib is licensed under [GNU LGPLv3.0](https://github.com/aviato-soft/aviato-lib/blob/main/LICENSE).
+avi-lib is licensed under [GNU LGPLv3.0](https://raw.githubusercontent.com/aviato-soft/aviato-lib/main/LICENSE).
 
 
 ## Links
 
-[Changelog](https://github.com/aviato-soft/aviato-lib/raw/main/docs/changelog.md)
+[Changelog](https://aviato-soft.github.io/aviato-lib/changelog.md)
 |
-[Documentation](https://github.com/aviato-soft/aviato-lib/raw/main/docs/index.html)
+[Documentation](https://aviato-soft.github.io/aviato-lib/)
 |
 [Issues](https://github.com/aviato-soft/aviato-lib/issues)
