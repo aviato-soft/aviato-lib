@@ -135,11 +135,35 @@ final class testAviatoDb extends TestCase
 		];
 		$result1 = $db->get($query);
 
+
 		//aggregated test
 		$query['select'] = "SUM(`col_decimal`) AS `sumDecimal`";
 		$result2 = $db->select($query);
 		$test = array_sum(array_column($result1, 'col_decimal'));
 		$this->assertEquals($test, $result2[0]['sumDecimal']);
+
+
+		//empty select/where
+		$query = [
+			'select' => '',
+			'from' => 'test',
+			'where' => ''
+		];
+		$result = $db->parse($query);
+		$test = 'SELECT * FROM `test`';
+		$this->assertEquals($test, $result);
+
+
+		//empty select/where
+		$query = [
+			'select' => [],
+			'from' => 'test',
+			'where' => []
+		];
+		$result = $db->parse($query);
+		$test = 'SELECT * FROM `test`';
+		$this->assertEquals($test, $result);
+
 
 		//error test
 		$query = [
