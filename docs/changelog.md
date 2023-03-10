@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.08
+> - parse empty select and where for Avi\Db
+
 > ## v1.23.07
 > - versioning fix
 
