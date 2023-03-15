@@ -58,9 +58,45 @@ final class testAviatoDb extends TestCase
 		$result = $db->add($query, []);
 		$this->assertFalse($result);
 
-		//insert one row
+		//simple insert without type
 		$query['values'] = [
-			'col_string' => 'Aviato Soft'
+			'col_string' => $db->parseVar('Aviato Soft', '?str#50'),
+			'col_float' => $db->parseVar(23.333, 'num')
+		];
+		$result = $db->parse($query);
+		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
+		$this->assertEquals($test, $result);
+
+		//simple insert one row without type
+		$query['values'] = [[
+			'col_string' => $db->parseVar('Aviato Soft', '?str#50'),
+			'col_float' => $db->parseVar(23.333, 'num')
+		]];
+		$result = $db->parse($query);
+		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
+		$this->assertEquals($test, $result);
+
+		//simple insert one row not associative without type
+		$query['values'] = [
+			$db->parseVar('Aviato Soft', '?str#50'),
+			$db->parseVar(23.333, 'num')
+		];
+		$query['columns'] = [
+			'col_string',
+			'col_float'
+		];
+		$result = $db->parse($query);
+		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
+		$this->assertEquals($test, $result);
+
+
+		//insert one row
+		$query = [
+			'insert' => 'test'
+		];
+		$query['values'] = [
+			'col_string' => 'Aviato Soft',
+			'col_float' => 23.333
 		];
 		$query['types'] = [
 			'col_string' => 'str_100',
@@ -252,7 +288,11 @@ final class testAviatoDb extends TestCase
 		$this->assertIsObject($db);
 		$this->assertTrue($db->isOpen());
 
+
 		$nr = random_int(0, 9);
+
+		//raw = no parse
+		$this->assertEquals($nr, $db->parseVar($nr, 'raw'));
 
 		//numeric test
 		$test = 0;
@@ -321,7 +361,7 @@ final class testAviatoDb extends TestCase
 
 		$query['columns'] = 'a,b,c';
 		$result = $db->parse($query, 'insert');
-		$test='INSERT INTO `table`(`a`,`b`,`c`) VALUES(1,2,3)';
+		$test='INSERT INTO `table` (`a`,`b`,`c`) VALUES(1,2,3)';
 		$this->assertEquals($test, $result);
 
 
@@ -332,7 +372,7 @@ final class testAviatoDb extends TestCase
 			]
 		];
 		$result = $db->parse($query, 'insert', ['x' => $nr]);
-		$test = sprintf("INSERT INTO `test`(`abc`) VALUES('%s')", $nr);
+		$test = sprintf("INSERT INTO `test` (`abc`) VALUES(%s)", $nr);
 		$this->assertEquals($test, $result);
 
 		$test = $test;
