@@ -366,19 +366,45 @@ class Db
 		if (is_array($values)) {
 			if (isset($values[0])) {
 				if (is_array($values[0])) {
+					//multiple inserted values - types attribute is recomended in this case
+					//values = [[1,2,3],[2,3,4],...[11,12,13]]
 					$val = [];
-					foreach ($values as $row) {
-						$val[] = sprintf('(%s)', implode(',', $this->parseVars($row, $types)));
+					if ($types === []) {
+						//if missing types it is considered that values are parsed
+						foreach ($values as $row) {
+							$val[] = sprintf('(%s)', implode(',', $row));
+						}
+					} else {
+						foreach ($values as $row) {
+							$val[] = sprintf('(%s)', implode(',', $this->parseVars($row, $types)));
+						}
 					}
 					$values = implode(',', $val);
 					$values = substr($values, 1, - 1);
 				} else {
-					$values = implode(',', $this->parseVars($values, $types));
+					//simple array of column
+					//values = [1,2,3]
+					if ($types === []) {
+						//if missing types it is considered that values are parsed
+						$values = implode(',', $values);
+					}
+					else {
+						$values = implode(',', $this->parseVars($values, $types));
+					}
 				}
 			} else {
+				//values are associative - use parse var for each value in this case is recomended,
+				//however if types exists that parsing is used
+				// values = [a=>1, b=>2, c=>3]
 				$val = [];
-				foreach ($columns as $col) {
-					$val[] = $this->parseVar($values[$col], $types[$col] ?? null);
+				if ($types === []) {
+					foreach ($columns as $col) {
+						$val[] = $values[$col];
+					}
+				} else {
+					foreach ($columns as $col) {
+						$val[] = $this->parseVar($values[$col], $types[$col] ?? 'raw');
+					}
 				}
 				$values = implode(',', $val);
 			}
@@ -388,7 +414,7 @@ class Db
 
 		$table = $this->encloseInBacktick($query['insert']);
 
-		$sql = sprintf("INSERT INTO %s(%s) VALUES(%s)", $table, $columns, $values);
+		$sql = sprintf("INSERT INTO %s (%s) VALUES(%s)", $table, $columns, $values);
 
 		return $sql;
 	}
@@ -505,6 +531,10 @@ class Db
 		$type = $type ?? '?str';
 		$type = strtolower($type);
 
+		if ($type === 'raw') {
+			return $var;
+		}
+
 		// Checking for allowed NULL value in specified types:
 		if ($type[0] === '?') {
 			if (is_null($var)) {
@@ -564,7 +594,7 @@ class Db
 			return $this->parseVar(json_encode($var), 'str');
 		}
 
-		// for invalid type the result is not parsed
+		// for invalid type the result is returned as it is - use raw for this purpose to avid landing here.
 		return $var;
 	}
 
@@ -578,7 +608,7 @@ class Db
 	 */
 	public function parseVars(array $vars, array $types = []): array
 	{
-		$fnParseVar = function ($value, $type) {
+		$fnParseVar = function ($value, $type = 'sql') {
 			return $this->parseVar($value, $type);
 		};
 
