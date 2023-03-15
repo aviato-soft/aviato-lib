@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.09
+> - parse insert - use parse var if missing type for Avi\Db
+
 > ## v.1.23.08
 > - parse empty select and where for Avi\Db
 
