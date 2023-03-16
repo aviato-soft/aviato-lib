@@ -227,6 +227,13 @@ final class testAviatoDb extends TestCase
 		$test = '';
 		$this->assertEquals($test, $result);
 
+		$query = [
+			'update' => 'test'
+		];
+		$result = $db->set($query);
+		$test = '';
+		$this->assertEquals($test, $result);
+
 		$query=[
 			'update' => ['test'],
 			'values' => [
