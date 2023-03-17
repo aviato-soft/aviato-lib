@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.11
+> - bind button actions on offcanvas elements
+
 > ## v.1.23.10
 > - parse update - add encloseInBacktick for keys
 
