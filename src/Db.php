@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.09
- * @since  2023-03-15 11:45:43
+ * @version 01.23.10
+ * @since  2023-03-16 15:49:15
  *
  */
 declare(strict_types = 1);
@@ -489,21 +489,24 @@ class Db
 		if (! isset($query['update'])) {
 			return '';
 		}
-
+		if( !isset($query['set']) && !isset($query['values'])) {
+			return '';
+		}
 		$update = $query['update'];
+		$set = $query['set'] ?? [];
+		$values = $query['values'] ?? [];
+
 		if (is_array($update)) {
 			$update = implode(' ', $update);
 		}
 
-		if (isset($query['values']) && is_array($query['values'])) {
-			$set = [];
-			foreach ($query['values'] as $k => $v) {
-				$set[] = $k.'='.$v;
+		if (count($values) > 0) {
+			foreach ($values as $k => $v) {
+				$set[] = sprintf('%s=%s', $this->encloseInBacktick($k), $v);
 			}
-		} else {
-			$set = $query['set'];
 		}
-		if (is_array($set)) {
+
+		if (is_array($set) && count($set) > 0) {
 			$set = implode(',', $set);
 		}
 
@@ -524,7 +527,7 @@ class Db
 	 *
 	 * @param $var
 	 * @param string $type
-	 * @return
+	 * @return ?string Return the value parsed for sql
 	 */
 	public function parseVar($var, ?string $type = null)
 	{
