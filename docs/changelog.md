@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+> ## v.1.23.10
+> - parse update - add encloseInBacktick for keys
+
+
 > ## v.1.23.09
 > - parse insert - use parse var if missing type for Avi\Db
 
