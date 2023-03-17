@@ -564,7 +564,10 @@ aviato.display.content = function(data) {
 aviato.display.logs = function(logs, targetSelector = '#alerts') {
 	$.each(logs, function() {
 		aviato.display.alert(this, targetSelector);
-	})
+	});
+	//re-bind the controls:
+	aviato.bind(targetSelector);
+
 	aviato.offcanvas.show();
 }
 
