@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #01.23.10 from 2023-03-16 15:49:15.
+Aviato-Lib.js, build #01.23.11 from 2023-03-17 19:21:31.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -76,8 +76,7 @@ if(o.on.complete!==undefined){o.on.complete(jqXHR,textStatus);}}
 ajaxSettings.url=o.url;$.ajax(ajaxSettings);};aviato.display.content=function(data){if(this.selector!==undefined){if($(this.selector).prop('tagName')==='INPUT'){$(this.selector).val(data);}
 else{$(this.selector).html(data);}
 $(this.selector).removeClass("pending");aviato.bind(this.selector+' ');}
-delete this.selector;};aviato.display.logs=function(logs,targetSelector='#alerts'){$.each(logs,function(){aviato.display.alert(this,targetSelector);})
-aviato.offcanvas.show();}
+delete this.selector;};aviato.display.logs=function(logs,targetSelector='#alerts'){$.each(logs,function(){aviato.display.alert(this,targetSelector);});aviato.bind(targetSelector);aviato.offcanvas.show();}
 aviato.display.alert=function(data,targetSelector='#alerts'){var style=data.type;if(style==='error'){style='danger';}
 if($(targetSelector).length===0){$('body').append('<div id="alerts" class="p-3" data-role="alerts"></div>');}
 let alertHtml=''
