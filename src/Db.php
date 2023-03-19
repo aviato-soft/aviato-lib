@@ -544,6 +544,10 @@ class Db
 				return 'NULL';
 			}
 
+			if (is_string($var) && strtoupper($var) === 'NULL') {
+				return 'NULL';
+			}
+
 			if(empty($var)) {
 				//exceptions:
 				if (!(in_array($type, ['?int', '?num'], true) && is_numeric($var))) {
