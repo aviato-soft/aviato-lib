@@ -303,11 +303,27 @@ final class testAviatoDb extends TestCase
 
 		//numeric test
 		$test = 0;
+		$result = $db->parseVar(0, '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 0;
 		$result = $db->parseVar('0', '?int');
 		$this->assertEquals($test, $result);
 
 		$test = 'NULL';
 		$result = $db->parseVar('', '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 'NULL';
+		$result = $db->parseVar(null, '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 'NULL';
+		$result = $db->parseVar(false, '?int');
+		$this->assertEquals($test, $result);
+
+		$test = 'NULL';
+		$result = $db->parseVar('NULL', '?int');
 		$this->assertEquals($test, $result);
 
 		$test = 65536;
