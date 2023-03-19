@@ -1,12 +1,14 @@
 # Changelog
 
 ---
+> ## v.1.23.12
+> - fix Avi\Db\parseVar('NULL', '?int) returned 0 instead of 'NULL'
+
 > ## v.1.23.11
 > - bind button actions on offcanvas elements
 
 > ## v.1.23.10
 > - parse update - add encloseInBacktick for keys
-
 
 > ## v.1.23.09
 > - parse insert - use parse var if missing type for Avi\Db
@@ -14,7 +16,7 @@
 > ## v.1.23.08
 > - parse empty select and where for Avi\Db
 
-> ## v1.23.07
+> ## v.1.23.07
 > - versioning fix
 
 > ## v.1.23.06
@@ -30,7 +32,6 @@
 > ## v.1.23.03
 > - major version change because there is a production use
 > - add MySQli database wrapper
-
 
 > ## v.0.23.02
 > - add possibility to define a global AVI_KEY constant used for decript / encrypt
