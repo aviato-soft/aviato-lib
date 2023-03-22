@@ -26,7 +26,6 @@ For usage examples: checkout samples from demo branch.
 
 avi-lib is licensed under [GNU LGPLv3.0](https://raw.githubusercontent.com/aviato-soft/aviato-lib/main/LICENSE).
 
-
 ## Links
 
 [Changelog](https://aviato-soft.github.io/aviato-lib/changelog.md)
