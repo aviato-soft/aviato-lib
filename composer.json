@@ -6,7 +6,7 @@
 		"dust"
 	],
 	"homepage" : "https://github.com/aviato-soft/aviato-lib",
-	"license" : "GPL-3.0-or-later",
+	"license" : "LGPL-3.0-or-later",
 	"authors" : [{
 			"name" : "Vasile Giorgi",
 			"email" : "vasile@aviato.ro",
