@@ -10,6 +10,7 @@ Avi-Lib is a Web Library used for various web project made by Aviato Team.
 [![Total Downloads](https://poser.pugx.org/aviato-soft/avi-lib/downloads)](https://packagist.org/packages/aviato-soft/avi-lib)
 [![License](https://poser.pugx.org/aviato-soft/avi-lib/license)](https://packagist.org/packages/aviato-soft/avi-lib)
 [![PHP Version Require](http://poser.pugx.org/aviato-soft/avi-lib/require/php)](https://packagist.org/packages/aviato-soft/avi-lib)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faviato-soft%2Faviato-lib.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Faviato-soft%2Faviato-lib?ref=badge_shield)
 
 
 ## Instalation
@@ -26,6 +27,9 @@ For usage examples: checkout samples from demo branch.
 
 avi-lib is licensed under [GNU LGPLv3.0](https://raw.githubusercontent.com/aviato-soft/aviato-lib/main/LICENSE).
 
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faviato-soft%2Faviato-lib.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Faviato-soft%2Faviato-lib?ref=badge_large)
 
 ## Links
 
