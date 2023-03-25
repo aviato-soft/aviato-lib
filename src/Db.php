@@ -183,7 +183,7 @@ class Db
 	public function getOneRow(array $query, array $vars = [])
 	{
 		$result = $this->select($query, $vars);
-		$result = ($result === false) ? false : $result[0];
+		$result = (!is_array($result) || !isset($result[0])) ? false : $result[0];
 		return $result;
 	}
 
@@ -698,7 +698,7 @@ class Db
 	 * @param string $element
 	 * @return string
 	 */
-	private function encloseInBacktick(string $element): string
+	protected function encloseInBacktick(string $element): string
 	{
 		// is the element start or end with backtick:
 		if (substr($element, 0, 1) === '`' || substr($element, - 1, 1) === '`') {
@@ -723,5 +723,49 @@ class Db
 		}
 
 		return sprintf('`%s`', $element);
+	}
+
+
+	/**
+	 * Return an mysql synthax temporary table based on values
+	 *
+	 * @param string $name - the name of the table
+	 * @param array $values - the values of the array
+	 * @return string sql
+	 *
+	 * @example :
+	 *          | @param $name = 'test'
+	 *          | @param $values = [
+	 *          | ['id' => 1, 'type' => 'Offer'],
+	 *          | ['id' => 2, 'type' => 'Hotel')]
+	 *          | ['id' => 3, 'type' => 'Upsell'],
+	 *          | ];
+	 *          | @return "(SELECT * FROM (VALUES
+	 *          | ROW(1,'Offer'),
+	 *          | ROW(2,'Hotel'),
+	 *          | ROW(3,'Upsell')) AS `Test` (`id`,`type`)) `Test`"
+	 *          |
+	 *          |
+	 */
+	public function parseTableFromValues($name, $values)
+	{
+		//take 1st row as refference:
+		$columns = array_keys($values[0]);
+
+		//create a row pattern:
+		$rowPattern = [];
+		foreach ($values[0] as $k => $v) {
+			$rowPattern[] = (is_numeric($v)) ? sprintf("{%s}", $k): sprintf("'{%s}'", $k);
+		}
+		$rowPattern = sprintf('ROW(%s),', implode(',', $rowPattern));
+
+		$sql = sprintf("(SELECT * FROM (VALUES %s) AS `%s` (`%s`)) `%s` ",
+			substr(\Avi\Tools::atos($values, $rowPattern), 0, -1),
+			$name,
+			implode("`,`", $columns),
+			$name
+		);
+
+		return $sql;
 	}
 }
