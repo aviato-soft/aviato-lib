@@ -277,6 +277,33 @@ class Tools
 
 
 	/**
+	 * Perform a filter for a multidimensional array and return only vaues with specific keys
+	 * @param array $array = array to be filtered
+	 * @param string $key = the key searching for
+	 * @return array = filtered array
+	 *
+	 * @example
+	 * array = [
+	 * [0 => [id=>1, name=>'orange', isOkay=>true]]
+	 * [1 => [id=>2, name=>'apple', isOkay=>false]]
+	 * [2 => [id=>3, name=>'pear']]
+	 * [3 => [id=>4, name=>'banana', isOkay=>null]]
+	 * ]
+	 *
+	 * filter for key: isOkay,
+	 * result = [
+	 * [0 => [id=>1, name=>'orange', isOkay=>true]]
+	 * [1 => [id=>2, name=>'apple', isOkay=>false]]
+	 * [3 => [id=>4, name=>'banana', isOkay=>null]]
+	 * ]
+	 */
+	public static function afilterKeyExists(array $array = [], string $key = ''): array
+	{
+		return array_filter($array, function($v, $k) use ($key) {;return isset($v[$key]);}, ARRAY_FILTER_USE_BOTH);
+	}
+
+
+	/**
 	 * Safety encrypt function
 	 *
 	 * @credit: https://stackoverflow.com/questions/15194663/encrypt-and-decrypt-md5
@@ -487,21 +514,8 @@ class Tools
 	 */
 	public static function mysqlTableFromValues($name, $values)
 	{
-		$columns = array_keys($values[0]);
-		$rowPattern = "ROW(";
-		foreach ($values[0] as $k => $v) {
-			if (is_numeric($v)) {
-				$rowPattern .= "{".$k."},";
-			} else {
-				$rowPattern .= "'{".$k."}',";
-			}
-		}
-		$rowPattern = substr($rowPattern, 0, - 1).'),';
-
-		$sql = "(SELECT * FROM (VALUES ".substr(self::atos($values, $rowPattern), 0, - 1).") AS `".$name."` "."(`".
-			implode("`,`", $columns)."`)) `".$name."` ";
-
-		return $sql;
+		$AviDb = new \Avi\Db();
+		return $AviDb->parseTableFromValues($name, $values);
 	}
 
 
