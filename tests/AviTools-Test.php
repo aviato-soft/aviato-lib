@@ -6,6 +6,7 @@ require_once dirname(__FILE__).'/../vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\Tools as AviTools;
+use Avi\Db;
 
 final class testAviatoTools extends TestCase
 {
@@ -643,6 +644,25 @@ final class testAviatoTools extends TestCase
 		$result = AviTools::emailify($email, $name);
 
 		$this->assertEquals($result, $test);
+		// var_dump($result); // <-- uncomment this line to see the result!
+	}
+
+
+	public function testFn_afilterKeyExists(): void
+	{
+		$values = [
+			0 => ['id'=>1, 'name'=>'orange', 'isOkay'=>true],
+			1 => ['id'=>2, 'name'=>'apple', 'isOkay'=>false],
+			2 => ['id'=>3, 'name'=>'pear'],
+			3 => ['id'=>4, 'name'=>'banana', 'isOkay'=>null],
+		];
+		$test = [
+			0 => ['id'=>1, 'name'=>'orange', 'isOkay'=>true],
+			1 => ['id'=>2, 'name'=>'apple', 'isOkay'=>false]
+		];
+		$result = AviTools::afilterKeyExists($values, 'isOkay');
+
+		$this->assertEquals($test, $result);
 		// var_dump($result); // <-- uncomment this line to see the result!
 	}
 }
