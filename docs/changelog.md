@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+> ## v.1.23.13
+> - fix Avi\Db->getLastId bug: error if last id is missing
+> - psalm issues solved
+
 > ## v.1.23.12
 > - fix Avi\Db\parseVar('NULL', '?int) returned 0 instead of 'NULL'
 
