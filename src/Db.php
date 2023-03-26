@@ -113,7 +113,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|array
+	 * @return boolean|array|int
 	 */
 	public function select(array $query, array $vars = [])
 	{
@@ -126,7 +126,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function insert(array $query, array $vars = [])
 	{
@@ -139,7 +139,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function update(array $query, array $vars = [])
 	{
@@ -152,7 +152,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|number
+	 * @return boolean|array|int
 	 */
 	public function delete(array $query, array $vars = [])
 	{
@@ -165,7 +165,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|array
+	 * @return boolean|array|int
 	 */
 	public function get(array $query, array $vars = [])
 	{
@@ -193,7 +193,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function add(array $query, array $vars = [])
 	{
@@ -206,7 +206,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function set(array $query, array $vars = [])
 	{
@@ -219,9 +219,9 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return bool
+	 * @return boolean|array|int
 	 */
-	public function del(array $query, array $vars = []): bool
+	public function del(array $query, array $vars = [])
 	{
 		return $this->delete($query, $vars);
 	}
@@ -233,9 +233,9 @@ class Db
 	 * @param array|string $query the query as array or string
 	 * @param string $pattern the conversion patter for query
 	 * @param array $vars those vars will be replaced with their values on final query sting
-	 * @return string the query in string format
+	 * @return array|string the query in string format
 	 */
-	public function parse($query, string $pattern = 'auto', array $vars = []): string
+	public function parse($query, string $pattern = 'auto', array $vars = [])
 	{
 		if(strtolower($pattern) === 'auto') {
 			$pattern = $this->getPatternFromQuery($query);
@@ -527,7 +527,7 @@ class Db
 	 *
 	 * @param $var
 	 * @param string $type
-	 * @return ?string Return the value parsed for sql
+	 * @return ?string|int Return the value parsed for sql
 	 */
 	public function parseVar($var, ?string $type = null)
 	{
@@ -625,6 +625,8 @@ class Db
 
 	/**
 	 * Execute query
+	 *
+	 * @return bool|int|array
 	 */
 	public function exec(array $query, $type, array $vars = [])
 	{
@@ -678,6 +680,7 @@ class Db
 
 	/**
 	 * Return the last inserted id from table
+	 * @return bool|int
 	 */
 	public function getLastId($table, $pk = 'id')
 	{
@@ -687,8 +690,9 @@ class Db
 		];
 
 		$result = $this->getOneRow($query);
+		$result = (is_array($result) && isset($result['lastId'])) ? intval($result['lastId']): 0;
 
-		return (int) $result['lastId'];
+		return $result;
 	}
 
 
