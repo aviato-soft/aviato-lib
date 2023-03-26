@@ -6,6 +6,8 @@ define('AVI_DB_SERVER', 'P:172.22.33.80');
 define('AVI_DB_USER', 'avi-user');
 define('AVI_DB_PASSWORD', 'M3lBWlV6LzZzRkk4OE9Tci80ZC8xREEvamUrTUJKT1RwT1BxK1gzUVMyQT0');
 define('AVI_DB_NAME', 'avi-lib-test');
+define('AVI_DB_PORT', 3306);
+
 /*
  *
  define('DB_ENGINE', 'mysqli');
