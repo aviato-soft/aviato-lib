@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.12
- * @since  2023-03-19 10:48:41
+ * @version 01.23.13
+ * @since  2023-03-26 11:05:12
  *
  */
 declare(strict_types = 1);
@@ -75,7 +75,7 @@ class UI
 	 *        tag: section, the html element tag
 	 * @param boolean $return (optional) default = false
 	 *        If true the section content is returned only, not displayed
-	 * @return string
+	 * @return ?string
 	 */
 	public function Section($sectionName, $properties = [], $return = false)
 	{
@@ -374,7 +374,7 @@ class UI
 		echo PHP_EOL;
 		if ($opt['includeAviJs']) {
 			$this->page['javascript']['99avi'] = [
-				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AVI_JS_MD5.'-min.js'
+				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AviVersion::getJsMd5().'-min.js'
 			];
 		}
 		ksort($this->page['javascript']);

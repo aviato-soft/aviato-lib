@@ -5,12 +5,14 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.12
- * @since  2023-03-19 10:48:41
+ * @version 01.23.13
+ * @since  2023-03-26 11:05:12
  *
  */
 declare(strict_types = 1);
 namespace Avi;
+
+use Avi\Filter;
 
 /**
  * Response class.
@@ -71,6 +73,8 @@ class Response
 
 	private $log;
 
+	private $filter;
+
 	private $options;
 
 
@@ -84,6 +88,8 @@ class Response
 	 */
 	public function __construct($action = null, $param = 'action')
 	{
+		$this->filter = new \Avi\Filter();
+
 		if ($action === null) {
 			if (isset($_REQUEST[$param])) {
 				$this->action = $_REQUEST[$param];
@@ -123,14 +129,16 @@ class Response
 	/**
 	 * Return the response
 	 *
-	 * @return string json formated
+	 * @return mixed array json formated
 	 */
 	public function get($clearLogAfterCall = true)
 	{
 		// get content based on action:
 		switch ($this->action) {
 			case 'call':
-				$this->call();
+				if(method_exists($this, 'call')) {
+					$this->call();
+				}
 				break;
 
 			case 'section':
@@ -142,19 +150,20 @@ class Response
 					$attrSection['params'] = explode(',', $_REQUEST['params']);
 				}
 				$this->data = $page->section($_REQUEST['section'], $attrSection, true);
+				//$this->data = $page->Section($this->filter->request('section'), $attrSection, true);
 				$this->success = true;
 				break;
 
 			case 'upload':
-				$this->data = [
-					'files' => $_FILES,
-					'req' => $_REQUEST
-				];
+				$this->data = [];
+				$this->data['files'] = $_FILES;
+				$this->data['req'] = $_REQUEST;
 				if (isset($_REQUEST['handler'])) {
-					if (method_exists($this, $_REQUEST['handler'])) {
+					$handler = $_REQUEST['handler'];
+					if (method_exists($this, $handler)) {
 						$this->success = call_user_func([
 							$this,
-							$_REQUEST['handler']
+							$handler
 						]);
 					} else {
 						$this->logMessage(203);
@@ -219,10 +228,10 @@ class Response
 	 * Add message to log
 	 *
 	 * @param string $message
-	 * @param string $type
+	 * @param bool|string $type
 	 * @param string $isHtml
 	 * @param string $pattern
-	 * @param number $id
+	 * @param int $id
 	 */
 	public function log($message, $type = false, $id = 999)
 	{
@@ -300,7 +309,7 @@ class Response
 	public function success($success = null)
 	{
 		if ($success !== null && is_bool($success)) {
-			$this->success = (bool) $success;
+			$this->success = $success;
 		}
 
 		// because it is forced to be true, logs: error -> warnings
@@ -322,6 +331,7 @@ class Response
 
 	/**
 	 * Clear the log - usefull in case of multiple object calls.
+	 * @return void
 	 */
 	private function clearLog()
 	{
@@ -331,6 +341,8 @@ class Response
 
 	/**
 	 * Perform a log clean up, by deleting duplicates and ordering messages
+	 *
+	 * @return void
 	 */
 	private function cleanupLog()
 	{
@@ -338,12 +350,16 @@ class Response
 		$this->log = array_values($this->log);
 
 		// remove log duplicates
-		$iMax = count($this->log);
+		$iMax = is_countable($this->log)?count($this->log):0;
 		for ($i = 0; $i < $iMax; $i ++) {
-			if (isset($this->log[$i]['id']) && $this->log[$i]['id'] !== 999) {
-				for ($j = $i + 1; $j < $iMax; $j ++) {
-					if (isset($this->log[$j]['id']) && $this->log[$i]['id'] === $this->log[$j]['id']) {
-						unset($this->log[$j]);
+			if (isset($this->log[$i])) {
+				if (is_array($this->log[$i]) && isset($this->log[$i]['id']) && $this->log[$i]['id'] !== 999) {
+					for ($j = $i + 1; $j < $iMax; $j ++) {
+						if (isset($this->log[$j])) {
+							if (is_array($this->log[$j]) && isset($this->log[$j]['id']) && $this->log[$i]['id'] === $this->log[$j]['id']) {
+								unset($this->log[$j]);
+							}
+						}
 					}
 				}
 			}
