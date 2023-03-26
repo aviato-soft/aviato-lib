@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.12
- * @since  2023-03-19 10:48:41
+ * @version 01.23.13
+ * @since  2023-03-26 11:05:12
  *
  */
 declare(strict_types = 1);
@@ -113,7 +113,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|array
+	 * @return boolean|array|int
 	 */
 	public function select(array $query, array $vars = [])
 	{
@@ -126,7 +126,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function insert(array $query, array $vars = [])
 	{
@@ -139,7 +139,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function update(array $query, array $vars = [])
 	{
@@ -152,7 +152,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|number
+	 * @return boolean|array|int
 	 */
 	public function delete(array $query, array $vars = [])
 	{
@@ -165,7 +165,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean|array
+	 * @return boolean|array|int
 	 */
 	public function get(array $query, array $vars = [])
 	{
@@ -183,7 +183,7 @@ class Db
 	public function getOneRow(array $query, array $vars = [])
 	{
 		$result = $this->select($query, $vars);
-		$result = ($result === false) ? false : $result[0];
+		$result = (!is_array($result) || !isset($result[0])) ? false : $result[0];
 		return $result;
 	}
 
@@ -193,7 +193,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function add(array $query, array $vars = [])
 	{
@@ -206,7 +206,7 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return boolean
+	 * @return boolean|array|int
 	 */
 	public function set(array $query, array $vars = [])
 	{
@@ -219,9 +219,9 @@ class Db
 	 *
 	 * @param array $query
 	 * @param array $vars
-	 * @return bool
+	 * @return boolean|array|int
 	 */
-	public function del(array $query, array $vars = []): bool
+	public function del(array $query, array $vars = [])
 	{
 		return $this->delete($query, $vars);
 	}
@@ -233,9 +233,9 @@ class Db
 	 * @param array|string $query the query as array or string
 	 * @param string $pattern the conversion patter for query
 	 * @param array $vars those vars will be replaced with their values on final query sting
-	 * @return string the query in string format
+	 * @return array|string the query in string format
 	 */
-	public function parse($query, string $pattern = 'auto', array $vars = []): string
+	public function parse($query, string $pattern = 'auto', array $vars = [])
 	{
 		if(strtolower($pattern) === 'auto') {
 			$pattern = $this->getPatternFromQuery($query);
@@ -527,7 +527,7 @@ class Db
 	 *
 	 * @param $var
 	 * @param string $type
-	 * @return ?string Return the value parsed for sql
+	 * @return ?string|int Return the value parsed for sql
 	 */
 	public function parseVar($var, ?string $type = null)
 	{
@@ -625,6 +625,8 @@ class Db
 
 	/**
 	 * Execute query
+	 *
+	 * @return bool|int|array
 	 */
 	public function exec(array $query, $type, array $vars = [])
 	{
@@ -678,6 +680,7 @@ class Db
 
 	/**
 	 * Return the last inserted id from table
+	 * @return bool|int
 	 */
 	public function getLastId($table, $pk = 'id')
 	{
@@ -687,8 +690,9 @@ class Db
 		];
 
 		$result = $this->getOneRow($query);
+		$result = (is_array($result) && isset($result['lastId'])) ? intval($result['lastId']): 0;
 
-		return (int) $result['lastId'];
+		return $result;
 	}
 
 
@@ -698,7 +702,7 @@ class Db
 	 * @param string $element
 	 * @return string
 	 */
-	private function encloseInBacktick(string $element): string
+	protected function encloseInBacktick(string $element): string
 	{
 		// is the element start or end with backtick:
 		if (substr($element, 0, 1) === '`' || substr($element, - 1, 1) === '`') {
@@ -723,5 +727,49 @@ class Db
 		}
 
 		return sprintf('`%s`', $element);
+	}
+
+
+	/**
+	 * Return an mysql synthax temporary table based on values
+	 *
+	 * @param string $name - the name of the table
+	 * @param array $values - the values of the array
+	 * @return string sql
+	 *
+	 * @example :
+	 *          | @param $name = 'test'
+	 *          | @param $values = [
+	 *          | ['id' => 1, 'type' => 'Offer'],
+	 *          | ['id' => 2, 'type' => 'Hotel')]
+	 *          | ['id' => 3, 'type' => 'Upsell'],
+	 *          | ];
+	 *          | @return "(SELECT * FROM (VALUES
+	 *          | ROW(1,'Offer'),
+	 *          | ROW(2,'Hotel'),
+	 *          | ROW(3,'Upsell')) AS `Test` (`id`,`type`)) `Test`"
+	 *          |
+	 *          |
+	 */
+	public function parseTableFromValues($name, $values)
+	{
+		//take 1st row as refference:
+		$columns = array_keys($values[0]);
+
+		//create a row pattern:
+		$rowPattern = [];
+		foreach ($values[0] as $k => $v) {
+			$rowPattern[] = (is_numeric($v)) ? sprintf("{%s}", $k): sprintf("'{%s}'", $k);
+		}
+		$rowPattern = sprintf('ROW(%s),', implode(',', $rowPattern));
+
+		$sql = sprintf("(SELECT * FROM (VALUES %s) AS `%s` (`%s`)) `%s` ",
+			substr(\Avi\Tools::atos($values, $rowPattern), 0, -1),
+			$name,
+			implode("`,`", $columns),
+			$name
+		);
+
+		return $sql;
 	}
 }

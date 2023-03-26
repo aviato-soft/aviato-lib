@@ -131,6 +131,11 @@ Search.appendIndex(
             "summary": "Parse\u0020element\u0020and\u0020include\u0020it\u0020in\u0020Backtick",
             "url": "classes/Avi-Db.html#method_encloseInBacktick"
         },                {
+            "fqsen": "\\Avi\\Db\u003A\u003AparseTableFromValues\u0028\u0029",
+            "name": "parseTableFromValues",
+            "summary": "Return\u0020an\u0020mysql\u0020synthax\u0020temporary\u0020table\u0020based\u0020on\u0020values",
+            "url": "classes/Avi-Db.html#method_parseTableFromValues"
+        },                {
             "fqsen": "\\Avi\\Db\u003A\u003A\u0024oc",
             "name": "oc",
             "summary": "",
@@ -396,6 +401,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Response.html#property_defines"
         },                {
+            "fqsen": "\\Avi\\Response\u003A\u003A\u0024filter",
+            "name": "filter",
+            "summary": "",
+            "url": "classes/Avi-Response.html#property_filter"
+        },                {
             "fqsen": "\\Avi\\Response\u003A\u003A\u0024options",
             "name": "options",
             "summary": "",
@@ -450,6 +460,11 @@ Search.appendIndex(
             "name": "atoattr",
             "summary": "KISS\u0020function\u0020which\u0020convert\u0020an\u0020array\u0020to\u0020attributes",
             "url": "classes/Avi-Tools.html#method_atoattr"
+        },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003AafilterKeyExists\u0028\u0029",
+            "name": "afilterKeyExists",
+            "summary": "Perform\u0020a\u0020filter\u0020for\u0020a\u0020multidimensional\u0020array\u0020and\u0020return\u0020only\u0020vaues\u0020with\u0020specific\u0020keys",
+            "url": "classes/Avi-Tools.html#method_afilterKeyExists"
         },                {
             "fqsen": "\\Avi\\Tools\u003A\u003Aenc\u0028\u0029",
             "name": "enc",

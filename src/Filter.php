@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.12
- * @since  2023-03-19 10:48:41
+ * @version 01.23.13
+ * @since  2023-03-26 11:05:12
  *
  */
 declare(strict_types = 1);
@@ -96,7 +96,7 @@ class Filter
 	 * Determinate the definition group pattern (by variable | by input type } invalid)
 	 *
 	 * @param array $definition
-	 * @return string
+	 * @return string|int
 	 */
 	private function getDefinitionGroup($definition)
 	{
@@ -192,7 +192,7 @@ class Filter
 	/**
 	 *
 	 * @param array $var
-	 * @return array filtered var by antixss
+	 * @return mixed filtered var by antixss
 	 */
 	private function validateAntiXss()
 	{
@@ -210,7 +210,7 @@ class Filter
 	 * Wrapper for finlter_var_array
 	 *
 	 * @param bool $add_empty
-	 * @return mixed
+	 * @return void
 	 */
 	private function sanitizeData(bool $add_empty = false)
 	{
@@ -256,4 +256,34 @@ class Filter
 
 		return $this->data;
 	}
+
+
+	/**
+	 * A filter for $_REQUEST
+	 * @param string $key
+	 * @param array $opt
+	 * @return array
+	 *
+	public function request(string $key, $opt = null)
+	{
+		$filter = [
+			$key => [
+				'filter' => FILTER_VALIDATE_REGEXP,
+				'options' => [
+					'regexp' => "/^[a-zA-Z0-9_-]{3,24}$/i"
+				]
+			]
+		];
+		return $this->add(INPUT_GET, 'validate', $filter)->check();
+//		$this->check();
+/*
+		$this->definition = [
+			INPUT_GET => $filter,
+			INPUT_POST => $filter
+		];
+		$this->check();
+* /
+		return $this->data[$key] ?? '';
+	}
+*/
 }
