@@ -138,4 +138,23 @@ final class testAviatoFilter extends TestCase
 
 		$this->assertEquals($test, $result);
 	}
+
+/*
+	public function testFn_request(): void
+	{
+		$test = 'Aviato Soft';
+		$filter = new AviFilter([]);
+//		$result = $filter->request('section');
+//		$this->assertEquals('', $result);
+
+		$_GET['section'] = $test;
+		$result = $filter->request('section');
+		var_dump($test, $result);
+		//$this->assertEquals($test, $result);
+
+//		$_POST['section'] = $test;
+//		$result = $filter->request('section');
+//		$this->assertEquals($test, $result);
+	}
+*/
 }
