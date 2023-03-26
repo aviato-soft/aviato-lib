@@ -25,7 +25,7 @@ class Tools
 	 * Apply default values to the array,
 	 * mainly used for arrays which can't have specific default values defined
 	 *
-	 * @return array with default values
+	 * @return bool|array with default values
 	 * @param $attributes array
 	 * @param $defaultAttributes array
 	 */
@@ -427,7 +427,7 @@ class Tools
 	 * @param string $format = the format of initial date
 	 * @param string $formatResult = the format of the result
 	 * @param array $separator = the permited separators
-	 * @return string representing the date in new format or false on error
+	 * @return bool|string representing the date in new format or false on error
 	 *         or false on invalid parameters
 	 *
 	 *         exampe: Avi\Tools::dtFormatToFormat('2013-09-11', 'y-m-d', 'd/m/y') will return '11/09/2013'

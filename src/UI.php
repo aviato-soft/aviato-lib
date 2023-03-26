@@ -75,7 +75,7 @@ class UI
 	 *        tag: section, the html element tag
 	 * @param boolean $return (optional) default = false
 	 *        If true the section content is returned only, not displayed
-	 * @return string
+	 * @return ?string
 	 */
 	public function Section($sectionName, $properties = [], $return = false)
 	{
@@ -374,7 +374,7 @@ class UI
 		echo PHP_EOL;
 		if ($opt['includeAviJs']) {
 			$this->page['javascript']['99avi'] = [
-				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AVI_JS_MD5.'-min.js'
+				'src' => '/vendor/aviato-soft/avi-lib/src/js/aviato-'.AviVersion::getJsMd5().'-min.js'
 			];
 		}
 		ksort($this->page['javascript']);
