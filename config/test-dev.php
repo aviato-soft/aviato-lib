@@ -7,7 +7,7 @@ define('AVI_DB_USER', 'avi-user');
 define('AVI_DB_PASSWORD', 'M3lBWlV6LzZzRkk4OE9Tci80ZC8xREEvamUrTUJKT1RwT1BxK1gzUVMyQT0');
 define('AVI_DB_NAME', 'avi-lib-test');
 define('AVI_DB_PORT', 3306);
-
+define('AVI_TEST_PROXY', 'http://172.22.2.81/aviato-soft/aviato-lib/test-proxy.php');
 /*
  *
  define('DB_ENGINE', 'mysqli');
