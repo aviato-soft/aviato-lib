@@ -1,6 +1,10 @@
 # Changelog
 
 ---
+> ## v.1.23.14
+> - psalm tested 100%
+> - phpUnit coverage 100%
+
 > ## v.1.23.13
 > - fix Avi\Db->getLastId bug: error if last id is missing
 > - psalm issues solved

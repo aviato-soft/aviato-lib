@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.13
- * @since  2023-03-26 11:05:12
+ * @version 01.23.14
+ * @since  2023-03-28 21:16:18
  *
  */
 declare(strict_types = 1);
@@ -178,22 +178,24 @@ class UI
 						$sectionName
 					], $properties['params']);
 				} else {
-					if (method_exists($properties['obj'], $sectionName)) {
-						$callObj = new $properties['obj']();
-						call_user_func([
-							$callObj,
-							$sectionName
-						]);
-					} else {
-						$message = 'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName;
-
-						if (method_exists($this->response, 'log')) {
-							$this->response->log($message, 'warning', 251);
+					if(is_string($sectionName)) {
+						if (method_exists($properties['obj'], $sectionName)) {
+							$callObj = new $properties['obj']();
+							call_user_func([
+								$callObj,
+								$sectionName
+							]);
 						} else {
-							if (method_exists($this->log, 'trace')) {
-								$this->log->trace($message);
+							$message = 'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName;
+
+							if (method_exists($this->response, 'log')) {
+								$this->response->log($message, 'warning', 251);
 							} else {
-								echo $message;
+								if (method_exists($this->log, 'trace')) {
+									$this->log->trace($message);
+								} else {
+									echo $message;
+								}
 							}
 						}
 					}

@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.13
- * @since  2023-03-26 11:05:12
+ * @version 01.23.14
+ * @since  2023-03-28 21:16:18
  *
  */
 declare(strict_types = 1);
@@ -137,7 +137,7 @@ class Filter
 		$definitionGroupBy = $this->getDefinitionGroup($definition);
 
 		if ($definitionGroupBy === self::FILTER_DEF_INVALID) {
-			return false;
+			return [];
 		}
 
 		if ($definitionGroupBy === self::FILTER_DEF_GROUP_BY_VAR) {
@@ -179,10 +179,14 @@ class Filter
 			// $dataValid = filter_var_array($_GET, $v['validate'], true);
 			// because of this bug: https://bugs.php.net/bug.php?id=42608 filter_input_array can not be tested!
 			// $dataValid = filter_input_array($inputType, $v['validate'], true);
-			$dataValid = filter_var_array($this->input[$inputType], $v['validate'], $add_empty);
+			if(isset($v['validate'])) {
+				$dataValid = filter_var_array($this->input[$inputType], $v['validate'], $add_empty);
 
-			if (\is_array($dataValid)) {
-				$this->data = array_merge($this->data, $dataValid);
+				if (\is_array($dataValid)) {
+					$this->data = array_merge($this->data, $dataValid);
+				}
+				else {
+				}
 			}
 		}
 		return $this;
@@ -191,17 +195,28 @@ class Filter
 
 	/**
 	 *
-	 * @param array $var
 	 * @return mixed filtered var by antixss
 	 */
-	private function validateAntiXss()
+	private function validateAntiXssData()
 	{
-		$antiXss = new AntiXSS();
 		foreach ($this->data as $k => $v) {
-			$this->data[$k] = $antiXss->xss_clean($v);
+			$this->data[$k] = $this->xssClean($v);
 		}
 
 		return $this;
+	}
+
+	/**
+	 * Xss Clean for variable $var
+	 * @param mixed $var
+	 */
+	public function xssClean($var)
+	{
+		$antiXss = new AntiXSS();
+		if (is_array($var)) {
+			return $var;
+		}
+		return $antiXss->xss_clean($var);
 	}
 
 
@@ -251,39 +266,139 @@ class Filter
 	public function check($add_empty = false)
 	{
 		$this->validateInput($add_empty);
-		$this->validateAntiXss();
+		$this->validateAntiXssData();
 		$this->sanitizeData($add_empty);
 
 		return $this->data;
 	}
 
+	/**
+	* Return a filtered post value if set
+	 * @param string $key
+	 * @param array $filter
+	 * @return NULL|mixed
+	 */
+	public function post(string $key, array $filter=[]) {
+		return $this->var($key, INPUT_POST, $filter);
+	}
+
 
 	/**
-	 * A filter for $_REQUEST
+	 * Return a filtered get value if set
 	 * @param string $key
-	 * @param array $opt
-	 * @return array
-	 *
-	public function request(string $key, $opt = null)
-	{
-		$filter = [
-			$key => [
-				'filter' => FILTER_VALIDATE_REGEXP,
-				'options' => [
-					'regexp' => "/^[a-zA-Z0-9_-]{3,24}$/i"
-				]
-			]
-		];
-		return $this->add(INPUT_GET, 'validate', $filter)->check();
-//		$this->check();
-/*
-		$this->definition = [
-			INPUT_GET => $filter,
-			INPUT_POST => $filter
-		];
-		$this->check();
-* /
-		return $this->data[$key] ?? '';
+	 * @param array $filter
+	 * @return NULL|mixed
+	 */
+	public function get(string $key, array $filter=[]) {
+		return $this->var($key, INPUT_GET, $filter);
 	}
-*/
+
+
+	/**
+	 * Return a filtered request value made from concatenation of get and post
+	 * @param string $key
+	 * @param array $filter
+	 * @return NULL|mixed
+	 */
+	public function request(string $key, array $filter=[]) {
+		/*
+		$get = $this->get($key, $filter);
+		$post = $this->post($key, $filter);
+		var_dump([
+			'def' => $this->definition,
+			'GET' => $_GET,
+			'get' => $get,
+			'POST' => $_POST,
+			'post' => $post,
+			'request' => $post ?? $get,
+			'REQUEST' => $_POST ?? $_GET
+		]);
+		*/
+		return $this->post($key, $filter) ?? $this->get($key, $filter);
+	}
+
+	/**
+	 * Return a filtered variable of type
+	 * @param string $key
+	 * @param int $type: GET|POST|COOKIE|SERVER
+	 * @param array $filterOpt - a simple array containing the filter id + options
+	 * e.g.
+	 * 		filterOpt = [
+	 * 			id=>FILTER_VALIDATE_INT
+	 * 		]
+	 *
+	 * 		filterOpt = [
+	 * 			id = FILTER_VALIDATE_INT,
+	 * 			options => [
+	 * 				min_range => 1
+	 * 				max_range => 100
+	 * 			]
+	 * 			flags => FILTER_FLAG_ALLOW_OCTAL | FILTER_FLAG_ALLOW_HEX | FILTER_NULL_ON_FAILURE
+	 * 		]
+	 *
+	 * 		filterOpt = [
+	 * 			id = FILTER_VALIDATE_REGEXP
+	 * 			options = [
+	 * 				regex =
+	 * 			]
+	 * 		]
+	 *
+	 * @return NULL|mixed
+	 *
+	 * @see https://www.php.net/manual/en/filter.filters.validate.php
+	 */
+	public function var(string $key, int $type = INPUT_POST, array $filterOpt = [])
+	{
+
+		$filterOpt = $this->customFilter($filterOpt);
+
+		$filter = $filterOpt['id'] ?? FILTER_DEFAULT;
+
+		if (isset($filterOpt['options']) || isset($filterOpt['flags'])) {
+			$opt = [];
+			if (isset($filterOpt['options'])) {
+				$opt['options'] = $filterOpt['options'];
+			}
+			if(isset($filterOpt['flags'])) {
+				$opt['flags'] = $filterOpt['flags'];
+			}
+		}
+		else {
+			$opt = 0;
+		}
+
+		$result = filter_input($type, $key, $filter, $opt);
+
+		$result = $this->xssClean($result);
+
+		return $result;
+	}
+
+
+	private function customFilter($opt = [])
+	{
+		$result = [];
+
+		if (isset($opt['number'])) {
+			$result['id'] = ($opt['number'] === 'int') ? FILTER_VALIDATE_INT : FILTER_VALIDATE_FLOAT;
+			if(isset($opt['max'])) {
+				$result['options']['max_range'] = $opt['max'];
+			}
+			if(isset($opt['min'])) {
+				$result['options']['min_range'] = $opt['min'];
+			}
+		}
+
+		if(isset($opt['regexp'])) {
+			$result = [
+				'id' => FILTER_VALIDATE_REGEXP,
+				'options' => $opt
+			];
+		}
+
+		$result = ($result === []) ? $opt: $result;
+
+		return $result;
+
+	}
 }
