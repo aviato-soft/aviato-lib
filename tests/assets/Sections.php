@@ -13,5 +13,11 @@ class Sections
 	{
 		echo 'test section';
 	}
+
+
+	public static function test8($a, $b)
+	{
+		printf('<pre>%s | %s</pre>', $a, $b);
+	}
 }
 ?>
