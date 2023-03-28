@@ -178,22 +178,24 @@ class UI
 						$sectionName
 					], $properties['params']);
 				} else {
-					if (method_exists($properties['obj'], $sectionName)) {
-						$callObj = new $properties['obj']();
-						call_user_func([
-							$callObj,
-							$sectionName
-						]);
-					} else {
-						$message = 'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName;
-
-						if (method_exists($this->response, 'log')) {
-							$this->response->log($message, 'warning', 251);
+					if(is_string($sectionName)) {
+						if (method_exists($properties['obj'], $sectionName)) {
+							$callObj = new $properties['obj']();
+							call_user_func([
+								$callObj,
+								$sectionName
+							]);
 						} else {
-							if (method_exists($this->log, 'trace')) {
-								$this->log->trace($message);
+							$message = 'UI: Missing object definition: '.$properties['obj'].'::'.$sectionName;
+
+							if (method_exists($this->response, 'log')) {
+								$this->response->log($message, 'warning', 251);
 							} else {
-								echo $message;
+								if (method_exists($this->log, 'trace')) {
+									$this->log->trace($message);
+								} else {
+									echo $message;
+								}
 							}
 						}
 					}
