@@ -20,7 +20,7 @@ final class testAviatoProxy extends TestCase
 				require_once dirname(__FILE__).'/assets/Sections.php';
 				require_once dirname(__FILE__).'/assets/AviResponseTest.php';
 
-				$response = new Response('section');
+				$response = new \AviResponseTest('section');
 				$result = json_decode($response->get(), true);
 				$result = $result['data'];
 				break;

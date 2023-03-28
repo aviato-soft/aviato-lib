@@ -82,6 +82,7 @@ class AviResponseTest extends AviResponse
 		//do something with: $_FILES;
 
 		$this->log('Upload complete');
+		return true;
 	}
 
 

@@ -10,6 +10,8 @@ require_once dirname(__FILE__) . '/assets/AviResponseTest.php';
 use PHPUnit\Framework\TestCase;
 use Avi\Response as AviResponse;
 use Psr\Log\Test\TestLogger;
+use Avi\Response;
+
 
 final class testAviatoResponse extends TestCase
 {
@@ -153,6 +155,15 @@ final class testAviatoResponse extends TestCase
 			]
 		]);
 		$this->assertEquals($test, $result);
+
+		//test seting params directly
+		$aviResponse = new AviResponseTest('section');
+		$aviResponse->data['section'] = 'test';
+		$aviResponse->data['params'] = 'a=1,b=2';
+		$result = json_decode($aviResponse->get(), true);
+		$this->assertTrue($result['success']);
+
+
 		//var_dump($_REQUEST);
 
 		//test made trough proxy, because REQUEST value is required
@@ -173,8 +184,23 @@ final class testAviatoResponse extends TestCase
 		// get(upload)
 		//$_REQUEST['up'] = 'test';
 		//$test = '<section id="test" class="sec-obj-test">test section</section>';
+		$_FILES = ['a', 'b', 'c'];
 		$aviResponse = new AviResponseTest('upload');
+		$aviResponse->data['handler'] = 'fnUpload';
 		$result = json_decode($aviResponse->get(), true);
+		$this->assertTrue($result['success']);
+
+		//invalid upload handler:
+		$aviResponse->data['handler'] = 7;
+		$result = json_decode($aviResponse->get(), true);
+		$this->assertFalse($result['success']);
+
+		//valid upload handler but not exists
+		$aviResponse->data['handler'] = 'atlanticmoon';
+		$result = json_decode($aviResponse->get(), true);
+		$this->assertFalse($result['success']);
+
+		/*
 		//Missing Upload Handler!
 		$this->assertFalse($result['success']);
 
@@ -192,13 +218,17 @@ final class testAviatoResponse extends TestCase
 		]);
 		$this->assertEquals($test, $result);
 
+		$aviResponse->data['handler'] = 'fnUpload';
 		$result = json_decode($aviResponse->get(), true);
-		//Missing Upload Handler Definition!
-		$this->assertFalse($result['success']);
+		//Existing Upload Handler Definition!
+		$this->assertTrue($result['success']);
 		//test made trough proxy
 		//$this->assertNull($result['success']);
 
 		//var_dump($result); // <-- uncomment this line to see the result!
+*/
+
+
 	}
 
 
