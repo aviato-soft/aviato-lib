@@ -62,7 +62,7 @@ final class testAviatoUi extends TestCase
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
-/*
+
 		// Object section no wrapper + including js file
 		$response = $aviUi->Section('test', [
 			'wrapper' => false,
@@ -71,7 +71,7 @@ final class testAviatoUi extends TestCase
 			]
 		], true);
 		$test = 'test section';
-		var_dump($response); // <-- uncomment this line to see the result!
+		//var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
 
 		$test = 'test.js';
@@ -84,7 +84,18 @@ final class testAviatoUi extends TestCase
 		], true);
 		$test = '';
 		$this->assertEquals($test, $response);
-*/
+
+
+		$response = $aviUi->Section('test8', [
+			'obj' => 'Sections',
+			'params' => [
+				'A',
+				'B'
+			]
+		], true);
+		$test = '<section class="sec-obj-test8" id="test8"><pre>A | B</pre></section>';
+		$this->assertEquals($test, $response);
+
 		// Html section
 		$response = $aviUi->Section('test',
 			[
@@ -150,6 +161,14 @@ final class testAviatoUi extends TestCase
 		$test = 'UI: Missing object definition: Sections::missingObject';
 		// var_dump($response); // <-- uncomment this line to see the result!
 		$this->assertEquals($test, $response);
+
+		//send warning to log if section is a response object
+		$aviUi->response = new Avi\Response();
+		$response = $aviUi->Section('missingObject', [
+			'wrapper' => false
+		], true);
+		// var_dump($response); // <-- uncomment this line to see the result!
+		$this->assertEquals($response, '');
 
 
 
