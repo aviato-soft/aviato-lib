@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.13
- * @since  2023-03-26 11:05:12
+ * @version 01.23.14
+ * @since  2023-03-28 21:16:18
  *
  */
 declare(strict_types = 1);
@@ -91,9 +91,7 @@ class Response
 		$this->filter = new \Avi\Filter();
 
 		if ($action === null) {
-			if (isset($_REQUEST[$param])) {
-				$this->action = $_REQUEST[$param];
-			}
+			$this->action = $this->filter->request($param);
 		} else {
 			$this->action = $action;
 		}
@@ -146,24 +144,28 @@ class Response
 					'response' => &$this
 				]);
 				$attrSection = [];
-				if (array_key_exists('params', $_REQUEST)) {
-					$attrSection['params'] = explode(',', $_REQUEST['params']);
+				$this->data['params'] = $this->data['params'] ?? $this->filter->request('params');
+				if(is_string($this->data['params'])) {
+					$attrSection['params'] = explode(',', $this->data['params']);
 				}
-				$this->data = $page->section($_REQUEST['section'], $attrSection, true);
-				//$this->data = $page->Section($this->filter->request('section'), $attrSection, true);
+				$this->data['section'] = $this->data['section'] ?? $this->filter->request('section');
+				$this->data = $page->Section($this->data['section'], $attrSection, true);
 				$this->success = true;
 				break;
 
 			case 'upload':
-				$this->data = [];
+				/*
+				$this->data['req'] = $this->filter->post('data', [
+					'regexp' => "/^[a-zA-Z0-9_-]{3,24}$/i"
+				]);
+				*/
 				$this->data['files'] = $_FILES;
-				$this->data['req'] = $_REQUEST;
-				if (isset($_REQUEST['handler'])) {
-					$handler = $_REQUEST['handler'];
-					if (method_exists($this, $handler)) {
+				$this->data['handler'] = $this->data['handler'] ?? $this->filter->post('handler', ['regexp' => "/^[a-zA-Z0-9_-]{3,24}$/i"]);
+				if (isset($this->data['handler']) && is_string($this->data['handler'] )) {
+					if (method_exists($this, $this->data['handler'])) {
 						$this->success = call_user_func([
 							$this,
-							$handler
+							$this->data['handler']
 						]);
 					} else {
 						$this->logMessage(203);

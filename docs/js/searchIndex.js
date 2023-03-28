@@ -186,10 +186,15 @@ Search.appendIndex(
             "summary": "Simple\u0020wrapper\u0020for\u0020filter_input_array",
             "url": "classes/Avi-Filter.html#method_validateInput"
         },                {
-            "fqsen": "\\Avi\\Filter\u003A\u003AvalidateAntiXss\u0028\u0029",
-            "name": "validateAntiXss",
+            "fqsen": "\\Avi\\Filter\u003A\u003AvalidateAntiXssData\u0028\u0029",
+            "name": "validateAntiXssData",
             "summary": "",
-            "url": "classes/Avi-Filter.html#method_validateAntiXss"
+            "url": "classes/Avi-Filter.html#method_validateAntiXssData"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003AxssClean\u0028\u0029",
+            "name": "xssClean",
+            "summary": "Xss\u0020Clean\u0020for\u0020variable\u0020\u0024var",
+            "url": "classes/Avi-Filter.html#method_xssClean"
         },                {
             "fqsen": "\\Avi\\Filter\u003A\u003AsanitizeData\u0028\u0029",
             "name": "sanitizeData",
@@ -205,6 +210,31 @@ Search.appendIndex(
             "name": "check",
             "summary": "",
             "url": "classes/Avi-Filter.html#method_check"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003Apost\u0028\u0029",
+            "name": "post",
+            "summary": "Return\u0020a\u0020filtered\u0020post\u0020value\u0020if\u0020set",
+            "url": "classes/Avi-Filter.html#method_post"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003Aget\u0028\u0029",
+            "name": "get",
+            "summary": "Return\u0020a\u0020filtered\u0020get\u0020value\u0020if\u0020set",
+            "url": "classes/Avi-Filter.html#method_get"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003Arequest\u0028\u0029",
+            "name": "request",
+            "summary": "Return\u0020a\u0020filtered\u0020request\u0020value\u0020made\u0020from\u0020concatenation\u0020of\u0020get\u0020and\u0020post",
+            "url": "classes/Avi-Filter.html#method_request"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003Avar\u0028\u0029",
+            "name": "var",
+            "summary": "Return\u0020a\u0020filtered\u0020variable\u0020of\u0020type",
+            "url": "classes/Avi-Filter.html#method_var"
+        },                {
+            "fqsen": "\\Avi\\Filter\u003A\u003AcustomFilter\u0028\u0029",
+            "name": "customFilter",
+            "summary": "",
+            "url": "classes/Avi-Filter.html#method_customFilter"
         },                {
             "fqsen": "\\Avi\\Filter\u003A\u003AFILTER_DEF_INVALID",
             "name": "FILTER_DEF_INVALID",
