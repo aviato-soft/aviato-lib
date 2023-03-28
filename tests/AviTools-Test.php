@@ -3,6 +3,7 @@
 declare(strict_types = 1);
 
 require_once dirname(__FILE__).'/../vendor/autoload.php';
+require_once dirname(dirname(__FILE__)).'/config/'.$_ENV['APP_ENV'].'.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\Tools as AviTools;
@@ -664,5 +665,23 @@ final class testAviatoTools extends TestCase
 
 		$this->assertEquals($test, $result);
 		// var_dump($result); // <-- uncomment this line to see the result!
+	}
+
+
+	public function testFn_str_random(): void
+	{
+		$result = AviTools::str_random();
+		$this->assertEquals(20, strlen($result));
+	}
+
+
+	public function testFn_atoattr(): void
+	{
+		$test = 'data-action="call" data-call="widget"';
+		$result = AviTools::atoattr([
+			'action' => 'call',
+			'call' => 'widget'
+		], 'data-');
+		$this->assertEquals($test, $result);
 	}
 }
