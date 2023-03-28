@@ -14,9 +14,27 @@ use Psr\Log\Test\TestLogger;
 final class testAviatoResponse extends TestCase
 {
 
+	private function proxy($query) {
+		$proxyUrl = AVI_TEST_PROXY;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, sprintf("%s?%s",
+			$proxyUrl,
+			http_build_query(array_merge($_GET, ['action' => json_encode($query)])))
+			);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$response = curl_exec($ch);
+
+		curl_close($ch);
+
+		return $response;
+	}
+
 
 	public function testFn_Construct(): void
 	{
+		$_POST = [];
 		$aviResponse = new AviResponse();
 		$this->assertIsObject($aviResponse);
 
@@ -24,6 +42,7 @@ final class testAviatoResponse extends TestCase
 		$this->assertTrue(property_exists($aviResponse, 'action'));
 		$test = $aviResponse->action;
 		$this->assertNull($test);
+
 
 		// assert attribute data:
 		$this->assertTrue(property_exists($aviResponse, 'data'));
@@ -41,8 +60,9 @@ final class testAviatoResponse extends TestCase
 	{
 		$aviResponse = new AviResponse();
 		$result = json_decode($aviResponse->get(), true);
+
+		//print_r($result);
 		// expected:
-		// var_dump($result);
 		/*
 		 * [
 		 * 'action' => NULL,
@@ -61,6 +81,7 @@ final class testAviatoResponse extends TestCase
 		 * 'time' => 1617202333
 		 * 'success' => false
 		 * ]
+		 *
 		 */
 		// action
 		$this->assertArrayHasKey('action', $result);
@@ -89,39 +110,63 @@ final class testAviatoResponse extends TestCase
 		$this->assertFalse($result['success']);
 
 		// get(section) - non existent object
-		$_REQUEST['section'] = 'testInvalid';
+		$_POST['section'] = 'testInvalid';
 		$expected = '<section class="sec-obj-testInvalid" id="testInvalid"></section>';
+		$result = $this->proxy([
+			'call' => [
+				"test-Response_Get"
+			]
+		]);
+		$this->assertEquals($expected, $result);
+
+		//test made trough proxy, because POST value is required
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
-		$this->assertEquals($expected, $result['data']);
+		$unexptected = '<section class="sec-obj-" id=""></section>';
+		$this->assertEquals($unexptected, $result['data']);
 		$this->assertTrue($result['success']);
 
 		// get(section)
-		$_REQUEST['section'] = 'test';
+		$_POST = [];
+		$_GET['section'] = 'test';
 		$test = '<section class="sec-obj-test" id="test">test section</section>';
+		$result = $this->proxy([
+			'call' => [
+				"test-Response_Get"
+			]
+		]);
+		$this->assertEquals($test, $result);
+
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
-		$this->assertEquals($test, $result['data']);
+		$this->assertEquals($unexptected, $result['data']);
 		$this->assertTrue($result['success']);
 		// var_dump($result); // <-- uncomment this line to see the result!
 
 		//get(section) with params:
-		$_REQUEST['section'] = 'test';
+		//$_GET['section'] = 'test';
 		$_REQUEST['params'] = 'a=1,b=2';
-		// var_dump($_REQUEST);
+		$result = $this->proxy([
+			'call' => [
+				"test-Response_Get"
+			]
+		]);
+		$this->assertEquals($test, $result);
+		//var_dump($_REQUEST);
+
+		//test made trough proxy, because REQUEST value is required
 		$aviResponse = new AviResponseTest('section');
 		$result = json_decode($aviResponse->get(), true);
-		$this->assertEquals($test, $result['data']);
+		$this->assertEquals($unexptected, $result['data']);
 		$this->assertTrue($result['success']);
 
 		//get location
 		$aviResponse = new AviResponseTest('section');
-		$aviResponse -> location = 'www.aviato.ro';
+		$location = 'www.aviato.ro';
+		$aviResponse -> location = $location;
 		$result = json_decode($aviResponse->get(), true);
-		$this->assertEquals($test, $result['data']);
+		$this->assertEquals($location, $result['location']);
 		$this->assertTrue($result['success']);
-
-
 
 
 		// get(upload)
@@ -139,9 +184,18 @@ final class testAviatoResponse extends TestCase
 
 		$_REQUEST['handler'] = 'fnUpload';
 		$_FILES = ['a', 'b', 'c'];
+		$result = $this->proxy([
+			'call' => [
+				"test-Response_Get"
+			]
+		]);
+		$this->assertEquals($test, $result);
+
 		$result = json_decode($aviResponse->get(), true);
 		//Missing Upload Handler Definition!
-		$this->assertNull($result['success']);
+		$this->assertFalse($result['success']);
+		//test made trough proxy
+		//$this->assertNull($result['success']);
 
 		//var_dump($result); // <-- uncomment this line to see the result!
 	}
@@ -167,9 +221,7 @@ final class testAviatoResponse extends TestCase
 		//var_dump($aviResponse -> data); // <-- uncomment this line to see the result!
 	}
 
-	/**
-	 * Test method to set/get action
-	 */
+
 	public function testFn_Action()
 	{
 		//Empty action:
@@ -191,9 +243,6 @@ final class testAviatoResponse extends TestCase
 	}
 
 
-	/**
-	 * Test method to set/get data
-	 */
 	public function testFn_ResponseData()
 	{
 		$aviResponse = new AviResponse();
@@ -214,9 +263,6 @@ final class testAviatoResponse extends TestCase
 	}
 
 
-	/**
-	 * Test success set/get function
-	 */
 	public function testFn_Success()
 	{
 		$aviResponse = new AviResponse();
@@ -314,4 +360,5 @@ final class testAviatoResponse extends TestCase
 
 		// var_dump($result); // <-- uncomment this line to see the result!
 	}
+
 }
