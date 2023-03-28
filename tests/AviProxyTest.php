@@ -1,13 +1,13 @@
 <?php
 namespace Avi;
 
-require_once './vendor/autoload.php';
+require_once dirname(dirname(__FILE__)).'/vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Avi\Response as AviResponse;
 use Psr\Log\Test\TestLogger;
 
-final class TestAviatoProxy extends TestCase
+final class testAviatoProxy extends TestCase
 {
 	public function __construct()
 	{
@@ -17,8 +17,8 @@ final class TestAviatoProxy extends TestCase
 
 		switch ($action['call'][0]) {
 			case 'test-Response_Get':
-				require_once dirname(__FILE__).'/tests/assets/Sections.php';
-				require_once dirname(__FILE__).'/tests/assets/AviResponseTest.php';
+				require_once dirname(__FILE__).'/assets/Sections.php';
+				require_once dirname(__FILE__).'/assets/AviResponseTest.php';
 
 				$response = new Response('section');
 				$result = json_decode($response->get(), true);
@@ -39,4 +39,4 @@ final class TestAviatoProxy extends TestCase
 	}
 }
 
-$o = new TestAviatoProxy();
+$o = new testAviatoProxy();

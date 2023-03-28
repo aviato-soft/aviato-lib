@@ -144,8 +144,9 @@ final class testAviatoResponse extends TestCase
 		// var_dump($result); // <-- uncomment this line to see the result!
 
 		//get(section) with params:
-		//$_GET['section'] = 'test';
-		$_REQUEST['params'] = 'a=1,b=2';
+		$_GET['section'] = 'test8';
+		$_GET['params'] = 'a=1,b=2';
+		$test = '<section class="sec-obj-test8" id="test8"><pre>a=1 | b=2</pre></section>';
 		$result = $this->proxy([
 			'call' => [
 				"test-Response_Get"
