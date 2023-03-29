@@ -17,3 +17,13 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
+  psalm:
+    name: Psalm
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Psalm
+      uses: docker://vimeo/psalm-github-actions
+      with:
+        args: --shepherd
