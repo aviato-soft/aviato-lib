@@ -42,7 +42,7 @@ class Db
 			'charset' => defined('AVI_DB_CHARSET') ? AVI_DB_CHARSET : 'utf8'
 		];
 		// set error reporting
-		mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+		mysqli_report(intval(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT));
 
 		$this->connect();
 
