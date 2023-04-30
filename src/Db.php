@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.14
- * @since  2023-03-28 21:16:18
+ * @version 01.23.15
+ * @since  2023-04-30 09:36:34
  *
  */
 declare(strict_types = 1);
@@ -42,7 +42,7 @@ class Db
 			'charset' => defined('AVI_DB_CHARSET') ? AVI_DB_CHARSET : 'utf8'
 		];
 		// set error reporting
-		mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+		mysqli_report(intval(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT));
 
 		$this->connect();
 
@@ -341,6 +341,7 @@ class Db
 		$columns = $query['columns'] ?? [];
 		$types = $query['types'] ?? [];
 		$values = $query['values'] ?? [];
+		$update = isset($query['duplicate']) ? sprintf(' ON DUPLICATE KEY UPDATE %s', $query['duplicate']): '';
 
 		// empty values => nothing to insert
 		if (! isset($query['insert']) || $values === []) {
@@ -414,7 +415,7 @@ class Db
 
 		$table = $this->encloseInBacktick($query['insert']);
 
-		$sql = sprintf("INSERT INTO %s (%s) VALUES(%s)", $table, $columns, $values);
+		$sql = sprintf("INSERT INTO %s (%s) VALUES(%s)%s", $table, $columns, $values, $update);
 
 		return $sql;
 	}
