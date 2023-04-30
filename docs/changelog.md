@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.15
+> - add option for db/insert: on duplicate key update
+
 > ## v.1.23.14
 > - psalm tested 100%
 > - phpUnit coverage 100%
