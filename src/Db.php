@@ -436,6 +436,8 @@ class Db
 		}
 		$select = $this->encloseInBacktick($select);
 
+		$into = $query['into'] ?? false;
+
 		$from = $query['from'] ?? false;
 		if (is_array($from)) {
 			$from = implode(' ', $from);
@@ -469,6 +471,7 @@ class Db
 
 		$sql = sprintf('SELECT %s', $this->encloseInBacktick($select));
 		$sql .= $from !== false ? sprintf(' FROM %s', $this->encloseInBacktick($from)) : '';
+		$sql .= $into !== false ? sprintf(' INTO %S', $into) : '';
 		$sql .= $where !== false ? sprintf(' WHERE (%s)', $where) : '';
 		$sql .= $group !== false ? sprintf(' GROUP BY %s', $this->encloseInBacktick($group)) : '';
 		$sql .= $having !== false ? sprintf(' HAVING %s', $having) : '';
