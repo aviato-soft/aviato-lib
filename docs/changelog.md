@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.16
+> - add into on select parsing query
+
 > ## v.1.23.15
 > - add option for db/insert: on duplicate key update
 
