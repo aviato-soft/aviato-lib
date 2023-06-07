@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.16
- * @since  2023-06-06 18:55:09
+ * @version 01.23.17
+ * @since  2023-06-07 15:23:51
  *
  */
 declare(strict_types = 1);
@@ -471,7 +471,7 @@ class Db
 
 		$sql = sprintf('SELECT %s', $this->encloseInBacktick($select));
 		$sql .= $from !== false ? sprintf(' FROM %s', $this->encloseInBacktick($from)) : '';
-		$sql .= $into !== false ? sprintf(' INTO %S', $into) : '';
+		$sql .= $into !== false ? sprintf(' INTO %s', $into) : '';
 		$sql .= $where !== false ? sprintf(' WHERE (%s)', $where) : '';
 		$sql .= $group !== false ? sprintf(' GROUP BY %s', $this->encloseInBacktick($group)) : '';
 		$sql .= $having !== false ? sprintf(' HAVING %s', $having) : '';
