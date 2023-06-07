@@ -1,6 +1,9 @@
 # Changelog
 
 ---
+> ## v.1.23.17
+> - fix invalid format on Db ln#474
+
 > ## v.1.23.16
 > - add into on select parsing query
 
