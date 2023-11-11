@@ -59,7 +59,9 @@ aviato.fn.arrayMap = function(arNames, arValues) {
  * ArrayTOString - extend supplant functionality
  */
 aviato.fn.atos = function(a, p) {
-	var i, r = '', iCount = a.length;
+	const iCount = a.length;
+	let i, r = '';
+
 	for (i = 0; i < iCount; i++) {
 		r += p.supplant(a[i]);
 	}
@@ -416,7 +418,7 @@ aviato.on.click = function(oTrigger) {
 			$(aviato.display.selector).addClass('pending');
 		}
 
-//clenup dynamic data:
+		//clenup dynamic data:
 		if ($trigger.data('dyn') !== undefined) {
 			$trigger.removeData('dyn');
 		}
@@ -495,9 +497,9 @@ aviato.call.ajax = function(o) {
 		}
 	}
 
-	ajaxSettings.success = function (data, textStatus, jqXHR) {
+	ajaxSettings.success = function(data, textStatus, jqXHR) {
 		//redirect if location parameter is present
-		if(data.location !== undefined) {
+		if (data.location !== undefined) {
 			location = data.location;
 		}
 
@@ -566,7 +568,10 @@ aviato.display.content = function(data) {
 aviato.display.logs = function(logs, targetSelector = '#alerts') {
 	$.each(logs, function() {
 		aviato.display.alert(this, targetSelector);
-	})
+	});
+	//re-bind the controls:
+	aviato.bind(targetSelector);
+
 	aviato.offcanvas.show();
 }
 
@@ -593,9 +598,9 @@ aviato.display.alert = function(data, targetSelector = '#alerts') {
 /**
 Bind sort using list js
  */
-aviato.fn.sort = function(triggerId){
+aviato.fn.sort = function(triggerId) {
 	var a = [];
-	$('#' + triggerId + ' th>button.sort').each(function(){a.push($(this).data('sort'))});
+	$('#' + triggerId + ' th>button.sort').each(function() { a.push($(this).data('sort')) });
 
 	var options = {
 		valueNames: a

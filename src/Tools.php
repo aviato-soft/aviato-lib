@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.17
- * @since  2023-06-07 15:23:51
+ * @version 01.23.18
+ * @since  2023-11-11 13:10:27
  *
  */
 declare(strict_types = 1);
@@ -44,6 +44,47 @@ class Tools
 	}
 
 
+	/**
+	 * Set an array item to a given value using "dot" notation or other separator.
+	 *
+	 * If no key is given to the method, the entire array will be replaced.
+	 *
+	 * @param  array  $array
+	 * @param  string|int|null  $key
+	 * @param  mixed  $value
+	 * @param  string $separator
+	 * @return array
+	 * extended method of laravel/framework/src/Illuminate/Collections/Arr.php
+	 */
+	public static function array_set(&$array, $key, $value, $separator = '.')
+	{
+		if (is_null($key)) {
+			return $array = $value;
+		}
+
+		$keys = explode($separator, $key);
+
+		foreach ($keys as $i => $key) {
+			if (count($keys) === 1) {
+				break;
+			}
+
+			unset($keys[$i]);
+
+			// If the key doesn't exist at this depth, we will just create an empty array
+			// to hold the next value, allowing us to create the arrays to hold final
+			// values at the correct depth. Then we'll keep digging into the array.
+			if (! isset($array[$key]) || ! is_array($array[$key])) {
+				$array[$key] = [];
+			}
+
+			$array = &$array[$key];
+		}
+
+		$array[array_shift($keys)] = $value;
+
+		return $array;
+	}
 	/**
 	 *
 	 * @return string Return a string produced according to the pattern by replaceing {*} with array member
