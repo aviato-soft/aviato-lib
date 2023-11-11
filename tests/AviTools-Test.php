@@ -41,6 +41,34 @@ final class testAviatoTools extends TestCase
 	}
 
 
+	public function testFm_array_set(): void
+	{
+		$result = [];
+		$key = null;
+		$value = 123;
+		$test = 123;
+		AviTools::array_set($result, $key, $value);
+
+		$result = [];
+		$key = 'a.b.c';
+		$value = 123;
+		$test = [
+			'a' => [
+				'b' => [
+					'c' => 123
+				]
+			]
+		];
+
+		AviTools::array_set($result, $key, $value);
+		// echo PHP_EOL;print_r(['test' => $test, 'result' => $result]); //=> uncomment this line for debug
+		$this->assertEquals($result, $test);
+
+
+
+	}
+
+
 	public function testFn_str_supplant(): void
 	{
 

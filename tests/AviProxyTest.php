@@ -12,6 +12,9 @@ final class testAviatoProxy extends TestCase
 	public function __construct()
 	{
 		$filter = new Filter();
+		if (is_null($filter->get('action'))) {
+			return false;
+		}
 		$action = json_decode($filter->get('action'), true);
 		//print_r($action);die(); //--uncomment this line for debug
 

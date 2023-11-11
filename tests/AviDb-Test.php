@@ -6,6 +6,27 @@ require_once dirname(dirname(__FILE__)).'/config/'.$_ENV['APP_ENV'].'.php';
 
 use PHPUnit\Framework\TestCase;
 
+/***
+Test database:
+CREATE DATABASE  IF NOT EXISTS `avi-lib-test`;
+USE `avi-lib-test`;
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE `test` (
+  `id` int unsigned NOT NULL AUTO_INCREMENT,
+  `col_string` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `col_float` float DEFAULT NULL,
+  `col_decimal` decimal(10,0) DEFAULT NULL,
+  `col_bit` binary(1) DEFAULT NULL,
+  `col_json` json DEFAULT NULL,
+  `col_datetime` datetime DEFAULT NULL,
+  `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+***/
+
+
 use Avi\Db as AviDb;
 
 
@@ -131,13 +152,13 @@ final class testAviatoDb extends TestCase
 				'col_datetime' => mt_rand(1378905255, time())
 			];
 		}
-		$result = $db->insert($query, []);
-//		echo 'COMPARISON:'.PHP_EOL.'test:'.$test.PHP_EOL.'result:'.$result.PHP_EOL.'rows:'.$nr; //=> uncomment this line for debug
+
+		//echo $db->parse($query, 'insert');//=> uncomment this line for debug
+		$result = $db->insert($query);
+		//echo PHP_EOL.'COMPARISON:'.PHP_EOL.'- test:'.$test.PHP_EOL.'- result:'.$result.PHP_EOL.'- rows:'.$nr.PHP_EOL; //=> uncomment this line for debug
 		$this->assertEquals($test, $result);
 
 		//insert select
-
-		//print_r($db->getDebug());
 	}
 
 
