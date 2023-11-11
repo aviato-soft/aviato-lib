@@ -1,6 +1,8 @@
 # Changelog
-
 ---
+>## v.1.23.18
+> - add new method in tools: array_set
+
 > ## v.1.23.17
 > - fix invalid format on Db ln#474
 

@@ -8,8 +8,6 @@
  * Date: 2016-11-11T11:11:11z
 **/
 
-"use strict";
-
 let aviato = {
 	/**
 	 * <b>extending bootstrap with some usefull methodes</b>
@@ -57,7 +55,9 @@ aviato.fn.arrayMap = function(arNames, arValues) {
  * ArrayTOString - extend supplant functionality
  */
 aviato.fn.atos = function(a, p) {
-	var i, r = '', iCount = a.length;
+	const iCount = a.length;
+	let i, r = '';
+
 	for (i = 0; i < iCount; i++) {
 		r += p.supplant(a[i]);
 	}

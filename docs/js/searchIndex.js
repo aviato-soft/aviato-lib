@@ -451,6 +451,11 @@ Search.appendIndex(
             "summary": "Apply\u0020default\u0020values\u0020to\u0020the\u0020array,\nmainly\u0020used\u0020for\u0020arrays\u0020which\u0020can\u0027t\u0020have\u0020specific\u0020default\u0020values\u0020defined",
             "url": "classes/Avi-Tools.html#method_applyDefault"
         },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003Aarray_set\u0028\u0029",
+            "name": "array_set",
+            "summary": "Set\u0020an\u0020array\u0020item\u0020to\u0020a\u0020given\u0020value\u0020using\u0020\u0022dot\u0022\u0020notation\u0020or\u0020other\u0020separator.",
+            "url": "classes/Avi-Tools.html#method_array_set"
+        },                {
             "fqsen": "\\Avi\\Tools\u003A\u003Astr_supplant\u0028\u0029",
             "name": "str_supplant",
             "summary": "",
