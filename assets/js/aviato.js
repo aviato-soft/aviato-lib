@@ -296,6 +296,20 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 
 
 /**
+ * Set value for Bootstap progresbar
+ * @param selector = the selector
+ * @param value = the percentage
+ */
+aviato.bootstrap.progressbar = function(selector, value) {
+	var valuePercent = '' + value + '%';
+	$(selector).width(valuePercent);
+	$(selector).text(valuePercent);
+	$(selector).attr('aria-valuenow', valuePercent);
+};
+
+
+
+/**
  *
  */
 aviato.bind = function(selector) {

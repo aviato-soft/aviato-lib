@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #01.23.18 from 2023-11-11 13:10:27.
+Aviato-Lib.js, build #01.23.19 from 2023-11-12 08:07:20.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -43,7 +43,7 @@ aviato.bootstrap.isXs=function(){return($('.navbar-toggle:visible').length>0);};
 if(window.location.hash.length>1){if($('#'+parentId+' a[href="'+window.location.hash+'"]').data('toggle')==='collapse'){if(closeOthers===true){$('#'+parentId+' .panel-collapse.in').collapse('hide');}
 if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('show');}}}};aviato.bootstrap.addCollapseItem=function(oItemProperties,bAppendToParent){if(bAppendToParent===undefined){bAppendToParent=false;}
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
-else{return item;}};aviato.bind=function(selector){if(selector===undefined){selector='';}
+else{return item;}};aviato.bootstrap.progressbar=function(selector,value){var valuePercent=''+value+'%';$(selector).width(valuePercent);$(selector).text(valuePercent);$(selector).attr('aria-valuenow',valuePercent);};aviato.bind=function(selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
 $(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
