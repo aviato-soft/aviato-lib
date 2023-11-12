@@ -1,5 +1,9 @@
 # Changelog
 ---
+
+>## v.1.23.19
+> - add aviato.bootstrap.progressbar
+
 >## v.1.23.18
 > - add new method in tools: array_set
 
