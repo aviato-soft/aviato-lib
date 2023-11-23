@@ -1,75 +1,99 @@
 # Changelog
 ---
 
+>## v.1.23.20
+> - add new ckass: Avi\HtmlElement
+
+---
 >## v.1.23.19
 > - add aviato.bootstrap.progressbar
 
+---
 >## v.1.23.18
 > - add new method in tools: array_set
 
+---
 > ## v.1.23.17
 > - fix invalid format on Db ln#474
 
+---
 > ## v.1.23.16
 > - add into on select parsing query
 
+---
 > ## v.1.23.15
 > - add option for db/insert: on duplicate key update
 
+---
 > ## v.1.23.14
 > - psalm tested 100%
 > - phpUnit coverage 100%
 
+---
 > ## v.1.23.13
 > - fix Avi\Db->getLastId bug: error if last id is missing
 > - psalm issues solved
 
+---
 > ## v.1.23.12
 > - fix Avi\Db\parseVar('NULL', '?int) returned 0 instead of 'NULL'
 
+---
 > ## v.1.23.11
 > - bind button actions on offcanvas elements
 
+---
 > ## v.1.23.10
 > - parse update - add encloseInBacktick for keys
 
+---
 > ## v.1.23.09
 > - parse insert - use parse var if missing type for Avi\Db
 
+---
 > ## v.1.23.08
 > - parse empty select and where for Avi\Db
 
+---
 > ## v.1.23.07
 > - versioning fix
 
+---
 > ## v.1.23.06
 > - add parse Var for ?type for columns wich allow NULL data
 > - add parse auto to detect query type
 
+---
 > ## v.1.23.05
 > - add parse IP for Avi\Db
 
+---
 > ## v.1.23.04
 > - rename brach master -> main
 
+---
 > ## v.1.23.03
 > - major version change because there is a production use
 > - add MySQli database wrapper
 
+---
 > ## v.0.23.02
 > - add possibility to define a global AVI_KEY constant used for decript / encrypt
 > - add posibility to define a global log path using AVI_LOG_PATH
 
+---
 > ## v.0.23.01
 > - fix file upload encoding
 
+---
 > ## v.0.22.27
 > - add prefix attribute to Tools\atoattr
 
+---
 > ## v.0.22.26
 > - use json for ajax calls to preserve the old compatibility
 
-
+---
 > ## v.0.22.25
 > - use jsonp for ajax calls to avoid Cross-Origin Read Blocking (CORB) for cross domains calls
 

@@ -276,6 +276,61 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Filter.html#property_data"
         },                {
+            "fqsen": "\\Avi\\HtmlElement",
+            "name": "HtmlElement",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003A\u0024attributes",
+            "name": "attributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#property_attributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003A\u0024content",
+            "name": "content",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#property_content"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003Adispatch\u0028\u0029",
+            "name": "dispatch",
+            "summary": "Display\u0020the\u0020content",
+            "url": "classes/Avi-HtmlElement.html#method_dispatch"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003Aelement\u0028\u0029",
+            "name": "element",
+            "summary": "Call\u0020a\u0020new\u0020class\u0020which\u0020extend\u0020current\u0020HtmlElementClass",
+            "url": "classes/Avi-HtmlElement.html#method_element"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003A\u0024tag",
+            "name": "tag",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#property_tag"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003Ause\u0028\u0029",
+            "name": "use",
+            "summary": "Return\u0020the\u0020formated\u0020element\u0020as\u0020a\u0020string",
+            "url": "classes/Avi-HtmlElement.html#method_use"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003AgetTemplateByTag\u0028\u0029",
+            "name": "getTemplateByTag",
+            "summary": "Return\u0020the\u0020template\u0020use\u0020to\u0020format\u0020the\u0020element",
+            "url": "classes/Avi-HtmlElement.html#method_getTemplateByTag"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003AparseAttributes\u0028\u0029",
+            "name": "parseAttributes",
+            "summary": "Convert\u0020Attributes\u0020from\u0020array\u0020to\u0020a\u0020scring",
+            "url": "classes/Avi-HtmlElement.html#method_parseAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003AparseContent\u0028\u0029",
+            "name": "parseContent",
+            "summary": "Convert\u0020the\u0020content\u0020from\u0020array\u0020to\u0020string",
+            "url": "classes/Avi-HtmlElement.html#method_parseContent"
+        },                {
             "fqsen": "\\Avi\\Log",
             "name": "Log",
             "summary": "Log\u0020class",
