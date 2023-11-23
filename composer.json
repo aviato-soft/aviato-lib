@@ -22,7 +22,8 @@
 		"phpunit/phpunit" : "^9",
 		"voku/anti-xss" : "^4.1",
 		"phpunit/php-code-coverage" : "^9.2",
-		"vimeo/psalm": "^5.8"
+		"symfony/polyfill-php81": "*",
+		"vimeo/psalm" : "^5.8"
 	},
 	"autoload" : {
 		"psr-4" : {
