@@ -476,6 +476,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Response.html#property_location"
         },                {
+            "fqsen": "\\Avi\\Response\u003A\u003A\u0024filter",
+            "name": "filter",
+            "summary": "",
+            "url": "classes/Avi-Response.html#property_filter"
+        },                {
             "fqsen": "\\Avi\\Response\u003A\u003A\u0024default",
             "name": "default",
             "summary": "",
@@ -485,11 +490,6 @@ Search.appendIndex(
             "name": "defines",
             "summary": "",
             "url": "classes/Avi-Response.html#property_defines"
-        },                {
-            "fqsen": "\\Avi\\Response\u003A\u003A\u0024filter",
-            "name": "filter",
-            "summary": "",
-            "url": "classes/Avi-Response.html#property_filter"
         },                {
             "fqsen": "\\Avi\\Response\u003A\u003A\u0024options",
             "name": "options",

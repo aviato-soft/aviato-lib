@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v.1.23.21
+> - accessible for child class Response->filter and Response->log
+
 >## v.1.23.20
 > - add new ckass: Avi\HtmlElement
 
