@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.20
- * @since  2023-11-23 16:27:51
+ * @version 01.23.21
+ * @since  2023-12-07 17:12:01
  *
  */
 declare(strict_types = 1);
@@ -26,9 +26,17 @@ class Response
 
 	public $data;
 
+	public $location = null;
+
 	public $success;
 
-	public $location = null;
+
+	protected $filter;
+
+	protected $log;
+
+	protected $type;
+
 
 	private $default = [];
 
@@ -68,12 +76,6 @@ class Response
 			// 900..999 - custom:
 		]
 	];
-
-	protected $type;
-
-	private $log;
-
-	private $filter;
 
 	private $options;
 
