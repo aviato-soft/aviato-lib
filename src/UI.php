@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.20
- * @since  2023-11-23 16:27:51
+ * @version 01.23.21
+ * @since  2023-12-07 17:12:01
  *
  */
 declare(strict_types = 1);
@@ -318,7 +318,10 @@ class UI
 			header('x-xss-protection: 1; mode=block');
 		}
 
-		echo '<!DOCTYPE html>'.PHP_EOL;
+		$html = new \Avi\HtmlElement();
+
+		$html->tag('!doctype')->dispatch('html');
+		echo PHP_EOL;
 		echo '<html '.AviTools::atoattr($opt['htmlAttr']).'>'.PHP_EOL;
 
 		// head
