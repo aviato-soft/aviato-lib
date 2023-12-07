@@ -320,7 +320,7 @@ class UI
 
 		$html = new \Avi\HtmlElement();
 
-		$html->tag('!doctype')->dispatch('html');
+		$html->tag('!doctype')->attributes(['html'])->dispatch();
 		echo PHP_EOL;
 		echo '<html '.AviTools::atoattr($opt['htmlAttr']).'>'.PHP_EOL;
 
