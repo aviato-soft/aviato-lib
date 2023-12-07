@@ -226,7 +226,7 @@ final class testAviatoUi extends TestCase
 	{
 		$template = implode('',
 			[
-				'<!DOCTYPE html>'.PHP_EOL,
+				'<!doctype html>'.PHP_EOL,
 				'<html %slang="en-EN">'.PHP_EOL,
 				'<head><meta charset="UTF-8">',
 				'<meta http-equiv="content-type" content="text/html">',
