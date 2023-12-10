@@ -97,6 +97,7 @@ class HtmlElement
 		$root = $root ?? dirname(__FILE__).'/HtmlElement';
 		$extElement = 'HtmlElement'.ucfirst($element);
 		require_once $root.'/'.$extElement.'.php';
+		$extElement = __NAMESPACE__.'\\'.$extElement;
 		return new $extElement($properties);
 	}
 
