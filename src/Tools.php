@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.21
- * @since  2023-12-07 17:12:01
+ * @version 01.23.22
+ * @since  2023-12-10 13:59:12
  *
  */
 declare(strict_types = 1);
@@ -104,6 +104,19 @@ class Tools
 		return $pattern;
 	}
 
+
+	/**
+	 *
+	 * @param string $string to be check
+	 * @param string $start the start limit
+	 * @param string $end the end limit
+	 * @return boolean if string is enclosed in start ... end
+	 */
+	public static function isEnclosedIn(string $string, string $start = '<', string $end = '>') {
+		$lStart = strlen($start);
+		$lEnd = strlen($end);
+		return (substr($string, 0, $lStart) === $start && substr($string, -$lEnd, $lEnd) === $end);
+	}
 
 /**
  * Generate a random string
