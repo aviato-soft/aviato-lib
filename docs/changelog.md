@@ -1,6 +1,12 @@
 # Changelog
 ---
 
+>## v.1.23.22
+> - new method: Avi\Tools::isEnclosedIn()
+> - new HtmlElement: BsButton
+> - new HtmlElement: BsIcon
+> - new HtmlElement: BsSpinner
+
 >## v.1.23.21
 > - accessible for child class Response->filter and Response->log
 
