@@ -63,9 +63,6 @@ final class testAviatoTools extends TestCase
 		AviTools::array_set($result, $key, $value);
 		// echo PHP_EOL;print_r(['test' => $test, 'result' => $result]); //=> uncomment this line for debug
 		$this->assertEquals($result, $test);
-
-
-
 	}
 
 
@@ -596,6 +593,16 @@ final class testAviatoTools extends TestCase
 		$result = true; // gdpr cookie has service => result = true
 		$test = AviTools::isGdprSet($service);
 		$this->assertEquals($result, $test);
+	}
+
+
+	public function testFn_IsEnclosedIn(): void
+	{
+		$result = AviTools::isEnclosedIn('<div>Aviato Soft</div>', '<div>', '</div>');
+		$this->assertTrue($result);
+
+		$result = AviTools::isEnclosedIn('<div>Aviato Soft<div>', '<div>', '</div>');
+		$this->assertFalse($result);
 	}
 
 

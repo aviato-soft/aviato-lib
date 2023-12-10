@@ -193,7 +193,7 @@ final class testAviatoHtmlElement extends TestCase
 		$this->assertEquals($test, $result);
 
 		//button with icon
-		$test = '<button class="btn" type="button"><i class="bi bi-airplane"></i><span class="ps-2">Click me!</span></button>';
+		$test = '<button class="btn" type="button"><i class="bi bi-airplane"></i><span class="ps-3">Click me!</span></button>';
 		$result = $aviHtmlElement->element('BsButton', [
 			'icon' => 'airplane',
 			'text' => 'Click me!'
@@ -212,15 +212,123 @@ final class testAviatoHtmlElement extends TestCase
 		])->use();
 		$this->assertEquals($test, $result);
 
+		//spinner
 		$test = implode('', [
-			'<button class="btn btn-sm btn-primary" ',
-			'data-action="widget" data-widget="Gear" data-success="backend.on.success.done" data-serialize="true" data-call="Edit" data-gear="hotel" data-verbose="true" ',
+			'<div class="spinner-border" role="status">',
+			'<span class="visually-hidden">Loading...</span>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsSpinner')->use();
+		$this->assertEquals($test, $result);
+
+		//spinner color and size
+		$test = implode('', [
+			'<div class="spinner-border spinner-border-sm text-danger" role="status">',
+			'<span class="visually-hidden">Loading...</span>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsSpinner', [
+			'color' => 'danger',
+			'size' => 'sm'
+		])->use();
+		$this->assertEquals($test, $result);
+
+		//spinner type
+		$test = implode('', [
+			'<div class="spinner-grow text-info" role="status">',
+			'<span class="visually-hidden">Loading...</span>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsSpinner', [
+			'color' => 'info',
+			'type' => 'grow'
+		])->use();
+		$this->assertEquals($test, $result);
+
+
+		//Bs Button with icon and spinner:
+		$test = implode('', [
+			'<button class="btn btn-primary btn-sm" type="button">',
+			'<i class="bi bi-floppy-fill"></i>',
+			'<span aria-hidden="true" class="spinner-border spinner-border-sm"></span>',
+			'<span role="status">Loading...</span>',
+			'<span class="ps-2">Save</span>',
+			'</button>'
+		]);
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => 'floppy-fill',
+			'size' => 'sm',
+			'spinner' => true,
+			'text' => 'Save',
+			'variant' => 'primary'
+		])->use();
+		$this->assertEquals($test, $result);
+
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => 'floppy-fill',
+			'size' => 'sm',
+			'spinner' => $aviHtmlElement->element('BsSpinner', [
+				'size' => 'sm',
+				'tag' => ''
+			])->use(),
+			'text' => 'Save',
+			'variant' => 'primary'
+		])->use();
+		$this->assertEquals($test, $result);
+
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => 'floppy-fill',
+			'size' => 'sm',
+			'spinner' => 'Loading...',
+			'text' => 'Save',
+			'variant' => 'primary'
+		])->use();
+		$this->assertEquals($test, $result);
+
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => 'floppy-fill',
+			'size' => 'sm',
+			'spinner' => [
+				'size' => 'sm',
+				'tag' => ''
+			],
+			'text' => 'Save',
+			'variant' => 'primary'
+		])->use();
+		$this->assertEquals($test, $result);
+/*
+		$test = implode('', [
+			'<button class="btn btn-primary btn-sm" ',
+			'data-action="widget" data-call="Edit" data-gear="hotel" data-serialize="true" data-success="backend.on.success.done" data-verbose="true" data-widget="Gear" ',
 			'type="button">',
 			'<i class="bi bi-floppy-fill" data-role="btn-icon"></i>',
-			'<span class="spinner-border spinner-border-sm d-none" data-role="spinner" role="status" aria-hidden="true"></span>',
+			'<span aria-hidden="true" class="spinner-border spinner-border-sm d-none" data-role="spinner" role="status"></span>',
 			'<span class="visually-hidden">Please wait...</span>',
 			'<span class="ps-2">Save</span></button>'
 		]);
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => $aviHtmlElement->element('BsIcon', ['floppy-fill'])->attributes([
+				'data' => [
+					'role' => 'btn-icon'
+				]
+			])->use(),
+			'size' => 'sm',
+			'spinner' => true,
+			'text' => 'Save',
+			'variant' => 'primary',
+		])->attributes([
+			'data' => [
+				'action' => 'widget',
+				'call' => 'Edit',
+				'gear' => 'hotel',
+				'serialize' => 'true',
+				'success' => 'backend.on.success.done',
+				'verbose' => 'true',
+				'widget' => 'Gear',
+			]
+		])->use();
+*/
+		$this->assertEquals($test, $result);
 
 	}
 
