@@ -98,16 +98,20 @@ class HtmlElementBsButton extends \Avi\HtmlElement
 			$this->params['outline'] = false;
 		}
 
-		if (isset($this->params['variant']) && in_array($this->params['variant'], $this->variants, true)) {
-			$this->variant();
-		}
-
 		if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
 			$this->size();
 		}
 
+		if (isset($this->params['spinner'])) {
+			$this->spinner();
+		}
+
 		if (isset($this->params['text'])) {
 			$this->text();
+		}
+
+		if (isset($this->params['variant']) && in_array($this->params['variant'], $this->variants, true)) {
+			$this->variant();
 		}
 	}
 
@@ -154,7 +158,7 @@ class HtmlElementBsButton extends \Avi\HtmlElement
 	private function icon()
 	{
 		if (is_string($this->params['icon'])) {
-			if ($this->params['icon'][0] === '<' && $this->params['icon'][strlen($this->params['icon']) - 1] === '>') {
+			if (\Avi\Tools::isEnclosedIn($this->params['icon'])) {
 				$this->content[] = $this->params['icon'];
 			} else {
 				$this->content[] = $this->element('BsIcon', [
@@ -181,6 +185,35 @@ class HtmlElementBsButton extends \Avi\HtmlElement
 		$this->attributes([
 			'class' => sprintf('btn-%s', $this->params['size'])
 		]);
+	}
+
+
+	private function spinner()
+	{
+		if ($this->params['spinner'] === true) {
+			$this->content[] = $this->element('BsSpinner', [
+				'tag' => 'none',
+				'size' => 'sm'
+			])->use();
+			return;
+		}
+
+		if (is_string($this->params['spinner'])) {
+			if (\Avi\Tools::isEnclosedIn($this->params['spinner'])) {
+				$this->content[] = $this->params['spinner'];
+			} else {
+				$this->content[] = $this->element('BsSpinner', [
+					'tag' => 'none',
+					'size' => 'sm',
+					'text' => $this->params['spinner']
+				])->use();
+			}
+			return;
+		}
+
+		if (is_array($this->params['spinner'])) {
+			$this->content[] = $this->element('BsSpinner', $this->params['spinner'])->use();
+		}
 	}
 
 	private function tags()
@@ -220,7 +253,7 @@ class HtmlElementBsButton extends \Avi\HtmlElement
 		} else {
 			if (isset($this->params['icon'])) {
 				$this->content[] = $this->tag('span')->attributes([
-					'class' => 'ps-2'
+					'class' => sprintf('ps-%s', (isset($this->params['size']) && $this->params['size'] === 'sm') ? 2: 3)
 				])->content($this->params['text']);
 			} else {
 				$this->content[] = $this->params['text'];
