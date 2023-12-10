@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.20
- * @since  2023-11-23 16:27:51
+ * @version 01.23.22
+ * @since  2023-12-10 13:59:12
  *
  */
 declare(strict_types = 1);
@@ -92,7 +92,7 @@ class HtmlElement
 	 * @param string $element - defined element
 	 * @return object defeined in extended class
 	 */
-	public function element(string $element, array $properties, $root = null)
+	public function element(string $element, array $properties = [], $root = null)
 	{
 		$root = $root ?? dirname(__FILE__).'/HtmlElement';
 		$extElement = 'HtmlElement'.ucfirst($element);
@@ -142,11 +142,16 @@ class HtmlElement
 	{
 		$templates = [
 			'default' => '<{attributes}>{content}</{tag}>',
-			'single' => '<{attributes}>'
+			'single' => '<{attributes}>',
+			'contentOnly' => '{content}'
 		];
 
 		if (in_array($this->tag, ['!doctype','br','hr','input','link','meta'], true)) {
 			return $templates['single'];
+		}
+
+		if ($this->tag === '' || $this->tag === 'none') {
+			return $templates['contentOnly'];
 		}
 
 		return $templates['default'];

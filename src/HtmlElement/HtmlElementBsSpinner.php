@@ -5,16 +5,16 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.20
- * @since 2023-11-23 16:27:51
+ * @version 01.23.22
+ * @since  2023-12-10 13:59:12
  *
  */
-declare(strict_types = 1)
-	;
+declare(strict_types = 1);
+namespace Avi;
 
 require_once dirname(__DIR__).'/HtmlElement.php';
 
-class HtmlElementBsSpinner extends \Avi\HtmlElement
+class HtmlElementBsSpinner extends HtmlElement
 {
 	private $color = [
 		'primary',
@@ -35,7 +35,7 @@ class HtmlElementBsSpinner extends \Avi\HtmlElement
 		'border',
 		'glow'
 	];
-
+	//< class="spinner-border" role="status"></>
 	/**
 	 *
 	 * @param array $params the values are optional and must be:
@@ -64,13 +64,23 @@ class HtmlElementBsSpinner extends \Avi\HtmlElement
 			$this->params['type'] = 'border';
 		}
 
+		if (!isset($this->params['tag'])) {
+			$this->params['tag'] = 'div';
+		}
+		$this->tags();
+
 		if (isset($this->params['color']) && in_array($this->params['color'], $this->color, true)) {
 			$this->color();
 		}
 
-		if (isset($this->params['text'])) {
-			$this->text();
+		if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
+			$this->size();
 		}
+
+		if (!isset($this->params['text'])) {
+			$this->params['text'] = 'Loading...';
+		}
+		$this->text();
 	}
 
 	private function color()
@@ -86,16 +96,40 @@ class HtmlElementBsSpinner extends \Avi\HtmlElement
 	private function size()
 	{
 		$this->attributes([
-			'class' => sprintf('btn-%s', $this->params['size'])
+			'class' => sprintf('spinner-%s-%s', $this->params['type'], $this->params['size'])
 		]);
 	}
 
 
 	private function text()
 	{
-		$this->content[] = $this->tag('span')->attributes([
-			'class' => 'visually-hidden'
-		])->content($this->params['text']);
+		if (in_array($this->tag, ['', 'none'], true)) {
+			$cls = [
+				sprintf('spinner-%s', $this->params['type'])
+			];
+			if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
+				$cls[] = sprintf('spinner-%s-%s', $this->params['type'], $this->params['size']);
+			}
+			$this->content[] = $this->tag('span') -> attributes([
+				'aria' => [
+					'hidden' => 'true'
+				],
+				'class' => $cls
+			])->content('');
+			$this->content[] = $this->tag('span') -> attributes([
+				'role' => 'status'
+			])->content($this->params['text']);
+		} else {
+			$this->content[] = $this->tag('span')->attributes([
+				'class' => 'visually-hidden'
+			])->content($this->params['text']);
+		}
+	}
+
+
+	private function tags()
+	{
+		$this->tag = $this->params['tag'];
 	}
 
 }
