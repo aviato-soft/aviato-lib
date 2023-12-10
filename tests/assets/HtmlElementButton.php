@@ -1,4 +1,6 @@
 <?php
+namespace Avi;
+
 use Avi\HtmlElement;
 
 class HtmlElementButton extends HtmlElement

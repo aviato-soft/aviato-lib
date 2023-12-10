@@ -122,7 +122,7 @@ final class testAviatoHtmlElement extends TestCase
 	{
 		//button base class
 		$test = '<button class="btn" type="button"></button>';
-		$aviHtmlElement = new AviHtmlElement();
+		$aviHtmlElement = new \Avi\HtmlElement();
 		$result = $aviHtmlElement->element('BsButton', [])->use();
 		$this->assertEquals($test, $result);
 
