@@ -105,6 +105,19 @@ class Tools
 	}
 
 
+	/**
+	 *
+	 * @param string $string to be check
+	 * @param string $start the start limit
+	 * @param string $end the end limit
+	 * @return boolean if string is enclosed in start ... end
+	 */
+	public static function isEnclosedIn(string $string, string $start = '<', string $end = '>') {
+		$lStart = strlen($start);
+		$lEnd = strlen($end);
+		return (substr($string, 0, $lStart) === $start && substr($string, -$lEnd, $lEnd) === $end);
+	}
+
 /**
  * Generate a random string
  * @param int $length - the length of the needed string

@@ -710,7 +710,7 @@ class Db
 	protected function encloseInBacktick(string $element): string
 	{
 		// is the element start or end with backtick:
-		if (substr($element, 0, 1) === '`' || substr($element, - 1, 1) === '`') {
+		if (\Avi\Tools::isEnclosedIn($element, '`', '`')) {
 			return $element;
 		}
 
