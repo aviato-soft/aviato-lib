@@ -351,6 +351,76 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_variants"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown",
+            "name": "HtmlElementBsDropdown",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024button",
+            "name": "button",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_button"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AbaseClass\u0028\u0029",
+            "name": "baseClass",
+            "summary": "drop\u005Bdown\u005D\ndrop\u005Bstart\u005D\ndrop\u005Bend\u005D\ndrop\u005Bup\u005D",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_baseClass"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AmenuItem\u0028\u0029",
+            "name": "menuItem",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_menuItem"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024menu",
+            "name": "menu",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_menu"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AgetContent\u0028\u0029",
+            "name": "getContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_getContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024size",
+            "name": "size",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_size"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024direction",
+            "name": "direction",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_direction"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024directions",
+            "name": "directions",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_directions"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024drop",
+            "name": "drop",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_drop"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024drops",
+            "name": "drops",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_drops"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_params"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsIcon",
             "name": "HtmlElementBsIcon",
             "summary": "",
