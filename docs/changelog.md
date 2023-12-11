@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v.1.23.23
+> - new HtmlElement: BsDropdown
+
 >## v.1.23.22
 > - new method: Avi\Tools::isEnclosedIn()
 > - new HtmlElement: BsButton
