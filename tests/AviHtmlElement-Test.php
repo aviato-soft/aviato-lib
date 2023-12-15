@@ -191,7 +191,7 @@ final class testAviatoHtmlElement extends TestCase
 
 		//icon base class
 		$test = '<i class="bi bi-airplane"></i>';
-		$result = $aviHtmlElement->element('BsIcon', ['airplane'])->use();
+		$result = $aviHtmlElement->element('BsIcon', ['slug' => 'airplane'])->use();
 		$this->assertEquals($test, $result);
 
 		//button with icon
@@ -203,13 +203,15 @@ final class testAviatoHtmlElement extends TestCase
 		$this->assertEquals($test, $result);
 
 		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => ['airplane'],
+			'icon' => [
+				'slug' => 'airplane'
+			],
 			'text' => 'Click me!'
 		])->use();
 		$this->assertEquals($test, $result);
 
 		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => $aviHtmlElement->element('BsIcon', ['airplane'])->use(),
+			'icon' => $aviHtmlElement->element('BsIcon', ['slug' => 'airplane'])->use(),
 			'text' => 'Click me!'
 		])->use();
 		$this->assertEquals($test, $result);
@@ -561,10 +563,10 @@ final class testAviatoHtmlElement extends TestCase
 
 		$test = implode('', [
 			'<div class="dropdown">',
-			'<button aria-expanded="false" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" type="button">',
+			'<button aria-expanded="false" class="btn btn-info dropdown-toggle focus-0" data-bs-auto-close="outside" data-bs-toggle="dropdown" type="button">',
 			'Dropdown button',
 			'</button>',
-			'<div class="dropdown-menu">',
+			'<div class="dropdown-menu dropdown-menu-end shadow">',
 			'<form>',
 			'[...]',
 			'</form>',
@@ -573,10 +575,24 @@ final class testAviatoHtmlElement extends TestCase
 		]);
 		$result = $aviHtmlElement->element('BsDropdown', [
 			'button' => [
+				'attr' => [
+					'class' => [
+						'focus-0'
+					],
+					'data' => [
+						'bs-auto-close' => 'outside'
+					]
+				],
 				'text' => 'Dropdown button',
 				'variant' => 'info'
 			],
 			'menu' => [
+				'attr' => [
+					'class' => [
+						'dropdown-menu-end',
+						'shadow'
+					]
+				],
 				'tag' => 'div',
 				'items' => [
 					[
