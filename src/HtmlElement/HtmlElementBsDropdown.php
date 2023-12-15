@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.23
- * @since  2023-12-11 14:57:31
+ * @version 01.23.24
+ * @since  2023-12-15 18:03:04
  *
  */
 declare(strict_types = 1);
@@ -28,14 +28,16 @@ class HtmlElementBsDropdown extends HtmlElement
 		'down',
 		'up'
 	];
-	private $params;
 	private $size = [
 		'sm',
 		'lg'
 	];
 
-	protected $button = '';
-	protected $menu = '';
+	protected $params;
+
+	public $button = '';
+	public $menu = '';
+
 
 	/**
 	 *
@@ -53,7 +55,7 @@ class HtmlElementBsDropdown extends HtmlElement
 		$this->attributes([
 			'class' => $this->baseClass()
 		]);
-		$this->getContent();
+		$this->setContent();
 		$this->use();
 		return $this;
 	}
@@ -64,7 +66,17 @@ class HtmlElementBsDropdown extends HtmlElement
 		$this->tag = 'div';
 
 		if(isset($this->params['button'])) {
-			$this->button();
+			$this->child('button', 'BsButton', [
+				'aria' => [
+					'expanded' => 'false'
+				],
+				'class' => [
+					'dropdown-toggle'
+				],
+				'data' => [
+					'bs-toggle' => 'dropdown'
+				]
+			]);
 		}
 
 		if (isset($this->params['direction']) && in_array($this->params['direction'], $this->directions, true)) {
@@ -80,26 +92,8 @@ class HtmlElementBsDropdown extends HtmlElement
 		}
 
 		if(isset($this->params['menu'])) {
-			$this->content[] = $this->menu();
+			$this->menu();
 		}
-	}
-
-
-	private function button()
-	{
-		$this->button = $this
-			->element('BsButton', $this->params['button'])
-			->attributes([
-				'aria' => [
-					'expanded' => 'false'
-				],
-				'class' => [
-					'dropdown-toggle'
-				],
-				'data' => [
-					'bs-toggle' => 'dropdown'
-				]
-			]);
 	}
 
 
@@ -200,16 +194,23 @@ class HtmlElementBsDropdown extends HtmlElement
 		foreach ($this->params['menu']['items'] as $item) {
 			$items[] = $this->menuItem($item);
 		}
-
+/*
 		$this->menu = $this->tag($tag)
 			->attributes([
 				'class' => $cls
 			])
+			->attributes($this->params['menu']['attr'] ?? [])
 			->content($items, true);
+*/
+		$this->child('menu', 'html-'.$tag, [
+			'class' => $cls
+		])->content($items, true);
+
+		return $this->menu;
 	}
 
 
-	private function getContent()
+	private function setContent()
 	{
 		$this->content = [];
 
@@ -221,7 +222,6 @@ class HtmlElementBsDropdown extends HtmlElement
 		if(is_a($this->menu, 'Avi\HtmlElement')) {
 			$this->content[] = $this->menu->use();
 		}
-		return $this->content;
 	}
 
 
@@ -231,8 +231,6 @@ class HtmlElementBsDropdown extends HtmlElement
 			'class' => sprintf('btn-%s', $this->params['size'])
 		]);
 	}
-
-
 
 }
 

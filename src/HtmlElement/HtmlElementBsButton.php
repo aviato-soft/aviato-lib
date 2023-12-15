@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.23
- * @since  2023-12-11 14:57:31
+ * @version 01.23.24
+ * @since  2023-12-15 18:03:04
  *
  */
 declare(strict_types = 1);
@@ -42,6 +42,9 @@ class HtmlElementBsButton extends HtmlElement
 		'dark',
 		'link'
 	];
+
+	public $icon;
+	public $spinner;
 
 	/**
 	 *
@@ -161,9 +164,10 @@ class HtmlElementBsButton extends HtmlElement
 			if (\Avi\Tools::isEnclosedIn($this->params['icon'])) {
 				$this->content[] = $this->params['icon'];
 			} else {
-				$this->content[] = $this->element('BsIcon', [
-					$this->params['icon']
-				])->use();
+				$this->icon = $this->element('BsIcon', [
+					'slug' => $this->params['icon']
+				]);
+				$this->content[] = $this->icon->use();
 			}
 			return;
 		}
