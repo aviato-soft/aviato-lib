@@ -301,10 +301,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#method_disabled"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Aicon\u0028\u0029",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024icon",
             "name": "icon",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_icon"
+            "url": "classes/Avi-HtmlElementBsButton.html#property_icon"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Anowrap\u0028\u0029",
             "name": "nowrap",
@@ -316,10 +316,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_size"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Aspinner\u0028\u0029",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024spinner",
             "name": "spinner",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_spinner"
+            "url": "classes/Avi-HtmlElementBsButton.html#property_spinner"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024tags",
             "name": "tags",
@@ -366,11 +366,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#method_parseParams"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024button",
-            "name": "button",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#property_button"
-        },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AbaseClass\u0028\u0029",
             "name": "baseClass",
             "summary": "drop\u005Bdown\u005D\ndrop\u005Bstart\u005D\ndrop\u005Bend\u005D\ndrop\u005Bup\u005D",
@@ -386,10 +381,10 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#property_menu"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AgetContent\u0028\u0029",
-            "name": "getContent",
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#method_getContent"
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_setContent"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024size",
             "name": "size",
@@ -420,6 +415,11 @@ Search.appendIndex(
             "name": "params",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024button",
+            "name": "button",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_button"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsIcon",
             "name": "HtmlElementBsIcon",
@@ -516,6 +516,11 @@ Search.appendIndex(
             "summary": "Return\u0020the\u0020formated\u0020element\u0020as\u0020a\u0020string",
             "url": "classes/Avi-HtmlElement.html#method_use"
         },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003Achild\u0028\u0029",
+            "name": "child",
+            "summary": "Instantiate\u0020a\u0020child\u0020element",
+            "url": "classes/Avi-HtmlElement.html#method_child"
+        },                {
             "fqsen": "\\Avi\\HtmlElement\u003A\u003AgetTemplateByTag\u0028\u0029",
             "name": "getTemplateByTag",
             "summary": "Return\u0020the\u0020template\u0020use\u0020to\u0020format\u0020the\u0020element",
@@ -530,6 +535,11 @@ Search.appendIndex(
             "name": "parseContent",
             "summary": "Convert\u0020the\u0020content\u0020from\u0020array\u0020to\u0020string",
             "url": "classes/Avi-HtmlElement.html#method_parseContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003A\u0024parent",
+            "name": "parent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#property_parent"
         },                {
             "fqsen": "\\Avi\\Log",
             "name": "Log",

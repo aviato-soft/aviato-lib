@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.23
- * @since  2023-12-11 14:57:31
+ * @version 01.23.24
+ * @since  2023-12-15 18:03:04
  *
  */
 declare(strict_types = 1);
@@ -23,6 +23,8 @@ class HtmlElement
 	protected $content;
 
 	protected $tag;
+
+	public $parent;
 
 
 	public function __construct($tag = 'div')
@@ -103,7 +105,12 @@ class HtmlElement
 		$extElement = 'HtmlElement'.ucfirst($element);
 		require_once $root.'/'.$extElement.'.php';
 		$extElement = __NAMESPACE__.'\\'.$extElement;
-		return new $extElement($properties);
+		// create a new instance:
+		$newElement = new $extElement($properties);
+		$newElement->parent = $this;
+		$newElement->attributes($properties['attr'] ?? []);
+
+		return $newElement;
 	}
 
 
@@ -117,6 +124,8 @@ class HtmlElement
 	{
 		// create a new instance:
 		$newElement = new HtmlElement($tag);
+
+		$newElement->parent = $this;
 
 		return $newElement;
 	}
@@ -136,6 +145,25 @@ class HtmlElement
 				'content' => $this->parseContent(),
 				'tag' => $this->tag
 			]);
+	}
+
+
+	/**
+	 * Instantiate a child element
+	 * @param string $name - the child name
+	 * @param string $type - the element type | html-tag
+	 * @param array $defaultAttributes
+	 * @return HtmlElement
+	 */
+	protected function child(string $name, string $type, array $defaultAttributes): HtmlElement
+	{
+		$this->$name = (substr($type, 0, 4) === 'html') ?
+			$this->tag(substr($type, 5))->attributes($this->params[$name]['attr'] ?? []):
+			$this->element($type, $this->params[$name]);
+
+		$this->$name->attributes($defaultAttributes);
+
+		return $this->$name;
 	}
 
 
