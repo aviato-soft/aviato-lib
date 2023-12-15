@@ -1,6 +1,10 @@
 # Changelog
 ---
 
+>## v.1.23.24
+> - add HtmlElement->child
+> - add HtmlElement->parent
+
 >## v.1.23.23
 > - new HtmlElement: BsDropdown
 

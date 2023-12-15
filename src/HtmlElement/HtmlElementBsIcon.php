@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.23
- * @since  2023-12-11 14:57:31
+ * @version 01.23.24
+ * @since  2023-12-15 18:03:04
  *
  */
 declare(strict_types = 1);
@@ -16,11 +16,17 @@ require_once dirname(__DIR__).'/HtmlElement.php';
 
 class HtmlElementBsIcon extends HtmlElement
 {
-	public function __construct($params = ['bootstrap'])
+	public function __construct($params = [])
 	{
-		$this->tag = 'i';
-		$this->attributes([
-			'class' => 'bi bi-'.$params[0]
+		$params = \Avi\Tools::applyDefault($params, [
+			'slug' => 'bootstrap',
+			'tag' => 'i'
 		]);
+		$this->tag = $params['tag'];
+		$this->attributes([
+			'class' => 'bi bi-'.$params['slug']
+		]);
+
+		return $this;
 	}
 }
