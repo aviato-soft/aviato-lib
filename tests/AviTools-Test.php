@@ -473,35 +473,41 @@ final class testAviatoTools extends TestCase
 		]);
 		$this->assertEquals($result, $test);
 		//var_dump($test); // <-- uncomment this line to see the result!
+	}
 
+
+	public function testFn_performance()
+	{
 
 		// performance test
 		$array = [];
-		for ($i = 0; $i < 10000; $i ++) {
+		for ($i = 0; $i < 10; $i ++) {
 			$array[] = [
-				'id' => 1,
-				'slug' => 'One'
+				'id' => $i,
+				'slug' => AviTools::str_random()
 			];
 		}
 		$pattern = '<p data-id="{id}">{slug}</p>';
 		$microtime = microtime(true);
-		$test = AviTools::atos($array, $pattern);
+		$test1 = AviTools::atos($array, $pattern);
 		$mt1 = microtime(true) - $microtime;
 		echo "\nATOS time for mustash:".$mt1;
 
 		$pattern = '<p data-id="%s">%s</p>';
 		$microtime = microtime(true);
-		$test = AviTools::atos($array, $pattern, array(
+		$test2 = AviTools::atos($array, $pattern, array(
 			'isPrintFormat' => true
 		));
 		$mt2 = microtime(true) - $microtime;
 		echo "\nATOS time for sprintf:".$mt2;
+		$this->assertEquals($test1, $test2);
 
 		$pattern = '<p data-id="{id}">{slug}</p>';
 		$microtime = microtime(true);
-		$test = AviTools::sprintaa($pattern, $array);
+		$test3 = AviTools::sprintaa($pattern, $array);
 		$mt3 = microtime(true) - $microtime;
 		echo "\nATOS time for sprintaa:".$mt3;
+		$this->assertEquals($test1, $test3);
 
 		echo "\n sprintf is ".(int) ($mt1 / $mt2)."x faster than mustash\n";
 	}
@@ -610,7 +616,7 @@ final class testAviatoTools extends TestCase
 	{
 		ob_start();
 		AviTools::redirect('home', 'html');
-		$headersList = headers_list();
+		headers_list();
 		$result = ob_get_clean();
 		$test = '';
 		$this->assertEquals($result, $test);
