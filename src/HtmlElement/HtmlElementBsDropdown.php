@@ -13,6 +13,7 @@ declare(strict_types = 1);
 namespace Avi;
 
 require_once dirname(__DIR__).'/HtmlElement.php';
+require_once __DIR__.'/HtmlElementBs.php';
 
 class HtmlElementBsDropdown extends HtmlElement
 {
@@ -28,10 +29,8 @@ class HtmlElementBsDropdown extends HtmlElement
 		'down',
 		'up'
 	];
-	private $size = [
-		'sm',
-		'lg'
-	];
+	private $size = AVI_BS_SIZE;
+
 
 	protected $params;
 
@@ -50,34 +49,31 @@ class HtmlElementBsDropdown extends HtmlElement
 	 */
 	public function __construct($params = [])
 	{
+		$this->tag = 'div';
 		$this->params = $params;
 		$this->parseParams();
 		$this->attributes([
 			'class' => $this->baseClass()
 		]);
 		$this->setContent();
-		$this->use();
+//		$this->use();
 		return $this;
 	}
 
 
 	private function parseParams()
 	{
-		$this->tag = 'div';
-
-		if(isset($this->params['button'])) {
-			$this->child('button', 'BsButton', [
-				'aria' => [
-					'expanded' => 'false'
-				],
-				'class' => [
-					'dropdown-toggle'
-				],
-				'data' => [
-					'bs-toggle' => 'dropdown'
-				]
-			]);
-		}
+		$this->child('button', 'BsButton', [
+			'aria' => [
+				'expanded' => 'false'
+			],
+			'class' => [
+				'dropdown-toggle'
+			],
+			'data' => [
+				'bs-toggle' => 'dropdown'
+			]
+		]);
 
 		if (isset($this->params['direction']) && in_array($this->params['direction'], $this->directions, true)) {
 			$this->direction = $this->params['direction'];

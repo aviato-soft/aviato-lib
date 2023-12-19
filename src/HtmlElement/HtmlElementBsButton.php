@@ -13,14 +13,11 @@ declare(strict_types = 1);
 namespace Avi;
 
 require_once dirname(__DIR__).'/HtmlElement.php';
+require_once __DIR__.'/HtmlElementBs.php';
 
 class HtmlElementBsButton extends HtmlElement
 {
-	private $params;
-	private $size = [
-		'sm',
-		'lg'
-	];
+	protected $params;
 	private $tags = [
 		'a',
 		'btn',
@@ -31,18 +28,8 @@ class HtmlElementBsButton extends HtmlElement
 		'submit',
 		'reset'
 	];
-	private $variants = [
-		'primary',
-		'secondary',
-		'success',
-		'danger',
-		'warning',
-		'info',
-		'light',
-		'dark',
-		'link'
-	];
 
+	public $badge;
 	public $icon;
 	public $spinner;
 
@@ -50,6 +37,7 @@ class HtmlElementBsButton extends HtmlElement
 	 *
 	 * @param array $params the values are optional and must be:
 	 *        |- active = true|false
+	 *        |- badge = HtmlElementBsSpinner properties
 	 *        |- disabled = true|false
 	 *        |- icon = bs icon name | HtmlElementBsIcon properties
 	 *        |- nowrap = true|false
@@ -57,107 +45,53 @@ class HtmlElementBsButton extends HtmlElement
 	 *        |- spinner = HtmlElementBsSpinner properties
 	 *        |- tag = $tags
 	 *        |- text = string
+	 *        |- toggle - true|false
 	 *        |- type = $type
-	 *        |- variant = $variants
+	 *        |- variant = BS_COLORS + link
 	 */
 	public function __construct($params = [])
 	{
 		$this->params = $params;
 		$this->parseParams();
-		$this->attributes([
-			'class' => 'btn'
-		]);
+		$this->setAttributes();
+		$this->setContent();
 		return $this;
 	}
 
+
 	private function parseParams()
 	{
-		if (!isset($this->params['type']) || !in_array($this->params['type'], $this->type, true)) {
+		$this->tag = $this->params['tag'] ?? 'button';
+		if (!in_array($this->tag, $this->tags, true)) {
+			$this->tag = 'button';
+		}
+//		if ($this->tag === 'a') {
+//			$this->parseParam('href', 'javascript:;');
+//		}
+
+		$this->parseParam('type', 'button');
+		if (!in_array($this->params['type'], $this->type, true)) {
 			$this->params['type'] = 'button';
 		}
 
-		if (!isset($this->params['tag']) || !in_array($this->params['tag'], $this->tags, true)) {
-			$this->params['tag'] = 'button';
-		}
-		$this->tags();
+		$this->child('badge', 'BsBadge');
+		$this->child('icon', 'BsIcon');
+		$this->child('spinner', 'BsSpinner');
 
-		if (isset($this->params['active'])) {
-			$this->active();
-		}
+		$this->parseParam('active', false);
+		$this->parseParam('outline', false);
+		$this->parseParam('toggle', false);
 
-		if (isset($this->params['disabled']) && $this->params['disabled'] === true) {
-			$this->disabled();
-		}
-
-		if (isset($this->params['icon'])) {
-			$this->icon();
-		}
-
-		if (isset($this->params['nowrap']) && $this->params['nowrap'] === true) {
-			$this->nowrap();
-		}
-
-		if (!isset($this->params['outline']) || $this->params['outline'] !== true) {
-			$this->params['outline'] = false;
-		}
-
-		if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
-			$this->size();
-		}
-
+/*
 		if (isset($this->params['spinner'])) {
 			$this->spinner();
 		}
-
-		if (isset($this->params['text'])) {
-			$this->text();
-		}
-
-		if (isset($this->params['variant']) && in_array($this->params['variant'], $this->variants, true)) {
-			$this->variant();
-		}
+*/
 	}
 
-	private function active()
-	{
-		$this->attributes([
-			'data-bs-toggle' => 'button'
-		]);
-		if ($this->params['active'] === true) {
-			$this->attributes([
-				'aria' => [
-					'pressed' => 'true'
-				],
-				'class' => [
-					'active'
-				]
-			]);
-		}
-	}
 
-	private function disabled()
-	{
-		switch ($this->params['tag']) {
-			case 'a':
-				$this->attributes([
-					'class' => 'disabled',
-					'aria' => [
-						'disabled' => 'true'
-					],
-					'tab-index' => '-1'
-				]);
-				unset($this->attributes['href']);
-				break;
 
-			case 'button':
-			case 'input':
-				$this->attributes([
-					'disabled'
-				]);
-				break;
-		}
-	}
-
+/*
 	private function icon()
 	{
 		if (is_string($this->params['icon'])) {
@@ -176,22 +110,155 @@ class HtmlElementBsButton extends HtmlElement
 			$this->content[] = $this->element('BsIcon', $this->params['icon'])->use();
 		}
 	}
+*/
 
-	private function nowrap()
+
+	private function setAttributes()
 	{
+		$this->setAttributeByTag();
+		$this->setAttributeActive();
+		$this->setAttributeDisabled();
+		$this->setAttributeNowrap();
+		$this->setAttributeSize();
+		$this->setAttributeToggle();
+		$this->setAttributeVariant();
+
 		$this->attributes([
-			'class' => 'text-nowrap'
+			'class' => 'btn'
 		]);
 	}
 
-	private function size()
+
+	private function setAttributeByTag()
 	{
-		$this->attributes([
-			'class' => sprintf('btn-%s', $this->params['size'])
-		]);
+		if ($this->tag === 'a') {
+			$this->attributes['role'] = 'button';
+			if (isset($this->params['href'])) {
+				$this->attributes['href'] = $this->params['href'];
+			}
+		} else {
+			$this->attributes['type'] = $this->params['type'];
+		}
 	}
 
 
+	private function setAttributeActive()
+	{
+		if ($this->params['active']) {
+			$this->attributes([
+				'aria' => [
+					'pressed' => 'true'
+				],
+				'class' => [
+					'active'
+				]
+			]);
+		}
+	}
+
+
+	private function setAttributeToggle()
+	{
+		if ($this->params['toggle']) {
+			$this->attributes([
+				'data' => [
+					'bs-toggle' => 'button'
+				]
+			]);
+		}
+	}
+
+
+	private function setAttributeDisabled()
+	{
+		if (isset($this->params['disabled']) && $this->params['disabled'] === true) {
+			if ($this->tag === 'a') {
+				$this->attributes([
+					'class' => 'disabled',
+					'aria' => [
+						'disabled' => 'true'
+					],
+				]);
+				if(isset($this->attributes['href'])) {
+					$this->attributes['tabindex'] = '-1';
+				}
+			} else {
+				$this->attributes([
+					'disabled'
+				]);
+			}
+		}
+	}
+
+
+	private function setAttributeNowrap()
+	{
+		if (isset($this->params['nowrap']) && $this->params['nowrap'] === true) {
+			$this->attributes([
+				'class' => 'text-nowrap'
+			]);
+		}
+	}
+
+
+	private function setAttributeSize()
+	{
+		if (isset($this->params['size']) && in_array($this->params['size'], AVI_BS_SIZE, true)) {
+			$this->attributes([
+				'class' => sprintf('btn-%s', $this->params['size'])
+			]);
+		}
+	}
+
+
+	private function setAttributeVariant()
+	{
+		if (isset($this->params['variant'])
+			&& in_array($this->params['variant'], array_merge(AVI_BS_COLOR, ['link']), true)
+		) {
+			$this->attributes([
+				'class' => sprintf('btn%s-%s', ($this->params['outline']) ? '-outline' : '', $this->params['variant'])
+			]);
+		}
+	}
+
+
+	private function setContent()
+	{
+		$content = [];
+		if(is_a($this->icon, 'Avi\HtmlElementBsIcon')) {
+			$content[] = $this->icon->use();
+		}
+
+		if(is_a($this->spinner, 'Avi\HtmlElementBsSpinner')) {
+			$content[] = $this->spinner->use();
+		}
+
+		if (isset($this->params['text'])) {
+			if (is_array($this->params['text'])) {
+				$this->params['text'] = implode('', $this->params['text']);
+			}
+			if ($content === []) {
+				$content[] = $this->params['text'];
+			}
+			else {
+				$content[] = $this->tag('span')->attributes([
+					'class' => sprintf('ps-%s', (isset($this->params['size']) && $this->params['size'] === 'sm') ? 2: 3)
+				])->content($this->params['text']);
+			}
+		} else {
+			$content[] = $this->content;
+		}
+
+		//badge is the latest element
+		if(is_a($this->badge, 'Avi\HtmlElementBsBadge')) {
+			$content[] = $this->badge->use();
+		}
+
+		$this->content = $content;
+	}
+
+/*
 	private function spinner()
 	{
 		if ($this->params['spinner'] === true) {
@@ -219,38 +286,12 @@ class HtmlElementBsButton extends HtmlElement
 			$this->content[] = $this->element('BsSpinner', $this->params['spinner'])->use();
 		}
 	}
+*/
 
-	private function tags()
-	{
-		$this->tag = $this->params['tag'];
-		switch ($this->params['tag']) {
-			case 'a':
-				if (!isset($this->params['href'])) {
-					$this->params['href'] = 'javascript:;';
-				}
-				$this->attributes([
-					'href' => $this->params['href'],
-					'role' => 'button'
-				]);
-				break;
-
-			case 'button':
-				$this->attributes([
-					'type' => $this->params['type'],
-				]);
-				break;
-
-			case 'input':
-				$this->attributes([
-					'type' => $this->params['type'],
-				]);
-				break;
-		}
-	}
 
 	private function text()
 	{
-		if ($this->params['tag'] === 'input') {
+		if ($this->tag === 'input') {
 			$this->attributes([
 				'value' => $this->params['text'],
 			]);
@@ -264,13 +305,6 @@ class HtmlElementBsButton extends HtmlElement
 			}
 		}
 	}
-
-	private function variant()
-	{
-		$this->attributes([
-			'class' => sprintf('btn%s-%s', ($this->params['outline']) ? '-outline' : '', $this->params['variant'])
-		]);
-	}
-
 }
+
 ?>
