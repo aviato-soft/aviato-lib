@@ -16,17 +16,47 @@ require_once dirname(__DIR__).'/HtmlElement.php';
 
 class HtmlElementBsIcon extends HtmlElement
 {
-	public function __construct($params = [])
+	protected $params;
+
+
+	/**
+	 *
+	 * @param array|string $params can be a string re[resemting the bootstrap icon slug
+	 * @return \Avi\HtmlElementBsIcon
+	 */
+	public function __construct(array|string $params = '')
 	{
-		$params = \Avi\Tools::applyDefault($params, [
-			'slug' => 'bootstrap',
-			'tag' => 'i'
-		]);
-		$this->tag = $params['tag'];
-		$this->attributes([
-			'class' => 'bi bi-'.$params['slug']
-		]);
+		$this->params = $params;
+		$this->parseParams();
+		$this->setAttributes();
+		$this->setContent();
 
 		return $this;
+	}
+
+
+	private function parseParams()
+	{
+		$this->tag = $this->params['tag'] ?? 'i';
+
+		$this->parseParam('slug', 'bootstrap');
+
+		if (substr($this->params['slug'], 0, 3) === 'bi-') {
+			$this->params['slug'] = substr($this->params['slug'], 3);
+		}
+	}
+
+
+	private function setAttributes()
+	{
+		$this->attributes([
+			'class' => 'bi bi-'.$this->params['slug']
+		]);
+	}
+
+
+	private function setContent()
+	{
+		//nothing to set = the content is empty for bootstrap icons
 	}
 }
