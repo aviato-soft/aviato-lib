@@ -34,6 +34,17 @@ const AVI_BS_COLOR = [
 	'dark',
 ];
 
+const AVI_BS_POS_H = [
+	'center',
+	'end',
+	'start'
+];
+
+const AVI_BS_POS_V = [
+	'down',
+	'up'
+];
+
 const AVI_BS_SIZE = [
 	'sm',
 	'lg'
