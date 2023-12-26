@@ -21,6 +21,9 @@ class HtmlElementBsBadge extends HtmlElement
 
 
 	/**
+	 * use default template:
+	 * <span class="badge {bg-color} {color} {pill}>{content}</span>
+	 *
 	 *
 	 * @param array|string $params can be a string re[resemting the bootstrap icon slug
 	 *        |- bg-color = background color = an element of AVI_BS_COLOR
@@ -43,6 +46,8 @@ class HtmlElementBsBadge extends HtmlElement
 	private function parseParams()
 	{
 		$this->tag = $this->params['tag'] ?? 'span';
+
+		$this->parseParam('text', '');
 	}
 
 
@@ -94,12 +99,10 @@ class HtmlElementBsBadge extends HtmlElement
 
 	private function setContent()
 	{
-		if (isset($this->params['text'])) {
-			if (is_array($this->params['text'])) {
-				$this->params['text'] = implode('', $this->params['text']);
-			}
-
-			$this->content = $this->params['text'];
+		if (is_array($this->params['text'])) {
+			$this->params['text'] = implode('', $this->params['text']);
 		}
+
+		$this->content = $this->params['text'];
 	}
 }

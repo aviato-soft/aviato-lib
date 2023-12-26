@@ -59,12 +59,42 @@ class HtmlElementBsButton extends HtmlElement
 	}
 
 
+	public function badge($params)
+	{
+		$this->params['badge'] = $params;
+		$this->parseParams();
+		$this->setContent();
+		return $this;
+	}
+
+
+	public function icon($params)
+	{
+		$this->params['icon'] = $params;
+		$this->parseParams();
+		$this->setContent();
+		return $this;
+	}
+
+
+	public function spinner($params)
+	{
+		$this->params['spinner'] = $params;
+		$this->parseParams();
+		$this->setContent();
+		return $this;
+	}
+
+
 	private function parseParams()
 	{
 		$this->tag = $this->params['tag'] ?? 'button';
 		if (!in_array($this->tag, $this->tags, true)) {
 			$this->tag = 'button';
 		}
+
+		$this->parseParam('text', '');
+
 //		if ($this->tag === 'a') {
 //			$this->parseParam('href', 'javascript:;');
 //		}
@@ -74,43 +104,14 @@ class HtmlElementBsButton extends HtmlElement
 			$this->params['type'] = 'button';
 		}
 
-		$this->child('badge', 'BsBadge');
-		$this->child('icon', 'BsIcon');
-		$this->child('spinner', 'BsSpinner');
-
 		$this->parseParam('active', false);
 		$this->parseParam('outline', false);
 		$this->parseParam('toggle', false);
 
-/*
-		if (isset($this->params['spinner'])) {
-			$this->spinner();
-		}
-*/
+		$this->child('badge', 'BsBadge');
+		$this->child('icon', 'BsIcon');
+		$this->child('spinner', 'BsSpinner');
 	}
-
-
-
-/*
-	private function icon()
-	{
-		if (is_string($this->params['icon'])) {
-			if (\Avi\Tools::isEnclosedIn($this->params['icon'])) {
-				$this->content[] = $this->params['icon'];
-			} else {
-				$this->icon = $this->element('BsIcon', [
-					'slug' => $this->params['icon']
-				]);
-				$this->content[] = $this->icon->use();
-			}
-			return;
-		}
-
-		if (is_array($this->params['icon'])) {
-			$this->content[] = $this->element('BsIcon', $this->params['icon'])->use();
-		}
-	}
-*/
 
 
 	private function setAttributes()
@@ -234,7 +235,7 @@ class HtmlElementBsButton extends HtmlElement
 			$content[] = $this->spinner->use();
 		}
 
-		if (isset($this->params['text'])) {
+		if (isset($this->params['text']) && $this->params['text'] !== '') {
 			if (is_array($this->params['text'])) {
 				$this->params['text'] = implode('', $this->params['text']);
 			}
@@ -246,8 +247,6 @@ class HtmlElementBsButton extends HtmlElement
 					'class' => sprintf('ps-%s', (isset($this->params['size']) && $this->params['size'] === 'sm') ? 2: 3)
 				])->content($this->params['text']);
 			}
-		} else {
-			$content[] = $this->content;
 		}
 
 		//badge is the latest element
@@ -256,54 +255,6 @@ class HtmlElementBsButton extends HtmlElement
 		}
 
 		$this->content = $content;
-	}
-
-/*
-	private function spinner()
-	{
-		if ($this->params['spinner'] === true) {
-			$this->content[] = $this->element('BsSpinner', [
-				'tag' => 'none',
-				'size' => 'sm'
-			])->use();
-			return;
-		}
-
-		if (is_string($this->params['spinner'])) {
-			if (\Avi\Tools::isEnclosedIn($this->params['spinner'])) {
-				$this->content[] = $this->params['spinner'];
-			} else {
-				$this->content[] = $this->element('BsSpinner', [
-					'tag' => 'none',
-					'size' => 'sm',
-					'text' => $this->params['spinner']
-				])->use();
-			}
-			return;
-		}
-
-		if (is_array($this->params['spinner'])) {
-			$this->content[] = $this->element('BsSpinner', $this->params['spinner'])->use();
-		}
-	}
-*/
-
-
-	private function text()
-	{
-		if ($this->tag === 'input') {
-			$this->attributes([
-				'value' => $this->params['text'],
-			]);
-		} else {
-			if (isset($this->params['icon'])) {
-				$this->content[] = $this->tag('span')->attributes([
-					'class' => sprintf('ps-%s', (isset($this->params['size']) && $this->params['size'] === 'sm') ? 2: 3)
-				])->content($this->params['text']);
-			} else {
-				$this->content[] = $this->params['text'];
-			}
-		}
 	}
 }
 

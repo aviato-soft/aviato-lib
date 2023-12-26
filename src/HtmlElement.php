@@ -165,9 +165,16 @@ class HtmlElement
 		if (!isset($this->params[$name])) {
 			return null;
 		}
-		$this->$name = (substr($type, 0, 4) === 'html') ?
-			$this->tag(substr($type, 5))->attributes($this->params[$name]['attr'] ?? []):
-			$this->element($type, $this->params[$name]);
+
+		//the child is a HtmlElement
+		if (is_a($this->params[$name], 'Avi\HtmlElement'.$type)) {
+			$this->$name = $this->params[$name];
+		} else {
+			//create a new childe as tag | element based on type:
+			$this->$name = (substr($type, 0, 4) === 'html') ?
+				$this->tag(substr($type, 5))->attributes($this->params[$name]['attr'] ?? []):
+				$this->element($type, $this->params[$name]);
+		}
 
 		$this->$name->attributes($defaultAttributes);
 
@@ -223,7 +230,7 @@ class HtmlElement
 	 *
 	 * @return string
 	 */
-	private function parseAttributes()
+	protected function parseAttributes()
 	{
 		//exceptions:
 		//use content to input => value attribute if attribute velue not set
@@ -284,7 +291,7 @@ class HtmlElement
 	 *
 	 * @return string|array|string|null
 	 */
-	private function parseContent()
+	protected function parseContent()
 	{
 		if (is_null($this->content)) {
 			$this->content = '';
