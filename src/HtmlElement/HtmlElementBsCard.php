@@ -19,24 +19,29 @@ class HtmlElementBsCard extends HtmlElement
 	protected $params;
 
 	//children:
-	public $img;
-	public $body;
-	public $title;
-	public $text;
-	public $subtitle;
-	public $link;
+	public $items;
 
+	private $chType = [
+		'body',
+		'footer',
+		'header',
+		'img',
+	];
 
+/**
+ *
+ * @param array $params
+ * 			|- htmlElement
+ * 			|- Bs[something]
+ * 			|- BsCard[$chType]
+ * @return \Avi\HtmlElementBsCard
+ */
 	public function __construct($params = [])
 	{
 		$this->params = $params;
 		$this->parseParams();
-
-		$this->attributes([
-			'class' => 'card'
-		]);
+		$this->setAttributes();
 		$this->setContent();
-//		$this->use();
 		return $this;
 	}
 
@@ -44,59 +49,46 @@ class HtmlElementBsCard extends HtmlElement
 	private function parseParams()
 	{
 		$this->tag = $this->params['tag'] ?? 'div';
+		$this->items = [];
 
-		$this->child('img', 'html-img', [
-			'class' => [
-				'card-img-top'
-			]
-		]);
+		foreach ($this->params as $param) {
+			foreach($param as $type => $element) {
+				if (is_a($element, 'Avi\HtmlElement')) {
+					$this->items[] = $element;
+					//echo $element->use();
+				} else {
+					if (substr($type, 0, 2) === 'Bs') {
+						$this->items[] = $this->element($type, $element);
+					} else {
+						if (in_array($type, $this->chType, true)) {
+							$this->items[] = $this->element('BsCard'.ucfirst($type), $element);
+						}
+					}
+				}
+			}
+		}
+	}
 
-		$this->child('body', 'html-div', [
-			'class' => [
-				'card-body'
-			]
-		]);
 
-		$this->child('title', 'html-h5', [
-			'class' => [
-				'card-title'
-			]
-		]);
-
-		$this->child('text', 'html-p', [
-			'class' => [
-				'card-text'
-			]
+	private function setAttributes()
+	{
+		$this->attributes([
+			'class' => 'card'
 		]);
 	}
 
 
 	private function setContent()
 	{
-		$this->content = [];
+		$content = [];
 
-		if(is_a($this->img, 'Avi\HtmlElement')) {
-			$this->content[] = $this->img->use();
+		foreach ($this->items as $htmlElement) {
+			if (is_a($htmlElement, 'Avi\HtmlElement')) {
+				$content[] = $htmlElement->use();
+			}
 		}
 
-		$bodyContent = [];
-
-		if(is_a($this->title, 'Avi\HtmlElement')) {
-			$bodyContent[] = $this->title->content($this->params['title']);
-		}
-
-		if(is_a($this->text, 'Avi\HtmlElement')) {
-			$bodyContent[] = $this->text->content($this->params['text']);
-		}
-
-//		print_r($bodyContent);
-		if(is_a($this->body, 'Avi\HtmlElement')) {
-			$bodyContent[] = implode('', $this->params['body']);
-			$this->content[] = $this->body->content($bodyContent);
-		} else {
-			$this->content[] = implode('', $bodyContent);
-		}
-
+		$this->content = $content;
 	}
 
 
