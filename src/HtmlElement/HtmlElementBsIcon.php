@@ -20,6 +20,8 @@ class HtmlElementBsIcon extends HtmlElement
 
 
 	/**
+	 * use default template:
+	 * <i class="bs-icon bs-{slug}"></i>
 	 *
 	 * @param array|string $params can be a string re[resemting the bootstrap icon slug
 	 * @return \Avi\HtmlElementBsIcon
@@ -29,7 +31,6 @@ class HtmlElementBsIcon extends HtmlElement
 		$this->params = $params;
 		$this->parseParams();
 		$this->setAttributes();
-		$this->setContent();
 
 		return $this;
 	}
@@ -52,11 +53,5 @@ class HtmlElementBsIcon extends HtmlElement
 		$this->attributes([
 			'class' => 'bi bi-'.$this->params['slug']
 		]);
-	}
-
-
-	private function setContent()
-	{
-		//nothing to set = the content is empty for bootstrap icons
 	}
 }

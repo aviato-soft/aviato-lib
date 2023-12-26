@@ -94,6 +94,12 @@ class HtmlElementBsListGroup extends HtmlElement
 		}
 		$content = [];
 		foreach($this->items as $item) {
+			if (is_string($item)) {
+				$item = [
+					'text' => $item
+				];
+			}
+
 			if(isset($item['tag']) && $item['tag'] !== 'li') {
 				$this->tag = 'div';
 			}

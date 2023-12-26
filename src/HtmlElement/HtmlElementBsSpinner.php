@@ -32,6 +32,7 @@ class HtmlElementBsSpinner extends HtmlElement
 	 *
 	 * @param array $params the values are optional and must be:
 	 *        |- color = element of AVI_BS_COLOR
+	 *        |- hidden = display none
 	 *        |- size = element of AVI_BS_SIZE
 	 *        |- status = true | false
 	 *        |- text = string
@@ -47,18 +48,18 @@ class HtmlElementBsSpinner extends HtmlElement
 		return $this;
 	}
 
+
 	private function parseParams()
 	{
 		$this->tag = $this->params['tag'] ?? 'div';
 
-		$this->parseParam('hidden', false);
+		$this->parseParam('text', 'Loading...');
 
+		$this->parseParam('hidden', false);
 		$this->parseParam('status', 'child');
 		$this->parseParam('status-tag', 'span');
 		$this->parseParam('status-hidden', true);
 		$this->child('status', 'html-'.$this->params['status-tag']);
-
-		$this->parseParam('text', 'Loading...');
 
 		$this->parseParam('type', 'border');
 		if (!in_array($this->params['type'], $this->type, true)) {
@@ -69,6 +70,7 @@ class HtmlElementBsSpinner extends HtmlElement
 
 	private function setAttributes()
 	{
+//		$this->setAttr();
 		$this->setAttributeColor();
 		$this->setAttributeHidden();
 		$this->setAttributeSize();
@@ -97,6 +99,13 @@ class HtmlElementBsSpinner extends HtmlElement
 					'd-none'
 				]
 			]);
+			if ($this->params['status'] !== 'child') {
+				$this->status->attributes([
+					'class' => [
+						'd-none'
+					]
+				]);
+			}
 		}
 	}
 
@@ -111,6 +120,7 @@ class HtmlElementBsSpinner extends HtmlElement
 			]);
 		}
 	}
+
 
 	private function setAttributeStatus()
 	{
@@ -153,13 +163,20 @@ class HtmlElementBsSpinner extends HtmlElement
 		]);
 	}
 
+/*
+	protected function parseElementContent()
+	{
+		$this->params['text'] = $this->content;
+		$this->setContent();
+		return $this->content;
+	}
+*/
 
 	private function setContent()
 	{
-		if(is_a($this->status, 'Avi\HtmlElement')) {
-			$status = $this->status->content($this->params['text']);
-		}
+		$this->use();
 
+/*
 		switch($this->params['status']) {
 			case 'after':
 				$content = $this->use();
@@ -183,5 +200,38 @@ class HtmlElementBsSpinner extends HtmlElement
 				$this->content = $status;
 				break;
 		}
+*/
+	}
+
+
+	public function use()
+	{
+		//content overwrite text attribute:
+		$this->status->content(($this->content === '')? $this->params['text']: $this->content);
+
+		//select template based on status position
+		switch($this->params['status']) {
+			case 'after':
+				$template = '<{attributes}></{tag}>{status}';
+				break;
+
+			case 'before':
+				$template = '{status}<{attributes}></{tag}>';
+				break;
+
+			case 'child':
+			default:
+				$template = '<{attributes}>{status}</{tag}>';
+				break;
+		}
+
+		return \Avi\Tools::sprinta(
+			$template,
+			[
+				'attributes' => $this->parseAttributes(),
+				'content' => $this->parseContent(),
+				'status' => $this->status->use(),
+				'tag' => $this->tag
+			]);
 	}
 }
