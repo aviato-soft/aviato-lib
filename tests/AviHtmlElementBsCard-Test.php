@@ -831,7 +831,156 @@ final class testAviatoHtmlElementBsCard extends TestCase
 
 
 		//Navigation
-//[WIP] - requrie BsNav
+		$test = implode('', [
+			'<div class="card text-center">',
+			'<div class="card-header">',
+			'<ul class="card-header-tabs nav nav-tabs">',
+			'<li class="nav-item">',
+			'<a aria-current="page" class="active nav-link" href="#">Active</a>',
+			'</li>',
+			'<li class="nav-item">',
+			'<a class="nav-link" href="#">Link</a>',
+			'</li>',
+			'<li class="nav-item">',
+			'<a aria-disabled="true" class="disabled nav-link">Disabled</a>',
+			'</li>',
+			'</ul>',
+			'</div>',
+			'<div class="card-body">',
+			'<h5 class="card-title">Special title treatment</h5>',
+			'<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>',
+			'<a class="btn btn-primary" href="#" role="button">Go somewhere</a>',
+			'</div>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsCard', [
+			[
+				'header' => $aviHtmlElement->element('BsNav', [
+					'interface' => 'tabs',
+					'items' => [
+						[
+							'active' => true,
+							'href' => '#',
+							'text' => 'Active'
+						],
+						[
+							'href' => '#',
+							'text' => 'Link'
+						],
+						[
+							'disabled' => true,
+							'href' => false,
+							'text' => 'Disabled'
+						]
+					],
+					'tag' => 'ul'
+
+				])
+				->attributes([
+					'class' => [
+						'card-header-tabs'
+					]
+				])
+				->use()
+			],
+			[
+				'body' => [
+					'title' => 'Special title treatment',
+					'text' => 'With supporting text below as a natural lead-in to additional content.',
+					'items' => [
+						$aviHtmlElement->element('BsButton', [
+							'href' => '#',
+							'tag' => 'a',
+							'text' => 'Go somewhere',
+							'variant' => 'primary'
+						])->use()
+					]
+				]
+			]
+		])
+		->attributes([
+			'class' => [
+				'text-center'
+			]
+		])
+		->use();
+		$this->assertEquals($test, $result);
+
+		$test = implode('', [
+			'<div class="card text-center">',
+			'<div class="card-header">',
+			'<ul class="card-header-pills nav nav-pills">',
+			'<li class="nav-item">',
+			'<a aria-current="page" class="active nav-link" href="#">Active</a>',
+			'</li>',
+			'<li class="nav-item">',
+			'<a class="nav-link" href="#">Link</a>',
+			'</li>',
+			'<li class="nav-item">',
+			'<a aria-disabled="true" class="disabled nav-link">Disabled</a>',
+			'</li>',
+			'</ul>',
+			'</div>',
+			'<div class="card-body">',
+			'<h5 class="card-title">Special title treatment</h5>',
+			'<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>',
+			'<a class="btn btn-primary" href="#" role="button">Go somewhere</a>',
+			'</div>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsCard', [
+			[
+				'header' => $aviHtmlElement->element('BsNav', [
+					'interface' => 'pills',
+					'items' => [
+						[
+							'active' => true,
+							'href' => '#',
+							'text' => 'Active'
+						],
+						[
+							'href' => '#',
+							'text' => 'Link'
+						],
+						[
+							'disabled' => true,
+							'href' => false,
+							'text' => 'Disabled'
+						]
+					],
+					'tag' => 'ul'
+
+				])
+				->attributes([
+					'class' => [
+						'card-header-pills'
+					]
+				])
+				->use()
+			],
+			[
+				'body' => [
+					'title' => 'Special title treatment',
+					'text' => 'With supporting text below as a natural lead-in to additional content.',
+					'items' => [
+						$aviHtmlElement->element('BsButton', [
+							'href' => '#',
+							'tag' => 'a',
+							'text' => 'Go somewhere',
+							'variant' => 'primary'
+						])->use()
+					]
+				]
+			]
+		])
+		->attributes([
+			'class' => [
+				'text-center'
+			]
+		])
+		->use();
+		$this->assertEquals($test, $result);
+
 
 		//Images
 		$body = implode('', [
