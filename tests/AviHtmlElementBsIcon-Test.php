@@ -16,9 +16,15 @@ final class testAviatoHtmlElementBsIcon extends TestCase
 		$aviHtmlElement = new \Avi\HtmlElement();
 
 		//full test:
-		$test = '<i class="bi bi-airplane"></i>';
+		$test = '<span class="bi bi-airplane" data-role="icon"></span>';
 		$result = $aviHtmlElement->element('BsIcon', [
-			'slug' => 'airplane'
+			'attr' => [
+				'data' => [
+					'role' => 'icon'
+				]
+			],
+			'slug' => 'airplane',
+			'tag' => 'span'
 		])->use();
 		$this->assertEquals($test, $result);
 
@@ -41,5 +47,14 @@ final class testAviatoHtmlElementBsIcon extends TestCase
 			'slug' => 'airplane'
 		])->use();
 		$this->assertEquals($test, $result);
+
+		//Usage on button
+		$test = '<button class="btn" type="button"><i class="bi bi-airplane"></i></button>';
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => 'airplane'
+		])->use();
+		$result = $aviHtmlElement->element('BsButton')->icon('airplane')->use();
+		$this->assertEquals($test, $result);
+
 	}
 }

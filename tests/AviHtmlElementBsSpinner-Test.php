@@ -17,23 +17,24 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 	public function testFn_Construct(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
-/*
+
 		//full test:
 		$test = implode('', [
 			'<div class="spinner-border spinner-border-sm text-primary" role="status">',
-			'<span class="visually-hidden">Please wait...</span>',
-			'{content}',
+			'<span class="visually-hidden">Please wait!</span>',
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsSpinner', [
 			'color' => 'primary', //AVI_BS_COLOR
+			'hidden' => false,
 			'size' => 'sm', //AVI_BS_SIZE
 			'status' => 'child', //child | before | after | none
-			'text' => 'Please wait...', //
+			'status-hidden' => true,
+			'text' => 'Loading!!!',
 			'type' => 'border' //border | grow
-		])->content('{content}');
+		])->content('Please wait!');
 		$this->assertEquals($test, $result);
-*/
+
 
 
 		//basic test:
@@ -43,6 +44,16 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsSpinner')->use();
+		$this->assertEquals($test, $result);
+
+
+		//basic test:
+		$test = implode('', [
+			'<div class="spinner-border" role="status">',
+			'<span class="visually-hidden">Waiting...</span>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsSpinner', 'Waiting...')->use();
 		$this->assertEquals($test, $result);
 
 //colors
@@ -101,12 +112,13 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 			'<span class="visually-hidden">Loading...</span>',
 			'</div>'
 		]);
-		$result = $aviHtmlElement->element('BsSpinner',
-			['attr' => [
+		$result = $aviHtmlElement->element('BsSpinner')
+			->attributes([
 				'class' => [
 					'm-5'
 				]
-			]])->use();
+			])
+			->use();
 		$this->assertEquals($test, $result);
 
 //placement flex:
@@ -164,13 +176,12 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 			'class' => [
 				'clearfix'
 				]
-			])->content($aviHtmlElement->element('BsSpinner', [
-				'attr' => [
+			])->content($aviHtmlElement->element('BsSpinner')->attributes([
 					'class' => [
 						'float-end'
 					]
-				]
-			])->use());
+				])
+				->use());
 		$this->assertEquals($test, $result);
 
 //text align
@@ -216,17 +227,18 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 			'<span class="visually-hidden">Loading...</span>',
 			'</div>'
 		]);
-		$result = $aviHtmlElement->element('BsSpinner', [
-			'attr' => [
-				'style' => 'width: 3rem; height: 3rem;'
-			]
-		])->use().
-		$aviHtmlElement->element('BsSpinner', [
-			'attr' => [
-				'style' => 'width: 3rem; height: 3rem;'
-			],
+		$result = $aviHtmlElement->element('BsSpinner')
+		->attributes([
+			'style' => 'width: 3rem; height: 3rem;'
+		])
+		->use()
+		.$aviHtmlElement->element('BsSpinner', [
 			'type' => 'grow'
-		])->use();
+		])
+		->attributes([
+			'style' => 'width: 3rem; height: 3rem;'
+		])
+		->use();
 		$this->assertEquals($test, $result);
 
 
@@ -325,5 +337,24 @@ final class testAviatoHtmlElementBsSpinner extends TestCase
 			'text' => 'Please wait...'
 		])->use();
 		$this->assertEquals($test, $result);
+
+
+//Extra attributes for status after|before:
+		$test = implode('', [
+			'<div aria-hidden="true" class="d-none spinner-border" data-role="status">',
+			'</div>',
+			'<span class="d-none visually-hidden" role="status">Spinner</span>'
+		]);
+		$result = $aviHtmlElement->element('BsSpinner', [
+			'hidden' => true,
+			'status' => 'after',
+			'text' => 'Please wait...'
+		])->attributes([
+			'data' => [
+				'role' => 'status'
+			]
+		])->content('Spinner');
+		$this->assertEquals($test, $result);
+
 	}
 }

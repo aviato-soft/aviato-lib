@@ -18,10 +18,10 @@ final class testAviatoHtmlElementBsButton extends TestCase
 
 		//Button full test
 		$test = implode('', [
-			'<button aria-pressed="true" class="active btn btn-primary text-nowrap" data-bs-toggle="button" type="submit" disabled>',
+			'<button aria-pressed="true" class="active btn btn-lg btn-primary text-nowrap" data-bs-toggle="button" type="submit" disabled>',
 			'<i class="bi bi-airplane"></i>',
 			'<span aria-hidden="true" class="d-none spinner-border"></span>',
-			'<span class="visually-hidden" role="status">Loading...</span>',
+			'<span class="d-none visually-hidden" role="status">Loading...</span>',
 			'<span class="ps-3">Click me!</span>',
 			'<span class="badge bg-warning text-bg-dark">10</span>',
 			'</button>'
@@ -36,6 +36,7 @@ final class testAviatoHtmlElementBsButton extends TestCase
 			'disabled' => true,
 			'icon' => 'airplane',
 			'nowrap' => true,
+			'size' => 'lg',
 			'spinner' => [
 				'hidden' => true,
 				'status' => 'after',
@@ -55,6 +56,21 @@ final class testAviatoHtmlElementBsButton extends TestCase
 		$test = '<button class="btn" type="button">Base class</button>';
 		$result = $aviHtmlElement->element('BsButton')->content('Base class');
 		$this->assertEquals($test, $result);
+
+
+		//invalid attributes
+		$test = '<button aria-pressed="true" class="active btn" type="button"><span class="badge">aviato</span>Click me!</button>';
+		$result = $aviHtmlElement->element('BsButton', [
+				'active' => 'aviato',
+				'aviato' => 'soft',
+				'badge' => 'aviato',
+				'disabled' => 'aviato',
+				'tag' => 'aviato',
+				'type' => 'aviato'
+			])
+			->content('Click me!');
+		$this->assertEquals($test, $result);
+
 
 		//variants
 		$test = implode('', [
@@ -193,11 +209,15 @@ final class testAviatoHtmlElementBsButton extends TestCase
 			'</button>'
 		]);
 		$result = $aviHtmlElement->element('BsButton', [
-			'attr' => [
-				'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'
-			],
+//			'attr' => [
+//				'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'
+//			],
 			'variant' => 'primary'
-		])->content('Custom button');
+		])
+		->attributes([
+			'style' => '--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;'
+		])
+		->content('Custom button');
 
 
 		//Disabled state
@@ -533,7 +553,7 @@ final class testAviatoHtmlElementBsButton extends TestCase
 			'<button class="btn btn-primary btn-sm" type="button">',
 			'<i class="bi bi-floppy-fill"></i>',
 			'<span aria-hidden="true" class="d-none spinner-border spinner-border-sm"></span>',
-			'<span class="visually-hidden" role="status">Please wait!...</span>',
+			'<span class="d-none visually-hidden" role="status">Please wait!...</span>',
 			'<span class="ps-2">Save</span>',
 			'</button>'
 		]);
@@ -551,59 +571,80 @@ final class testAviatoHtmlElementBsButton extends TestCase
 			'variant' => 'primary'
 		])->use();
 		$this->assertEquals($test, $result);
-/*
-		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => 'floppy-fill',
+
+
+		$bsSpinner = $aviHtmlElement->element('BsSpinner', [
+			'hidden' => true,
 			'size' => 'sm',
-			'spinner' => $aviHtmlElement->element('BsSpinner', [
-				'size' => 'sm',
-				'tag' => ''
-			])->use(),
+			'status' => 'after',
+			'text' => 'Please wait!...',
+			'tag' => 'span'
+		]);
+		$bsIcon = $aviHtmlElement->element('BsIcon', 'floppy-fill');
+
+		$result = $aviHtmlElement->element('BsButton', [
+			'icon' => $bsIcon,
+			'size' => 'sm',
+			'spinner' => $bsSpinner,
 			'text' => 'Save',
 			'variant' => 'primary'
 		])->use();
 		$this->assertEquals($test, $result);
 
-		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => 'floppy-fill',
-			'size' => 'sm',
-			'spinner' => 'Loading...',
-			'text' => 'Save',
-			'variant' => 'primary'
-		])->use();
-		$this->assertEquals($test, $result);
-/*
-		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => 'floppy-fill',
-			'size' => 'sm',
-			'spinner' => [
-				'size' => 'sm',
-				'tag' => ''
+
+		//usage test
+		$bsIcon = $aviHtmlElement->element('BsIcon', 'floppy-fill')
+			->attributes([
+			'data' => [
+				'role' => 'btn-icon'
+			]
+		]);
+		$bsSpinner = $aviHtmlElement->element('BsSpinner', [
+			'attr' => [
+				'data' => [
+					'role' => 'spinner'
+				]
 			],
-			'text' => 'Save',
-			'variant' => 'primary'
-		])->use();
+			'hidden' => true,
+			'size' => 'sm',
+			'status' => 'after',
+			'text' => 'Please wait!...',
+			'tag' => 'span'
+		]);
+
+
+		$test = implode('', [
+			'<button class="btn" type="button">',
+			'<i class="bi bi-airplane"></i>',
+			'<div class="spinner-border" role="status"><span class="visually-hidden">Please wait!</span></div>',
+			'<span class="ps-3">Click me!</span>',
+			'<span class="badge">99</span>',
+			'</button>'
+		]);
+		$result = $aviHtmlElement->element('BsButton', 'Click me!')
+			->icon('airplane')
+			->spinner('Please wait!')
+			->badge('99')
+			->use();
 		$this->assertEquals($test, $result);
-/*
+
+
 		$test = implode('', [
 			'<button class="btn btn-primary btn-sm" ',
-			'data-action="widget" data-call="Edit" data-gear="hotel" data-serialize="true" data-success="backend.on.success.done" data-verbose="true" data-widget="Gear" ',
+			'data-action="widget" data-call="Edit" data-gear="hotel" data-serialize="true" ',
+			'data-success="backend.on.success.done" data-verbose="true" data-widget="Gear" ',
 			'type="button">',
 			'<i class="bi bi-floppy-fill" data-role="btn-icon"></i>',
-			'<span aria-hidden="true" class="spinner-border spinner-border-sm d-none" data-role="spinner" role="status"></span>',
-			'<span class="visually-hidden">Please wait...</span>',
+			'<span aria-hidden="true" class="d-none spinner-border spinner-border-sm" data-role="spinner"></span>',
+			'<span class="d-none visually-hidden" role="status">Please wait!...</span>',
 			'<span class="ps-2">Save</span></button>'
 		]);
 		$result = $aviHtmlElement->element('BsButton', [
-			'icon' => $aviHtmlElement->element('BsIcon', ['floppy-fill'])->attributes([
-				'data' => [
-					'role' => 'btn-icon'
-				]
-			])->use(),
+			'icon' => $bsIcon,
 			'size' => 'sm',
-			'spinner' => true,
+			'spinner' => $bsSpinner,
 			'text' => 'Save',
-			'variant' => 'primary',
+			'variant' => 'primary'
 		])->attributes([
 			'data' => [
 				'action' => 'widget',
@@ -615,9 +656,7 @@ final class testAviatoHtmlElementBsButton extends TestCase
 				'widget' => 'Gear',
 			]
 		])->use();
-
-		//$this->assertEquals($test, $result);
-*/
+		$this->assertEquals($test, $result);
 	}
 
 }

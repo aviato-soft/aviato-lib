@@ -29,6 +29,8 @@ final class testAviatoHtmlElementBsBadge extends TestCase
 
 
 		$test = '<span class="badge">New</span>';
+		$result = $aviHtmlElement->element('BsBadge', 'New')->use();
+		$this->assertEquals($test, $result);
 		$result = $aviHtmlElement->element('BsBadge')->content('New');
 		$this->assertEquals($test, $result);
 
