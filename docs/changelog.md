@@ -1,6 +1,15 @@
 # Changelog
 ---
 
+>## v.1.23.25
+> - new HtmlElement: BsButtonGroup
+> - new HtmlElement: BsBadge
+> - new HtmlElement: BsCard
+> - new HtmlElement: BsInputCheckbox
+> - new HtmlElement: BsInputRadio
+> - new HtmlElement: BsListGroup
+> - new HtmlElement: BsNav
+
 >## v.1.23.24
 > - add HtmlElement->child
 > - add HtmlElement->parent

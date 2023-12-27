@@ -276,6 +276,81 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-Filter.html#property_data"
         },                {
+            "fqsen": "\\Avi\\AVI_BS_BREAKPOINT",
+            "name": "AVI_BS_BREAKPOINT",
+            "summary": "",
+            "url": "namespaces/avi.html#constant_AVI_BS_BREAKPOINT"
+        },                {
+            "fqsen": "\\Avi\\AVI_BS_COLOR",
+            "name": "AVI_BS_COLOR",
+            "summary": "",
+            "url": "namespaces/avi.html#constant_AVI_BS_COLOR"
+        },                {
+            "fqsen": "\\Avi\\AVI_BS_POS_H",
+            "name": "AVI_BS_POS_H",
+            "summary": "",
+            "url": "namespaces/avi.html#constant_AVI_BS_POS_H"
+        },                {
+            "fqsen": "\\Avi\\AVI_BS_POS_V",
+            "name": "AVI_BS_POS_V",
+            "summary": "",
+            "url": "namespaces/avi.html#constant_AVI_BS_POS_V"
+        },                {
+            "fqsen": "\\Avi\\AVI_BS_SIZE",
+            "name": "AVI_BS_SIZE",
+            "summary": "",
+            "url": "namespaces/avi.html#constant_AVI_BS_SIZE"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBs",
+            "name": "HtmlElementBs",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBs.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge",
+            "name": "HtmlElementBsBadge",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "use\u0020default\u0020template\u003A\n\u003Cspan\u0020class\u003D\u0022badge\u0020\u007Bbg\u002Dcolor\u007D\u0020\u007Bcolor\u007D\u0020\u007Bpill\u007D\u003E\u007Bcontent\u007D\u003C\/span\u003E",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AsetAttributeBgColor\u0028\u0029",
+            "name": "setAttributeBgColor",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_setAttributeBgColor"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AsetAttributeColor\u0028\u0029",
+            "name": "setAttributeColor",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_setAttributeColor"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AsetAttributePill\u0028\u0029",
+            "name": "setAttributePill",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_setAttributePill"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsBadge\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsBadge.html#property_params"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsButton",
             "name": "HtmlElementBsButton",
             "summary": "",
@@ -286,70 +361,325 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#method___construct"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AparseParams\u0028\u0029",
-            "name": "parseParams",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024badge",
+            "name": "badge",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_parseParams"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Aactive\u0028\u0029",
-            "name": "active",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_active"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Adisabled\u0028\u0029",
-            "name": "disabled",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_disabled"
+            "url": "classes/Avi-HtmlElementBsButton.html#property_badge"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024icon",
             "name": "icon",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_icon"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Anowrap\u0028\u0029",
-            "name": "nowrap",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_nowrap"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024size",
-            "name": "size",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#property_size"
-        },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024spinner",
             "name": "spinner",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_spinner"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024tags",
-            "name": "tags",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#property_tags"
+            "url": "classes/Avi-HtmlElementBsButton.html#method_parseParams"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Atext\u0028\u0029",
-            "name": "text",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_text"
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributes"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003Avariant\u0028\u0029",
-            "name": "variant",
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeByTag\u0028\u0029",
+            "name": "setAttributeByTag",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#method_variant"
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeByTag"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeActive\u0028\u0029",
+            "name": "setAttributeActive",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeActive"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeToggle\u0028\u0029",
+            "name": "setAttributeToggle",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeToggle"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeDisabled\u0028\u0029",
+            "name": "setAttributeDisabled",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeDisabled"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeNowrap\u0028\u0029",
+            "name": "setAttributeNowrap",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeNowrap"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeSize\u0028\u0029",
+            "name": "setAttributeSize",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeSize"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetAttributeVariant\u0028\u0029",
+            "name": "setAttributeVariant",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setAttributeVariant"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#method_setContent"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024params",
             "name": "params",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_params"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024tags",
+            "name": "tags",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButton.html#property_tags"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024type",
             "name": "type",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsButton.html#property_type"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsButton\u003A\u003A\u0024variants",
-            "name": "variants",
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup",
+            "name": "HtmlElementBsButtonGroup",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsButton.html#property_variants"
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#property_items"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AparseItems\u0028\u0029",
+            "name": "parseItems",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_parseItems"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AsetAttributeLabel\u0028\u0029",
+            "name": "setAttributeLabel",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_setAttributeLabel"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AsetAttributeRole\u0028\u0029",
+            "name": "setAttributeRole",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_setAttributeRole"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AsetAttributeSize\u0028\u0029",
+            "name": "setAttributeSize",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_setAttributeSize"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsButtonGroup\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsButtonGroup.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard",
+            "name": "HtmlElementBsCard",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#property_items"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCard\u003A\u003A\u0024chType",
+            "name": "chType",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCard.html#property_chType"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody",
+            "name": "HtmlElementBsCardBody",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003A\u0024title",
+            "name": "title",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#property_title"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003A\u0024subtitle",
+            "name": "subtitle",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#property_subtitle"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardBody\u003A\u003A\u0024text",
+            "name": "text",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardBody.html#property_text"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter",
+            "name": "HtmlElementBsCardFooter",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003A\u0024position",
+            "name": "position",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#property_position"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardFooter\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardFooter.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader",
+            "name": "HtmlElementBsCardHeader",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003A\u0024position",
+            "name": "position",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#property_position"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardHeader\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardHeader.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg",
+            "name": "HtmlElementBsCardImg",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg\u003A\u003A\u0024position",
+            "name": "position",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html#property_position"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsCardImg\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsCardImg.html#property_params"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown",
             "name": "HtmlElementBsDropdown",
@@ -361,35 +691,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#method___construct"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AparseParams\u0028\u0029",
-            "name": "parseParams",
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024button",
+            "name": "button",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#method_parseParams"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AbaseClass\u0028\u0029",
-            "name": "baseClass",
-            "summary": "drop\u005Bdown\u005D\ndrop\u005Bstart\u005D\ndrop\u005Bend\u005D\ndrop\u005Bup\u005D",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#method_baseClass"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AmenuItem\u0028\u0029",
-            "name": "menuItem",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#method_menuItem"
+            "url": "classes/Avi-HtmlElementBsDropdown.html#property_button"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024menu",
             "name": "menu",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#property_menu"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AbaseClass\u0028\u0029",
+            "name": "baseClass",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_baseClass"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AbuttonData\u0028\u0029",
+            "name": "buttonData",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_buttonData"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AmenuClass\u0028\u0029",
+            "name": "menuClass",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_menuClass"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AmenuItem\u0028\u0029",
+            "name": "menuItem",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_menuItem"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AsetMenuItems\u0028\u0029",
+            "name": "setMenuItems",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsDropdown.html#method_setMenuItems"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003AsetContent\u0028\u0029",
             "name": "setContent",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#method_setContent"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024size",
-            "name": "size",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#property_size"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024direction",
             "name": "direction",
@@ -416,11 +766,6 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsDropdown.html#property_params"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsDropdown\u003A\u003A\u0024button",
-            "name": "button",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsDropdown.html#property_button"
-        },                {
             "fqsen": "\\Avi\\HtmlElementBsIcon",
             "name": "HtmlElementBsIcon",
             "summary": "",
@@ -428,8 +773,428 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Avi\\HtmlElementBsIcon\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "use\u0020default\u0020template\u003A\n\u003Ci\u0020class\u003D\u0022bs\u002Dicon\u0020bs\u002D\u007Bslug\u007D\u0022\u003E\u003C\/i\u003E",
             "url": "classes/Avi-HtmlElementBsIcon.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsIcon\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsIcon.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsIcon\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsIcon.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsIcon\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsIcon.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox",
+            "name": "HtmlElementBsInputCheckbox",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AgetTagByType\u0028\u0029",
+            "name": "getTagByType",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_getTagByType"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesChecked\u0028\u0029",
+            "name": "setAttributesChecked",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesChecked"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesDisabled\u0028\u0029",
+            "name": "setAttributesDisabled",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesDisabled"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesButton\u0028\u0029",
+            "name": "setAttributesButton",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesButton"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesFormCheck\u0028\u0029",
+            "name": "setAttributesFormCheck",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesFormCheck"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesInline\u0028\u0029",
+            "name": "setAttributesInline",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesInline"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesReverse\u0028\u0029",
+            "name": "setAttributesReverse",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesReverse"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesSwitch\u0028\u0029",
+            "name": "setAttributesSwitch",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesSwitch"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesLabel\u0028\u0029",
+            "name": "setAttributesLabel",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesLabel"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetAttributesValue\u0028\u0029",
+            "name": "setAttributesValue",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesValue"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003A\u0024input",
+            "name": "input",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#property_input"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003A\u0024label",
+            "name": "label",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#property_label"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputCheckbox\u003A\u003A\u0024types",
+            "name": "types",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputCheckbox.html#property_types"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio",
+            "name": "HtmlElementBsInputRadio",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AgetTagByType\u0028\u0029",
+            "name": "getTagByType",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_getTagByType"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesChecked\u0028\u0029",
+            "name": "setAttributesChecked",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesChecked"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesDisabled\u0028\u0029",
+            "name": "setAttributesDisabled",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesDisabled"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesButton\u0028\u0029",
+            "name": "setAttributesButton",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesButton"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesFormCheck\u0028\u0029",
+            "name": "setAttributesFormCheck",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesFormCheck"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesInline\u0028\u0029",
+            "name": "setAttributesInline",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesInline"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesLabel\u0028\u0029",
+            "name": "setAttributesLabel",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesLabel"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetAttributesValue\u0028\u0029",
+            "name": "setAttributesValue",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setAttributesValue"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003A\u0024input",
+            "name": "input",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#property_input"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003A\u0024label",
+            "name": "label",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#property_label"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsInputRadio\u003A\u003A\u0024types",
+            "name": "types",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInputRadio.html#property_types"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup",
+            "name": "HtmlElementBsListGroup",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AparseItems\u0028\u0029",
+            "name": "parseItems",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_parseItems"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AsetAttributeFlush\u0028\u0029",
+            "name": "setAttributeFlush",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_setAttributeFlush"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AsetAttributeHorizontal\u0028\u0029",
+            "name": "setAttributeHorizontal",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_setAttributeHorizontal"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AparseElementContent\u0028\u0029",
+            "name": "parseElementContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_parseElementContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroup\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroup.html#property_items"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem",
+            "name": "HtmlElementBsListGroupItem",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributeByTag\u0028\u0029",
+            "name": "setAttributeByTag",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributeByTag"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributeActive\u0028\u0029",
+            "name": "setAttributeActive",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributeActive"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributeColor\u0028\u0029",
+            "name": "setAttributeColor",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributeColor"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributeDisabled\u0028\u0029",
+            "name": "setAttributeDisabled",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributeDisabled"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetAttributeHref\u0028\u0029",
+            "name": "setAttributeHref",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setAttributeHref"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003A\u0024position",
+            "name": "position",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#property_position"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsListGroupItem\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsListGroupItem.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav",
+            "name": "HtmlElementBsNav",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AparseItems\u0028\u0029",
+            "name": "parseItems",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_parseItems"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetAttributesAlign\u0028\u0029",
+            "name": "setAttributesAlign",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setAttributesAlign"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetAttributesDirection\u0028\u0029",
+            "name": "setAttributesDirection",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setAttributesDirection"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetAttributesFill\u0028\u0029",
+            "name": "setAttributesFill",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setAttributesFill"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetAttributesInterface\u0028\u0029",
+            "name": "setAttributesInterface",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setAttributesInterface"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#property_params"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNav\u003A\u003A\u0024items",
+            "name": "items",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNav.html#property_items"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem",
+            "name": "HtmlElementBsNavItem",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method___construct"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AparseParams\u0028\u0029",
+            "name": "parseParams",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_parseParams"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AsetAttributeActive\u0028\u0029",
+            "name": "setAttributeActive",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_setAttributeActive"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AsetAttributeDisabled\u0028\u0029",
+            "name": "setAttributeDisabled",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_setAttributeDisabled"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AsetAttributeHref\u0028\u0029",
+            "name": "setAttributeHref",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_setAttributeHref"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003A\u0024position",
+            "name": "position",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#property_position"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsNavItem\u003A\u003A\u0024params",
+            "name": "params",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsNavItem.html#property_params"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsSpinner",
             "name": "HtmlElementBsSpinner",
@@ -446,35 +1211,60 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsSpinner.html#method_parseParams"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024color",
-            "name": "color",
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributes\u0028\u0029",
+            "name": "setAttributes",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsSpinner.html#property_color"
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributes"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024size",
-            "name": "size",
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributeColor\u0028\u0029",
+            "name": "setAttributeColor",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsSpinner.html#property_size"
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributeColor"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003Atext\u0028\u0029",
-            "name": "text",
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributeHidden\u0028\u0029",
+            "name": "setAttributeHidden",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsSpinner.html#method_text"
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributeHidden"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003Atags\u0028\u0029",
-            "name": "tags",
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributeSize\u0028\u0029",
+            "name": "setAttributeSize",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsSpinner.html#method_tags"
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributeSize"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributeStatus\u0028\u0029",
+            "name": "setAttributeStatus",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributeStatus"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetAttributeType\u0028\u0029",
+            "name": "setAttributeType",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setAttributeType"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003AsetContent\u0028\u0029",
+            "name": "setContent",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_setContent"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003Ause\u0028\u0029",
+            "name": "use",
+            "summary": "Return\u0020the\u0020formated\u0020element\u0020as\u0020a\u0020string",
+            "url": "classes/Avi-HtmlElementBsSpinner.html#method_use"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024type",
+            "name": "type",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSpinner.html#property_type"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024params",
             "name": "params",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsSpinner.html#property_params"
         },                {
-            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024type",
-            "name": "type",
+            "fqsen": "\\Avi\\HtmlElementBsSpinner\u003A\u003A\u0024status",
+            "name": "status",
             "summary": "",
-            "url": "classes/Avi-HtmlElementBsSpinner.html#property_type"
+            "url": "classes/Avi-HtmlElementBsSpinner.html#property_status"
         },                {
             "fqsen": "\\Avi\\HtmlElement",
             "name": "HtmlElement",
@@ -520,6 +1310,11 @@ Search.appendIndex(
             "name": "child",
             "summary": "Instantiate\u0020a\u0020child\u0020element",
             "url": "classes/Avi-HtmlElement.html#method_child"
+        },                {
+            "fqsen": "\\Avi\\HtmlElement\u003A\u003AparseParam\u0028\u0029",
+            "name": "parseParam",
+            "summary": "",
+            "url": "classes/Avi-HtmlElement.html#method_parseParam"
         },                {
             "fqsen": "\\Avi\\HtmlElement\u003A\u003AgetTemplateByTag\u0028\u0029",
             "name": "getTemplateByTag",
