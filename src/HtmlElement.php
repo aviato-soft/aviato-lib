@@ -77,10 +77,15 @@ class HtmlElement
 	 */
 	public function content(array|string|null $content = null, $return = false)
 	{
-		if (is_array($this->content)) {
-			$this->content[] = $content;
+		if(method_exists($this, 'parseElementContent')) {
+			$this->content = $this->parseElementContent($content);
 		} else {
-			$this->content = $content;
+
+			if (is_array($this->content)) {
+				$this->content[] = $content;
+			} else {
+				$this->content = $content;
+			}
 		}
 
 		return ($return) ? $this: $this->use();
@@ -295,11 +300,6 @@ class HtmlElement
 	{
 		if (is_null($this->content)) {
 			$this->content = '';
-			return $this->content;
-		}
-
-		if(method_exists($this, 'parseElementContent')) {
-			$this->content = $this->parseElementContent();
 			return $this->content;
 		}
 

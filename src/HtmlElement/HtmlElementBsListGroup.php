@@ -21,39 +21,12 @@ class HtmlElementBsListGroup extends HtmlElement
 
 	public $items;
 
-	private $tplItem = [
-		'a' => [
-			'<a ',
-			'{aria-active}{aria-disabled}',
-			'class="{class-active}{class-disabled}list-group-item list-group-item-action{list-group-color}"',
-			'{href}',
-			'>',
-			'{text}',
-			'</a>'
-		],
-		'button' => [
-			'<button ',
-			'{aria-active}',
-			'class="{class-active}list-group-item list-group-item-action{list-group-color}" ',
-			'{class-disabled}type="button">',
-			'{text}',
-			'</button>'
-		],
-		'li' => [
-			'<li ',
-			'{aria-active}{aria-disabled}',
-			'class="{class-active}{class-disabled}list-group-item{list-group-color}"',
-			'>',
-			'{text}',
-			'</li>'
-		]
-	];
 	/**
 	 *
 	 * @param array|string $params can be a string re[resemting the bootstrap icon slug
 	 *        |- flush = false | true = remove rounded corners and external border
 	 *        |- horizontal = false | AVI_BS_BREAKPOINT - display list horizontally starting with breackpoint
-	 *        |- items = array
+	 *        |- items = [Avi\HtmlElementBsListGroupItem]
 	 *        |- template = false | string = custom template for items
 	 *        |- template-text = false | string = custom template for item / text
 	 * @return \Avi\HtmlElementBsIcon
@@ -78,74 +51,32 @@ class HtmlElementBsListGroup extends HtmlElement
 		$this->parseParam('items', false);
 		$this->parseParam('template', false);
 		$this->parseParam('template-text', false);
-	}
-
-
-	private function parseItemsbyTemplate()
-	{
-		return \Avi\Tools::atos($this->items, $this->params['template']);
+		$this->items = $this->parseItems();
 	}
 
 
 	private function parseItems()
 	{
-		if (!is_countable($this->items)) {
-			return '';
+		$items = [];
+		if (!is_countable($this->params['items'])) {
+			return $items;
 		}
-		$content = [];
-		foreach($this->items as $item) {
-			if (is_string($item)) {
-				$item = [
-					'text' => $item
-				];
-			}
 
-			if(isset($item['tag']) && $item['tag'] !== 'li') {
-				$this->tag = 'div';
-			}
-
-			if(isset($item['active']) && $item['active'] === true) {
-				$item['class-active'] = 'active ';
-				$item['aria-active'] = 'aria-current="true" ';
+		foreach($this->params['items'] as $item) {
+			if (is_a($item, 'Avi\HtmlElement')) {
+				$items[] = $item -> attributes([
+					'class' => [
+						'list-group-item'
+					]
+				]);
 			} else {
-				$item['class-active'] = '';
-				$item['aria-active'] = '';
-			}
-
-			if(isset($item['color']) && in_array($item['color'], AVI_BS_COLOR, true)) {
-				$item['list-group-color'] = sprintf(' list-group-item-%s', $item['color']);
-			} else {
-				$item['list-group-color'] = '';
-			}
-
-			if(isset($item['disabled']) && $item['disabled'] === true) {
-				$item['class-disabled'] = 'disabled ';
-				$item['aria-disabled'] = 'aria-disabled="true" ';
-			} else {
-				$item['class-disabled'] = '';
-				$item['aria-disabled'] = '';
-			}
-
-			if(isset($item['tag']) && $item['tag'] === 'a') {
-				if (isset($item['href'])) {
-					$item['href'] = sprintf(' href="%s"', $item['href']);
-				} else {
-					$item['href'] = '';
+				if ($this->params['template-text'] !== false) {
+					$item['template'] = $this->params['template-text'];
 				}
+				$items[] = $this->element('BsListGroupItem', $item);
 			}
-
-			if(is_string($this->params['template-text'])) {
-				$item['text'] = \Avi\Tools::sprinta($this->params['template-text'], $item['text']);
-			}
-
-			if (is_array($item['text'])) {
-				$item['text'] = implode('', $item['text']);
-			}
-
-			$tplItem = implode('', $this->tplItem[$item['tag'] ?? 'li']);
-			$content[] = \Avi\Tools::sprinta($tplItem, $item);
 		}
-		return implode('', $content);
+		return $items;
 	}
 
 
@@ -197,19 +128,32 @@ class HtmlElementBsListGroup extends HtmlElement
 	}
 
 
-	protected function parseElementContent()
+	protected function parseElementContent($content = null)
 	{
-		if (is_array($this->content)) {
-			$this->items = $this->content;
+		if (is_array($content)) {
+			$this->params['items'] = $content;
+			$this->parseParams();
+			$this->setContent();
 		}
-		$this->setContent();
+
 		return $this->content;
 	}
 
 
 	private function setContent()
 	{
-		$this->items = ($this->params['items'] === false)? $this->content: $this->params['items'];
-		$this->content = (is_string($this->params['template'])) ? $this->parseItemsbyTemplate(): $this->parseItems();
+		$content = [];
+
+		if ($this->params['template'] !== false) {
+			$content = \Avi\Tools::atos($this->params['items'], $this->params['template']);;
+		} else {
+			foreach ($this->items as $htmlElement) {
+				if (is_a($htmlElement, 'Avi\HtmlElement')) {
+					$content[] = $htmlElement->use();
+				}
+			}
+		}
+
+		$this->content = $content;
 	}
 }
