@@ -8,7 +8,6 @@ require_once dirname(dirname(__FILE__)).'/config/'.$_ENV['APP_ENV'].'.php';
 use PHPUnit\Framework\TestCase;
 use Avi\HtmlElement as AviHtmlElement;
 use const Avi\AVI_BS_BREAKPOINT;
-use PhpParser\Node\Stmt\Foreach_;
 use const Avi\AVI_BS_COLOR;
 
 final class testAviatoHtmlElementBsListGroup extends TestCase
@@ -17,6 +16,46 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 	public function testFn_Construct(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
+
+		//empty test:
+		$test = '<ul class="list-group"></ul>';
+		$result = $aviHtmlElement->element('BsListGroup')
+		->use();
+		$this->assertEquals($test, $result);
+
+
+		//full test:
+		$test = implode('', [
+			'<div class="list-group">',
+			'<a class="list-group-item list-group-item-action" href="#">A link</a>',
+			'<button class="list-group-item list-group-item-action" type="button">A button</button>',
+			'<a class="list-group-item" href="#1">Another link</a>',
+			'</div>'
+		]);
+		$result = $aviHtmlElement->element('BsListGroup', [
+			'flush' => false,
+			'horizontal' => false,
+			'items' => [
+				[
+					'href' => '#',
+					'tag' => 'a',
+					'text' => 'A link'
+				],
+				[
+					'tag' => 'button',
+					'text' => 'A button'
+				],
+				$aviHtmlElement->tag('a')
+				->attributes([
+					'href' => '#1',
+				])
+				->content('Another link', true)
+			],
+			'tag' => 'div'
+		])
+		->use();
+		$this->assertEquals($test, $result);
+
 
 		//Basic example
 		$test = implode('', [
@@ -50,26 +89,27 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 
 
 		//items in content
-		$result = $aviHtmlElement->element('BsListGroup') ->content([
-				[
-					'text' => 'An item'
-				],
-				[
-					'text' => 'A second item'
-				],
-				[
-					'text' => 'A third item'
-				],
-				[
-					'text' => 'A fourth item'
-				],
-				[
-					'text' => [
-						'And ',
-						'a fifth one'
-					]
+		$result = $aviHtmlElement->element('BsListGroup')
+		->content([
+			[
+				'text' => 'An item'
+			],
+			[
+				'text' => 'A second item'
+			],
+			[
+				'text' => 'A third item'
+			],
+			[
+				'text' => 'A fourth item'
+			],
+			[
+				'text' => [
+					'And ',
+					'a fifth one'
 				]
-			]);
+			]
+		]);
 		$this->assertEquals($test, $result);
 
 
@@ -98,9 +138,7 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 				[
 					'text' => 'A fourth item'
 				],
-				[
-					'text' => 'And a fifth one'
-				]
+				'And a fifth one'
 			]])->use();
 			$this->assertEquals($test, $result);
 
@@ -176,10 +214,12 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 				],
 				[
 					'disabled' => true,
+					'href' => false,
 					'tag' => 'a',
 					'text' => 'A disabled link item'
 				]
-			]
+			],
+			'tag' => 'div'
 		])->use();
 		$this->assertEquals($test, $result);
 
@@ -191,7 +231,7 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 			'<button class="list-group-item list-group-item-action" type="button">A second button item</button>',
 			'<button class="list-group-item list-group-item-action" type="button">A third button item</button>',
 			'<button class="list-group-item list-group-item-action" type="button">A fourth button item</button>',
-			'<button class="list-group-item list-group-item-action" disabled type="button">A disabled button item</button>',
+			'<button class="list-group-item list-group-item-action" type="button" disabled>A disabled button item</button>',
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsListGroup', [
@@ -220,7 +260,8 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 					'text' => 'A disabled button item',
 					'disabled' => true
 				]
-			]
+			],
+			'tag' => 'div'
 		])->use();
 		$this->assertEquals($test, $result);
 
@@ -493,7 +534,8 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 		}
 
 		$result = $aviHtmlElement->element('BsListGroup', [
-			'items' => $items
+			'items' => $items,
+			'tag' => 'div'
 		])->use();
 		$this->assertEquals($test, $result);
 
