@@ -31,7 +31,7 @@ class HtmlElementBsNav extends HtmlElement
  * 		|- interface: tabs | pills | underline
  * 		|- items
  * 			|- Avi\HtmlElement
- * 			|- href / active / disabled / text
+ * 			|- a [href / active / disabled / text]
  * 		|- tag = nav | ul
  * @return \Avi\HtmlElementBsNav
  */
