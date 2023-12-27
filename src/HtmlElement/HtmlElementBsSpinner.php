@@ -5,131 +5,233 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.24
- * @since  2023-12-15 18:03:04
+ * @version 01.23.25
+ * @since  2023-12-27 12:33:50
  *
  */
 declare(strict_types = 1);
 namespace Avi;
 
 require_once dirname(__DIR__).'/HtmlElement.php';
+require_once __DIR__.'/HtmlElementBs.php';
 
 class HtmlElementBsSpinner extends HtmlElement
 {
-	private $color = [
-		'primary',
-		'secondary',
-		'success',
-		'danger',
-		'warning',
-		'info',
-		'light',
-		'dark',
-	];
-	private $params;
-	private $size = [
-		'sm',
-		'lg'
-	];
 	private $type = [
 		'border',
-		'glow'
+		'grow'
 	];
-	//< class="spinner-border" role="status"></>
+
+
+	protected $params;
+
+	public $status;
+
+
 	/**
 	 *
 	 * @param array $params the values are optional and must be:
-	 *        |- color = $color
-	 *        |- type = $type
+	 *        |- color = element of AVI_BS_COLOR
+	 *        |- hidden = display none
+	 *        |- size = element of AVI_BS_SIZE
+	 *        |- status = true | false
 	 *        |- text = string
-	 *        |- size = $size
-	 * @return HtmlElementBsSpinner
+	 *        |- type = element of $type
+	 * @return \Avi\HtmlElementBsSpinner
 	 */
 	public function __construct($params = [])
 	{
 		$this->params = $params;
 		$this->parseParams();
-		$this->attributes([
-			'role' => 'status',
-			'class' => [
-				sprintf('spinner-%s', $this->params['type'])
-			]
-		]);
+		$this->setAttributes();
+		$this->setContent();
 		return $this;
 	}
 
+
 	private function parseParams()
 	{
-		if (!isset($this->params['type']) || in_array($this->params['type'], $this->type, true)) {
+		$this->tag = $this->params['tag'] ?? 'div';
+
+		$this->parseParam('text', 'Loading...');
+
+		$this->parseParam('hidden', false);
+		$this->parseParam('status', 'child');
+		$this->parseParam('status-tag', 'span');
+		$this->parseParam('status-hidden', true);
+		$this->child('status', 'html-'.$this->params['status-tag']);
+
+		$this->parseParam('type', 'border');
+		if (!in_array($this->params['type'], $this->type, true)) {
 			$this->params['type'] = 'border';
 		}
-
-		if (!isset($this->params['tag'])) {
-			$this->params['tag'] = 'div';
-		}
-		$this->tags();
-
-		if (isset($this->params['color']) && in_array($this->params['color'], $this->color, true)) {
-			$this->color();
-		}
-
-		if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
-			$this->size();
-		}
-
-		if (!isset($this->params['text'])) {
-			$this->params['text'] = 'Loading...';
-		}
-		$this->text();
 	}
 
-	private function color()
+
+	private function setAttributes()
+	{
+//		$this->setAttr();
+		$this->setAttributeColor();
+		$this->setAttributeHidden();
+		$this->setAttributeSize();
+		$this->setAttributeStatus();
+		$this->setAttributeType();
+	}
+
+
+	private function setAttributeColor()
+	{
+		if (isset($this->params['color']) && in_array($this->params['color'], AVI_BS_COLOR, true)) {
+			$this->attributes([
+				'class' => [
+					sprintf('text-%s', $this->params['color'])
+				]
+			]);
+		}
+	}
+
+
+	private function setAttributeHidden()
+	{
+		if ($this->params['hidden']) {
+			$this->attributes([
+				'class' => [
+					'd-none'
+				]
+			]);
+			if ($this->params['status'] !== 'child') {
+				$this->status->attributes([
+					'class' => [
+						'd-none'
+					]
+				]);
+			}
+		}
+	}
+
+
+	private function setAttributeSize()
+	{
+		if (isset($this->params['size']) && in_array($this->params['size'], AVI_BS_SIZE, true)) {
+			$this->attributes([
+				'class' => [
+					sprintf('spinner-%s-%s', $this->params['type'], $this->params['size'])
+				]
+			]);
+		}
+	}
+
+
+	private function setAttributeStatus()
+	{
+		if ($this->params['status-hidden']) {
+			$this->status->attributes([
+				'class' => [
+					'visually-hidden'
+				]
+			]);
+		}
+
+		switch($this->params['status']) {
+			case 'after':
+			case 'before':
+				$this->status->attributes([
+					'role' => 'status'
+				]);
+				$this->attributes([
+					'aria' => [
+						'hidden' => 'true'
+					]
+				]);
+				break;
+
+			case 'child':
+				$this->attributes([
+					'role' => 'status'
+				]);
+				break;
+		}
+	}
+
+
+	private function setAttributeType()
 	{
 		$this->attributes([
 			'class' => [
-				sprintf('text-%s', $this->params['color'])
+				sprintf('spinner-%s', $this->params['type'])
 			]
 		]);
 	}
 
-
-	private function size()
+/*
+	protected function parseElementContent()
 	{
-		$this->attributes([
-			'class' => sprintf('spinner-%s-%s', $this->params['type'], $this->params['size'])
-		]);
+		$this->params['text'] = $this->content;
+		$this->setContent();
+		return $this->content;
 	}
+*/
 
-
-	private function text()
+	private function setContent()
 	{
-		if (in_array($this->tag, ['', 'none'], true)) {
-			$cls = [
-				sprintf('spinner-%s', $this->params['type'])
-			];
-			if (isset($this->params['size']) && in_array($this->params['size'], $this->size, true)) {
-				$cls[] = sprintf('spinner-%s-%s', $this->params['type'], $this->params['size']);
-			}
-			$this->content[] = $this->tag('span') -> attributes([
-				'aria' => [
-					'hidden' => 'true'
-				],
-				'class' => $cls
-			])->content('');
-			$this->content[] = $this->tag('span') -> attributes([
-				'role' => 'status'
-			])->content($this->params['text']);
-		} else {
-			$this->content[] = $this->tag('span')->attributes([
-				'class' => 'visually-hidden'
-			])->content($this->params['text']);
+		$this->use();
+
+/*
+		switch($this->params['status']) {
+			case 'after':
+				$content = $this->use();
+				$this->tag = '';
+				$this->content = [
+					$content,
+					$status
+				];
+				break;
+
+			case 'before':
+				$content = $this->use();
+				$this->tag = '';
+				$this->content = [
+					$status,
+					$content
+				];
+				break;
+
+			case 'child':
+				$this->content = $status;
+				break;
 		}
+*/
 	}
 
 
-	private function tags()
+	public function use()
 	{
-		$this->tag = $this->params['tag'];
-	}
+		//content overwrite text attribute:
+		$this->status->content(($this->content === '')? $this->params['text']: $this->content);
 
+		//select template based on status position
+		switch($this->params['status']) {
+			case 'after':
+				$template = '<{attributes}></{tag}>{status}';
+				break;
+
+			case 'before':
+				$template = '{status}<{attributes}></{tag}>';
+				break;
+
+			case 'child':
+			default:
+				$template = '<{attributes}>{status}</{tag}>';
+				break;
+		}
+
+		return \Avi\Tools::sprinta(
+			$template,
+			[
+				'attributes' => $this->parseAttributes(),
+				'content' => $this->parseContent(),
+				'status' => $this->status->use(),
+				'tag' => $this->tag
+			]);
+	}
 }

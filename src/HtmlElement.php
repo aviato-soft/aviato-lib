@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.24
- * @since  2023-12-15 18:03:04
+ * @version 01.23.25
+ * @since  2023-12-27 12:33:50
  *
  */
 declare(strict_types = 1);
@@ -52,11 +52,16 @@ class HtmlElement
 	public function attributes($attributes = [], bool $mergeValues = true)
 	{
 		if ($mergeValues) {
-			//in case of existing attributes convert them to arrayL
+			//in case of existing attributes convert them to array
 			//$this->attributes = $this->parseAttributesR();
 
 			//merge attrubutes
 			$this->attributes = array_merge_recursive($this->attributes ?? [], $attributes);
+
+			//exceptions:
+			if ($this->tag === 'input' && isset($attributes['value'])) {
+				$this->attributes['value'] = $attributes['value'];
+			}
 		} else {
 			$this->attributes = $attributes;
 		}
@@ -70,12 +75,17 @@ class HtmlElement
 	 * @param array|string|null $content
 	 * @return string
 	 */
-	public function content($content = null, $return = false)
+	public function content(array|string|null $content = null, $return = false)
 	{
-		if (is_array($this->content)) {
-			$this->content[] = $content;
+		if(method_exists($this, 'parseElementContent')) {
+			$this->content = $this->parseElementContent($content);
 		} else {
-			$this->content = $content;
+
+			if (is_array($this->content)) {
+				$this->content[] = $content;
+			} else {
+				$this->content = $content;
+			}
 		}
 
 		return ($return) ? $this: $this->use();
@@ -99,7 +109,7 @@ class HtmlElement
 	 * @param string $element - defined element
 	 * @return object defeined in extended class
 	 */
-	public function element(string $element, array $properties = [], $root = null)
+	public function element(string $element, array|string $properties = [], $root = null)
 	{
 		$root = $root ?? dirname(__FILE__).'/HtmlElement';
 		$extElement = 'HtmlElement'.ucfirst($element);
@@ -155,15 +165,43 @@ class HtmlElement
 	 * @param array $defaultAttributes
 	 * @return HtmlElement
 	 */
-	protected function child(string $name, string $type, array $defaultAttributes): HtmlElement
+	protected function child(string $name, string $type, array|string $defaultAttributes = []): HtmlElement|null
 	{
-		$this->$name = (substr($type, 0, 4) === 'html') ?
-			$this->tag(substr($type, 5))->attributes($this->params[$name]['attr'] ?? []):
-			$this->element($type, $this->params[$name]);
+		if (!isset($this->params[$name])) {
+			return null;
+		}
+
+		//the child is a HtmlElement
+		if (is_a($this->params[$name], 'Avi\HtmlElement'.$type)) {
+			$this->$name = $this->params[$name];
+		} else {
+			//create a new childe as tag | element based on type:
+			$this->$name = (substr($type, 0, 4) === 'html') ?
+				$this->tag(substr($type, 5))->attributes($this->params[$name]['attr'] ?? []):
+				$this->element($type, $this->params[$name]);
+		}
 
 		$this->$name->attributes($defaultAttributes);
 
 		return $this->$name;
+	}
+
+
+	protected function parseParam($key, $default = null)
+	{
+		if(is_string($this->params)) {
+			$this->params = [
+				$key => $this->params
+			];
+		}
+
+		if($this->params === []) {
+			$this->params[$key] = $default;
+		}
+
+		if(!isset($this->params[$key])) {
+			$this->params[$key] = $default;
+		}
 	}
 
 
@@ -180,7 +218,7 @@ class HtmlElement
 			'contentOnly' => '{content}'
 		];
 
-		if (in_array($this->tag, ['!doctype','br','hr','input','link','meta'], true)) {
+		if (in_array($this->tag, ['!doctype','br','hr','img', 'input','link','meta'], true)) {
 			return $templates['single'];
 		}
 
@@ -197,13 +235,23 @@ class HtmlElement
 	 *
 	 * @return string
 	 */
-	private function parseAttributes()
+	protected function parseAttributes()
 	{
+		//exceptions:
+		//use content to input => value attribute if attribute velue not set
+		if ($this->tag === 'input' && !is_null($this->content)){
+			$this->parseContent();
+
+			if ($this->attributes === null || !isset($this->attributes['value'])) {
+				$this->attributes['value'] = $this->content;
+			}
+		}
+
 		if (is_null($this->attributes) || ! is_countable($this->attributes)) {
 			return $this->tag;
 		}
 
-		$atributes = [];
+		$atributesAssoc = [];
 		$pattern = '%s="%s"';
 		foreach ($this->attributes as $k => $v) {
 			if (is_countable($v)) {
@@ -212,27 +260,33 @@ class HtmlElement
 					// just list of values
 					// e.g. for class atribute: class=>['d-block', 'bg-light']
 					sort($v);
-					$atributes[] = sprintf($pattern, $k, implode(' ', $v));
+					$atributesAssoc[] = sprintf($pattern, $k, implode(' ', $v));
 				} else {
 					// associative array
 					// e.g. for data or aria attribute: data=>[role=>'box', content=>'text']
 					foreach ($v as $vk => $vv) {
-						$atributes[] = sprintf($pattern, $k.'-'.$vk, $vv);
+						$atributesAssoc[] = sprintf($pattern, $k.'-'.$vk, $vv);
 					}
 				}
 			} else {
 				// the attribute is a string
-				if (is_numeric($k)) {
-					// just a singurlar atribute
-					$atributes[] = $v;
-				} else {
+				if (!is_numeric($k)) {
 					// associative attribute:
-					$atributes[] = sprintf($pattern, $k, $v);
+					$atributesAssoc[] = sprintf($pattern, $k, $v);
 				}
 			}
 		}
-		sort($atributes);
-		$atributes = array_merge([$this->tag], $atributes);
+		sort($atributesAssoc);
+
+		//parsing the single atributes (disabled, enabled ... )
+		$attributesNumeric = [];
+		foreach ($this->attributes as $k => $v) {
+			if (!is_countable($v) && is_numeric($k)) {
+				$attributesNumeric[] = $v;
+			}
+		}
+		sort($attributesNumeric);
+		$atributes = array_merge([$this->tag], $atributesAssoc, $attributesNumeric);
 		return implode(' ', $atributes);
 	}
 
@@ -242,10 +296,11 @@ class HtmlElement
 	 *
 	 * @return string|array|string|null
 	 */
-	private function parseContent()
+	protected function parseContent()
 	{
 		if (is_null($this->content)) {
 			$this->content = '';
+			return $this->content;
 		}
 
 		if (is_countable($this->content)) {

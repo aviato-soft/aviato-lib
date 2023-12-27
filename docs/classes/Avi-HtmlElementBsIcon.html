@@ -163,6 +163,12 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Avi-HtmlElementBsIcon.html#property_params">$params</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
     <a href="classes/Avi-HtmlElement.html#property_tag">$tag</a>
     <span>
                         &nbsp;: mixed            </span>
@@ -179,8 +185,10 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-HtmlElementBsIcon.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: <a href="classes/Avi-HtmlElementBsIcon.html"><abbr title="\Avi\HtmlElementBsIcon">HtmlElementBsIcon</abbr></a>    </span>
 </dt>
+<dd>use default template:
+&lt;i class=&quot;bs-icon bs-{slug}&quot;&gt;&lt;/i&gt;</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-HtmlElement.html#method_attributes">attributes()</a>
@@ -231,6 +239,26 @@
 </dt>
 <dd>Instantiate a child element</dd>
 
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElement.html#method_parseAttributes">parseAttributes()</a>
+    <span>
+                                &nbsp;: string    </span>
+</dt>
+<dd>Convert Attributes from array to a scring</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElement.html#method_parseContent">parseContent()</a>
+    <span>
+                                &nbsp;: string|array&lt;string|int, mixed&gt;|null    </span>
+</dt>
+<dd>Convert the content from array to string</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-HtmlElement.html#method_getTemplateByTag">getTemplateByTag()</a>
     <span>
@@ -239,18 +267,16 @@
 <dd>Return the template use to format the element</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElement.html#method_parseAttributes">parseAttributes()</a>
+    <a href="classes/Avi-HtmlElementBsIcon.html#method_parseParams">parseParams()</a>
     <span>
-                                &nbsp;: string    </span>
+                                &nbsp;: mixed    </span>
 </dt>
-<dd>Convert Attributes from array to a scring</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElement.html#method_parseContent">parseContent()</a>
+    <a href="classes/Avi-HtmlElementBsIcon.html#method_setAttributes">setAttributes()</a>
     <span>
-                                &nbsp;: string|array&lt;string|int, mixed&gt;|null    </span>
+                                &nbsp;: mixed    </span>
 </dt>
-<dd>Convert the content from array to string</dd>
 
     </dl>
 
@@ -372,6 +398,39 @@
             -protected
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="property_params">
+        $params
+        <a href="classes/Avi-HtmlElementBsIcon.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsIcon.php"><a href="files/src-htmlelement-htmlelementbsicon.html"><abbr title="src/HtmlElement/HtmlElementBsIcon.php">HtmlElementBsIcon.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">19</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$params</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="property_tag">
         $tag
         <a href="classes/Avi-HtmlElement.html#property_tag" class="headerlink"><i class="fas fa-link"></i></a>
@@ -420,14 +479,16 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsIcon.php"><a href="files/src-htmlelement-htmlelementbsicon.html"><abbr title="src/HtmlElement/HtmlElementBsIcon.php">HtmlElementBsIcon.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">19</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">use default template:
+&lt;i class=&quot;bs-icon bs-{slug}&quot;&gt;&lt;/i&gt;</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsIcon.html"><abbr title="\Avi\HtmlElementBsIcon">HtmlElementBsIcon</abbr></a></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -436,16 +497,22 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>can be a string re[resemting the bootstrap icon slug</p>
+</section>
+
             </dd>
             </dl>
 
     
 
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsIcon.html"><abbr title="\Avi\HtmlElementBsIcon">HtmlElementBsIcon</abbr></a></span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -530,7 +597,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">73</span>
+    <span class="phpdocumentor-element-found-in__line">78</span>
 
     </aside>
 
@@ -583,7 +650,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">90</span>
+    <span class="phpdocumentor-element-found-in__line">100</span>
 
     </aside>
 
@@ -625,7 +692,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">102</span>
+    <span class="phpdocumentor-element-found-in__line">112</span>
 
     </aside>
 
@@ -633,7 +700,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">element</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$element</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$properties</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
+                    <span class="phpdocumentor-signature__name">element</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$element</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$properties</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$root</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">object</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -653,7 +720,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$properties</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;|string</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
@@ -693,7 +760,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">133</span>
 
     </aside>
 
@@ -741,7 +808,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">139</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
@@ -777,7 +844,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">158</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -785,7 +852,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">child</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$defaultAttributes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">child</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$type</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$defaultAttributes</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -817,7 +884,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$defaultAttributes</span>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                            </dt>
+                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -834,6 +901,126 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                     <article
         class="phpdocumentor-element
             -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_parseAttributes">
+        parseAttributes()
+        <a href="classes/Avi-HtmlElement.html#method_parseAttributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">238</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Convert Attributes from array to a scring</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">parseAttributes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_parseContent">
+        parseContent()
+        <a href="classes/Avi-HtmlElement.html#method_parseContent" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">299</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Convert the content from array to string</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">parseContent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|array&lt;string|int, mixed&gt;|null</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string|array&lt;string|int, mixed&gt;|null</span>
+            </section>
+
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_parseParam">
+        parseParam()
+        <a href="classes/Avi-HtmlElement.html#method_parseParam" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">190</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">parseParam</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$default</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
             -private
                                                         "
 >
@@ -845,7 +1032,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">175</span>
+    <span class="phpdocumentor-element-found-in__line">213</span>
 
     </aside>
 
@@ -873,23 +1060,22 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_parseAttributes">
-        parseAttributes()
-        <a href="classes/Avi-HtmlElement.html#method_parseAttributes" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_parseParams">
+        parseParams()
+        <a href="classes/Avi-HtmlElementBsIcon.html#method_parseParams" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsIcon.php"><a href="files/src-htmlelement-htmlelementbsicon.html"><abbr title="src/HtmlElement/HtmlElementBsIcon.php">HtmlElementBsIcon.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">200</span>
+    <span class="phpdocumentor-element-found-in__line">39</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Convert Attributes from array to a scring</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">parseAttributes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
+                    <span class="phpdocumentor-signature__name">parseParams</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -897,11 +1083,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string</span>
-            </section>
-
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -909,23 +1091,22 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_parseContent">
-        parseContent()
-        <a href="classes/Avi-HtmlElement.html#method_parseContent" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributes">
+        setAttributes()
+        <a href="classes/Avi-HtmlElementBsIcon.html#method_setAttributes" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsIcon.php"><a href="files/src-htmlelement-htmlelementbsicon.html"><abbr title="src/HtmlElement/HtmlElementBsIcon.php">HtmlElementBsIcon.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">245</span>
+    <span class="phpdocumentor-element-found-in__line">51</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Convert the content from array to string</p>
-
+    
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">parseContent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string|array&lt;string|int, mixed&gt;|null</span></code>
+                    <span class="phpdocumentor-signature__name">setAttributes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -933,11 +1114,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">string|array&lt;string|int, mixed&gt;|null</span>
-            </section>
-
+    
 </article>
             </section>
 
@@ -1055,6 +1232,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_parent">$parent<a href="classes/Avi-HtmlElementBsIcon.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_attributes">$attributes<a href="classes/Avi-HtmlElementBsIcon.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_content">$content<a href="classes/Avi-HtmlElementBsIcon.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsIcon.html#property_params">$params<a href="classes/Avi-HtmlElementBsIcon.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_tag">$tag<a href="classes/Avi-HtmlElementBsIcon.html"></li>
                                             </ul>
                 </li>
@@ -1070,9 +1248,12 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_tag">tag()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_use">use()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_child">child()</a></li>
-                                            <li><a href="classes/Avi-HtmlElement.html#method_getTemplateByTag">getTemplateByTag()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_parseAttributes">parseAttributes()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_parseContent">parseContent()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_getTemplateByTag">getTemplateByTag()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsIcon.html#method_parseParams">parseParams()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsIcon.html#method_setAttributes">setAttributes()</a></li>
                                     </ul>
             </li>
                     </ul>
