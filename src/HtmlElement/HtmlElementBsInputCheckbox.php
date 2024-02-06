@@ -12,122 +12,85 @@
 declare(strict_types = 1);
 namespace Avi;
 
-require_once dirname(__DIR__).'/HtmlElement.php';
-require_once __DIR__.'/HtmlElementBs.php';
+require_once __DIR__.'/HtmlElementBsInput.php';
 
-class HtmlElementBsInputCheckbox extends HtmlElement
+class HtmlElementBsInputCheckbox extends HtmlElementBsInput
 {
-	public $input;
-	public $label;
-
-	protected $params;
-
-	private $types = [
+	private $roles = [
 		'button',
 		'form-ckeck'
 	];
 
 
-
-	public function __construct($params = [])
+/**
+ *
+ * @param array $params
+ *
+ * @return \Avi\HtmlElementBsInputCheckbox
+ */
+	public function __construct($params = [], $parent = null)
 	{
-		$this->params = $params;
-		$this->parseParams();
-		$this->setAttributes();
-		$this->setContent();
+		parent::__construct($params, $parent);
 		return $this;
 	}
 
 
-	private function parseParams()
+	protected function parseParams()
 	{
-		$this->parseParam('id', false);
-		$this->parseParam('type', 'form-check');
-		$this->tag = $this->params['tag'] ?? $this->getTagByType();
+		$this->parseParam('layout', $this->params['parent']['layout'] ?? 'checkbox');
+		$this->parseParam('role', 'form-check');
+		$this->params['type'] = 'checkbox';
+		$this->parseParam('label-position', 'end');
+
+		parent::parseParams();
+
+		$this->tag = ($this->params['group'] === true) ? 'div' : $this->tag;
+		$this->tag = ($this->params['role'] === 'form-check') ? $this->tag : '';
 
 		$this->parseParam('checked', false);
-		$this->parseParam('disabled', false);
 		$this->parseParam('inline', false);
-		$this->parseParam('label', 'Checkbox');
-		if ($this->params['label'] === false) {
-			$this->parseParam('aria-label','Checkbox');
-		}
 		$this->parseParam('outline', false);
 		$this->parseParam('reverse', false);
 		$this->parseParam('switch', false);
-		$this->parseParam('value');
 		$this->parseParam('variant', false);
-		$this->params['input']='';
-
-
-		$this->child('input', 'html-input', [
-			'id' => $this->params['id'],
-			'type' => 'checkbox'
-		]);
-
-		$this->child('label', 'html-label', [
-			'for' => $this->params['id']
-		]);
-
 	}
 
 
-	private function getTagByType()
+	protected function setAttributes()
 	{
-		if(in_array($this->params['type'], ['form-check'], true)) {
-			return 'div';
-		}
+		parent::setAttributes();
 
-		return '';
-	}
+		$this->setAttributesByGroup();
 
-
-	private function setAttributes()
-	{
-
-		if($this->params['type'] === 'form-check') {
+		if($this->params['role'] === 'form-check') {
 			$this->setAttributesFormCheck();
 		}
 
-		if($this->params['type'] === 'button') {
+		if($this->params['role'] === 'button') {
 			$this->setAttributesButton();
 		}
 
 		//input
 		$this->setAttributesChecked();
-		$this->setAttributesDisabled();
 		$this->setAttributesInline();
 		$this->setAttributesReverse();
 		$this->setAttributesSwitch();
-		if($this->params['value'] !== null) {
-			$this->setAttributesValue();
-		}
-
-		//label
-		if($this->params['label'] !== null) {
-			$this->setAttributesLabel();
-		}
 	}
 
 
-	private function setAttributesChecked()
+	private function setAttributesByGroup()
 	{
-		if($this->params['checked'] === true) {
+		if($this->params['group'] === true) {
+			$this->setAttrClass('input-group-text');
+
 			$this->input->attributes([
-				'checked'
+				'class' => [
+					'mt-0'
+				]
 			]);
 		}
 	}
 
-
-	private function setAttributesDisabled()
-	{
-		if($this->params['disabled'] === true) {
-			$this->input->attributes([
-				'disabled'
-			]);
-		}
-	}
 
 
 	private function setAttributesButton()
@@ -147,37 +110,41 @@ class HtmlElementBsInputCheckbox extends HtmlElement
 	}
 
 
+	private function setAttributesChecked()
+	{
+		if($this->params['checked'] === true) {
+			$this->input->attributes([
+				'checked'
+			]);
+		}
+	}
+
 	private function setAttributesFormCheck()
 	{
-		if ($this->params['label'] !== false) {
-			$this->attributes['class'] = ['form-check'];
-		} else {
-			if ($this->params['aria-label'] !== '') {
-				$this->input->attributes([
-					'aria' => [
-						'label' => $this->params['aria-label']
-					]
-				]);
-			}
-
+		if ($this->params['label']) {
+			$this->setAttrClass('form-check');
 		}
+
 		$this->input->attributes([
 			'class' => [
 				'form-check-input'
 			]
 		]);
-		$this->label->attributes([
-			'class' => [
-				'form-check-label'
-			]
-		]);
+
+		if ($this->params['label']) {
+			$this->label->attributes([
+				'class' => [
+					'form-check-label'
+				]
+			]);
+		}
 	}
 
 
 	private function setAttributesInline()
 	{
 		if($this->params['inline'] === true) {
-			$this->attributes['class'][] = 'form-check-inline';
+			$this->setAttrClass('form-check-inline');
 		}
 	}
 
@@ -185,7 +152,7 @@ class HtmlElementBsInputCheckbox extends HtmlElement
 	private function setAttributesReverse()
 	{
 		if($this->params['reverse'] === true) {
-			$this->attributes['class'][] = 'form-check-reverse';
+			$this->setAttrClass('form-check-reverse');
 		}
 	}
 
@@ -193,37 +160,10 @@ class HtmlElementBsInputCheckbox extends HtmlElement
 	private function setAttributesSwitch()
 	{
 		if($this->params['switch'] === true) {
-			$this->attributes['class'][] = 'form-switch';
+			$this->setAttrClass('form-switch');
 			$this->input->attributes([
 				'role' => 'switch'
 			]);
 		}
-	}
-
-
-	private function setAttributesLabel()
-	{
-		if ($this->params['label'] !== false) {
-			$this->label->content($this->params['label']);
-		}
-	}
-
-
-	private function setAttributesValue()
-	{
-		$this->input->attributes([
-			'value' => $this->params['value']
-		]);
-	}
-
-
-	private function setContent()
-	{
-		$content = [];
-		$content[] = $this->input->use();
-		if($this->params['label'] !== false) {
-			$content[] = $this->label->use();
-		}
-		$this->content = $content;
 	}
 }

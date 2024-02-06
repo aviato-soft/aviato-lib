@@ -12,10 +12,9 @@
 declare(strict_types = 1);
 namespace Avi;
 
-require_once dirname(__DIR__).'/HtmlElement.php';
 require_once __DIR__.'/HtmlElementBs.php';
 
-class HtmlElementBsButton extends HtmlElement
+class HtmlElementBsButton extends HtmlElementBs
 {
 	protected $params;
 	private $tags = [
@@ -35,9 +34,9 @@ class HtmlElementBsButton extends HtmlElement
 
 	/**
 	 *
-	 * @param array $params the values are optional and must be:
+	 * @param array|string $params the values are optional and must be:
 	 *        |- active = true|false
-	 *        |- badge = HtmlElementBsSpinner properties
+	 *        |- badge = HtmlElementBsBadge properties
 	 *        |- disabled = true|false
 	 *        |- icon = bs icon name | HtmlElementBsIcon properties
 	 *        |- nowrap = true|false
@@ -49,7 +48,7 @@ class HtmlElementBsButton extends HtmlElement
 	 *        |- type = $type
 	 *        |- variant = BS_COLORS + link
 	 */
-	public function __construct($params = [])
+	public function __construct(array|string $params = [])
 	{
 		$this->params = $params;
 		$this->parseParams();
@@ -59,7 +58,16 @@ class HtmlElementBsButton extends HtmlElement
 	}
 
 
-	public function badge($params)
+/**
+ * Child: badge
+ * @param null|string|array $params
+ *        |- bg-color = background color = an element of AVI_BS_COLOR
+ *        |- color = textcolor = an element of AVI_BS_COLOR
+ *        |- pill = rounded margins like a pill = true | false
+ *        |- text = string
+ * @return \Avi\HtmlElementBsButton
+ */
+	public function badge(array|string $params)
 	{
 		$this->params['badge'] = $params;
 		$this->parseParams();
@@ -105,8 +113,11 @@ class HtmlElementBsButton extends HtmlElement
 		}
 
 		$this->parseParam('active', false);
+		$this->parseParam('id', false);
+		$this->parseParam('nowrap', false);
 		$this->parseParam('outline', false);
 		$this->parseParam('toggle', false);
+		$this->parseParam('variant');
 
 		$this->child('badge', 'BsBadge');
 		$this->child('icon', 'BsIcon');
@@ -119,6 +130,7 @@ class HtmlElementBsButton extends HtmlElement
 		$this->setAttributeByTag();
 		$this->setAttributeActive();
 		$this->setAttributeDisabled();
+		$this->setAttributeId();
 		$this->setAttributeNowrap();
 		$this->setAttributeSize();
 		$this->setAttributeToggle();
@@ -127,19 +139,6 @@ class HtmlElementBsButton extends HtmlElement
 		$this->attributes([
 			'class' => 'btn'
 		]);
-	}
-
-
-	private function setAttributeByTag()
-	{
-		if ($this->tag === 'a') {
-			$this->attributes['role'] = 'button';
-			if (isset($this->params['href'])) {
-				$this->attributes['href'] = $this->params['href'];
-			}
-		} else {
-			$this->attributes['type'] = $this->params['type'];
-		}
 	}
 
 
@@ -158,14 +157,15 @@ class HtmlElementBsButton extends HtmlElement
 	}
 
 
-	private function setAttributeToggle()
+	private function setAttributeByTag()
 	{
-		if ($this->params['toggle']) {
-			$this->attributes([
-				'data' => [
-					'bs-toggle' => 'button'
-				]
-			]);
+		if ($this->tag === 'a') {
+			$this->attributes['role'] = 'button';
+			if (isset($this->params['href'])) {
+				$this->attributes['href'] = $this->params['href'];
+			}
+		} else {
+			$this->attributes['type'] = $this->params['type'];
 		}
 	}
 
@@ -192,12 +192,18 @@ class HtmlElementBsButton extends HtmlElement
 	}
 
 
+	private function setAttributeId()
+	{
+		if($this->params['id'] !== false) {
+			$this->attributes['id'] = $this->params['id'];
+		}
+	}
+
+
 	private function setAttributeNowrap()
 	{
-		if (isset($this->params['nowrap']) && $this->params['nowrap'] === true) {
-			$this->attributes([
-				'class' => 'text-nowrap'
-			]);
+		if ($this->params['nowrap'] === true) {
+			$this->setAttrClass('text-nowrap');
 		}
 	}
 
@@ -212,11 +218,21 @@ class HtmlElementBsButton extends HtmlElement
 	}
 
 
+	private function setAttributeToggle()
+	{
+		if ($this->params['toggle']) {
+			$this->attributes([
+				'data' => [
+					'bs-toggle' => 'button'
+				]
+			]);
+		}
+	}
+
+
 	private function setAttributeVariant()
 	{
-		if (isset($this->params['variant'])
-			&& in_array($this->params['variant'], array_merge(AVI_BS_COLOR, ['link']), true)
-		) {
+		if ($this->params['variant'] && in_array($this->params['variant'], array_merge(AVI_BS_COLOR, ['link']), true)) {
 			$this->attributes([
 				'class' => sprintf('btn%s-%s', ($this->params['outline']) ? '-outline' : '', $this->params['variant'])
 			]);
@@ -243,7 +259,7 @@ class HtmlElementBsButton extends HtmlElement
 				$content[] = $this->params['text'];
 			}
 			else {
-				$content[] = $this->tag('span')->attributes([
+				$content[] = $this->tag('span', null, true, new \Avi\HtmlElement)->attributes([
 					'class' => sprintf('ps-%s', (isset($this->params['size']) && $this->params['size'] === 'sm') ? 2: 3)
 				])->content($this->params['text']);
 			}

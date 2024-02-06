@@ -20,6 +20,7 @@ class HtmlElementBsCardHeader extends HtmlElement
 	private $position;
 
 	protected $params;
+	protected $tag = 'div';
 
 	public function __construct($params = [])
 	{
@@ -33,9 +34,8 @@ class HtmlElementBsCardHeader extends HtmlElement
 
 	private function parseParams()
 	{
-		$this->tag = $this->params['tag'] ?? 'div';
-
-		$this->parseParam('text');
+		$this->tag = $this->params['tag'] ?? $this->tag;
+		$this->parseParam('content');
 	}
 
 
@@ -47,6 +47,6 @@ class HtmlElementBsCardHeader extends HtmlElement
 	}
 
 	private function setContent() {
-		$this->content = $this->params['text'];
+		$this->content = $this->params['content'];
 	}
 }

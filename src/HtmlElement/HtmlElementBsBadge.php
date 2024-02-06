@@ -18,6 +18,7 @@ require_once __DIR__.'/HtmlElementBs.php';
 class HtmlElementBsBadge extends HtmlElement
 {
 	protected $params;
+	protected $tag = 'span';
 
 
 	/**
@@ -45,8 +46,9 @@ class HtmlElementBsBadge extends HtmlElement
 
 	private function parseParams()
 	{
-		$this->tag = $this->params['tag'] ?? 'span';
+		$this->tag = $this->params['tag'] ?? $this->tag;
 
+		//for params = string this line will associate the string to param[text]
 		$this->parseParam('text', '');
 	}
 
@@ -56,20 +58,14 @@ class HtmlElementBsBadge extends HtmlElement
 		$this->setAttributeBgColor();
 		$this->setAttributeColor();
 		$this->setAttributePill();
-		$this->attributes([
-			'class' => 'badge'
-		]);
+		$this->setAttrClass('badge');
 	}
 
 
 	private function setAttributeBgColor()
 	{
 		if (isset($this->params['bg-color']) && in_array($this->params['bg-color'], AVI_BS_COLOR, true)) {
-			$this->attributes([
-				'class' => [
-					sprintf('bg-%s', $this->params['bg-color'])
-				]
-			]);
+			$this->setAttrClass(sprintf('bg-%s', $this->params['bg-color']));
 		}
 	}
 
@@ -77,11 +73,7 @@ class HtmlElementBsBadge extends HtmlElement
 	private function setAttributeColor()
 	{
 		if (isset($this->params['color']) && in_array($this->params['color'], AVI_BS_COLOR, true)) {
-			$this->attributes([
-				'class' => [
-					sprintf('text-bg-%s', $this->params['color'])
-				]
-			]);
+			$this->setAttrClass(sprintf('text-bg-%s', $this->params['color']));
 		}
 	}
 
@@ -89,13 +81,10 @@ class HtmlElementBsBadge extends HtmlElement
 	private function setAttributePill()
 	{
 		if (isset($this->params['pill']) && $this->params['pill'] === true) {
-			$this->attributes([
-				'class' => [
-					'rounded-pill'
-				]
-			]);
+			$this->setAttrClass('rounded-pill');
 		}
 	}
+
 
 	private function setContent()
 	{
