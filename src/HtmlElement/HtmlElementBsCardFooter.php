@@ -17,9 +17,8 @@ require_once __DIR__.'/HtmlElementBs.php';
 
 class HtmlElementBsCardFooter extends HtmlElement
 {
-	private $position;
-
 	protected $params;
+	protected $tag = 'div';
 
 	public function __construct($params = [])
 	{
@@ -33,9 +32,8 @@ class HtmlElementBsCardFooter extends HtmlElement
 
 	private function parseParams()
 	{
-		$this->tag = 'div';
-
-		$this->parseParam('text');
+		$this->tag = $this->params['tag'] ?? $this->tag;
+		$this->parseParam('content');
 	}
 
 
@@ -47,6 +45,6 @@ class HtmlElementBsCardFooter extends HtmlElement
 	}
 
 	private function setContent() {
-		$this->content = $this->params['text'];
+		$this->content = $this->params['content'];
 	}
 }
