@@ -24,6 +24,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 			'Default radio',
 			'</label>',
 			'</div>',
+
 			'<div class="form-check">',
 			'<input class="form-check-input" id="flexRadioDefault2" name="flexRadioDefault" type="radio" checked>',
 			'<label class="form-check-label" for="flexRadioDefault2">',
@@ -47,9 +48,6 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$this->assertEquals($test, $result);
 
-		//Indeterminate
-		//Checkboxes can utilize the :indeterminate pseudo class when manually set via JavaScript (there is no available HTML attribute for specifying it).
-
 		//Disabled
 		$test=implode('', [
 			'<div class="form-check">',
@@ -58,6 +56,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 			'Disabled radio',
 			'</label>',
 			'</div>',
+
 			'<div class="form-check">',
 			'<input class="form-check-input" id="flexRadioCheckedDisabled" name="flexRadioDisabled" type="radio" checked disabled>',
 			'<label class="form-check-label" for="flexRadioCheckedDisabled">',
@@ -83,66 +82,6 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$this->assertEquals($test, $result);
 
-/*
-		//Switches
-		$test=implode('', [
-			'<div class="form-check form-switch">',
-			'<input class="form-check-input" id="flexSwitchCheckDefault" role="switch" type="checkbox">',
-			'<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>',
-			'</div>',
-			'<div class="form-check form-switch">',
-			'<input class="form-check-input" id="flexSwitchCheckChecked" role="switch" type="checkbox" checked>',
-			'<label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>',
-			'</div>',
-			'<div class="form-check form-switch">',
-			'<input class="form-check-input" id="flexSwitchCheckDisabled" role="switch" type="checkbox" disabled>',
-			'<label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>',
-			'</div>',
-			'<div class="form-check form-switch">',
-			'<input class="form-check-input" id="flexSwitchCheckCheckedDisabled" role="switch" type="checkbox" checked disabled>',
-			'<label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>',
-			'</div>'
-		]);
-		$result = implode('', [
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'id' => 'flexSwitchCheckDefault',
-				'label' => 'Default switch checkbox input',
-				'switch' => true,
-				'value' => null
-			])
-			->use(),
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'checked' => true,
-				'id' => 'flexSwitchCheckChecked',
-				'label' => 'Checked switch checkbox input',
-				'switch' => true,
-				'value' => null
-			])->use(),
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'disabled' => true,
-				'id' => 'flexSwitchCheckDisabled',
-				'label' => 'Disabled switch checkbox input',
-				'switch' => true,
-				'value' => null
-			])
-			->use(),
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'checked' => true,
-				'disabled' => true,
-				'id' => 'flexSwitchCheckCheckedDisabled',
-				'label' => 'Disabled checked switch checkbox input',
-				'switch' => true,
-				'value' => null
-			])
-			->use(),
-		]);
-		$this->assertEquals($test, $result);
-*/
-
-		//Default (stacked)
-		//By default, any number of checkboxes and radios that are immediate sibling will be vertically stacked and appropriately spaced with .form-check.
-		//no test is required
-
 
 		//Inline
 		$test=implode('', [
@@ -150,10 +89,12 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 			'<input class="form-check-input" id="inlineRadio1" name="inlineRadioOptions" type="radio" value="option1">',
 			'<label class="form-check-label" for="inlineRadio1">1</label>',
 			'</div>',
+
 			'<div class="form-check form-check-inline">',
 			'<input class="form-check-input" id="inlineRadio2" name="inlineRadioOptions" type="radio" value="option2">',
 			'<label class="form-check-label" for="inlineRadio2">2</label>',
 			'</div>',
+
 			'<div class="form-check form-check-inline">',
 			'<input class="form-check-input" id="inlineRadio3" name="inlineRadioOptions" type="radio" value="option3" disabled>',
 			'<label class="form-check-label" for="inlineRadio3">3 (disabled)</label>',
@@ -185,49 +126,6 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$this->assertEquals($test, $result);
 
-/*
-		//Reverse
-		$test=implode('', [
-			'<div class="form-check form-check-reverse">',
-			'<input class="form-check-input" id="reverseCheck1" type="checkbox" value="">',
-			'<label class="form-check-label" for="reverseCheck1">',
-			'Reverse checkbox',
-			'</label>',
-			'</div>',
-			'<div class="form-check form-check-reverse">',
-			'<input class="form-check-input" id="reverseCheck2" type="checkbox" value="" disabled>',
-			'<label class="form-check-label" for="reverseCheck2">',
-			'Disabled reverse checkbox',
-			'</label>',
-			'</div>',
-			'<div class="form-check form-check-reverse form-switch">',
-			'<input class="form-check-input" id="flexSwitchCheckReverse" role="switch" type="checkbox">',
-			'<label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>',
-			'</div>'
-		]);
-		$result = implode('', [
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'id' => 'reverseCheck1',
-				'label' => 'Reverse checkbox',
-				'reverse' => true,
-				'value' => ''
-			])->use(),
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'disabled' => true,
-				'id' => 'reverseCheck2',
-				'label' => 'Disabled reverse checkbox',
-				'reverse' => true,
-				'value' => ''
-			])->use(),
-			$aviHtmlElement->element('BsInputCheckbox', [
-				'id' => 'flexSwitchCheckReverse',
-				'label' => 'Reverse switch checkbox input',
-				'reverse' => true,
-				'switch' => true,
-			])->use()
-		]);
-		$this->assertEquals($test, $result);
-*/
 
 		//Withput labels
 		$test=implode('', [
@@ -277,14 +175,14 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'id' => 'option1',
 				'label' => 'Checked',
 				'name' => 'options',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
 				'id' => 'option2',
 				'label' => 'Radio',
 				'name' => 'options',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -292,14 +190,14 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'id' => 'option3',
 				'label' => 'Disabled',
 				'name' => 'options',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
 				'id' => 'option4',
 				'label' => 'Radio',
 				'name' => 'options',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -307,26 +205,26 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'id' => 'option5',
 				'label' => 'Checked',
 				'name' => 'options-base',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
 				'id' => 'option6',
 				'label' => 'Radio',
 				'name' => 'options-base',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
 				'disabled' => true,
 				'id' => 'option7',
 				'label' => 'Disabled',
 				'name' => 'options-base',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
 				'id' => 'option8',
 				'label' => 'Radio',
 				'name' => 'options-base',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 
 		]);
@@ -348,7 +246,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'label' => 'Checked success radio',
 				'name' => 'options-outlined',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'success'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -356,7 +254,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'label' => 'Danger radio',
 				'name' => 'options-outlined',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'danger'
 			])->use()
 		]);

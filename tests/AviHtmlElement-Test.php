@@ -49,7 +49,7 @@ final class testAviatoHtmlElement extends TestCase
 		$test = '<input value="test">';
 		$result = $aviHtmlElement->content('aviato');
 		$test = '<input value="aviato">';
-		$result = $aviHtmlElement->attributes(['value' => 'aviato'])->content('test');
+		$result = $aviHtmlElement->attributes(['value' => 'aviato'], false)->content('test');
 		$this->assertEquals($test, $result);
 
 		//usual (associative) attributes:

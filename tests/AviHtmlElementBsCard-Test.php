@@ -11,11 +11,19 @@ use const Avi\AVI_BS_COLOR;
 
 final class testAviatoHtmlElementBsCard extends TestCase
 {
-	public function testFn_HtmlElementBsCard(): void
+
+	public function testFn_empty(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
+		$test = '<div class="card"></div>';
+		$result = $aviHtmlElement->element('BsCard')->use();
+		$this->assertEquals($test, $result);
+	}
 
-		//Full options card
+
+	public function testFn_full(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
 		$test = implode('', [
 			'<div class="card">',
 			'<img alt="image for [...]" class="card-img-top" src="...">',
@@ -31,30 +39,31 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'img' => [
-					'src' => '...'
-				]
-			],
-			[
-				'header' => 'Card header'
-			],
-			[
-				'body' => [
-					'title' => 'Body title',
-					'subtitle' => 'Body subtitle',
-					'text' => 'Body text',
-					'items' => [
-						'A simple text',
-						'Another simple text',
+			'items' => [
+				[
+					'Img' => [
+						'src' => '...'
 					]
-				]
-			],
-			[
-				'footer' => 'Card footer'
+				],
+				[
+					'Header' => 'Card header'
+				],
+				[
+					'Body' => [
+						'title' => 'Body title',
+						'subtitle' => 'Body subtitle',
+						'text' => 'Body text',
+						'items' => [
+							'A simple text',
+							'Another simple text',
+						]
+					]
+				],
+				[
+					'Footer' => 'Card footer'
+				],
 			]
-		])
-		->use();
+		])->use();
 		$this->assertEquals($test, $result);
 
 		$test = implode('', [
@@ -72,59 +81,61 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'img' => [
-					'alt' => 'image for ...',
-					'position' => 'top',
-					'src' => '...'
-				]
-			],
-			[
-				'header' => 'Card header'
-			],
-			[
-				'body' => [
-					'title' => [
-						'attr' => [
-							'data' => [
-								'role'=>'card title'
-							]
-						],
-						'text' => 'Body title',
-					],
-					'subtitle' => [
-						'attr' => [
-							'data' => [
-								'role'=>'card subtitle'
-							]
-						],
-						'text' => 'Body subtitle',
-					],
-					'text' => [
-						'attr' => [
-							'data' => [
-								'role'=>'card text'
-							]
-						],
-						'text' => 'Body text',
-					],
-					'items' => [
-						'A simple text',
-						'Another simple text',
+			'items' => [
+				[
+					'img' => [
+						'alt' => 'image for ...',
+						'position' => 'top',
+						'src' => '...'
 					]
+				],
+				[
+					'header' => 'Card header'
+				],
+				[
+					'body' => [
+						'title' => [
+							'attr' => [
+								'data' => [
+									'role'=>'card title'
+								]
+							],
+							'text' => 'Body title',
+						],
+						'subtitle' => [
+							'attr' => [
+								'data' => [
+									'role'=>'card subtitle'
+								]
+							],
+							'text' => 'Body subtitle',
+						],
+						'text' => [
+							'attr' => [
+								'data' => [
+									'role'=>'card text'
+								]
+							],
+							'text' => 'Body text',
+						],
+						'items' => [
+							'A simple text',
+							'Another simple text',
+						]
+					]
+				],
+				[
+					'footer' => 'Card footer'
 				]
-			],
-			[
-				'footer' => 'Card footer'
 			]
 		])
 		->use();
 		$this->assertEquals($test, $result);
+	}
 
-		//Empty card
-		$test = '<div class="card"></div>';
-		$result = $aviHtmlElement->element('BsCard')->use();
-		$this->assertEquals($test, $result);
+	public function testFn_Bootstrap(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
 
 
 		//basic card
@@ -139,25 +150,27 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'img' => [
-					'alt' => '...',
-					'src' => '...'
-				]
-			],
-			[
-				'body' => [
-					'title' => 'Card title',
-//					'subtitle' => 'Card sub title',
-					'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-					'items' => [
-						$aviHtmlElement->element('BsButton', [
-							'href' => '#',
-							'tag' => 'a',
-							'text' => 'Go somewhere',
-							'variant' => 'primary'
-						])
-						->use()
+			'items' => [
+				[
+					'img' => [
+						'alt' => '...',
+						'src' => '...'
+					]
+				],
+				[
+					'body' => [
+						'title' => 'Card title',
+//						'subtitle' => 'Card sub title',
+						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+						'items' => [
+							$aviHtmlElement->element('BsButton', [
+								'href' => '#',
+								'tag' => 'a',
+								'text' => 'Go somewhere',
+								'variant' => 'primary'
+							])
+							->use()
+						]
 					]
 				]
 			]
@@ -179,10 +192,12 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'body' => [
-					'items' => [
-						'This is some text within a card body.'
+			'items' => [
+				[
+					'body' => [
+						'items' => [
+							'This is some text within a card body.'
+						]
 					]
 				]
 			]
@@ -203,32 +218,34 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'body' => [
-					'title' => 'Card title',
-					'subtitle' => [
-						'attr' => [
-							'class' => [
-								'mb-2',
-								'text-body-secondary'
-							]
+			'items' => [
+				[
+					'body' => [
+						'title' => 'Card title',
+						'subtitle' => [
+							'attr' => [
+								'class' => [
+									'mb-2',
+									'text-body-secondary'
+								]
+							],
+							'text' => 'Card subtitle'
 						],
-						'text' => 'Card subtitle'
-					],
-					'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'href' => '#',
-							'class' => 'card-link',
-						])
-						->content('Card link'),
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'href' => '#',
-							'class' => 'card-link',
-						])
-						->content('Another link')
+						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'href' => '#',
+								'class' => 'card-link',
+							])
+							->content('Card link'),
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'href' => '#',
+								'class' => 'card-link',
+							])
+							->content('Another link')
+						]
 					]
 				]
 			]
@@ -250,15 +267,17 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard',[
-			[
-				'img' => [
-					'alt' => '...',
-					'src' => '...'
-				]
-			],
-			[
-				'body' => [
-					'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+			'items' => [
+				[
+					'img' => [
+						'alt' => '...',
+						'src' => '...'
+					]
+				],
+				[
+					'body' => [
+						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+					]
 				]
 			]
 		])
@@ -280,19 +299,21 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'BsListGroup' => [
-					'flush' => true,
-					'items' => [
-						'An item',
-						'A second item',
-						'A third item'
+			'items' => [
+				[
+					'BsListGroup' => [
+						'flush' => true,
+						'items' => [
+							'An item',
+							'A second item',
+							'A third item'
+						]
 					]
 				]
 			]
 		])
-		->attributes([
-			'style'=>'width: 18rem;'
+			->attributes([
+				'style'=>'width: 18rem;'
 		])
 		->use();
 		$this->assertEquals($test, $result);
@@ -310,16 +331,18 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => 'Featured'
-			],
-			[
-				'BsListGroup' => [
-					'flush' => true,
-					'items' => [
-						'An item',
-						'A second item',
-						'A third item'
+			'items' => [
+				[
+					'header' => 'Featured'
+				],
+				[
+					'BsListGroup' => [
+						'flush' => true,
+						'items' => [
+							'An item',
+							'A second item',
+							'A third item'
+						]
 					]
 				]
 			]
@@ -343,18 +366,20 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'BsListGroup' => [
-					'flush' => true,
-					'items' => [
-						'An item',
-						'A second item',
-						'A third item'
+			'items' => [
+				[
+					'BsListGroup' => [
+						'flush' => true,
+						'items' => [
+							'An item',
+							'A second item',
+							'A third item'
+						]
 					]
+				],
+				[
+					'footer' => 'Card footer'
 				]
-			],
-			[
-				'footer' => 'Card footer'
 			]
 		])
 		->attributes([
@@ -384,43 +409,45 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'img' => [
-					'alt' => '...',
-					'src' => '...'
-				]
-			],
-			[
-				'body' => [
-					'title' => 'Card title',
-					'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
-				]
-			],
-			[
-				'BsListGroup' => [
-					'flush' => true,
-					'items' => [
-						'An item',
-						'A second item',
-						'A third item'
+			'items' => [
+				[
+					'img' => [
+						'alt' => '...',
+						'src' => '...'
 					]
-				]
-			],
-			[
-				'body' => [
-					'items' => [
-						$aviHtmlElement->tag('a')
-							->attributes([
-								'href' => '#',
-								'class' => 'card-link',
-							])
+				],
+				[
+					'body' => [
+						'title' => 'Card title',
+						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
+					]
+				],
+				[
+					'BsListGroup' => [
+						'flush' => true,
+						'items' => [
+							'An item',
+							'A second item',
+							'A third item'
+						]
+					]
+				],
+				[
+					'body' => [
+						'items' => [
+							$aviHtmlElement->tag('a')
+								->attributes([
+									'href' => '#',
+									'class' => 'card-link',
+								])
 							->content('Card link'),
-						$aviHtmlElement->tag('a')
-							->attributes([
-								'href' => '#',
-								'class' => 'card-link',
-							])
-							->content('Another link')
+							$aviHtmlElement->tag('a')
+								->attributes([
+									'href' => '#',
+									'class' => 'card-link',
+								])
+								->content('Another link')
+						]
 					]
 				]
 			]
@@ -446,23 +473,25 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => 'Featured'
-			],
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#',
-						])
-						->content('Go somewhere')
+			'items' => [
+				[
+					'header' => 'Featured'
+				],
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#',
+							])
+							->content('Go somewhere')
+						]
 					]
 				]
 			]
@@ -480,26 +509,28 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => [
-					'text' => 'Featured',
-					'tag' => 'h5'
-				]
-			],
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#',
-						])
-						->content('Go somewhere')
+			'items' => [
+				[
+					'header' => [
+						'content' => 'Featured',
+						'tag' => 'h5'
+					]
+				],
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#',
+							])
+							->content('Go somewhere')
+						]
 					]
 				]
 			]
@@ -520,27 +551,29 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => 'Quote',
-			],
-			[
-				'body' => [
-					'items' => [
-						$aviHtmlElement->tag('blockquote')
-						->attributes([
-							'class' => [
-								'blockquote',
-								'mb-0'
-							]
-						])
-						->content([
-							$aviHtmlElement->tag('p')->content('A well-known quote, contained in a blockquote element.'),
-							$aviHtmlElement->tag('footer')
+			'items' => [
+				[
+					'header' => 'Quote',
+				],
+				[
+					'body' => [
+						'items' => [
+							$aviHtmlElement->tag('blockquote')
 							->attributes([
-								'class' => 'blockquote-footer'
+								'class' => [
+									'blockquote',
+									'mb-0'
+								]
 							])
-							->content('Someone famous in <cite title="Source Title">Source Title</cite>')
-						])
+							->content([
+								$aviHtmlElement->tag('p')->content('A well-known quote, contained in a blockquote element.'),
+								$aviHtmlElement->tag('footer')
+								->attributes([
+									'class' => 'blockquote-footer'
+								])
+								->content('Someone famous in <cite title="Source Title">Source Title</cite>')
+							])
+						]
 					]
 				]
 			]
@@ -563,35 +596,36 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => 'Featured'
-			],
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#'
-						])
-						->content('Go somewhere')
-					]
-
-				]
-			],
-			[
-				'footer' => [
-					'attr' => [
-						'class' => [
-							'text-body-secondary'
+			'items' => [
+				[
+					'header' => 'Featured'
+				],
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#'
+							])
+							->content('Go somewhere')
 						]
-					],
-					'text' => '2 days ago'
+					]
+				],
+				[
+					'footer' => [
+						'attr' => [
+							'class' => [
+								'text-body-secondary'
+							]
+						],
+						'content' => '2 days ago'
+					]
 				]
 			]
 		])
@@ -615,20 +649,22 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>',
 		]);
 		$bScard = $aviHtmlElement->element('BsCard', [
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#'
-						])
-						->content('Go somewhere')
+			'items' => [
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#'
+							])
+							->content('Go somewhere')
+						]
 					]
 				]
 			]
@@ -674,20 +710,22 @@ final class testAviatoHtmlElementBsCard extends TestCase
 
 		//Using utilities
 		$bsCardBody = [
-			[
-				'body' => [
-					'title' => 'Card title',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#'
-						])
-						->content('Button')
+			'items' => [
+				[
+					'body' => [
+						'title' => 'Card title',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#'
+							])
+							->content('Button')
+						]
 					]
 				]
 			]
@@ -737,20 +775,22 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#'
-						])
-						->content('Go somewhere')
+			'items' => [
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#'
+							])
+							->content('Go somewhere')
+						]
 					]
 				]
 			]
@@ -764,20 +804,22 @@ final class testAviatoHtmlElementBsCard extends TestCase
 
 		//Text alignment
 		$bsCardBody = [
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->tag('a')
-						->attributes([
-							'class' => [
-								'btn',
-								'btn-primary'
-							],
-							'href' => '#'
-						])
-						->content('Go somewhere')
+			'items' => [
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->tag('a')
+							->attributes([
+								'class' => [
+									'btn',
+									'btn-primary'
+								],
+								'href' => '#'
+							])
+							->content('Go somewhere')
+						]
 					]
 				]
 			]
@@ -854,46 +896,47 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => $aviHtmlElement->element('BsNav', [
-					'interface' => 'tabs',
-					'items' => [
-						[
-							'active' => true,
-							'href' => '#',
-							'text' => 'Active'
+			'items' => [
+				[
+					'header' => $aviHtmlElement->element('BsNav', [
+						'interface' => 'tabs',
+						'items' => [
+							[
+								'active' => true,
+								'href' => '#',
+								'text' => 'Active'
+							],
+							[
+								'href' => '#',
+								'text' => 'Link'
+							],
+							[
+								'disabled' => true,
+								'href' => false,
+								'text' => 'Disabled'
+							]
 						],
-						[
-							'href' => '#',
-							'text' => 'Link'
-						],
-						[
-							'disabled' => true,
-							'href' => false,
-							'text' => 'Disabled'
+						'tag' => 'ul'
+					])
+					->attributes([
+						'class' => [
+							'card-header-tabs'
 						]
-					],
-					'tag' => 'ul'
-
-				])
-				->attributes([
-					'class' => [
-						'card-header-tabs'
-					]
-				])
-				->use()
-			],
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->element('BsButton', [
-							'href' => '#',
-							'tag' => 'a',
-							'text' => 'Go somewhere',
-							'variant' => 'primary'
-						])->use()
+					])
+					->use()
+				],
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->element('BsButton', [
+								'href' => '#',
+								'tag' => 'a',
+								'text' => 'Go somewhere',
+								'variant' => 'primary'
+							])->use()
+						]
 					]
 				]
 			]
@@ -929,46 +972,47 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'header' => $aviHtmlElement->element('BsNav', [
-					'interface' => 'pills',
-					'items' => [
-						[
-							'active' => true,
-							'href' => '#',
-							'text' => 'Active'
+			'items' => [
+				[
+					'header' => $aviHtmlElement->element('BsNav', [
+						'interface' => 'pills',
+						'items' => [
+							[
+								'active' => true,
+								'href' => '#',
+								'text' => 'Active'
+							],
+							[
+								'href' => '#',
+								'text' => 'Link'
+							],
+							[
+								'disabled' => true,
+								'href' => false,
+								'text' => 'Disabled'
+							]
 						],
-						[
-							'href' => '#',
-							'text' => 'Link'
-						],
-						[
-							'disabled' => true,
-							'href' => false,
-							'text' => 'Disabled'
+						'tag' => 'ul'
+					])
+					->attributes([
+						'class' => [
+							'card-header-pills'
 						]
-					],
-					'tag' => 'ul'
-
-				])
-				->attributes([
-					'class' => [
-						'card-header-pills'
-					]
-				])
-				->use()
-			],
-			[
-				'body' => [
-					'title' => 'Special title treatment',
-					'text' => 'With supporting text below as a natural lead-in to additional content.',
-					'items' => [
-						$aviHtmlElement->element('BsButton', [
-							'href' => '#',
-							'tag' => 'a',
-							'text' => 'Go somewhere',
-							'variant' => 'primary'
-						])->use()
+					])
+					->use()
+				],
+				[
+					'body' => [
+						'title' => 'Special title treatment',
+						'text' => 'With supporting text below as a natural lead-in to additional content.',
+						'items' => [
+							$aviHtmlElement->element('BsButton', [
+								'href' => '#',
+								'tag' => 'a',
+								'text' => 'Go somewhere',
+								'variant' => 'primary'
+							])->use()
+						]
 					]
 				]
 			]
@@ -1021,14 +1065,16 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsCard', [
-				[
-					'img' => [
-						'alt' => '...',
-						'src' => '...'
+				'items' => [
+					[
+						'img' => [
+							'alt' => '...',
+							'src' => '...'
+						]
+					],
+					[
+						'body' => $bsCardBody
 					]
-				],
-				[
-					'body' => $bsCardBody
 				]
 			])
 			->attributes([
@@ -1038,14 +1084,16 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsCard', [
-				[
-					'body' => $bsCardBody
-				],
-				[
-					'img' => [
-						'alt' => '...',
-						'position' => 'bottom',
-						'src' => '...'
+				'items' => [
+					[
+						'body' => $bsCardBody
+					],
+					[
+						'img' => [
+							'alt' => '...',
+							'position' => 'bottom',
+							'src' => '...'
+						]
 					]
 				]
 			])
@@ -1066,29 +1114,31 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
-			[
-				'img' => [
-					'alt' => '...',
-					'position' => false,
-					'src' => '...'
-				]
-			],
-			[
-				'body' => [
-					'overlay' => 'img',
-					'title' => 'Card title',
-					'text' => 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
-					'items' => [
-						$aviHtmlElement
-						->tag('p')
-						->attributes([
-							'class' => 'card-text'
-						])
-						->content([
+			'items' => [
+				[
+					'img' => [
+						'alt' => '...',
+						'position' => false,
+						'src' => '...'
+					]
+				],
+				[
+					'body' => [
+						'overlay' => 'img',
+						'title' => 'Card title',
+						'text' => 'This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.',
+						'items' => [
 							$aviHtmlElement
-							->tag('small')
-							->content('Last updated 3 mins ago')
-						])
+							->tag('p')
+							->attributes([
+								'class' => 'card-text'
+							])
+							->content([
+								$aviHtmlElement
+								->tag('small')
+								->content('Last updated 3 mins ago')
+							])
+						]
 					]
 				]
 			]
@@ -1121,6 +1171,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
+			'items' => [
 			[
 				$aviHtmlElement->tag('div')
 				->attributes([
@@ -1185,7 +1236,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 						])
 					)
 				], true)
-			]
+			]]
 		])
 		->attributes([
 			'class' => [
@@ -1261,6 +1312,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		$result = [];
 		foreach (AVI_BS_COLOR as $color) {
 			$result[] = $aviHtmlElement->element('BsCard', [
+				'items' => [
 				[
 					'header' => 'Header'
 				],
@@ -1269,7 +1321,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 						'title' => sprintf('%s card title', ucfirst($color)),
 						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
 					]
-				]
+				]]
 			])
 			->attributes([
 				'class' => [
@@ -1352,6 +1404,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		$result = [];
 		foreach (['primary', 'secondary', 'success', 'danger'] as $color) {
 			$result[] = $aviHtmlElement->element('BsCard', [
+				'items' => [
 				[
 					'header' => 'Header'
 				],
@@ -1365,7 +1418,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 						'title' => sprintf('%s card title', ucfirst($color)),
 						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
 					]
-				]
+				]]
 			])
 			->attributes([
 				'class' => [
@@ -1378,6 +1431,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		}
 		foreach (['warning', 'info', 'light', 'dark'] as $color) {
 			$result[] = $aviHtmlElement->element('BsCard', [
+				'items' => [
 				[
 					'header' => 'Header'
 				],
@@ -1386,7 +1440,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 						'title' => sprintf('%s card title', ucfirst($color)),
 						'text' => 'Some quick example text to build on the card title and make up the bulk of the card\'s content.'
 					]
-				]
+				]]
 			])
 			->attributes([
 				'class' => [
@@ -1413,6 +1467,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsCard', [
+			'items' => [
 			[
 				'header' => [
 					'attr' => [
@@ -1421,7 +1476,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 							'border-success'
 						]
 					],
-					'text' => 'Header'
+					'content' => 'Header'
 				]
 			],
 			[
@@ -1444,9 +1499,9 @@ final class testAviatoHtmlElementBsCard extends TestCase
 							'border-success'
 						]
 					],
-					'text' => 'Footer'
+					'content' => 'Footer'
 				]
-			]
+			]]
 		])
 		->attributes([
 			'class' => [
@@ -1463,6 +1518,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		//Card groups
 		$card = function($htmlElement, $text) {
 			return $htmlElement->element('BsCard', [
+				'items' => [
 				[
 					'img' => [
 						'alt' => '...',
@@ -1487,7 +1543,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 							)
 						]
 					]
-				]
+				]]
 			])->use();
 		};
 
@@ -1533,6 +1589,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 		//group cards with footer
 		$card = function($htmlElement, $text) {
 			return $htmlElement->element('BsCard', [
+				'items' => [
 				[
 					'img' => [
 						'alt' => '...',
@@ -1549,7 +1606,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 					'footer' => $htmlElement->tag('small')
 						->attributes(['class' => 'text-body-secondary'])
 						->content('Last updated 3 mins ago')
-				]
+				]]
 			])->use();
 		};
 		$test = implode('', [
@@ -1606,6 +1663,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			])
 			->content(
 				$htmlElement->element('BsCard', [
+					'items' => [
 					[
 						'img' => [
 							'alt' => '...',
@@ -1617,7 +1675,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 							'title' => 'Card title',
 							'text' => $text,
 						]
-					]
+					]]
 				])->use()
 			);
 		};
@@ -1746,6 +1804,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			])
 			->content(
 				$htmlElement->element('BsCard', [
+					'items' => [
 					[
 						'img' => [
 							'alt' => '...',
@@ -1757,7 +1816,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 							'title' => 'Card title',
 							'text' => $text,
 						]
-					]
+					]]
 				])
 				->attributes([
 					'class' => [
@@ -1833,6 +1892,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			])
 			->content(
 				$htmlElement->element('BsCard', [
+					'items' => [
 					[
 						'img' => [
 							'alt' => '...',
@@ -1851,7 +1911,7 @@ final class testAviatoHtmlElementBsCard extends TestCase
 								'class' => 'text-body-secondary'
 							])
 							->content('Last updated 3 mins ago')
-					]
+					]]
 				])
 				->attributes([
 					'class' => [
@@ -1917,6 +1977,5 @@ final class testAviatoHtmlElementBsCard extends TestCase
 			$card($aviHtmlElement, 'This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.')
 		]);
 		$this->assertEquals($test, $result);
-
 	}
 }

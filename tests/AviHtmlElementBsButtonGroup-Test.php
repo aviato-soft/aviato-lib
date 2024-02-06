@@ -184,21 +184,21 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'id' => 'btncheck1',
 				'label' => 'Checkbox 1',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			]),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'id' => 'btncheck2',
 				'label' => 'Checkbox 2',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			]),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'id' => 'btncheck3',
 				'label' => 'Checkbox 3',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			])
 		])->use();
@@ -228,7 +228,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 1',
 				'name' => 'btnradio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			]),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -236,7 +236,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 2',
 				'name' => 'btnradio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			]),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -244,7 +244,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 3',
 				'name' => 'btnradio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			]),
 		])->use();
@@ -783,7 +783,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 1',
 				'name' => 'vbtn-radio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'danger'
 			]),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -791,7 +791,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 2',
 				'name' => 'vbtn-radio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'danger'
 			]),
 			$aviHtmlElement->element('BsInputRadio', [
@@ -799,7 +799,7 @@ final class testAviatoHtmlElementBsButtonGroup extends TestCase
 				'label' => 'Radio 3',
 				'name' => 'vbtn-radio',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'danger'
 			])
 		])

@@ -12,7 +12,27 @@ use const Avi\AVI_BS_COLOR;
 final class testAviatoHtmlElementBsBadge extends TestCase
 {
 
-	public function testFn_Construct(): void
+	public function testFn_Empty(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
+
+		$test = '<span class="badge"></span>';
+		$result = $aviHtmlElement->element('BsBadge')->use();
+		$this->assertEquals($test, $result);
+
+		$test = '<span class="badge">New</span>';
+		$result = $aviHtmlElement->element('BsBadge', 'New')->use();
+		$this->assertEquals($test, $result);
+		$result = $aviHtmlElement->element('BsBadge')->content('New');
+		$this->assertEquals($test, $result);
+		$result = $aviHtmlElement->element('BsBadge', [
+			'text' => ['N','e','w']
+		])->use();
+		$this->assertEquals($test, $result);
+	}
+
+
+	public function testFn_Full(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
 
@@ -25,17 +45,14 @@ final class testAviatoHtmlElementBsBadge extends TestCase
 			'text' => 'Aviato'
 		])->content('New'); //content overwrite text
 		$this->assertEquals($test, $result);
+	}
 
 
+	public function testFn_Bootstrap(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
 
-		$test = '<span class="badge">New</span>';
-		$result = $aviHtmlElement->element('BsBadge', 'New')->use();
-		$this->assertEquals($test, $result);
-		$result = $aviHtmlElement->element('BsBadge')->content('New');
-		$this->assertEquals($test, $result);
-
-
-		//Headings
+		//#Headings
 		$test = '<h1>Example heading <span class="badge bg-secondary">New</span></h1>';
 		$result = $aviHtmlElement->tag('h1')->content([
 			'Example heading ',
@@ -182,6 +199,6 @@ final class testAviatoHtmlElementBsBadge extends TestCase
 			])->content(ucfirst($color));
 		}
 		$this->assertEquals($test, $result);
-
 	}
+
 }

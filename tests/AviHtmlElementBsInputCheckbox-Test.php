@@ -54,11 +54,19 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		//Disabled
 		$test=implode('', [
 			'<div class="form-check">',
+			'<input class="form-check-input" id="flexCheckIndeterminateDisabled" type="checkbox" value="" disabled>',
+			'<label class="form-check-label" for="flexCheckIndeterminateDisabled">',
+			'Disabled indeterminate checkbox',
+			'</label>',
+			'</div>',
+
+			'<div class="form-check">',
 			'<input class="form-check-input" id="flexCheckDisabled" type="checkbox" value="" disabled>',
 			'<label class="form-check-label" for="flexCheckDisabled">',
 			'Disabled checkbox',
 			'</label>',
 			'</div>',
+
 			'<div class="form-check">',
 			'<input class="form-check-input" id="flexCheckCheckedDisabled" type="checkbox" value="" checked disabled>',
 			'<label class="form-check-label" for="flexCheckCheckedDisabled">',
@@ -67,6 +75,13 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			'</div>'
 		]);
 		$result = implode('', [
+			$aviHtmlElement->element('BsInputCheckbox', [
+				'disabled' => true,
+				'id' => 'flexCheckIndeterminateDisabled',
+				'label' => 'Disabled indeterminate checkbox',
+				'value' => ''
+			])
+			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'disabled' => true,
 				'id' => 'flexCheckDisabled',
@@ -91,14 +106,17 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			'<input class="form-check-input" id="flexSwitchCheckDefault" role="switch" type="checkbox">',
 			'<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>',
 			'</div>',
+
 			'<div class="form-check form-switch">',
 			'<input class="form-check-input" id="flexSwitchCheckChecked" role="switch" type="checkbox" checked>',
 			'<label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>',
 			'</div>',
+
 			'<div class="form-check form-switch">',
 			'<input class="form-check-input" id="flexSwitchCheckDisabled" role="switch" type="checkbox" disabled>',
 			'<label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>',
 			'</div>',
+
 			'<div class="form-check form-switch">',
 			'<input class="form-check-input" id="flexSwitchCheckCheckedDisabled" role="switch" type="checkbox" checked disabled>',
 			'<label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>',
@@ -151,10 +169,12 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			'<input class="form-check-input" id="inlineCheckbox1" type="checkbox" value="option1">',
 			'<label class="form-check-label" for="inlineCheckbox1">1</label>',
 			'</div>',
+
 			'<div class="form-check form-check-inline">',
 			'<input class="form-check-input" id="inlineCheckbox2" type="checkbox" value="option2">',
 			'<label class="form-check-label" for="inlineCheckbox2">2</label>',
 			'</div>',
+
 			'<div class="form-check form-check-inline">',
 			'<input class="form-check-input" id="inlineCheckbox3" type="checkbox" value="option3" disabled>',
 			'<label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>',
@@ -192,12 +212,14 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			'Reverse checkbox',
 			'</label>',
 			'</div>',
+
 			'<div class="form-check form-check-reverse">',
 			'<input class="form-check-input" id="reverseCheck2" type="checkbox" value="" disabled>',
 			'<label class="form-check-label" for="reverseCheck2">',
 			'Disabled reverse checkbox',
 			'</label>',
 			'</div>',
+
 			'<div class="form-check form-check-reverse form-switch">',
 			'<input class="form-check-input" id="flexSwitchCheckReverse" role="switch" type="checkbox">',
 			'<label class="form-check-label" for="flexSwitchCheckReverse">Reverse switch checkbox input</label>',
@@ -266,39 +288,39 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'id' => 'btn-check',
 				'label' => 'Single toggle',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'checked' => true,
 				'id' => 'btn-check-2',
 				'label' => 'Checked',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'disabled' => true,
 				'id' => 'btn-check-3',
 				'label' => 'Disabled',
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'id' => 'btn-check-4',
 				'label' => 'Single toggle',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'checked' => true,
 				'id' => 'btn-check-5',
 				'label' => 'Checked',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
 				'disabled' => true,
 				'id' => 'btn-check-6',
 				'label' => 'Disabled',
-				'type' => 'button'
+				'role' => 'button'
 			])->use(),
 		]);
 		$this->assertEquals($test, $result);
@@ -317,7 +339,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'id' => 'btn-check-outlined',
 				'label' => 'Single toggle',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
@@ -325,7 +347,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'id' => 'btn-check-2-outlined',
 				'label' => 'Checked',
 				'outline' => true,
-				'type' => 'button',
+				'role' => 'button',
 				'variant' => 'secondary'
 			])->use()
 		]);
