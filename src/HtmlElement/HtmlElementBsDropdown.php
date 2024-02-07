@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.25
- * @since  2023-12-27 12:33:50
+ * @version 01.24.00
+ * @since  2024-02-06 21:30:40
  *
  */
 declare(strict_types = 1);
@@ -47,7 +47,7 @@ class HtmlElementBsDropdown extends HtmlElement
 	 *  |- direction = the menu display direction
 	 *  |- drop = down | end | start | up - the drop direction
 	 *  |- menu = the bs element of menu
-	 *  	|- alignment (end | start | end + start responsive)
+	 *  	|- align (end | start | end + start responsive)
 	 *  	|- items = array of items (type, text, active, disabled)
 	 *  		|- button (text, type = button)
 	 *  		|- header (text, type = header)
@@ -55,6 +55,7 @@ class HtmlElementBsDropdown extends HtmlElement
 	 *  		|- link (href, type = link, text)
 	 *  		|- separator (tag, type = separator)
 	 *  		|- text (text, type = text)
+	 * 		|- tag (default is ul - also is set based on item types)
 	 *  |- offset = false | $value in pixels
 	 *  |- reference = false | parent
 	 *  |- split = the bs button split -
@@ -102,7 +103,8 @@ class HtmlElementBsDropdown extends HtmlElement
 		$this->parseParam('drop', 'down');
 		$this->drop = (in_array($this->params['drop'], $this->drops, true))? $this->params['drop']: 'down';
 		$this->parseParam('group', false);
-		$this->parseParam('menu', [
+		$this->parseParam('menu', []);
+		$this->params['menu'] = \Avi\Tools::applyDefault($this->params['menu'], [
 			'items' => [],
 			'tag' => 'ul'
 		]);
@@ -299,6 +301,17 @@ class HtmlElementBsDropdown extends HtmlElement
 	{
 		$this->content = [];
 
+//		if(isset($this->params['debug']) && $this->params['debug'] === true) {
+//			var_dump($this->parent);
+//			var_dump($this->params['layout']);
+//		}
+		if(isset($this->params['layout']) && in_array($this->params['layout'], ['input-group', 'margin'], true)) {
+			$this->tag = '';
+		}
+
+		if(is_array($this->params['split'])) {
+			$this->params['split'] = $this->element('BsButton', $this->params['split']);
+		}
 		if(is_a($this->params['split'], 'Avi\HtmlElementBsButton')) {
 			//for dropstart the split button is at the end of the content:
 			if($this->params['drop'] !== 'start') {

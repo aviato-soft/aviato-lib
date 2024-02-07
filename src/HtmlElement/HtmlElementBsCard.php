@@ -5,27 +5,28 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.25
- * @since  2023-12-27 12:33:50
+ * @version 01.24.00
+ * @since  2024-02-06 21:30:40
  *
  */
 declare(strict_types = 1);
 namespace Avi;
 
-require_once dirname(__DIR__).'/HtmlElement.php';
+require_once __DIR__.'/HtmlElementBsItems.php';
 
-class HtmlElementBsCard extends HtmlElement
+class HtmlElementBsCard extends HtmlElementBsItems
 {
-	protected $params;
-
+	protected $prefix = 'Card';
+	protected $tag = 'div';
+/*
 	//children:
 	public $items;
-
-	private $chType = [
-		'body',
-		'footer',
-		'header',
-		'img',
+*/
+	protected $children = [
+		'Body',
+		'Footer',
+		'Header',
+		'Img',
 	];
 
 /**
@@ -33,21 +34,21 @@ class HtmlElementBsCard extends HtmlElement
  * @param array $params
  * 			|- htmlElement
  * 			|- Bs[something]
- * 			|- BsCard[$chType]
+ * 			|- BsCard[$children]
  * @return \Avi\HtmlElementBsCard
  */
-	public function __construct($params = [])
+	public function __construct($params = [], $parent = null)
 	{
-		$this->params = $params;
-		$this->parseParams();
-		$this->setAttributes();
-		$this->setContent();
+		parent::__construct($params);
 		return $this;
 	}
 
 
-	private function parseParams()
+	protected function parseParams()
 	{
+		//params are items:
+		//$this->params['items'] = $this->params;
+		/*
 		$this->tag = $this->params['tag'] ?? 'div';
 		$this->items = [];
 
@@ -60,17 +61,49 @@ class HtmlElementBsCard extends HtmlElement
 					if (substr($type, 0, 2) === 'Bs') {
 						$this->items[] = $this->element($type, $element);
 					} else {
-						if (in_array($type, $this->chType, true)) {
+						if (in_array($type, $this->children, true)) {
 							$this->items[] = $this->element('BsCard'.ucfirst($type), $element);
 						}
 					}
 				}
 			}
 		}
+		*/
 	}
 
 
-	private function setAttributes()
+	protected function parseItems()
+	{
+//		if (($this->params['debug'] ?? false) === true) {
+//			print_r($this->params);
+//			var_dump($this->items);
+//		}
+		/*
+		$items = [];
+
+		foreach ($this->params as $param) {
+			foreach($param as $type => $element) {
+				if (is_a($element, 'Avi\HtmlElement')) {
+					$this->items[] = $element;
+					//echo $element->use();
+				} else {
+					if (substr($type, 0, 2) === 'Bs') {
+						$this->items[] = $this->element($type, $element);
+					} else {
+						if (in_array($type, $this->children, true)) {
+							$this->items[] = $this->element('BsCard'.ucfirst($type), $element);
+						}
+					}
+				}
+			}
+		}
+
+		$this->items = $items;
+		*/
+	}
+
+
+	protected function setAttributes()
 	{
 		$this->attributes([
 			'class' => 'card'
@@ -78,8 +111,10 @@ class HtmlElementBsCard extends HtmlElement
 	}
 
 
-	private function setContent()
+	protected function setContent()
 	{
+		parent::setContent();
+/*
 		$content = [];
 
 		foreach ($this->items as $htmlElement) {
@@ -89,7 +124,6 @@ class HtmlElementBsCard extends HtmlElement
 		}
 
 		$this->content = $content;
+*/
 	}
-
-
 }

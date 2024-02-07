@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.25
- * @since  2023-12-27 12:33:50
+ * @version 01.24.00
+ * @since  2024-02-06 21:30:40
  *
  */
 declare(strict_types = 1);
@@ -22,14 +22,17 @@ class HtmlElement
 
 	protected $content;
 
+	protected $params;
+
 	protected $tag;
 
 	public $parent;
 
 
-	public function __construct($tag = 'div')
+	public function __construct($tag = 'div', $parent = null)
 	{
 		$this->tag = strtolower($tag) ?? 'div';
+		$this->parent = $parent;
 		return $this;
 	}
 
@@ -51,20 +54,7 @@ class HtmlElement
 	 */
 	public function attributes($attributes = [], bool $mergeValues = true)
 	{
-		if ($mergeValues) {
-			//in case of existing attributes convert them to array
-			//$this->attributes = $this->parseAttributesR();
-
-			//merge attrubutes
-			$this->attributes = array_merge_recursive($this->attributes ?? [], $attributes);
-
-			//exceptions:
-			if ($this->tag === 'input' && isset($attributes['value'])) {
-				$this->attributes['value'] = $attributes['value'];
-			}
-		} else {
-			$this->attributes = $attributes;
-		}
+		$this->attributes = $mergeValues ? array_merge_recursive($this->attributes ?? [], $attributes) : $attributes;
 		return $this;
 	}
 
@@ -75,20 +65,32 @@ class HtmlElement
 	 * @param array|string|null $content
 	 * @return string
 	 */
-	public function content(array|string|null $content = null, $return = false)
+	public function content(\Avi\HtmlElement|array|string|null$content = null, $return = false)
 	{
 		if(method_exists($this, 'parseElementContent')) {
 			$this->content = $this->parseElementContent($content);
 		} else {
 
-			if (is_array($this->content)) {
-				$this->content[] = $content;
+			if(is_a($content, '\Avi\HtmlElement')) {
+				$this->content = $content->use();
 			} else {
-				$this->content = $content;
+				if (is_array($this->content)) {
+					$this->content[] = $content;
+				} else {
+					$this->content = $content;
+				}
 			}
 		}
 
 		return ($return) ? $this: $this->use();
+	}
+
+
+	public function childContent($name, $return = false)
+	{
+		$content = (is_string($this->params[$name])) ? $this->params[$name] : $this->params[$name]['content'] ?? '';
+
+		return $this->$name->content($content, $return);
 	}
 
 
@@ -116,8 +118,13 @@ class HtmlElement
 		require_once $root.'/'.$extElement.'.php';
 		$extElement = __NAMESPACE__.'\\'.$extElement;
 		// create a new instance:
-		$newElement = new $extElement($properties);
-		$newElement->parent = $this;
+		$newElement = new $extElement(
+			(is_array($properties)) ?
+				array_merge($properties, [
+					'parent' => $this->params ?? []
+				]) : $properties,
+			$this
+		);
 		$newElement->attributes($properties['attr'] ?? []);
 
 		return $newElement;
@@ -130,10 +137,22 @@ class HtmlElement
 	 * @param string|null $tag element tag
 	 * @return HtmlElement
 	 */
-	public function tag($tag)
+	public function tag($tag, $attributes = null, $newElement = true, $instance = null)
 	{
+		if ($newElement) {
 		// create a new instance:
-		$newElement = new HtmlElement($tag);
+			$clsName = ($instance) ? get_class($instance) : get_class();
+			$newElement = new $clsName($tag, $this);
+		} else {
+		// Change existing tag
+			$this->tag = $tag;
+			$newElement = $this;
+		}
+
+
+		if ($attributes) {
+			$newElement->attributes($attributes);
+		}
 
 		$newElement->parent = $this;
 
@@ -187,21 +206,52 @@ class HtmlElement
 	}
 
 
-	protected function parseParam($key, $default = null)
+	public function parseParam($key, $default = null)
 	{
 		if(is_string($this->params)) {
 			$this->params = [
 				$key => $this->params
 			];
 		}
-
+/* - advanced feature - next release
 		if($this->params === []) {
 			$this->params[$key] = $default;
 		}
-
+*/
 		if(!isset($this->params[$key])) {
 			$this->params[$key] = $default;
 		}
+	}
+
+
+	protected function setAttributeByParam($key)
+	{
+		if (isset($this->params[$key]) && $this->params[$key] !== false) {
+			$this->attributes[$key] = $this->params[$key];
+		}
+	}
+
+/* - advanced feature, next release:
+	protected function setAttributeByParam($key, $merge = false)
+	{
+		if (isset($this->params[$key]) && $this->params[$key] !== false) {
+			($merge) ?
+				$this->attributes($key, $this->params[$key]) :
+				$this->attributes[$key] = $this->params[$key];
+		}
+	}
+*/
+
+	protected function setAttrClass($value, $merge = true) {
+		if (is_null($value)) {
+			return;
+		}
+
+		$this->attributes([
+			'class' => [
+				$value
+			]
+		], $merge);
 	}
 
 
@@ -260,7 +310,10 @@ class HtmlElement
 					// just list of values
 					// e.g. for class atribute: class=>['d-block', 'bg-light']
 					sort($v);
-					$atributesAssoc[] = sprintf($pattern, $k, implode(' ', $v));
+					if($v[0] === null) {
+						array_shift($v);
+					}
+					$atributesAssoc[] = sprintf($pattern, $k, implode(' ', array_unique($v)));
 				} else {
 					// associative array
 					// e.g. for data or aria attribute: data=>[role=>'box', content=>'text']
@@ -276,6 +329,7 @@ class HtmlElement
 				}
 			}
 		}
+		$atributesAssoc = array_unique($atributesAssoc);
 		sort($atributesAssoc);
 
 		//parsing the single atributes (disabled, enabled ... )
@@ -285,6 +339,7 @@ class HtmlElement
 				$attributesNumeric[] = $v;
 			}
 		}
+		$attributesNumeric = array_unique($attributesNumeric);
 		sort($attributesNumeric);
 		$atributes = array_merge([$this->tag], $atributesAssoc, $attributesNumeric);
 		return implode(' ', $atributes);
@@ -309,5 +364,55 @@ class HtmlElement
 
 		return $this->content;
 	}
+
+/*
+	public function alignAttributes($html)
+	{
+		$l = strlen($html);
+		for($i = 0; $i < $l; $i++) {
+			if (substr($html, $i, 1) === '<') {
+				for ($j = $i+1; $j < $l; $j++) {
+					if (substr($html, $j, 1) === '>') {
+						$element = substr($html, $i + 1, $j - $i - 1);
+						$aligned = $this->alignAttributesOne($element);
+						print_r([
+							'start' => $i,
+							'element' => $element,
+							'alligned' => $aligned,
+							'length' => $j-$i
+						]);
+						$html = substr_replace($html, $aligned, $i + 1, $j - $i - 1);
+					}
+				}
+				$i = $j;
+			}
+		}
+		return $html;
+	}
+
+	private function alignAttributesOne($html) {
+		$attributes = explode(' ', $html);
+		$this->tag = $attributes[0];
+		array_shift($attributes);
+		$items = [];
+		foreach($attributes as $attribute) {
+			$attr = explode('=', $attribute);
+			$key = $attr[0];
+			if (isset($attr[1])) {
+				$attr[1] = trim($attr[1], '"');
+				$val = explode(' ', $attr[1]);
+				$items[] = [
+					$key => $val
+				];
+			} else {
+				$items[] = $key;
+			}
+
+		}
+		$this->attributes = $items;
+		print_r($items);
+		return $this->parseAttributes();
+	}
+*/
 }
 ?>

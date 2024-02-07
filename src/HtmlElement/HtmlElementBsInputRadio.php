@@ -5,129 +5,88 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.23.25
- * @since  2023-12-27 12:33:50
+ * @version 01.24.00
+ * @since  2024-02-06 21:30:40
  *
  */
 declare(strict_types = 1);
 namespace Avi;
 
-require_once dirname(__DIR__).'/HtmlElement.php';
-require_once __DIR__.'/HtmlElementBs.php';
+require_once __DIR__.'/HtmlElementBsInput.php';
 
-class HtmlElementBsInputRadio extends HtmlElement
+class HtmlElementBsInputRadio extends HtmlElementBsInput
 {
-	public $input;
-	public $label;
 
-	protected $params;
-
-	private $types = [
+	private $roles = [
 		'button',
 		'form-ckeck'
 	];
 
 
-
-	public function __construct($params = [])
+/**
+ *
+ ** @param array $params
+ *
+ * @return \Avi\HtmlElementBsInputRadio
+ */
+	public function __construct($params = [], $parent = null)
 	{
-		$this->params = $params;
-		$this->parseParams();
-		$this->setAttributes();
-		$this->setContent();
+		parent::__construct($params, $parent);
 		return $this;
 	}
 
 
-	private function parseParams()
+	protected function parseParams()
 	{
-		$this->parseParam('id', false);
-		$this->parseParam('type', 'form-check');
-		$this->tag = $this->params['tag'] ?? $this->getTagByType();
+		$this->parseParam('layout', $this->params['parent']['layout'] ?? 'radio');
+		$this->parseParam('name', 'radio');
+		$this->parseParam('role', 'form-check');
+		$this->params['type'] = 'radio';
+		$this->parseParam('label-position', 'end');
+
+		parent::parseParams();
+
+		$this->tag = ($this->params['group'] === true) ? 'div' : $this->tag;
+		$this->tag = ($this->params['role'] === 'form-check') ? $this->tag : '';
 
 		$this->parseParam('checked', false);
-		$this->parseParam('disabled', false);
 		$this->parseParam('inline', false);
-		$this->parseParam('label', 'Radio');
-		$this->parseParam('name', 'radio');
-		if ($this->params['label'] === false) {
-			$this->parseParam('aria-label','Radio');
-		}
 		$this->parseParam('outline', false);
-//		$this->parseParam('reverse', false);
-//		$this->parseParam('switch', false);
-		$this->parseParam('value');
 		$this->parseParam('variant', false);
-		$this->params['input']='';
-
-
-		$this->child('input', 'html-input', [
-			'id' => $this->params['id'],
-			'name' => $this->params['name'],
-			'type' => 'radio'
-		]);
-
-		$this->child('label', 'html-label', [
-			'for' => $this->params['id']
-		]);
-
 	}
 
 
-	private function getTagByType()
+	protected function setAttributes()
 	{
-		if(in_array($this->params['type'], ['form-check'], true)) {
-			return 'div';
-		}
+		parent::setAttributes();
 
-		return '';
-	}
+		$this->setAttributesByGroup();
 
-
-	private function setAttributes()
-	{
-
-		if($this->params['type'] === 'form-check') {
+		if($this->params['role'] === 'form-check') {
 			$this->setAttributesFormCheck();
 		}
 
-		if($this->params['type'] === 'button') {
+		if($this->params['role'] === 'button') {
 			$this->setAttributesButton();
 		}
 
 		//input
 		$this->setAttributesChecked();
-		$this->setAttributesDisabled();
 		$this->setAttributesInline();
-//		$this->setAttributesReverse();
-//		$this->setAttributesSwitch();
-		if($this->params['value'] !== null) {
-			$this->setAttributesValue();
-		}
-
-		//label
-		if($this->params['label'] !== null) {
-			$this->setAttributesLabel();
-		}
 	}
 
 
-	private function setAttributesChecked()
+	private function setAttributesByGroup()
 	{
-		if($this->params['checked'] === true) {
-			$this->input->attributes([
-				'checked'
-			]);
-		}
-	}
+		if($this->params['group'] === true) {
+			$this->setAttrClass('input-group-text');
 
-
-	private function setAttributesDisabled()
-	{
-		if($this->params['disabled'] === true) {
 			$this->input->attributes([
-				'disabled'
+				'class' => [
+					'mt-0'
+				]
 			]);
+
 		}
 	}
 
@@ -149,30 +108,36 @@ class HtmlElementBsInputRadio extends HtmlElement
 	}
 
 
+	private function setAttributesChecked()
+	{
+		if($this->params['checked'] === true) {
+			$this->input->attributes([
+				'checked'
+			]);
+		}
+	}
+
+
+
 	private function setAttributesFormCheck()
 	{
-		if ($this->params['label'] !== false) {
-			$this->attributes['class'] = ['form-check'];
-		} else {
-			if ($this->params['aria-label'] !== '') {
-				$this->input->attributes([
-					'aria' => [
-						'label' => $this->params['aria-label']
-					]
-				]);
-			}
-
+		if ($this->params['label']) {
+			$this->setAttrClass('form-check');
 		}
+
 		$this->input->attributes([
 			'class' => [
 				'form-check-input'
 			]
 		]);
-		$this->label->attributes([
-			'class' => [
-				'form-check-label'
-			]
-		]);
+
+		if ($this->params['label']) {
+			$this->label->attributes([
+				'class' => [
+					'form-check-label'
+				]
+			]);
+		}
 	}
 
 
@@ -181,51 +146,5 @@ class HtmlElementBsInputRadio extends HtmlElement
 		if($this->params['inline'] === true) {
 			$this->attributes['class'][] = 'form-check-inline';
 		}
-	}
-
-
-//	private function setAttributesReverse()
-//	{
-//		if($this->params['reverse'] === true) {
-//			$this->attributes['class'][] = 'form-check-reverse';
-//		}
-//	}
-
-
-//	private function setAttributesSwitch()
-//	{
-//		if($this->params['switch'] === true) {
-//			$this->attributes['class'][] = 'form-switch';
-//			$this->input->attributes([
-//				'role' => 'switch'
-//			]);
-//		}
-//	}
-
-
-	private function setAttributesLabel()
-	{
-		if ($this->params['label'] !== false) {
-			$this->label->content($this->params['label']);
-		}
-	}
-
-
-	private function setAttributesValue()
-	{
-		$this->input->attributes([
-			'value' => $this->params['value']
-		]);
-	}
-
-
-	private function setContent()
-	{
-		$content = [];
-		$content[] = $this->input->use();
-		if($this->params['label'] !== false) {
-			$content[] = $this->label->use();
-		}
-		$this->content = $content;
 	}
 }
