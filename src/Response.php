@@ -326,7 +326,8 @@ class Response
 					$this->log[$k]['type'] = 'warning';
 				}
 			}
-			$this->response['log'] = $this->log;
+// depricated from php v.8.2:
+//			$this->response['log'] = $this->log;
 		}
 
 		return $this->success;
