@@ -10,6 +10,65 @@ use Avi\HtmlElement as AviHtmlElement;
 
 final class testAviatoHtmlElementBsForm extends TestCase
 {
+	public function testFn_Empty(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
+		$test = '<form></form>';
+		$result = $aviHtmlElement->element('BsForm')->use();
+		$this->assertEquals($test, $result);
+	}
+
+
+	public function testFn_Full(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
+		$test = implode('', [
+			'<form>',
+			'<div class="row">',
+			'<div class="offset-sm-3 col-sm-9">',
+			'<button class="btn btn-primary" type="button">Click me!</button>',
+			'</div>',
+			'</div>',
+			'</form>'
+		]);
+		$result = $aviHtmlElement->element('BsForm', [
+			'layout' => 'row',
+			'items' => [
+				[
+					'Button' => [
+						'breakpoint' => 'sm-9',
+						'layout' => 'row',
+						'text' => 'Click me!',
+						'variant' => 'primary'
+					]
+				]
+				/*,
+				[
+					'Fieldset' => []
+				],
+				[
+					'Input' => []
+				],
+				[
+					'InputCheckbox' => []
+				],
+				[
+					'InputGroup' => []
+				],
+				[
+					'InputRadio' => []
+				],
+				[
+					'InputTextarea' => []
+				],
+				[
+					'Select' => []
+				],*/
+			],
+		])->use();
+		$this->assertEquals($test, $result);
+	}
+
 
 	public function testFn_Overview(): void
 	{
