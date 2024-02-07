@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v.1.24.01
+> - complete HtmlElementBs collection
+
 >## v.1.23.25
 > - new HtmlElement: BsButtonGroup
 > - new HtmlElement: BsBadge
