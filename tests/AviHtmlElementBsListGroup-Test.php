@@ -13,21 +13,25 @@ use const Avi\AVI_BS_COLOR;
 final class testAviatoHtmlElementBsListGroup extends TestCase
 {
 
-	public function testFn_Construct(): void
+	public function testFn_empty(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
 
 		//empty test:
 		$test = '<ul class="list-group"></ul>';
-		$result = $aviHtmlElement->element('BsListGroup')
-		->use();
+		$result = $aviHtmlElement->element('BsListGroup')->use();
 		$this->assertEquals($test, $result);
+	}
 
+
+	public function testFn_Full(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
 
 		//full test:
 		$test = implode('', [
 			'<div class="list-group">',
-			'<a class="list-group-item list-group-item-action" href="#">A link</a>',
+			'<a aria-disabled="true" class="disabled list-group-item list-group-item-action" href="#" tabindex="-1">A link</a>',
 			'<button class="list-group-item list-group-item-action" type="button">A button</button>',
 			'<a class="list-group-item" href="#1">Another link</a>',
 			'</div>'
@@ -37,6 +41,7 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 			'horizontal' => false,
 			'items' => [
 				[
+					'disabled' => true,
 					'href' => '#',
 					'tag' => 'a',
 					'text' => 'A link'
@@ -56,6 +61,12 @@ final class testAviatoHtmlElementBsListGroup extends TestCase
 		->use();
 		$this->assertEquals($test, $result);
 
+	}
+
+
+	public function testFn_Bootstrap(): void
+	{
+		$aviHtmlElement = new \Avi\HtmlElement();
 
 		//Basic example
 		$test = implode('', [

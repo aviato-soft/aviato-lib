@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" backupStaticAttributes="false" bootstrap="./../vendor/autoload.php" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="true" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage processUncoveredFiles="true">
+    <include>
+      <directory suffix=".php">./../src</directory>
+    </include>
+    <report>
+      <clover outputFile="./logs/php-8.2.tmp/coverage.xml"/>
+      <html outputDirectory="./logs/php-8.2.tmp/report" lowUpperBound="35" highLowerBound="70"/>
+      <php outputFile="./logs/php-8.2.tmp/coverage.serialized"/>
+      <text outputFile="php://stdout" showUncoveredFiles="false"/>
+    </report>
+  </coverage>
+  <testsuites>
+    <testsuite name="Unit">
+      <directory suffix="-Test.php">./</directory>
+    </testsuite>
+  </testsuites>
+  <php>
+    <env name="APP_ENV" value="test-dev"/>
+    <get name="test" value="Get: Aviato Soft" />
+    <post name="test" value="Post: Aviato Soft" />
+<!--
+    <get name="date" value="2013-11-09"/>
+    <get name="number" value="22" />
+    <request name="page" value="home"/>
+    <post name="action" value="x3cscript src=http://www.example.com/malicious-code.js\x3e\x3c/script\x3e"/>
+ -->
+  </php>
+  <logging>
+    <junit outputFile="./logs/php-8.2.tmp/logfile.xml"/>
+    <testdoxHtml outputFile="./logs/php-8.2.tmp/testdox.html"/>
+    <testdoxText outputFile="./logs/php-8.2.tmp/testdox.txt"/>
+  </logging>
+</phpunit>

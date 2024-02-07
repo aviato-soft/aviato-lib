@@ -97,7 +97,43 @@ final class testAviatoDb extends TestCase
 		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
 		$this->assertEquals($test, $result);
 
+		//simple insert with cols and types
+		$query['values'] = [
+			'col_string' => $db->parseVar('Aviato Soft', '?str#50'),
+			'col_float' => $db->parseVar(23.333, 'num')
+		];
+		$query['columns'] = [
+			'col_string',
+			'col_float'
+		];
+		$result = $db->parse($query);
+		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
+		$this->assertEquals($test, $result);
+
+		//simple insert one row not associative with type
+		$query = [
+			'insert' => 'test'
+		];
+		$query['values'] = [
+			'Aviato Soft',
+			23.333
+		];
+		$query['columns'] = [
+			'col_string',
+			'col_float'
+		];
+		$query['types'] = [
+			'?str#50',
+			'num'
+		];
+		$result = $db->parse($query);
+		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
+		$this->assertEquals($test, $result);
+
 		//simple insert one row not associative without type
+		$query = [
+			'insert' => 'test'
+		];
 		$query['values'] = [
 			$db->parseVar('Aviato Soft', '?str#50'),
 			$db->parseVar(23.333, 'num')
@@ -109,6 +145,7 @@ final class testAviatoDb extends TestCase
 		$result = $db->parse($query);
 		$test = "INSERT INTO `test` (`col_string`,`col_float`) VALUES('Aviato Soft',23.333000)";
 		$this->assertEquals($test, $result);
+
 
 
 		//insert one row
