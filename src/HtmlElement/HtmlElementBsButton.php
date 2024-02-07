@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.00
- * @since  2024-02-06 21:30:40
+ * @version 01.24.01
+ * @since  2024-02-07 19:54:26
  *
  */
 declare(strict_types = 1);
@@ -113,7 +113,9 @@ class HtmlElementBsButton extends HtmlElementBs
 		}
 
 		$this->parseParam('active', false);
+#		$this->parseParam('breakpoint');
 		$this->parseParam('id', false);
+#		$this->parseParam('layout', $this->parent?->params['layout'] ?? null);
 		$this->parseParam('nowrap', false);
 		$this->parseParam('outline', false);
 		$this->parseParam('toggle', false);
