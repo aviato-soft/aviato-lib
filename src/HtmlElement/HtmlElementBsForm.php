@@ -6,7 +6,7 @@
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
  * @version 01.24.00
- * @since  2024-02-06 21:30:40
+ * @since 2024-02-06 21:30:40
  *
  */
 declare(strict_types = 1);
@@ -17,10 +17,9 @@ require_once __DIR__.'/HtmlElementBsItems.php';
 class HtmlElementBsForm extends HtmlElementBsItems
 {
 
-	//children:
+	// children:
 	public $items;
 	public $params;
-
 	protected $child = '';
 	protected $children = [
 		'Button',
@@ -33,11 +32,12 @@ class HtmlElementBsForm extends HtmlElementBsItems
 		'Select',
 	];
 	protected $tag = 'form';
-/**
- *
- * @param array $params
- * @return \Avi\HtmlElementBsCard
- */
+
+	/**
+	 *
+	 * @param array $params
+	 * @return \Avi\HtmlElementBsCard
+	 */
 	public function __construct($params = [], $parent = null)
 	{
 		parent::__construct($params);
@@ -49,41 +49,61 @@ class HtmlElementBsForm extends HtmlElementBsItems
 		$this->parseParam('novalidate');
 	}
 
-
 	protected function parseItems()
 	{
-
-		if($this->params['layout'] === 'row-inline') {
-			foreach($this->items as $k => $item) {
+		if ($this->params['layout'] === 'row-inline') {
+			foreach ($this->items as $k => $item) {
 				if (
-					is_a($item, 'Avi\HtmlElementBsInputCheckbox')
+					is_a($item, 'Avi\HtmlElementBsInputCheckbox') 
 					|| is_a($item, 'Avi\HtmlElementBsButton')
 				) {
-/*
-					if(($this->params['debug'] ?? false) === true){
-
-						print_r(key($this->params['items'][$k]));
-						print_r(array_values($this->params['items'][$k]));
-					}
-*/
 					$params = array_values($this->params['items'][$k])[0] ?? [];
 
-//					if(($this->params['debug'] ?? false) === true){
-//						var_dump($params);
-//					}
 					$this->items[$k] = $this->tag('div', [
 						'class' => [
 							sprintf('col-%s', $params['breakpoint'] ?? 'auto')
 						]
-					])
-					->content($item, true);
+					])->content($item, true);
 				}
 			}
+			return;
 		}
 
-//		if(($this->params['debug'] ?? false) === true) {
-//			var_dump($this->items);
-//		}
+		if ($this->params['layout'] === 'row') {
+			foreach ($this->items as $k => $item) {
+				if (is_a($item, 'Avi\HtmlElementBsButton')) {
+					$params = array_values($this->params['items'][$k])[0] ?? [];
+
+					if (is_a($params, 'Avi\HtmlElementBsButton')) {
+						return;
+					}
+
+					if (($params['breakpoint'] ?? false) !== false) {
+						$breakpoint = explode('-', $params['breakpoint']);
+					}
+
+					$this->items[$k] = $this->tag('div', [
+						'class' => [
+							'row'
+						]
+					])->content(
+						$this->tag('div', [
+							'class' => [
+								sprintf('offset-%s-%s col-%s-%s',
+									$breakpoint[0],
+									12-$breakpoint[1],
+									$breakpoint[0],
+									$breakpoint[1]
+								)
+							]
+						])->content($item),
+						true
+					);
+				}
+			}
+			return;
+		}
+
 	}
 
 	protected function setAttributes()
@@ -92,24 +112,22 @@ class HtmlElementBsForm extends HtmlElementBsItems
 		$this->setAttributesNovalidate();
 	}
 
-
 	private function setAttributesByLayout()
 	{
-		if(in_array($this->params['layout'], ['row-inline'], true)) {
+		if (in_array($this->params['layout'], [
+			'row-inline'
+		], true)) {
 			$this->setAttrClass('row');
 		}
 	}
 
-
 	private function setAttributesNovalidate()
 	{
-		if($this->params['novalidate'] === true) {
+		if ($this->params['novalidate'] === true) {
 			$this->attributes([
 				'novalidate'
 			]);
 		}
 	}
-
-
 
 }

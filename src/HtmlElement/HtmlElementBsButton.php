@@ -113,7 +113,9 @@ class HtmlElementBsButton extends HtmlElementBs
 		}
 
 		$this->parseParam('active', false);
+#		$this->parseParam('breakpoint');
 		$this->parseParam('id', false);
+#		$this->parseParam('layout', $this->parent?->params['layout'] ?? null);
 		$this->parseParam('nowrap', false);
 		$this->parseParam('outline', false);
 		$this->parseParam('toggle', false);
