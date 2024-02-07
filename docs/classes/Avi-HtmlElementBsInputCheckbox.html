@@ -93,7 +93,7 @@
     HtmlElementBsInputCheckbox
 
         <span class="phpdocumentor-element__extends">
-        extends <a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a>
+        extends <a href="classes/Avi-HtmlElementBsInput.html"><abbr title="\Avi\HtmlElementBsInput">HtmlElementBsInput</abbr></a>
     </span>
     
             <div class="phpdocumentor-element__package">
@@ -114,7 +114,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">18</span>
+    <span class="phpdocumentor-element-found-in__line">17</span>
 
     </aside>
 
@@ -145,13 +145,19 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_input">$input</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#property_help">$help</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -public">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_label">$label</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#property_input">$input</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -public">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#property_label">$label</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
@@ -175,7 +181,13 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_params">$params</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#property_feedback">$feedback</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -protected">
+    <a href="classes/Avi-HtmlElement.html#property_params">$params</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
@@ -187,7 +199,13 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_types">$types</a>
+    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_roles">$roles</a>
+    <span>
+                        &nbsp;: mixed            </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -property -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#property_types">$types</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
@@ -203,7 +221,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: mixed    </span>
+                                &nbsp;: <a href="classes/Avi-HtmlElementBsInputCheckbox.html"><abbr title="\Avi\HtmlElementBsInputCheckbox">HtmlElementBsInputCheckbox</abbr></a>    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -212,6 +230,12 @@
                                 &nbsp;: <a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a>    </span>
 </dt>
 <dd>Add new attributes to element</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Avi-HtmlElement.html#method_childContent">childContent()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-HtmlElement.html#method_content">content()</a>
@@ -233,6 +257,12 @@
                                 &nbsp;: object    </span>
 </dt>
 <dd>Call a new class which extend current HtmlElementClass</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-HtmlElement.html#method_tag">tag()</a>
@@ -270,13 +300,73 @@
 <dd>Convert the content from array to string</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -protected">
-    <a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a>
+    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams">parseParams()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElement.html#method_setAttrClass">setAttrClass()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElement.html#method_setAttributeByParam">setAttributeByParam()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes">setAttributes()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesSize">setAttributesSize()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValue">setAttributesValue()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -protected">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setContent">setContent()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_getTagByType">getTagByType()</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_children">children()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_getContentByGroup">getContentByGroup()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_getContentByLayout">getContentByLayout()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_getLabelClass">getLabelClass()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_getTagByLayout">getTagByLayout()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -289,13 +379,7 @@
 <dd>Return the template use to format the element</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams">parseParams()</a>
-    <span>
-                                &nbsp;: mixed    </span>
-</dt>
-
-            <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes">setAttributes()</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesAriaLabel">setAttributesAriaLabel()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -307,13 +391,37 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesByGroup">setAttributesByGroup()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesByLayout">setAttributesByLayout()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesByType">setAttributesByType()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesChecked">setAttributesChecked()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesDisabled">setAttributesDisabled()</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesDisabled">setAttributesDisabled()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesFeedback">setAttributesFeedback()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -325,13 +433,61 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesHelp">setAttributesHelp()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesId">setAttributesId()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
     <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesInline">setAttributesInline()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesLabel">setAttributesLabel()</a>
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesLabel">setAttributesLabel()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesMultiple">setAttributesMultiple()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesName">setAttributesName()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesPlaceholder">setAttributesPlaceholder()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesRange">setAttributesRange()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesReadonly">setAttributesReadonly()</a>
+    <span>
+                                &nbsp;: mixed    </span>
+</dt>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -private">
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesRequired">setAttributesRequired()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -349,13 +505,13 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesValue">setAttributesValue()</a>
+    <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesTitle">setAttributesTitle()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -private">
-    <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setContent">setContent()</a>
+    <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValid">setAttributesValid()</a>
     <span>
                                 &nbsp;: mixed    </span>
 </dt>
@@ -381,15 +537,48 @@
             -public
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_input">
-        $input
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_input" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_help">
+        $help
+        <a href="classes/Avi-HtmlElementBsFormControl.html#property_help" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">22</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$help</span>
+    </code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -public
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_input">
+        $input
+        <a href="classes/Avi-HtmlElementBsFormControl.html#property_input" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">20</span>
 
@@ -416,13 +605,13 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_label">
         $label
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_label" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Avi-HtmlElementBsFormControl.html#property_label" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
     <span class="phpdocumentor-element-found-in__line">21</span>
 
@@ -457,7 +646,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">27</span>
+    <span class="phpdocumentor-element-found-in__line">29</span>
 
     </aside>
 
@@ -546,17 +735,50 @@
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_params">
-        $params
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_feedback">
+        $feedback
+        <a href="classes/Avi-HtmlElementBsFormControl.html#property_feedback" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">23</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$feedback</span>
+     = <span class="phpdocumentor-signature__default-value">null</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_params">
+        $params
+        <a href="classes/Avi-HtmlElement.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -589,7 +811,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
@@ -612,9 +834,9 @@
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="property_types">
-        $types
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_types" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="property_roles">
+        $roles
+        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_roles" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
@@ -622,7 +844,40 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">25</span>
+    <span class="phpdocumentor-element-found-in__line">19</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+        <span class="phpdocumentor-signature__type">mixed</span>
+    <span class="phpdocumentor-signature__name">$roles</span>
+     = <span class="phpdocumentor-signature__default-value">[&#039;button&#039;, &#039;form-ckeck&#039;]</span></code>
+
+    
+    
+    
+
+</article>
+                    <article
+        class="
+            phpdocumentor-element
+            -property
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="property_types">
+        $types
+        <a href="classes/Avi-HtmlElementBsInput.html#property_types" class="headerlink"><i class="fas fa-link"></i></a>
+
+        <span class="phpdocumentor-element__modifiers">
+                                </span>
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">23</span>
 
     </aside>
 
@@ -631,7 +886,7 @@
     <span class="phpdocumentor-signature__visibility">private</span>
         <span class="phpdocumentor-signature__type">mixed</span>
     <span class="phpdocumentor-signature__name">$types</span>
-     = <span class="phpdocumentor-signature__default-value">[&#039;button&#039;, &#039;form-ckeck&#039;]</span></code>
+     = <span class="phpdocumentor-signature__default-value">[&#039;color&#039;, &#039;email&#039;, &#039;file&#039;, &#039;password&#039;, &#039;range&#039;, &#039;text&#039;]</span></code>
 
     
     
@@ -660,14 +915,14 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parent</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsInputCheckbox.html"><abbr title="\Avi\HtmlElementBsInputCheckbox">HtmlElementBsInputCheckbox</abbr></a></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -676,8 +931,15 @@
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$parent</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -685,7 +947,11 @@
 
     
 
-    
+            <section>
+        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsInputCheckbox.html"><abbr title="\Avi\HtmlElementBsInputCheckbox">HtmlElementBsInputCheckbox</abbr></a></span>
+            </section>
+
 </article>
                     <article
         class="phpdocumentor-element
@@ -701,7 +967,7 @@
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">52</span>
+    <span class="phpdocumentor-element-found-in__line">55</span>
 
     </aside>
 
@@ -762,6 +1028,54 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_childContent">
+        childContent()
+        <a href="classes/Avi-HtmlElement.html#method_childContent" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">89</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">childContent</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$name</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$return</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">false</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$name</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$return</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">false</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_content">
         content()
         <a href="classes/Avi-HtmlElement.html#method_content" class="headerlink"><i class="fas fa-link"></i></a>
@@ -770,7 +1084,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">78</span>
+    <span class="phpdocumentor-element-found-in__line">68</span>
 
     </aside>
 
@@ -823,7 +1137,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">100</span>
+    <span class="phpdocumentor-element-found-in__line">102</span>
 
     </aside>
 
@@ -865,7 +1179,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">112</span>
+    <span class="phpdocumentor-element-found-in__line">114</span>
 
     </aside>
 
@@ -925,6 +1239,54 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -public
                                                         "
 >
+    <h4 class="phpdocumentor-element__name" id="method_parseParam">
+        parseParam()
+        <a href="classes/Avi-HtmlElement.html#method_parseParam" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">209</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+                    <span class="phpdocumentor-signature__name">parseParam</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$default</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                                        "
+>
     <h4 class="phpdocumentor-element__name" id="method_tag">
         tag()
         <a href="classes/Avi-HtmlElement.html#method_tag" class="headerlink"><i class="fas fa-link"></i></a>
@@ -933,7 +1295,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">133</span>
+    <span class="phpdocumentor-element-found-in__line">140</span>
 
     </aside>
 
@@ -941,7 +1303,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">tag</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">tag</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">string|null&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tag</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$attributes</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$newElement</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$instance</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElement.html"><abbr title="\Avi\HtmlElement">HtmlElement</abbr></a></span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -956,6 +1318,27 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                     <section class="phpdocumentor-description"><p>element tag</p>
 </section>
 
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$attributes</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$newElement</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$instance</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
             </dd>
             </dl>
 
@@ -981,7 +1364,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">149</span>
+    <span class="phpdocumentor-element-found-in__line">168</span>
 
     </aside>
 
@@ -1017,7 +1400,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">168</span>
+    <span class="phpdocumentor-element-found-in__line">187</span>
 
     </aside>
 
@@ -1085,7 +1468,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">238</span>
+    <span class="phpdocumentor-element-found-in__line">288</span>
 
     </aside>
 
@@ -1121,7 +1504,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">299</span>
+    <span class="phpdocumentor-element-found-in__line">354</span>
 
     </aside>
 
@@ -1149,22 +1532,101 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -protected
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_parseParam">
-        parseParam()
-        <a href="classes/Avi-HtmlElement.html#method_parseParam" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_parseParams">
+        parseParams()
+        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">190</span>
+    <span class="phpdocumentor-element-found-in__line">38</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">protected</span>
-                    <span class="phpdocumentor-signature__name">parseParam</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$default</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">parseParams</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttrClass">
+        setAttrClass()
+        <a href="classes/Avi-HtmlElement.html#method_setAttrClass" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">245</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setAttrClass</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$value</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$merge</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$value</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$merge</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributeByParam">
+        setAttributeByParam()
+        <a href="classes/Avi-HtmlElement.html#method_setAttributeByParam" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">227</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setAttributeByParam</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1178,10 +1640,199 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributes">
+        setAttributes()
+        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">59</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setAttributes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesSize">
+        setAttributesSize()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesSize" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">247</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setAttributesSize</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesValue">
+        setAttributesValue()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValue" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">281</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setAttributesValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -protected
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setContent">
+        setContent()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setContent" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">244</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">protected</span>
+                    <span class="phpdocumentor-signature__name">setContent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_children">
+        children()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_children" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">291</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">children</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getContentByGroup">
+        getContentByGroup()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_getContentByGroup" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">353</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getContentByGroup</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$content</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$default</span>
+                <span class="phpdocumentor-signature__argument__name">$content</span>
                 : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+                            </dt>
             <dd class="phpdocumentor-argument-list__definition">
                 
             </dd>
@@ -1197,22 +1848,84 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_getTagByType">
-        getTagByType()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_getTagByType" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_getContentByLayout">
+        getContentByLayout()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_getContentByLayout" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">75</span>
+    <span class="phpdocumentor-element-found-in__line">284</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">getTagByType</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">getContentByLayout</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getLabelClass">
+        getLabelClass()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_getLabelClass" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">150</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getLabelClass</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_getTagByLayout">
+        getTagByLayout()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_getTagByLayout" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">308</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">getTagByLayout</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1236,7 +1949,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">213</span>
+    <span class="phpdocumentor-element-found-in__line">263</span>
 
     </aside>
 
@@ -1264,53 +1977,22 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_parseParams">
-        parseParams()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesAriaLabel">
+        setAttributesAriaLabel()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesAriaLabel" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">42</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">parseParams</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
-
-    <div class="phpdocumentor-label-line">
-        </div>
-    
-    
-    
-
-    
-</article>
-                    <article
-        class="phpdocumentor-element
-            -method
-            -private
-                                                        "
->
-    <h4 class="phpdocumentor-element__name" id="method_setAttributes">
-        setAttributes()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes" class="headerlink"><i class="fas fa-link"></i></a>
-
-    </h4>
-    <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
-    :
-    <span class="phpdocumentor-element-found-in__line">85</span>
-
-    </aside>
-
-    
-    <code class="phpdocumentor-code phpdocumentor-signature ">
-    <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">setAttributes</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">setAttributesAriaLabel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1334,7 +2016,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">133</span>
+    <span class="phpdocumentor-element-found-in__line">96</span>
 
     </aside>
 
@@ -1342,6 +2024,99 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">setAttributesButton</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesByGroup">
+        setAttributesByGroup()
+        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesByGroup" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">81</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesByGroup</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesByLayout">
+        setAttributesByLayout()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesByLayout" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">83</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesByLayout</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesByType">
+        setAttributesByType()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesByType" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">95</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesByType</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1390,13 +2165,13 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
 >
     <h4 class="phpdocumentor-element__name" id="method_setAttributesDisabled">
         setAttributesDisabled()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesDisabled" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesDisabled" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">123</span>
+    <span class="phpdocumentor-element-found-in__line">139</span>
 
     </aside>
 
@@ -1404,6 +2179,37 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">setAttributesDisabled</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesFeedback">
+        setAttributesFeedback()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesFeedback" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">149</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesFeedback</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1427,7 +2233,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">150</span>
+    <span class="phpdocumentor-element-found-in__line">122</span>
 
     </aside>
 
@@ -1435,6 +2241,68 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">setAttributesFormCheck</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesHelp">
+        setAttributesHelp()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesHelp" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">187</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesHelp</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesId">
+        setAttributesId()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesId" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">207</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesId</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1458,7 +2326,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">144</span>
 
     </aside>
 
@@ -1483,13 +2351,13 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
 >
     <h4 class="phpdocumentor-element__name" id="method_setAttributesLabel">
         setAttributesLabel()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesLabel" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesLabel" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">204</span>
+    <span class="phpdocumentor-element-found-in__line">124</span>
 
     </aside>
 
@@ -1497,6 +2365,192 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
                     <span class="phpdocumentor-signature__name">setAttributesLabel</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesMultiple">
+        setAttributesMultiple()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesMultiple" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">217</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesMultiple</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesName">
+        setAttributesName()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesName" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">227</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesName</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesPlaceholder">
+        setAttributesPlaceholder()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesPlaceholder" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">176</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesPlaceholder</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesRange">
+        setAttributesRange()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesRange" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">186</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesRange</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesReadonly">
+        setAttributesReadonly()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesReadonly" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">210</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesReadonly</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+    
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -private
+                                                        "
+>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesRequired">
+        setAttributesRequired()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesRequired" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">237</span>
+
+    </aside>
+
+    
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">private</span>
+                    <span class="phpdocumentor-signature__name">setAttributesRequired</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1520,7 +2574,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">185</span>
+    <span class="phpdocumentor-element-found-in__line">152</span>
 
     </aside>
 
@@ -1551,7 +2605,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">193</span>
+    <span class="phpdocumentor-element-found-in__line">160</span>
 
     </aside>
 
@@ -1574,22 +2628,22 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_setAttributesValue">
-        setAttributesValue()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesValue" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesTitle">
+        setAttributesTitle()
+        <a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesTitle" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInput.php"><a href="files/src-htmlelement-htmlelementbsinput.html"><abbr title="src/HtmlElement/HtmlElementBsInput.php">HtmlElementBsInput.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">212</span>
+    <span class="phpdocumentor-element-found-in__line">220</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">setAttributesValue</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">setAttributesTitle</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1605,22 +2659,22 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
             -private
                                                         "
 >
-    <h4 class="phpdocumentor-element__name" id="method_setContent">
-        setContent()
-        <a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setContent" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="method_setAttributesValid">
+        setAttributesValid()
+        <a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValid" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsInputCheckbox.php"><a href="files/src-htmlelement-htmlelementbsinputcheckbox.html"><abbr title="src/HtmlElement/HtmlElementBsInputCheckbox.php">HtmlElementBsInputCheckbox.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsFormControl.php"><a href="files/src-htmlelement-htmlelementbsformcontrol.html"><abbr title="src/HtmlElement/HtmlElementBsFormControl.php">HtmlElementBsFormControl.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">220</span>
+    <span class="phpdocumentor-element-found-in__line">267</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">private</span>
-                    <span class="phpdocumentor-signature__name">setContent</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
+                    <span class="phpdocumentor-signature__name">setAttributesValid</span><span>(</span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -1743,14 +2797,17 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                             <li class="phpdocumentor-on-this-page-section__title">Properties</li>
                 <li>
                     <ul class="phpdocumentor-list -clean">
-                                                    <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_input">$input<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
-                                                    <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_label">$label<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsFormControl.html#property_help">$help<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsFormControl.html#property_input">$input<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsFormControl.html#property_label">$label<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_parent">$parent<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_attributes">$attributes<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_content">$content<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
-                                                    <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_params">$params<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsFormControl.html#property_feedback">$feedback<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElement.html#property_params">$params<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_tag">$tag<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
-                                                    <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_types">$types<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#property_roles">$roles<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElementBsInput.html#property_types">$types<a href="classes/Avi-HtmlElementBsInputCheckbox.html"></li>
                                             </ul>
                 </li>
             
@@ -1759,29 +2816,52 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                 <ul class="phpdocumentor-list -clean">
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method___construct">__construct()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_attributes">attributes()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_childContent">childContent()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_content">content()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_dispatch">dispatch()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_element">element()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_tag">tag()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_use">use()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_child">child()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_parseAttributes">parseAttributes()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_parseContent">parseContent()</a></li>
-                                            <li><a href="classes/Avi-HtmlElement.html#method_parseParam">parseParam()</a></li>
-                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_getTagByType">getTagByType()</a></li>
-                                            <li><a href="classes/Avi-HtmlElement.html#method_getTemplateByTag">getTemplateByTag()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_parseParams">parseParams()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_setAttrClass">setAttrClass()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_setAttributeByParam">setAttributeByParam()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributes">setAttributes()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesSize">setAttributesSize()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValue">setAttributesValue()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setContent">setContent()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_children">children()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_getContentByGroup">getContentByGroup()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_getContentByLayout">getContentByLayout()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_getLabelClass">getLabelClass()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_getTagByLayout">getTagByLayout()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method_getTemplateByTag">getTemplateByTag()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesAriaLabel">setAttributesAriaLabel()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesButton">setAttributesButton()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesByGroup">setAttributesByGroup()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesByLayout">setAttributesByLayout()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesByType">setAttributesByType()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesChecked">setAttributesChecked()</a></li>
-                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesDisabled">setAttributesDisabled()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesDisabled">setAttributesDisabled()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesFeedback">setAttributesFeedback()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesFormCheck">setAttributesFormCheck()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesHelp">setAttributesHelp()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesId">setAttributesId()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesInline">setAttributesInline()</a></li>
-                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesLabel">setAttributesLabel()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesLabel">setAttributesLabel()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesMultiple">setAttributesMultiple()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesName">setAttributesName()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesPlaceholder">setAttributesPlaceholder()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesRange">setAttributesRange()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesReadonly">setAttributesReadonly()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesRequired">setAttributesRequired()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesReverse">setAttributesReverse()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesSwitch">setAttributesSwitch()</a></li>
-                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setAttributesValue">setAttributesValue()</a></li>
-                                            <li><a href="classes/Avi-HtmlElementBsInputCheckbox.html#method_setContent">setContent()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsInput.html#method_setAttributesTitle">setAttributesTitle()</a></li>
+                                            <li><a href="classes/Avi-HtmlElementBsFormControl.html#method_setAttributesValid">setAttributesValid()</a></li>
                                     </ul>
             </li>
                     </ul>
