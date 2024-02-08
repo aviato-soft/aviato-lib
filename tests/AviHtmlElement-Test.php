@@ -83,6 +83,13 @@ final class testAviatoHtmlElement extends TestCase
 		$test = '<input value="new">';
 		$result = $aviHtmlElement->attributes(['value' => 'new'], false)->content();
 		$this->assertEquals($test, $result);
+
+		//change the tag using attributes:
+		$test = '<div>test</div>';
+		$result = $aviHtmlElement->tag('span')->attributes([
+				'tag' => 'div'
+			])->content('test');
+		$this->assertEquals($test, $result);
 	}
 
 
