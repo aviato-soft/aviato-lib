@@ -287,6 +287,10 @@ class HtmlElement
 	 */
 	protected function parseAttributes()
 	{
+		if (isset($this->attributes['tag'])) {
+			$this->tag = strtolower($this->attributes['tag']);
+			unset($this->attributes['tag']);
+		}
 		//exceptions:
 		//use content to input => value attribute if attribute velue not set
 		if ($this->tag === 'input' && !is_null($this->content)){
