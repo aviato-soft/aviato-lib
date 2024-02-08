@@ -1,11 +1,14 @@
 # Changelog
 ---
+>## v.1.24.02
+> - HtmlElement set tag using attributes
 
 >## v.1.24.01
 > - HtmlElementBsForm - add offset for button with layout row in forms
 
 >## v.1.24.00
 > - complete HtmlElementBs collection
+
 
 >## v.1.23.25
 > - new HtmlElement: BsButtonGroup
