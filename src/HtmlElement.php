@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.01
- * @since  2024-02-07 19:54:26
+ * @version 01.24.02
+ * @since  2024-02-08 14:50:12
  *
  */
 declare(strict_types = 1);
@@ -287,6 +287,10 @@ class HtmlElement
 	 */
 	protected function parseAttributes()
 	{
+		if (isset($this->attributes['tag'])) {
+			$this->tag = strtolower($this->attributes['tag']);
+			unset($this->attributes['tag']);
+		}
 		//exceptions:
 		//use content to input => value attribute if attribute velue not set
 		if ($this->tag === 'input' && !is_null($this->content)){
