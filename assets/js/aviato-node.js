@@ -70,6 +70,15 @@ aviato.fn.atos = function(a, p) {
 
 
 /**
+ * Clone object - in this way object is assign by value not refference
+ *
+ */
+aviato.fn.clone = function(o) {
+	return Object.assign({}, o);
+}
+
+
+/**
  * Filter properties from an object
  */
 aviato.fn.filterProperties = function(obj) {
@@ -297,6 +306,20 @@ aviato.bootstrap.addCollapseItem = function(oItemProperties, bAppendToParent) {
 		return item;
 	}
 };
+
+
+/**
+ * Set value for Bootstap progresbar
+ * @param selector = the selector
+ * @param value = the percentage
+ */
+aviato.bootstrap.progressbar = function(selector, value) {
+	var valuePercent = '' + value + '%';
+	$(selector).width(valuePercent);
+	$(selector).text(valuePercent);
+	$(selector).attr('aria-valuenow', valuePercent);
+};
+
 
 
 /**

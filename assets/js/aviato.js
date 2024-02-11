@@ -66,6 +66,15 @@ aviato.fn.atos = function(a, p) {
 
 
 /**
+ * Clone object - in this way object is assign by value not refference
+ *
+ */
+aviato.fn.clone = function(o) {
+	return Object.assign({}, o);
+}
+
+
+/**
  * Filter properties from an object
  */
 aviato.fn.filterProperties = function(obj) {

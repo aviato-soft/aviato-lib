@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #01.24.02 from 2024-02-08 14:50:12.
+Aviato-Lib.js, build #01.24.03 from 2024-02-11 16:44:25.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -27,7 +27,8 @@ return-1;};}
 let aviato={bootstrap:{},call:{},display:{},fn:{},jq:{element:{}},on:{}};aviato.fn.arrayMap=function(arNames,arValues){var oReturn={};var i;var iMax=Math.min(arNames.length,arValues.length);for(i=0;i<iMax;i++){oReturn[arNames[i]]=arValues[i];}
 return oReturn;}
 aviato.fn.atos=function(a,p){const iCount=a.length;let i,r='';for(i=0;i<iCount;i++){r+=p.supplant(a[i]);}
-return r;};aviato.fn.filterProperties=function(obj){let entries=Object.entries(obj);let filter=entries.filter(function(item){return(typeof(item[1])==="number"||typeof(item[1])==="string")});return(Object.fromEntries(filter));}
+return r;};aviato.fn.clone=function(o){return Object.assign({},o);}
+aviato.fn.filterProperties=function(obj){let entries=Object.entries(obj);let filter=entries.filter(function(item){return(typeof(item[1])==="number"||typeof(item[1])==="string")});return(Object.fromEntries(filter));}
 aviato.fn.formToLocalStorage=function(selector){var oFormValues=$(selector).serializeArray();localStorage.setItem(selector,JSON.stringify(oFormValues));};aviato.fn.getUrlVars=function(sUrl){if(typeof(sUrl)==='undefined'){sUrl=window.location.href;}
 var vars=[],hash;var hashes=sUrl.slice(sUrl.indexOf('?')+1).split('&');for(var i=0;i<hashes.length;i++){hash=hashes[i].split('=');vars.push(hash[0]);vars[hash[0]]=hash[1];}
 return vars;};aviato.fn.localStorageToForm=function(selector){var oFormValues=JSON.parse(localStorage.getItem(selector));$(oFormValues).each(function(){$(selector+' [name="'+this.name+'"]').val(this.value);});};aviato.fn.method=function(fname){var fn;if(typeof fname==='string'||fname instanceof String){if(fname.indexOf('.')!==-1){fname=fname.split('.');fn=window[fname[0]];for(var i=1;i<fname.length;i++){fn=fn[fname[i]];}}
