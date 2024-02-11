@@ -34,6 +34,40 @@ test ('aviato.fn.arrayMap', () => {
 });
 
 
+test ('aviato.fn.clone', () => {
+	var data = {
+		m: {},
+		n: {
+			x: 1,
+			y: 2
+		},
+		q: {}
+	}
+	data.m = data.n;
+	data.q = avi.fn.clone(data.n);
+	data.m.x = 4;
+	data.m.z = 3;
+	data.m = data.n;
+	var test = {
+		m: {
+			x: 4,
+			y: 2,
+			z: 3
+		},
+		n: {
+			x: 4,
+			y: 2,
+			z: 3
+		},
+		q: {
+			x: 1,
+			y: 2,
+		},
+	}
+	expect (data).toEqual(test);
+})
+
+
 //aviato.fn.getUrlVars
 test ('aviato.fn.getUrlVars', () => {
 	let data = {
