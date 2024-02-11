@@ -1,5 +1,9 @@
 # Changelog
 ---
+
+>## v.1.24.03
+> - Add aviato.fn.clone to assign javascript objects by value not by refference
+
 >## v.1.24.02
 > - HtmlElement set tag using attributes
 

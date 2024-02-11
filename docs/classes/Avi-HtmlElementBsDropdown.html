@@ -175,7 +175,7 @@
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -property -protected">
-    <a href="classes/Avi-HtmlElementBsDropdown.html#property_params">$params</a>
+    <a href="classes/Avi-HtmlElement.html#property_params">$params</a>
     <span>
                         &nbsp;: mixed            </span>
 </dt>
@@ -219,9 +219,9 @@
 </h4>
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
-    <a href="classes/Avi-HtmlElementBsDropdown.html#method___construct">__construct()</a>
+    <a href="classes/Avi-HtmlElement.html#method___construct">__construct()</a>
     <span>
-                                &nbsp;: <a href="classes/Avi-HtmlElementBsDropdown.html"><abbr title="\Avi\HtmlElementBsDropdown">HtmlElementBsDropdown</abbr></a>    </span>
+                                &nbsp;: mixed    </span>
 </dt>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
@@ -382,6 +382,8 @@
 
 
 
+
+        
 
         
 
@@ -566,15 +568,15 @@
 >
     <h4 class="phpdocumentor-element__name" id="property_params">
         $params
-        <a href="classes/Avi-HtmlElementBsDropdown.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Avi-HtmlElement.html#property_params" class="headerlink"><i class="fas fa-link"></i></a>
 
         <span class="phpdocumentor-element__modifiers">
                                 </span>
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsDropdown.php"><a href="files/src-htmlelement-htmlelementbsdropdown.html"><abbr title="src/HtmlElement/HtmlElementBsDropdown.php">HtmlElementBsDropdown.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">35</span>
+    <span class="phpdocumentor-element-found-in__line">25</span>
 
     </aside>
 
@@ -771,20 +773,20 @@
 >
     <h4 class="phpdocumentor-element__name" id="method___construct">
         __construct()
-        <a href="classes/Avi-HtmlElementBsDropdown.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
+        <a href="classes/Avi-HtmlElement.html#method___construct" class="headerlink"><i class="fas fa-link"></i></a>
 
     </h4>
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement/HtmlElementBsDropdown.php"><a href="files/src-htmlelement-htmlelementbsdropdown.html"><abbr title="src/HtmlElement/HtmlElementBsDropdown.php">HtmlElementBsDropdown.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="src/HtmlElement.php"><a href="files/src-htmlelement.html"><abbr title="src/HtmlElement.php">HtmlElement.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">64</span>
+    <span class="phpdocumentor-element-found-in__line">32</span>
 
     </aside>
 
     
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility">public</span>
-                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$params</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">[]</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsDropdown.html"><abbr title="\Avi\HtmlElementBsDropdown">HtmlElementBsDropdown</abbr></a></span></code>
+                    <span class="phpdocumentor-signature__name">__construct</span><span>(</span><span class="phpdocumentor-signature__argument"><span>[</span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$tag</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">&#039;div&#039;</span><span> ]</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">mixed&nbsp;</span><span class="phpdocumentor-signature__argument__name">$parent</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
 
     <div class="phpdocumentor-label-line">
         </div>
@@ -792,41 +794,24 @@
         <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
     <dl class="phpdocumentor-argument-list">
                     <dt class="phpdocumentor-argument-list__entry">
-                <span class="phpdocumentor-signature__argument__name">$params</span>
-                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">[]</span>            </dt>
+                <span class="phpdocumentor-signature__argument__name">$tag</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">&#039;div&#039;</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                    <section class="phpdocumentor-description"><p>the values are optional and must be:
-|- autoclose = true | inside | outside | false Auto close behavior
-|- button = the trigger bs button element, arrow in case of split
-|- dark = false | true = menu is dark
-|- direction = the menu display direction
-|- drop = down | end | start | up - the drop direction
-|- menu = the bs element of menu
-|- align (end | start | end + start responsive)
-|- items = array of items (type, text, active, disabled)
-|- button (text, type = button)
-|- header (text, type = header)
-|- html (content, type = html)
-|- link (href, type = link, text)
-|- separator (tag, type = separator)
-|- text (text, type = text)
-|- tag (default is ul - also is set based on item types)
-|- offset = false | $value in pixels
-|- reference = false | parent
-|- split = the bs button split -</p>
-</section>
-
+                
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$parent</span>
+                : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                
             </dd>
             </dl>
 
     
 
-            <section>
-        <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type"><a href="classes/Avi-HtmlElementBsDropdown.html"><abbr title="\Avi\HtmlElementBsDropdown">HtmlElementBsDropdown</abbr></a></span>
-            </section>
-
+    
 </article>
                     <article
         class="phpdocumentor-element
@@ -1984,7 +1969,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_parent">$parent<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_attributes">$attributes<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_content">$content<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
-                                                    <li><a href="classes/Avi-HtmlElementBsDropdown.html#property_params">$params<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
+                                                    <li><a href="classes/Avi-HtmlElement.html#property_params">$params<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
                                                     <li><a href="classes/Avi-HtmlElement.html#property_tag">$tag<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
                                                     <li><a href="classes/Avi-HtmlElementBsDropdown.html#property_direction">$direction<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
                                                     <li><a href="classes/Avi-HtmlElementBsDropdown.html#property_directions">$directions<a href="classes/Avi-HtmlElementBsDropdown.html"></li>
@@ -1996,7 +1981,7 @@ $attributes = ['class' =&gt; 'btn btn-sm']</li>
                         <li class="phpdocumentor-on-this-page-section__title">Methods</li>
             <li>
                 <ul class="phpdocumentor-list -clean">
-                                            <li><a href="classes/Avi-HtmlElementBsDropdown.html#method___construct">__construct()</a></li>
+                                            <li><a href="classes/Avi-HtmlElement.html#method___construct">__construct()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_attributes">attributes()</a></li>
                                             <li><a href="classes/Avi-HtmlElementBsDropdown.html#method_button">button()</a></li>
                                             <li><a href="classes/Avi-HtmlElement.html#method_childContent">childContent()</a></li>
