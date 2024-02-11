@@ -656,7 +656,5 @@ final class testAviatoHtmlElementBsPagination extends TestCase
 			'href' => '#',
 		])->use();
 		$this->assertEquals($test, $result);
-
-
 	}
 }
