@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v.1.24.04
+> - new method: Avi\Tools::asortByKey
+
 >## v.1.24.03
 > - Add aviato.fn.clone to assign javascript objects by value not by refference
 
