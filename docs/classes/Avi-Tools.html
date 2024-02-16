@@ -111,7 +111,7 @@
         <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">20</span>
+    <span class="phpdocumentor-element-found-in__line">22</span>
 
     </aside>
 
@@ -180,6 +180,13 @@ mainly used for arrays which can&#039;t have specific default values defined</dd
                                 &nbsp;: array&lt;string|int, mixed&gt;    </span>
 </dt>
 <dd>Set an array item to a given value using &quot;dot&quot; notation or other separator.</dd>
+
+            <dt class="phpdocumentor-table-of-contents__entry -method -public">
+    <a href="classes/Avi-Tools.html#method_asortByKey">asortByKey()</a>
+    <span>
+                                &nbsp;: void    </span>
+</dt>
+<dd>Perform a sorting a list array by refference using specified key</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -method -public">
     <a href="classes/Avi-Tools.html#method_atoattr">atoattr()</a>
@@ -337,7 +344,7 @@ If page has action parameter, it is come from ajax call</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">356</span>
+    <span class="phpdocumentor-element-found-in__line">358</span>
 
     </aside>
 
@@ -425,7 +432,7 @@ result = [
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">32</span>
+    <span class="phpdocumentor-element-found-in__line">34</span>
 
     </aside>
 
@@ -487,7 +494,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">59</span>
+    <span class="phpdocumentor-element-found-in__line">61</span>
 
     </aside>
 
@@ -552,6 +559,68 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
             -public
                                     -static                    "
 >
+    <h4 class="phpdocumentor-element__name" id="method_asortByKey">
+        asortByKey()
+        <a href="classes/Avi-Tools.html#method_asortByKey" class="headerlink"><i class="fas fa-link"></i></a>
+
+    </h4>
+    <aside class="phpdocumentor-element-found-in">
+    <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
+    :
+    <span class="phpdocumentor-element-found-in__line">370</span>
+
+    </aside>
+
+        <p class="phpdocumentor-summary">Perform a sorting a list array by refference using specified key</p>
+
+    <code class="phpdocumentor-code phpdocumentor-signature ">
+    <span class="phpdocumentor-signature__visibility">public</span>
+            <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">asortByKey</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__reference-operator">&amp;</span><span class="phpdocumentor-signature__argument__name">$array</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type">string&nbsp;</span><span class="phpdocumentor-signature__argument__name">$key</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">bool&nbsp;</span><span class="phpdocumentor-signature__argument__name">$ascending</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">true</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">void</span></code>
+
+    <div class="phpdocumentor-label-line">
+        </div>
+    
+        <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+    <dl class="phpdocumentor-argument-list">
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$array</span>
+                : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the array to be sorted</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$key</span>
+                : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>the key compared for sorting</p>
+</section>
+
+            </dd>
+                    <dt class="phpdocumentor-argument-list__entry">
+                <span class="phpdocumentor-signature__argument__name">$ascending</span>
+                : <span class="phpdocumentor-signature__argument__return-type">bool</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">true</span>            </dt>
+            <dd class="phpdocumentor-argument-list__definition">
+                    <section class="phpdocumentor-description"><p>true = sort ascending, false = descending</p>
+</section>
+
+            </dd>
+            </dl>
+
+    
+
+    
+</article>
+                    <article
+        class="phpdocumentor-element
+            -method
+            -public
+                                    -static                    "
+>
     <h4 class="phpdocumentor-element__name" id="method_atoattr">
         atoattr()
         <a href="classes/Avi-Tools.html#method_atoattr" class="headerlink"><i class="fas fa-link"></i></a>
@@ -560,7 +629,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">324</span>
+    <span class="phpdocumentor-element-found-in__line">326</span>
 
     </aside>
 
@@ -627,7 +696,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">226</span>
+    <span class="phpdocumentor-element-found-in__line">228</span>
 
     </aside>
 
@@ -717,7 +786,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">394</span>
+    <span class="phpdocumentor-element-found-in__line">422</span>
 
     </aside>
 
@@ -770,7 +839,7 @@ mainly used for arrays which can&#039;t have specific default values defined</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">491</span>
+    <span class="phpdocumentor-element-found-in__line">519</span>
 
     </aside>
 
@@ -851,7 +920,7 @@ or false on invalid parameters</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">584</span>
+    <span class="phpdocumentor-element-found-in__line">612</span>
 
     </aside>
 
@@ -916,7 +985,7 @@ or false on invalid parameters</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">372</span>
+    <span class="phpdocumentor-element-found-in__line">400</span>
 
     </aside>
 
@@ -995,7 +1064,7 @@ or false on invalid parameters</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">417</span>
+    <span class="phpdocumentor-element-found-in__line">445</span>
 
     </aside>
 
@@ -1042,7 +1111,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">115</span>
+    <span class="phpdocumentor-element-found-in__line">117</span>
 
     </aside>
 
@@ -1111,7 +1180,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">433</span>
+    <span class="phpdocumentor-element-found-in__line">461</span>
 
     </aside>
 
@@ -1171,7 +1240,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">571</span>
+    <span class="phpdocumentor-element-found-in__line">599</span>
 
     </aside>
 
@@ -1264,7 +1333,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">161</span>
+    <span class="phpdocumentor-element-found-in__line">163</span>
 
     </aside>
 
@@ -1324,7 +1393,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">198</span>
+    <span class="phpdocumentor-element-found-in__line">200</span>
 
     </aside>
 
@@ -1384,7 +1453,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">454</span>
+    <span class="phpdocumentor-element-found-in__line">482</span>
 
     </aside>
 
@@ -1437,7 +1506,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">147</span>
+    <span class="phpdocumentor-element-found-in__line">149</span>
 
     </aside>
 
@@ -1490,7 +1559,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">177</span>
+    <span class="phpdocumentor-element-found-in__line">179</span>
 
     </aside>
 
@@ -1539,7 +1608,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">127</span>
+    <span class="phpdocumentor-element-found-in__line">129</span>
 
     </aside>
 
@@ -1600,7 +1669,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">97</span>
+    <span class="phpdocumentor-element-found-in__line">99</span>
 
     </aside>
 
@@ -1673,7 +1742,7 @@ If page has action parameter, it is come from ajax call</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="src/Tools.php"><a href="files/src-tools.html"><abbr title="src/Tools.php">Tools.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">472</span>
+    <span class="phpdocumentor-element-found-in__line">500</span>
 
     </aside>
 
@@ -1867,6 +1936,7 @@ If page has action parameter, it is come from ajax call</p>
                                             <li><a href="classes/Avi-Tools.html#method_afilterKeyExists">afilterKeyExists()</a></li>
                                             <li><a href="classes/Avi-Tools.html#method_applyDefault">applyDefault()</a></li>
                                             <li><a href="classes/Avi-Tools.html#method_array_set">array_set()</a></li>
+                                            <li><a href="classes/Avi-Tools.html#method_asortByKey">asortByKey()</a></li>
                                             <li><a href="classes/Avi-Tools.html#method_atoattr">atoattr()</a></li>
                                             <li><a href="classes/Avi-Tools.html#method_atos">atos()</a></li>
                                             <li><a href="classes/Avi-Tools.html#method_dec">dec()</a></li>

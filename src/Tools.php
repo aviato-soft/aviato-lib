@@ -5,12 +5,14 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.03
- * @since  2024-02-11 16:44:25
+ * @version 01.24.04
+ * @since  2024-02-16 18:00:30
  *
  */
 declare(strict_types = 1);
 namespace Avi;
+
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * Tools class.
@@ -356,6 +358,32 @@ class Tools
 	public static function afilterKeyExists(array $array = [], string $key = ''): array
 	{
 		return array_filter($array, function($v, $k) use ($key) {;return isset($v[$key]);}, ARRAY_FILTER_USE_BOTH);
+	}
+
+
+	/**
+	 * Perform a sorting a list array by refference using specified key
+	 * @param array $array the array to be sorted
+	 * @param string $key	the key compared for sorting
+	 * @param bool $ascending true = sort ascending, false = descending
+	 */
+	public static function asortByKey(array &$array, string $key, bool $ascending = true): void
+	{
+		usort($array, function($a, $b) use($key, $ascending) {
+			if (is_string($a[$key])) {
+				if($ascending) {
+					return strcmp($a[$key], $b[$key]);
+				} else {
+					return (strcmp($a[$key], $b[$key]) === -1) ? 1 : -1;
+				}
+			} else {
+				if($ascending) {
+					return ($a[$key] > $b[$key]) ? 1 : -1;
+				} else {
+					return ($a[$key] > $b[$key]) ? -1 : 1;
+				}
+			}
+		});
 	}
 
 
