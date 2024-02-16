@@ -2831,6 +2831,11 @@ Search.appendIndex(
             "summary": "Perform\u0020a\u0020filter\u0020for\u0020a\u0020multidimensional\u0020array\u0020and\u0020return\u0020only\u0020vaues\u0020with\u0020specific\u0020keys",
             "url": "classes/Avi-Tools.html#method_afilterKeyExists"
         },                {
+            "fqsen": "\\Avi\\Tools\u003A\u003AasortByKey\u0028\u0029",
+            "name": "asortByKey",
+            "summary": "Perform\u0020a\u0020sorting\u0020a\u0020list\u0020array\u0020by\u0020refference\u0020using\u0020specified\u0020key",
+            "url": "classes/Avi-Tools.html#method_asortByKey"
+        },                {
             "fqsen": "\\Avi\\Tools\u003A\u003Aenc\u0028\u0029",
             "name": "enc",
             "summary": "Safety\u0020encrypt\u0020function",
