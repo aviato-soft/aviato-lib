@@ -183,6 +183,134 @@ final class testAviatoTools extends TestCase
 	}
 
 
+	public function testFn_asortByKey(): void
+	{
+		$array = [
+			0 => [
+				'id' => 3,
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 1,
+				'slug' => 'One'
+			],
+			2 => [
+				'id' => 2,
+				'slug' => 'Two'
+			]
+		];
+		$test = [
+			0 => [
+				'id' => 1,
+				'slug' => 'One'
+			],
+			1 => [
+				'id' => 2,
+				'slug' => 'Two'
+			],
+			2 => [
+				'id' => 3,
+				'slug' => 'Three'
+			]
+		];
+		AviTools::asortByKey($array, 'id');
+		$this->assertEquals($array, $test);
+
+		$array = [
+			0 => [
+				'id' => 3,
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 1,
+				'slug' => 'One'
+			],
+			2 => [
+				'id' => 2,
+				'slug' => 'Two'
+			]
+		];
+		$test = [
+			0 => [
+				'id' => 3,
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 2,
+				'slug' => 'Two'
+			],
+			2 => [
+				'id' => 1,
+				'slug' => 'One'
+			],
+		];
+		AviTools::asortByKey($array, 'id', false);
+		$this->assertEquals($array, $test);
+
+		$array = [
+			0 => [
+				'id' => 'C',
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 'A',
+				'slug' => 'One'
+			],
+			2 => [
+				'id' => 'B',
+				'slug' => 'Two'
+			]
+		];
+		$test = [
+			0 => [
+				'id' => 'A',
+				'slug' => 'One'
+			],
+			1 => [
+				'id' => 'B',
+				'slug' => 'Two'
+			],
+			2 => [
+				'id' => 'C',
+				'slug' => 'Three'
+			]
+		];
+		AviTools::asortByKey($array, 'id');
+		$this->assertEquals($array, $test);
+
+		$array = [
+			0 => [
+				'id' => 'C',
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 'A',
+				'slug' => 'One'
+			],
+			2 => [
+				'id' => 'B',
+				'slug' => 'Two'
+			]
+		];
+		$test = [
+			0 => [
+				'id' => 'C',
+				'slug' => 'Three'
+			],
+			1 => [
+				'id' => 'B',
+				'slug' => 'Two'
+			],
+			2 => [
+				'id' => 'A',
+				'slug' => 'One'
+			]
+		];
+		AviTools::asortByKey($array, 'id', false);
+		$this->assertEquals($array, $test);
+	}
+
+
 	public function testFn_atos(): void
 	{
 		// test assertion normal usage:
