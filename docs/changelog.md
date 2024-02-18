@@ -1,5 +1,7 @@
 # Changelog
 ---
+>## v1.25.06
+> - fix layout row and inline for Avi\HtmlElementBsSelect help and validation
 
 >## v.1.24.05
 > - handle autocomplete attribute for form fields

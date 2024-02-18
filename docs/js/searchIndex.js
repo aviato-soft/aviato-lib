@@ -2341,6 +2341,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsSelect.html#method_setContent"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsSelect\u003A\u003AgetContentByLayout\u0028\u0029",
+            "name": "getContentByLayout",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSelect.html#method_getContentByLayout"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsSelect\u003A\u003AparseItems\u0028\u0029",
             "name": "parseItems",
             "summary": "",

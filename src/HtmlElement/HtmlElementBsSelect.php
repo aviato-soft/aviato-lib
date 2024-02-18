@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.05
- * @since  2024-02-18 11:35:10
+ * @version 01.24.06
+ * @since  2024-02-18 13:08:57
  *
  */
 declare(strict_types = 1);
@@ -151,14 +151,13 @@ class HtmlElementBsSelect extends HtmlElementBsFormControl
 				]
 			]);
 
-// -feature not tested
-//		if ($this->params['layout'] === 'row') {
-//				$this->label->attributes([
-//					'class' => [
-//						sprintf('col-form-label-%s', $this->params['size'])
-//					]
-///				]);
-//			}
+		if ($this->params['layout'] === 'row') {
+				$this->label->attributes([
+					'class' => [
+						sprintf('col-form-label-%s', $this->params['size'])
+					]
+				]);
+			}
 		}
 	}
 
@@ -175,40 +174,96 @@ class HtmlElementBsSelect extends HtmlElementBsFormControl
 
 	private function setContent()
 	{
-		$content = [];
-		if($this->params['label']) {
-			$label = $this->label->content($this->params['label']);
+		$this->content = [];
+		$content = $this->getContentByLayout();
 
-			if($this->params['label-position'] === 'start') {
-				$content[] = $label;
-			}
-		}
-		$this->parseItems();
-		$content[] = $this->input->content(\Avi\Tools::atos($this->items, '<option{disabled}{selected}{value}>{text}</option>'));
-
-		if($this->params['label']) {
-			if($this->params['label-position'] === 'end') {
-				$content[] = $label;
-			}
+		//label
+		if($this->params['label-position'] === 'start') {
+			$this->content[] = $content['label'];
 		}
 
+		$this->content[] = $content['input'];
+
+		//put the label after the input for button type:
+		if($this->params['label-position'] === 'end') {
+			$this->content[] = $content['label'];
+		}
+
+		//help
 		if($this->params['help']) {
-			$content[] = $this->help->content($this->params['help']);
+			$this->content[] = $content['help'];
 		}
 
 		//validation feedback
+		if($this->params['feedback']) {
+			$this->content[] = $content['feedback'];
+		}
+
+	}
+
+
+	private function getContentByLayout()
+	{
+		$content = [
+			'feedback' => null,
+			'help' => null,
+			'input' => null,
+			'label' => null,
+		];
+
 		if ($this->feedback) {
 			if(isset($this->feedback['invalid'])) {
-				$content[] = $this->feedback['invalid'];
+				$content['feedback'] = $this->feedback['invalid'];
 			}
 
 			if(isset($this->feedback['valid'])) {
-				$content[] = $this->feedback['valid'];
+				$content['feedback'] = $this->feedback['valid'];
 			}
 		}
 
+		//help
+		if($this->params['help']) {
+			$content['help'] = $this->help->content($this->params['help']);
+		}
 
-		$this->content = $content;
+		//select
+		$input = $this->input->content($this->parseItems());
+		if (in_array($this->params['layout'], ['inline', 'row'], true)) {
+			$input .= ($content['help'] ?? '').($content['feedback'] ?? '');
+			$this->params['breakpoint'] = $this->params['breakpoint'] ?? 'auto' ;
+			$content['input'] = $this->tag('div')
+				->attributes([
+					'class' => [
+						sprintf('col-%s', $this->params['breakpoint'])
+					]
+				])
+				->content($input);
+			$content['feedback'] = null;
+			$content['help'] = null;
+		} else {
+			$content['input'] = $input;
+		}
+
+		//label
+		if($this->params['label']) {
+			$label = $this->label->content($this->params['label']);
+
+			if($this->params['layout'] === 'inline') {
+				$content['label'] = $this->tag('div')
+					->attributes([
+						'class' => [
+							'col-auto'
+						]
+					])
+					->content($label);
+			} else {
+				$content['label'] = $label;
+			}
+		} else {
+			$this->params['label-position'] = false;
+		}
+
+		return $content;
 	}
 
 
@@ -216,13 +271,20 @@ class HtmlElementBsSelect extends HtmlElementBsFormControl
 	{
 		$this->items = [];
 		foreach($this->params['items'] as $item) {
-			$this->items[] = [
-				'disabled' => (isset($item['disabled']) && $item['disabled'] === true) ? ' disabled': '',
-				'selected' => ($this->itemIsSelected($item)) ? ' selected' : '',
-				'text' => $item['text'] ?? $item['value'] ?? '',
-				'value' => isset($item['value']) ? sprintf(' value="%s"', $item['value']): '',
-			];
+			$attr = [];
+			if (($item['disabled'] ?? false) === true) {
+				$attr[] = 'disabled';
+			}
+			if (($this->itemIsSelected($item))) {
+				$attr[] = 'selected';
+			}
+			if (isset($item['value'])) {
+				$attr['value'] = $item['value'];
+			}
+			$this->items[] = $this->tag('option', $attr)->content($item['text'] ?? $item['value'] ?? '');
 		}
+
+		return $this->items;
 	}
 
 
