@@ -33,6 +33,7 @@ class HtmlElementBsFormControl extends HtmlElement
 		$this->tag = $this->getTagByLayout() ?? $this->tag;
 
 		$this->parseParam('aria-label');
+		$this->parseParam('autocomplete');
 		$this->parseParam('breakpoint', 'auto');
 		$this->parseParam('describedby');
 		$this->parseParam('disabled');

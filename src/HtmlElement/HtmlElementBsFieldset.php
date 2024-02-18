@@ -48,8 +48,8 @@ class HtmlElementBsFieldset extends HtmlElementBsItems
 	{
 		$this->parseParam('layout', $this->params['parent']['layout'] ?? false);
 
-		$this->parseParam('disabled', false);
-		$this->parseParam('legend', false);
+		$this->parseParam('disabled');
+		$this->parseParam('legend');
 		if(is_string($this->params['legend'])) {
 			$this->params['legend'] = [
 				'text' => $this->params['legend']
@@ -131,7 +131,7 @@ class HtmlElementBsFieldset extends HtmlElementBsItems
 
 	private function setAttributesDisabled()
 	{
-		if ($this->params['disabled'] !== false) {
+		if ($this->params['disabled']) {
 			$this->attributes([
 				'disabled'
 			]);
