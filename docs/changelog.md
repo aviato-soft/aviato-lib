@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v.1.24.05
+> - handle autocomplete attribute for form fields
+
 >## v.1.24.04
 > - new method: Avi\Tools::asortByKey
 

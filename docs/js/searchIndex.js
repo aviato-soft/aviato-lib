@@ -1336,6 +1336,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsInput.html#method_setAttributes"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsInput\u003A\u003AsetAttributesAutocomplete\u0028\u0029",
+            "name": "setAttributesAutocomplete",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsInput.html#method_setAttributesAutocomplete"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsInput\u003A\u003AsetAttributesByType\u0028\u0029",
             "name": "setAttributesByType",
             "summary": "",
@@ -2305,6 +2310,11 @@ Search.appendIndex(
             "name": "setAttributes",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsSelect.html#method_setAttributes"
+        },                {
+            "fqsen": "\\Avi\\HtmlElementBsSelect\u003A\u003AsetAttributesAutocomplete\u0028\u0029",
+            "name": "setAttributesAutocomplete",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsSelect.html#method_setAttributesAutocomplete"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsSelect\u003A\u003AsetAttributesLabel\u0028\u0029",
             "name": "setAttributesLabel",

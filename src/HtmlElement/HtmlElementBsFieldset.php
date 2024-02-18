@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.04
- * @since  2024-02-16 18:00:30
+ * @version 01.24.05
+ * @since  2024-02-18 11:35:10
  *
  */
 declare(strict_types = 1);
@@ -48,8 +48,8 @@ class HtmlElementBsFieldset extends HtmlElementBsItems
 	{
 		$this->parseParam('layout', $this->params['parent']['layout'] ?? false);
 
-		$this->parseParam('disabled', false);
-		$this->parseParam('legend', false);
+		$this->parseParam('disabled');
+		$this->parseParam('legend');
 		if(is_string($this->params['legend'])) {
 			$this->params['legend'] = [
 				'text' => $this->params['legend']
@@ -131,7 +131,7 @@ class HtmlElementBsFieldset extends HtmlElementBsItems
 
 	private function setAttributesDisabled()
 	{
-		if ($this->params['disabled'] !== false) {
+		if ($this->params['disabled']) {
 			$this->attributes([
 				'disabled'
 			]);

@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.04
- * @since  2024-02-16 18:00:30
+ * @version 01.24.05
+ * @since  2024-02-18 11:35:10
  *
  */
 declare(strict_types = 1);
@@ -79,10 +79,26 @@ class HtmlElementBsSelect extends HtmlElementBsFormControl
 		parent::setAttributes();
 
 		//select
+		$this->setAttributesAutocomplete();
 		$this->setAttributesSize();
+
 
 		//label
 		$this->setAttributesLabel();
+	}
+
+
+	private function setAttributesAutocomplete()
+	{
+		if ($this->params['autocomplete'] === false) {
+			return;
+		}
+
+		if ($this->params['autocomplete']) {
+			$this->input->attributes([
+				'autocomplete' => $this->params['autocomplete']
+			]);
+		}
 	}
 
 

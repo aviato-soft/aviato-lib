@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.04
- * @since  2024-02-16 18:00:30
+ * @version 01.24.05
+ * @since  2024-02-18 11:35:10
  *
  */
 declare(strict_types = 1);
@@ -51,8 +51,8 @@ class HtmlElementBsInput extends HtmlElementBsFormControl
 	{
 		parent::parseParams();
 
-
 		$this->parseParam('type', 'text');
+
 		$this->parseParam('label-position', false);
 		$this->parseParam('placeholder');
 		$this->parseParam('plaintext');
@@ -79,7 +79,7 @@ class HtmlElementBsInput extends HtmlElementBsFormControl
 
 		//input
 		$this->setAttributesByType();
-
+		$this->setAttributesAutocomplete();
 		$this->setAttributesPlaceholder();
 		$this->setAttributesRange();
 		$this->setAttributesReadonly();
@@ -89,6 +89,33 @@ class HtmlElementBsInput extends HtmlElementBsFormControl
 
 		//label
 		$this->setAttributesLabel();
+	}
+
+
+	private function setAttributesAutocomplete()
+	{
+		if ($this->params['autocomplete'] === false) {
+			return;
+		}
+
+		$mandatory = [
+			'checkbox',
+			'email',
+			'month',
+			'number',
+			'password',
+			'radio',
+			'search',
+			'tel',
+			'text'
+		];
+		if(!$this->params['autocomplete'] && in_array($this->params['type'], $mandatory, true)) {
+			$this->params['autocomplete'] = 'off';
+		}
+
+		if ($this->params['autocomplete']) {
+			$this->input->attributes['autocomplete'] = $this->params['autocomplete'];
+		}
 	}
 
 
