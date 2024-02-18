@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.05
- * @since  2024-02-18 11:35:10
+ * @version 01.24.06
+ * @since  2024-02-18 13:08:57
  *
  */
 declare(strict_types = 1);
@@ -353,7 +353,6 @@ class HtmlElementBsInput extends HtmlElementBsFormControl
 		} else {
 			$this->params['label-position'] = false;
 		}
-
 
 
 		//help
