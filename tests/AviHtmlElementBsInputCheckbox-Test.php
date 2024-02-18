@@ -34,12 +34,14 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'flexCheckDefault',
 				'label' => 'Default checkbox',
 				'value' => ''
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'flexCheckChecked',
 				'checked' => true,
 				'label' => 'Checked checkbox',
@@ -76,6 +78,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'flexCheckIndeterminateDisabled',
 				'label' => 'Disabled indeterminate checkbox',
@@ -83,6 +86,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'flexCheckDisabled',
 				'label' => 'Disabled checkbox',
@@ -90,6 +94,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'disabled' => true,
 				'id' => 'flexCheckCheckedDisabled',
@@ -124,6 +129,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'flexSwitchCheckDefault',
 				'label' => 'Default switch checkbox input',
 				'switch' => true,
@@ -131,6 +137,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'flexSwitchCheckChecked',
 				'label' => 'Checked switch checkbox input',
@@ -138,6 +145,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'value' => null
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'flexSwitchCheckDisabled',
 				'label' => 'Disabled switch checkbox input',
@@ -146,6 +154,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'disabled' => true,
 				'id' => 'flexSwitchCheckCheckedDisabled',
@@ -182,18 +191,21 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'inlineCheckbox1',
 				'inline' => true,
 				'label' => '1',
 				'value' => 'option1',
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'inlineCheckbox2',
 				'inline' => true,
 				'label' => '2',
 				'value' => 'option2',
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'inlineCheckbox3',
 				'inline' => true,
@@ -227,12 +239,14 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'reverseCheck1',
 				'label' => 'Reverse checkbox',
 				'reverse' => true,
 				'value' => ''
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'reverseCheck2',
 				'label' => 'Disabled reverse checkbox',
@@ -240,6 +254,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'value' => ''
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'flexSwitchCheckReverse',
 				'label' => 'Reverse switch checkbox input',
 				'reverse' => true,
@@ -256,6 +271,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsInputCheckbox', [
+			'autocomplete' => false,
 			'aria-label' => '...',
 			'id' => 'checkboxNoLabel',
 			'label' => false,
@@ -286,12 +302,14 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'btn-check',
 				'label' => 'Single toggle',
 				'role' => 'button',
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'btn-check-2',
 				'label' => 'Checked',
@@ -299,6 +317,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'btn-check-3',
 				'label' => 'Disabled',
@@ -306,17 +325,20 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'btn-check-4',
 				'label' => 'Single toggle',
 				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'btn-check-5',
 				'label' => 'Checked',
 				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'btn-check-6',
 				'label' => 'Disabled',
@@ -336,6 +358,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'id' => 'btn-check-outlined',
 				'label' => 'Single toggle',
 				'outline' => true,
@@ -343,6 +366,7 @@ final class testAviatoHtmlElementBsInputCheckbox extends TestCase
 				'variant' => 'primary'
 			])->use(),
 			$aviHtmlElement->element('BsInputCheckbox', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'btn-check-2-outlined',
 				'label' => 'Checked',

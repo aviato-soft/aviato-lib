@@ -30,7 +30,7 @@ final class testAviatoHtmlElementBsInputSelect extends TestCase
 			'<label class="col-form-label" for="select-id">',
 			'Please choose:',
 			'</label>',
-			'<select aria-describedby="help-select-id" class="form-select form-select-sm" id="select-id">',
+			'<select aria-describedby="help-select-id" autocomplete="on" class="form-select form-select-sm" id="select-id">',
 			'<option value="1">One</option>',
 			'<option selected value="2">Two</option>',
 			'<option value="3">Three</option>',
@@ -40,6 +40,7 @@ final class testAviatoHtmlElementBsInputSelect extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsSelect', [
+			'autocomplete' => 'on',
 			'feedback' => [
 				'valid' => 'The selection is valid'
 			],
@@ -67,6 +68,7 @@ final class testAviatoHtmlElementBsInputSelect extends TestCase
 		$this->assertEquals($test, $result);
 
 		$result = $aviHtmlElement->element('BsSelect', [
+			'autocomplete' => 'on',
 			'feedback' => [
 				'valid' => 'The selection is valid'
 			],

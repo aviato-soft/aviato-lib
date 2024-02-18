@@ -15,7 +15,7 @@ final class testAviatoHtmlElementBsInputTextarea extends TestCase
 	public function testFn_Empty(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
-		$test = '<textarea class="form-control"></textarea>';
+		$test = '<textarea autocomplete="off" class="form-control"></textarea>';
 		$result = $aviHtmlElement->element('BsInputTextarea')->use();
 
 		$this->assertEquals($test, $result);
@@ -27,6 +27,7 @@ final class testAviatoHtmlElementBsInputTextarea extends TestCase
 		$aviHtmlElement = new \Avi\HtmlElement();
 		$test = '<textarea class="form-control" cols="10" rows="20">Aviato Soft</textarea>';
 		$result = $aviHtmlElement->element('BsInputTextarea', [
+			'autocomplete' => false,
 			'cols' => '10',
 			'rows' => '20',
 			'text' => 'Aviato Soft'
@@ -34,6 +35,7 @@ final class testAviatoHtmlElementBsInputTextarea extends TestCase
 		$this->assertEquals($test, $result);
 
 		$result = $aviHtmlElement->element('BsInputTextarea', [
+			'autocomplete' => false,
 			'cols' => '10',
 			'rows' => '20'
 		])->content('Aviato Soft');

@@ -34,12 +34,14 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'flexRadioDefault1',
 				'label' => 'Default radio',
 				'name' => 'flexRadioDefault'
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'flexRadioDefault2',
 				'checked' => true,
 				'label' => 'Default checked radio',
@@ -66,6 +68,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'flexRadioDisabled',
 				'label' => 'Disabled radio',
@@ -73,6 +76,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'checked' => true,
 				'disabled' => true,
 				'id' => 'flexRadioCheckedDisabled',
@@ -102,6 +106,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'inlineRadio1',
 				'inline' => true,
 				'label' => '1',
@@ -109,6 +114,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'value' => 'option1',
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'inlineRadio2',
 				'inline' => true,
 				'label' => '2',
@@ -116,6 +122,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'value' => 'option2',
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'inlineRadio3',
 				'inline' => true,
@@ -134,6 +141,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsInputRadio', [
+			'autocomplete' => false,
 			'aria-label' => '...',
 			'id' => 'radioNoLabel1',
 			'label' => false,
@@ -171,6 +179,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'option1',
 				'label' => 'Checked',
@@ -179,6 +188,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'option2',
 				'label' => 'Radio',
 				'name' => 'options',
@@ -186,6 +196,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'option3',
 				'label' => 'Disabled',
@@ -194,6 +205,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'option4',
 				'label' => 'Radio',
 				'name' => 'options',
@@ -201,6 +213,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'variant' => 'secondary'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'option5',
 				'label' => 'Checked',
@@ -208,12 +221,14 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'option6',
 				'label' => 'Radio',
 				'name' => 'options-base',
 				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'option7',
 				'label' => 'Disabled',
@@ -221,6 +236,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'role' => 'button'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'option8',
 				'label' => 'Radio',
 				'name' => 'options-base',
@@ -241,6 +257,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'checked' => true,
 				'id' => 'success-outlined',
 				'label' => 'Checked success radio',
@@ -250,6 +267,7 @@ final class testAviatoHtmlElementBsRadio extends TestCase
 				'variant' => 'success'
 			])->use(),
 			$aviHtmlElement->element('BsInputRadio', [
+				'autocomplete' => false,
 				'id' => 'danger-outlined',
 				'label' => 'Danger radio',
 				'name' => 'options-outlined',

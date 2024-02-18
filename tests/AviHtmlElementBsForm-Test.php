@@ -100,6 +100,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			'items' => [
 				[
 					'Input' => [
+						'autocomplete' => false,
 						'help' => 'We\'ll never share your email with anyone else.',
 						'id' => 'exampleInputEmail1',
 						'label' => 'Email address',
@@ -108,6 +109,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'BsInput' => [
+						'autocomplete' => false,
 						'id' => 'exampleInputPassword1',
 						'label' => 'Password',
 						'type' => 'password'
@@ -115,6 +117,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'InputCheckbox' => [
+						'autocomplete' => false,
 						'id' => 'exampleCheck1',
 						'label' => 'Check me out'
 						//'layout' => 'margin'
@@ -122,6 +125,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'Input' => [
+						'autocomplete' => false,
 						'disabled' => true,
 						'id' => 'disabledInput',
 						'placeholder' => 'Disabled input here...',
@@ -175,6 +179,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						'items' => [
 							[
 								'Input' => [
+									'autocomplete' => false,
 									'id' => 'disabledTextInput',
 									'label' => 'Disabled input',
 									'layout' => 'margin',
@@ -183,6 +188,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 							],
 							[
 								'Select' => [
+									'autocomplete' => false,
 									'id' => 'disabledSelect',
 									'label' => 'Disabled select menu',
 									'layout' => 'margin',
@@ -195,6 +201,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 							],
 							[
 								'InputCheckbox' => [
+									'autocomplete' => false,
 									'disabled' => true,
 									'id' => 'disabledFieldsetCheck',
 									'label' => 'Can\'t check this',
@@ -237,6 +244,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'exampleFormControlInput1',
 				'label' => 'Email address',
 				'layout' => 'margin',
@@ -244,6 +252,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				'type' => 'email'
 			])->use(),
 			$aviHtmlElement->element('BsInputTextarea', [
+				'autocomplete' => false,
 				'id' => 'exampleFormControlTextarea1',
 				'label' => 'Example textarea',
 				'layout' => 'margin',
@@ -261,18 +270,21 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => '.form-control-lg example',
 				'placeholder' => '.form-control-lg',
 				'size' => 'lg'
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'default input example',
 				'placeholder' => 'Default input'
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
 				'aria-label' => '.form-control-sm example',
+				'autocomplete' => false,
 				'placeholder'=>'.form-control-sm',
 				'size' => 'sm'
 			])
@@ -290,6 +302,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsInput', [
+			'autocomplete' => false,
 			'help' => 'Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.',
 			'id' => 'inputPassword5',
 			'label' => 'Password',
@@ -314,6 +327,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsInput', [
+			'autocomplete' => false,
 			'breakpoint' => 'auto',
 			'label' => 'Password',
 			'help' => 'Must be 8-20 characters long.',
@@ -339,12 +353,14 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'Disabled input example',
 				'disabled' => true,
 				'placeholder' => 'Disabled input',
 			])->use(),
 			$aviHtmlElement->element('BsInput', [
 				'aria-label' => 'Disabled input example',
+				'autocomplete' => false,
 				'disabled' => true,
 				'readonly' => true,
 				'value' => 'Disabled readonly input'
@@ -356,6 +372,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		//Readonly
 		$test  = '<input aria-label="readonly input example" class="form-control" type="text" value="Readonly input here..." readonly>';
 		$result = $aviHtmlElement->element('BsInput', [
+			'autocomplete' => false,
 			'aria-label' => 'readonly input example',
 			'readonly' => true,
 			'value' => 'Readonly input here...'
@@ -381,6 +398,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'breakpoint' => 'sm-10',
 				'id' => 'staticEmail',
 				'label' => 'Email',
@@ -391,6 +409,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'breakpoint' => 'sm-10',
 				'id' => 'inputPassword',
 				'label' => 'Password',
@@ -427,6 +446,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'id' => 'staticEmail2',
 					'label' => 'Email',
 					'label-hidden' => true,
@@ -437,6 +457,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'id' => 'inputPassword2',
 					'label' => 'Password',
 					'label-hidden' => true,
@@ -502,6 +523,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		$result = implode('', [
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formFile',
 				'label' => 'Default file input example',
 				'layout' => 'margin',
@@ -510,6 +532,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formFileMultiple',
 				'label' => 'Multiple files input example',
 				'layout' => 'margin',
@@ -519,6 +542,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formFileDisabled',
 				'label' => 'Disabled file input example',
 				'layout' => 'margin',
@@ -528,6 +552,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formFileSm',
 				'label' => 'Small file input example',
 				'layout' => 'margin',
@@ -537,6 +562,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formFileLg',
 				'label' => 'Large file input example',
 				'layout' => 'block',
@@ -553,6 +579,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			'<input class="form-control form-control-color" id="exampleColorInput" title="Choose your color" type="color" value="#563d7c">'
 		]);
 		$result = $aviHtmlElement->element('BsInput', [
+			'autocomplete' => false,
 			'id' => 'exampleColorInput',
 			'label' => 'Color picker',
 			'title' => 'Choose your color',
@@ -585,6 +612,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					'Chicago'
 				]
 			],
+			'autocomplete' => false,
 			'id' => 'exampleDataList',
 			'label' => 'Datalist example',
 			'placeholder' => 'Type to search...'
@@ -592,6 +620,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->use();
 		$this->assertEquals($test, $result);
 		$result = $aviHtmlElement->element('BsInputDatalist', [
+			'autocomplete' => false,
 			'id' => 'exampleDataList',
 			'label' => 'Datalist example',
 			'placeholder' => 'Type to search...'
@@ -645,6 +674,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			]
 		];
 		$result = $aviHtmlElement->element('BsSelect', [
+			'autocomplete' => false,
 			'aria-label' => 'Default select example',
 			'items' => $items
 		])
@@ -824,6 +854,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					[
 						'input' => [
 							'aria-label' => 'Username',
+							'autocomplete' => false,
 							'describedby' => 'text-addon1',
 							'id' => 'addon1',
 							'placeholder' => 'Username'
@@ -842,6 +873,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label' => 'Recipient\'s username',
+						'autocomplete' => false,
 						'describedby' => 'text-addon2',
 						'placeholder' => 'Recipient\'s username'
 					]
@@ -866,6 +898,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					[
 						'input' => [
 							'describedby' => 'basic-addon3',
+							'autocomplete' => false,
 							'id' => 'basic-url',
 							'help' => 'Example help text goes outside the input group.',
 							'label' => 'Your vanity URL',
@@ -886,7 +919,8 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
-						'aria-label'=>'Amount (to the nearest dollar)'
+						'aria-label'=>'Amount (to the nearest dollar)',
+						'autocomplete' => false
 					]
 				],
 				[
@@ -903,6 +937,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label' => 'Username',
+						'autocomplete' => false,
 						'placeholder' => 'Username'
 					]
 				],
@@ -914,6 +949,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label'=>'Server',
+						'autocomplete' => false,
 						'placeholder' => 'Server'
 					]
 				]
@@ -928,6 +964,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'inputTextarea' => [
+						'autocomplete' => false,
 						'aria-label'=>'With textarea',
 					]
 				]
@@ -957,6 +994,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			[
 				'input' => [
 					'aria-label' => 'Username',
+					'autocomplete' => false,
 					'describedby' => 'addon-wrapping',
 					'placeholder' => 'Username'
 				]
@@ -997,6 +1035,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label' => 'Sizing example input',
+						'autocomplete' => false,
 						'describedby' => 'inputGroup-sizing-sm'
 					]
 				]
@@ -1014,6 +1053,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label' => 'Sizing example input',
+						'autocomplete' => false,
 						'describedby' => 'inputGroup-sizing-default'
 					]
 				]
@@ -1031,6 +1071,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				[
 					'input' => [
 						'aria-label' => 'Sizing example input',
+						'autocomplete' => false,
 						'describedby' => 'inputGroup-sizing-lg'
 					]
 				]
@@ -1062,12 +1103,14 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->content([
 				[
 					'inputCheckbox' => [
+						'autocomplete' => false,
 						'aria-label' => 'Checkbox for following text input',
 						'value' => ''
 					]
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Text input with checkbox'
 					]
 				]
@@ -1076,6 +1119,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->content([
 				[
 					'inputRadio' => [
+						'autocomplete' => false,
 						'aria-label' => 'Radio button for following text input',
 						'name' => false,
 						'value' => ''
@@ -1083,6 +1127,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Text input with radio button'
 					]
 				]
@@ -1108,11 +1153,13 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'aria-label' => 'First name'
 				]
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'aria-label' => 'Last name'
 				]
 			]
@@ -1151,6 +1198,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Dollar amount (with dot and two decimal places)'
 					]
 				]
@@ -1159,6 +1207,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->content([
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Dollar amount (with dot and two decimal places)'
 					]
 				],
@@ -1214,6 +1263,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					],
 					[
 						'input' => [
+							'autocomplete' => false,
 							'aria-label' => 'Example text with button addon',
 							'describedby' => 'button-addon1',
 							'placeholder' => ''
@@ -1226,6 +1276,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				'items' =>[
 					[
 						'input' => [
+							'autocomplete' => false,
 							'aria-label' => 'Recipient\'s username',
 							'describedby' => 'button-addon2',
 							'placeholder' => 'Recipient\'s username'
@@ -1260,6 +1311,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					],
 					[
 						'input' => [
+							'autocomplete' => false,
 							'aria-label' => 'Example text with two button addons',
 							'placeholder' => ''
 						]
@@ -1270,6 +1322,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->content([
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Recipient\'s username with two button addons',
 						'placeholder' => 'Recipient\'s username'
 					]
@@ -1385,6 +1438,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					],
 					[
 						'input' => [
+							'autocomplete' => false,
 							'aria-label' => 'Text input with dropdown button'
 						]
 					]
@@ -1396,6 +1450,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				'items' => [
 					[
 						'input' => [
+							'autocomplete' => false,
 							'aria-label' => 'Text input with dropdown button'
 						]
 					],
@@ -1426,7 +1481,8 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					]
 				],
 				[
-				'input' => [
+					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Text input with 2 dropdown buttons'
 					]
 				],
@@ -1495,6 +1551,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Text input with segmented dropdown button'
 					]
 				]
@@ -1503,6 +1560,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->content([
 				[
 					'input' => [
+						'autocomplete' => false,
 						'aria-label' => 'Text input with segmented dropdown button'
 					]
 				],
@@ -1767,6 +1825,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'floatingInput',
 				'label' => 'Email address',
 				'layout' => 'floating-label',
@@ -1780,6 +1839,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'floatingPassword',
 				'label' => 'Password',
 				'layout' => 'floating-label',
@@ -1806,6 +1866,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'id' => 'floatingInputValue',
 					'label' => 'Input with value',
 					'placeholder' => 'name@example.com',
@@ -1831,6 +1892,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'id' => 'floatingInputInvalid',
 					'valid' => false,
 					'label' => 'Invalid input',
@@ -1851,6 +1913,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			'</div>'
 		]);
 		$result = $aviHtmlElement->element('BsInputTextarea', [
+			'autocomplete' => false,
 			'id' => 'floatingTextarea',
 			'label' => 'Comments',
 			'layout' => 'floating-label',
@@ -1931,6 +1994,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		$result = implode('', [
 
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'floatingInputDisabled',
 				'label' => 'Email address',
@@ -1946,6 +2010,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInputTextarea', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'floatingTextareaDisabled',
 				'label' => 'Comments',
@@ -1960,6 +2025,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			->use(),
 
 			$aviHtmlElement->element('BsInputTextarea', [
+				'autocomplete' => false,
 				'disabled' => true,
 				'id' => 'floatingTextarea2Disabled',
 				'input' => [
@@ -1979,6 +2045,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			])->use(),
 
 			$aviHtmlElement->element('BsSelect', [
+				'autocomplete' => false,
 				'aria-label' => 'Floating label disabled select example',
 				'disabled' => true,
 				'id' => 'floatingSelectDisabled',
@@ -2004,6 +2071,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'attr' => [
 					'class' => [
 						'mb-3'
@@ -2019,6 +2087,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'attr' => [
 					'class' => [
 						'mb-3'
@@ -2057,6 +2126,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'debug' => true,
 						'id' => 'floatingInputGroup1',
 						'label' => 'Username',
@@ -2092,6 +2162,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				],
 				[
 					'input' => [
+						'autocomplete' => false,
 						'debug' => true,
 						'feedback' => 'Please choose a username.',
 						'id' => 'floatingInputGroup2',
@@ -2142,6 +2213,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				]
 			])->content(
 				$aviHtmlElement->element('BsInput', [
+					'autocomplete' => false,
 					'id' => 'floatingInputGrid',
 					'label' => 'Email address',
 					'layout' => 'floating-label',
@@ -2186,6 +2258,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		]);
 		$result = implode('', [
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formGroupExampleInput',
 				'label' => 'Example label',
 				'layout' => 'margin',
@@ -2193,6 +2266,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			])
 			->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'id' => 'formGroupExampleInput2',
 				'label' => 'Another label',
 				'layout' => 'margin',
@@ -2221,11 +2295,13 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		])
 		->content([
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'First name',
 				'layout' => 'col',
 				'placeholder' => 'First name'
 			])->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'Last name',
 				'layout' => 'col',
 				'placeholder' => 'Last name'
@@ -2255,11 +2331,13 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		])
 		->content([
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'First name',
 				'layout' => 'col',
 				'placeholder' => 'First name'
 			])->use(),
 			$aviHtmlElement->element('BsInput', [
+				'autocomplete' => false,
 				'aria-label' => 'Last name',
 				'layout' => 'col',
 				'placeholder' => 'Last name'
@@ -2332,6 +2410,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'id' => 'inputEmail4',
 					'label' => 'Email',
@@ -2340,6 +2419,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'id' => 'inputPassword4',
 					'label' => 'Password',
@@ -2348,6 +2428,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'id' => 'inputAddress',
 					'label' => 'Address',
@@ -2356,6 +2437,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'id' => 'inputAddress2',
 					'label' => 'Address 2',
@@ -2364,6 +2446,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'id' => 'inputCity',
 					'label' => 'City',
@@ -2371,6 +2454,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'select' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'id' => 'inputState',
 					'label' => 'State',
@@ -2387,6 +2471,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-2',
 					'id' => 'inputZip',
 					'label' => 'Zip',
@@ -2400,6 +2485,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 				])
 				->content(
 					$aviHtmlElement->element('BsInputCheckbox', [
+						'autocomplete' => false,
 						'id' => 'gridCheck',
 						'label' => 'Check me out'
 					])->use(), true)
@@ -2491,6 +2577,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-10',
 					'id' => 'inputEmail3',
 					'label' => 'Email',
@@ -2499,6 +2586,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-10',
 					'id' => 'inputPassword3',
 					'label' => 'Password',
@@ -2527,6 +2615,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 							])
 							->content([
 								$aviHtmlElement->element('BsInputRadio', [
+									'autocomplete' => false,
 									'checked' => true,
 									'id' => 'gridRadios1',
 									'label' => 'First radio',
@@ -2534,12 +2623,14 @@ final class testAviatoHtmlElementBsForm extends TestCase
 									'value' => 'option1'
 								])->use(),
 								$aviHtmlElement->element('BsInputRadio', [
+									'autocomplete' => false,
 									'id' => 'gridRadios2',
 									'label' => 'Second radio',
 									'name' => 'gridRadios',
 									'value' => 'option2'
 								])->use(),
 								$aviHtmlElement->element('BsInputRadio', [
+									'autocomplete' => false,
 									'disabled' => true,
 									'id' => 'gridRadios3',
 									'label' => 'Third disabled radio',
@@ -2571,6 +2662,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 					])
 					->content(
 						$aviHtmlElement->element('BsInputCheckbox', [
+							'autocomplete' => false,
 							'id' => 'gridCheck1',
 							'label' => 'Example checkbox'
 						])
@@ -2622,6 +2714,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-10',
 					'id' => 'colFormLabelSm',
 					'label' => 'Email',
@@ -2632,6 +2725,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-10',
 					'id' => 'colFormLabel',
 					'label' => 'Email',
@@ -2641,6 +2735,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-10',
 					'id' => 'colFormLabelLg',
 					'label' => 'Email',
@@ -2679,6 +2774,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm-7',
 					'aria-label' => 'City',
 					'placeholder' => 'City'
@@ -2686,6 +2782,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm',
 					'aria-label' => 'State',
 					'placeholder' => 'State'
@@ -2693,6 +2790,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'sm',
 					'aria-label' => 'Zip',
 					'placeholder' => 'Zip'
@@ -2758,6 +2856,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'id' => 'autoSizingInput',
 					'label' => 'Name',
 					'label-hidden' => true,
@@ -2776,6 +2875,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
+								'autocomplete' => false,
 								'id' => 'autoSizingInputGroup',
 								'label' => 'Username',
 								'label-hidden' => true,
@@ -2788,6 +2888,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'id' => 'autoSizingSelect',
 					'items' => [
 						[
@@ -2814,6 +2915,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'id' => 'autoSizingCheck',
 					'label' => 'Remember me'
 				]
@@ -2898,6 +3000,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
+								'autocomplete' => false,
 								'id' => 'inlineFormInputGroupUsername',
 								'label' => 'Username',
 								'label-hidden' => true,
@@ -2909,6 +3012,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'select' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'id' => 'inlineFormSelectPref',
 					'items' => [
@@ -2935,6 +3039,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'debug' => true,
 					'id' => 'inlineFormCheck',
@@ -3050,6 +3155,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'feedback' => [
 						'valid' => 'Looks good!'
@@ -3063,6 +3169,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'feedback' => [
 						'valid' => 'Looks good!'
@@ -3087,6 +3194,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
+								'autocomplete' => false,
 								'describedby' => 'inputGroupPrepend',
 								'feedback' => [
 									'invalid' => 'Please choose a username.'
@@ -3102,6 +3210,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'feedback' => [
 						'invalid' => 'Please provide a valid city.'
@@ -3114,6 +3223,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'feedback' => [
 						'invalid' => 'Please select a valid state.'
@@ -3137,6 +3247,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'feedback' => [
 						'invalid' => 'Please provide a valid zip.'
@@ -3148,6 +3259,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 			],
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'feedback' => [
 						'invalid' => 'You must agree before submitting.'
@@ -3235,6 +3347,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'id' => 'validationDefault01',
 					'label' => 'First name',
@@ -3246,6 +3359,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'id' => 'validationDefault02',
 					'label' => 'Last name',
@@ -3268,6 +3382,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
+								'autocomplete' => false,
 								'describedby' => 'inputGroupPrepend2',
 								'id' => 'validationDefaultUsername',
 								'label' => 'Username',
@@ -3280,6 +3395,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'id' => 'validationDefault03',
 					'label' => 'City',
@@ -3289,6 +3405,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'id' => 'validationDefault04',
 					'items' => [
@@ -3309,6 +3426,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'id' => 'validationDefault05',
 					'label' => 'Zip',
@@ -3318,6 +3436,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'id' => 'invalidCheck2',
 					'label' => 'Agree to terms and conditions',
@@ -3426,6 +3545,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'feedback' => [
 						'valid' => 'Looks good!'
@@ -3440,6 +3560,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-4',
 					'feedback' => [
 						'valid' => 'Looks good!'
@@ -3465,7 +3586,8 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
-								'debug' => true,
+								'autocomplete' => false,
+//								'debug' => true,
 								'describedby' => 'inputGroupPrepend3',
 								'feedback' => [
 									'invalid' => [
@@ -3485,6 +3607,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-6',
 					'feedback' => [
 						'invalid' => [
@@ -3501,6 +3624,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'feedback' => [
 						'invalid' => [
@@ -3528,6 +3652,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'breakpoint' => 'md-3',
 					'feedback' => [
 						'invalid' => [
@@ -3544,6 +3669,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'breakpoint' => '12',
 					'feedback' => [
 						'invalid' => [
@@ -3552,6 +3678,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						]
 					],
 					'id' => 'invalidCheck3',
+					'autocomplete' => false,
 					'label' => 'Agree to terms and conditions',
 					'required' => 'true',
 					'valid' => false,
@@ -3633,6 +3760,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 		->content([
 			[
 				'inputTextarea' => [
+					'autocomplete' => false,
 					'feedback' => [
 						'invalid' => 'Please enter a message in the textarea.'
 					],
@@ -3645,6 +3773,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputCheckbox' => [
+					'autocomplete' => false,
 					'feedback' => [
 						'invalid' => 'Example invalid feedback text'
 					],
@@ -3657,6 +3786,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputRadio' => [
+					'autocomplete' => false,
 					'id' => 'validationFormCheck2',
 					'label' => 'Toggle this radio',
 					'layout' => 'block',
@@ -3668,6 +3798,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'inputRadio' => [
+					'autocomplete' => false,
 					'feedback' => [
 						'invalid' => 'More example invalid feedback text'
 					],
@@ -3680,6 +3811,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'aria-label' => 'select example',
 					'feedback' => [
 						'invalid' => 'Example invalid select feedback'
@@ -3708,6 +3840,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'aria-label' => 'file example',
 					'feedback' => [
 						'invalid' => 'Example invalid form file feedback'
@@ -3813,6 +3946,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'attr' => [
 						'class' => [
 							'position-relative'
@@ -3834,6 +3968,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'attr' => [
 						'class' => [
 							'position-relative'
@@ -3870,6 +4005,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 						],
 						[
 							'input' => [
+								'autocomplete' => false,
 								'describedby' => 'validationTooltipUsernamePrepend',
 								'feedback' => [
 									'invalid' => [
@@ -3888,6 +4024,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'attr' => [
 						'class' => [
 							'position-relative'
@@ -3908,6 +4045,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'select' => [
+					'autocomplete' => false,
 					'attr' => [
 						'class' => [
 							'position-relative'
@@ -3939,6 +4077,7 @@ final class testAviatoHtmlElementBsForm extends TestCase
 
 			[
 				'input' => [
+					'autocomplete' => false,
 					'attr' => [
 						'class' => [
 							'position-relative'
