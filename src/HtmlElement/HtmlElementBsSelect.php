@@ -79,10 +79,26 @@ class HtmlElementBsSelect extends HtmlElementBsFormControl
 		parent::setAttributes();
 
 		//select
+		$this->setAttributesAutocomplete();
 		$this->setAttributesSize();
+
 
 		//label
 		$this->setAttributesLabel();
+	}
+
+
+	private function setAttributesAutocomplete()
+	{
+		if ($this->params['autocomplete'] === false) {
+			return;
+		}
+
+		if ($this->params['autocomplete']) {
+			$this->input->attributes([
+				'autocomplete' => $this->params['autocomplete']
+			]);
+		}
 	}
 
 
