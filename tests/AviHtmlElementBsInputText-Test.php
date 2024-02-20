@@ -22,9 +22,13 @@ final class testAviatoHtmlElementBsInput extends TestCase
 	public function testFn_Full(): void
 	{
 		$aviHtmlElement = new \Avi\HtmlElement();
-		$test = '<input autocomplete="off" class="form-control" type="text">';
+		$test = '<input autocomplete="off" class="form-control" maxlength="33" type="text">';
 		$result = $aviHtmlElement->element('BsInput', [
 
+		])->input([
+			'attr' => [
+				'maxlength' => 33
+			]
 		])->use();
 		$this->assertEquals($test, $result);
 	}
