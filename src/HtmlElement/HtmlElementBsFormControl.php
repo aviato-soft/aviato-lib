@@ -24,6 +24,16 @@ class HtmlElementBsFormControl extends HtmlElement
 	protected $feedback = null;
 
 
+	public function input(array|string $params)
+	{
+		$this->params['input'] = $params;
+		$this->parseParams();
+		$this->setAttributes();
+		$this->setContent();
+		return $this;
+	}
+
+
 	protected function parseParams()
 	{
 		$this->tag = $this->params['tag'] ?? $this->tag;
