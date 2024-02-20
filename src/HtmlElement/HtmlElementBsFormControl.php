@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.06
- * @since  2024-02-18 13:08:57
+ * @version 01.24.07
+ * @since  2024-02-20 20:32:40
  *
  */
 declare(strict_types = 1);
@@ -22,6 +22,16 @@ class HtmlElementBsFormControl extends HtmlElement
 	public $help;
 
 	protected $feedback = null;
+
+
+	public function input(array|string $params)
+	{
+		$this->params['input'] = $params;
+		$this->parseParams();
+		$this->setAttributes();
+		$this->setContent();
+		return $this;
+	}
 
 
 	protected function parseParams()

@@ -1191,6 +1191,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Avi-HtmlElementBsFormControl.html"
         },                {
+            "fqsen": "\\Avi\\HtmlElementBsFormControl\u003A\u003A\u0024input",
+            "name": "input",
+            "summary": "",
+            "url": "classes/Avi-HtmlElementBsFormControl.html#property_input"
+        },                {
             "fqsen": "\\Avi\\HtmlElementBsFormControl\u003A\u003AparseParams\u0028\u0029",
             "name": "parseParams",
             "summary": "",
@@ -1270,11 +1275,6 @@ Search.appendIndex(
             "name": "getTagByLayout",
             "summary": "",
             "url": "classes/Avi-HtmlElementBsFormControl.html#method_getTagByLayout"
-        },                {
-            "fqsen": "\\Avi\\HtmlElementBsFormControl\u003A\u003A\u0024input",
-            "name": "input",
-            "summary": "",
-            "url": "classes/Avi-HtmlElementBsFormControl.html#property_input"
         },                {
             "fqsen": "\\Avi\\HtmlElementBsFormControl\u003A\u003A\u0024label",
             "name": "label",
