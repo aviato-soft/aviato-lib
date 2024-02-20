@@ -1,6 +1,9 @@
 # Changelog
 ---
->## v1.25.06
+>## v1.24.07
+> - add input attribute for HtmlElementBsInput
+
+>## v1.24.06
 > - fix layout row and inline for Avi\HtmlElementBsSelect help and validation
 
 >## v.1.24.05
