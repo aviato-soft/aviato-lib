@@ -1,5 +1,9 @@
 # Changelog
 ---
+
+>## v1.24.08
+> - allow objects on ajax data
+
 >## v1.24.07
 > - add input attribute for HtmlElementBsInput
 
