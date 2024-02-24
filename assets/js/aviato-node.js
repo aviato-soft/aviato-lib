@@ -1,6 +1,6 @@
 const $ = require('jquery');
 require('bootstrap');
-/**
+require('./remedial.js');/**
  * Aviato JavaScript library v.1.0.0
  *
  * Include remedial.js
@@ -9,8 +9,6 @@ require('bootstrap');
  *
  * Date: 2016-11-11T11:11:11z
 **/
-
-"use strict";
 
 let aviato = {
 	/**
@@ -83,7 +81,9 @@ aviato.fn.clone = function(o) {
  */
 aviato.fn.filterProperties = function(obj) {
 	let entries = Object.entries(obj);
-	let filter = entries.filter(function(item) { return (typeof (item[1]) === "number" || typeof (item[1]) === "string") });
+	let filter = entries.filter(function(item) {
+		return (typeof(item[1]) === "number" || typeof(item[1]) === "string")
+	});
 	return (Object.fromEntries(filter));
 }
 
@@ -378,7 +378,8 @@ aviato.on.click = function(oTrigger) {
 				},
 				type: 'POST'
 			},
-			data: aviato.fn.filterProperties($trigger.data()),
+//			data: aviato.fn.filterProperties($trigger.data()),
+			data: $trigger.data(),
 			on: {},
 			trigger: $trigger
 		};
