@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.08
- * @since  2024-02-24 13:27:06
+ * @version 01.24.09
+ * @since  2024-03-04 12:25:06
  *
  */
 declare(strict_types = 1);
@@ -340,6 +340,7 @@ class Db
 	{
 		$columns = $query['columns'] ?? [];
 		$types = $query['types'] ?? [];
+		$type = "VALUES";
 		$values = $query['values'] ?? [];
 		$update = isset($query['duplicate']) ? sprintf(' ON DUPLICATE KEY UPDATE %s', $query['duplicate']): '';
 
@@ -409,13 +410,19 @@ class Db
 				}
 				$values = implode(',', $val);
 			}
+		} else {
+			if (is_string($values)) {
+				if(strTolower(substr($values, 0, 6)) === 'select') {
+					$type = '';
+				}
+			}
 		}
 
 		$columns = $this->encloseInBacktick(implode(',', $columns));
 
 		$table = $this->encloseInBacktick($query['insert']);
 
-		$sql = sprintf("INSERT INTO %s (%s) VALUES(%s)%s", $table, $columns, $values, $update);
+		$sql = sprintf("INSERT INTO %s (%s) %s(%s)%s", $table, $columns, $type, $values, $update);
 
 		return $sql;
 	}
