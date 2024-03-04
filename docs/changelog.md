@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v1.24.09
+> - Avi\Db insert select
+
 >## v1.24.08
 > - allow objects on ajax data
 
