@@ -196,6 +196,31 @@ final class testAviatoDb extends TestCase
 		$this->assertEquals($test, $result);
 
 		//insert select
+		$test = implode(' ', [
+			"INSERT INTO `test` (`col_string`,`col_float`)",
+			"(SELECT `col_a` AS `col_string`,`col_b` AS `col_float`",
+			"FROM `test_x`",
+			"WHERE (`id` = 3))"
+		]);
+		$t = "3";
+		$select = [
+			'select' => [
+				"`col_a` AS `col_string`",
+				"`col_b` AS `col_float`"
+			],
+			'from' => 'test_x',
+			'where' => sprintf("`id` = %s", $db->parseVar($t, 'int'))
+		];
+		$insert = [
+			'insert' => 'test',
+			'columns' => [
+				'col_string',
+				'col_float'
+			],
+			'values' => $db->parse($select, 'select')
+		];
+		$result = $db->parse($insert, 'insert');
+		$this->assertEquals($test, $result);
 	}
 
 
