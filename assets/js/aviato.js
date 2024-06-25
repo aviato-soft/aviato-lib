@@ -334,7 +334,7 @@ aviato.bind = function(selector) {
 		aviato.on.click(this);
 	});
 
-	if (this.offcanvas === undefined) {
+	if (typeof(bootstrap) === 'object' && this.offcanvas === undefined) {
 		this.offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
 		document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function() {
 			$('#alerts').html('');

@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v1.24.10
+> - fix aviato.js missing bootstrap object on bind
+
 >## v1.24.09
 > - Avi\Db insert select
 

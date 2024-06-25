@@ -1,5 +1,5 @@
 /* 
-Aviato-Lib.js, build #01.24.09 from 2024-03-04 12:25:06.
+Aviato-Lib.js, build #01.24.10 from 2024-06-25 19:26:53.
 Copyright 2014-present Aviato Soft. All Rights Reserved.
  */"use strict";function typeOf(value){var s=typeof value;if(s==='object'){if(value){if(value instanceof Array){s='array';}}else{s='null';}}
 return s;}
@@ -46,7 +46,7 @@ if(!$(window.location.hash).hasClass('in')){$(window.location.hash).collapse('sh
 let itemProperties={'class':'default','content':'','id':'collapseItem','isCollapse':'','isCurrent':'','parentId':'accordion','title':'Collapsible Group Item'};$.extend(itemProperties,oItemProperties);var sPattern='<div class="panel panel-{class}">'+'<div class="panel-heading {isCurrent}">'+'<h4 class="panel-title">'+'<a data-toggle="collapse" data-parent="#{parentId}" href="#{id}">{title}</a>'+'</h4>'+'</div>'+'<div id="{id}" class="panel-collapse collapse {isCollapse}">'+'<div class="panel-body">{content}</div>'+'</div>'+'</div>';let item=sPattern.supplant(itemProperties);if(bAppendToParent){$('#'+itemProperties.parentId).append(item);return true;}
 else{return item;}};aviato.bootstrap.progressbar=function(selector,value){var valuePercent=''+value+'%';$(selector).width(valuePercent);$(selector).text(valuePercent);$(selector).attr('aria-valuenow',valuePercent);};aviato.bind=function(selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
-$(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
+$(selector+'[data-action]').on('click',function(){aviato.on.click(this);});if(typeof(bootstrap)==='object'&&this.offcanvas===undefined){this.offcanvas=new bootstrap.Offcanvas(document.getElementById('offcanvas'));document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas',function(){$('#alerts').html('');})}};aviato.jq.element.button=function(button,selector){if(selector===undefined){selector='';}
 else{selector+=' ';}
 return($(selector+'[data-type="button"][data-'+button+']'));};aviato.on.click=function(oTrigger){let $trigger=$(oTrigger);if($trigger.data('action')!==undefined){$trigger.find('[data-role="spinner"]').removeClass('d-none');$trigger.find('[data-role="btn-icon"]').addClass('d-none');var action={ajax:{async:true,cache:false,dataType:'json',headers:{'cache-control':'no-cache','Access-Control-Allow-Origin':'*'},type:'POST'},data:$trigger.data(),on:{},trigger:$trigger};var target=$trigger.data('target');switch($trigger.data('action')){case'section':action.data.section=$trigger.data('section');if(target===undefined){target='main';action.data.target=target;}
 $(target).html('');break;case'upload':action.ajax.contentType=false;action.ajax.enctype='multipart/form-data';action.ajax.processData=false;var oForm=$trigger.closest("form")[0];var formData=new FormData();for(var key in action.data){formData.append(key,action.data[key]);}
