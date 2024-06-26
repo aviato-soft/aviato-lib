@@ -5,8 +5,8 @@
  * @author Aviato Soft
  * @copyright 2014-present Aviato Soft. All Rights Reserved.
  * @license GNUv3
- * @version 01.24.10
- * @since  2024-06-25 19:26:53
+ * @version 01.24.11
+ * @since  2024-06-26 13:20:45
  *
  */
 declare(strict_types = 1);
@@ -16,11 +16,11 @@ const AVI_MAJOR = '01';
 
 const AVI_MINOR = '24';
 
-const AVI_PATCH = '10';
+const AVI_PATCH = '11';
 
-const AVI_DATE = '2024-06-25 19:26:53';
+const AVI_DATE = '2024-06-26 13:20:45';
 
-const AVI_JS_MD5 = '9b7698c4d12ae4cb6c760b6fc7fd71ff';
+const AVI_JS_MD5 = '02fb8ef3b3be1702e97f737da604b300';
 
 /**
  * Version class

@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+>## v1.24.11
+> - fix aviato.js missing offcanvas element result in error
+
 >## v1.24.10
 > - fix aviato.js missing bootstrap object on bind
 
