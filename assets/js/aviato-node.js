@@ -336,11 +336,19 @@ aviato.bind = function(selector) {
 		aviato.on.click(this);
 	});
 
-	if (typeof(bootstrap) === 'object' && this.offcanvas === undefined) {
-		this.offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
-		document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function() {
-			$('#alerts').html('');
-		})
+	if (this.offcanvas === undefined) {
+		if ($('#offcanvas').length === 0) {
+			$('<div id="offcanvas"></div>').appendTo('body');
+		}
+
+		if (typeof(bootstrap) === 'object') {
+			this.offcanvas = new bootstrap.Offcanvas(document.getElementById('offcanvas'));
+			document.getElementById('offcanvas').addEventListener('hidden.bs.offcanvas', function() {
+				$('#alerts').html('');
+			})
+		} else {
+			this.offcanvas = $('#offcanvas');
+		}
 	}
 };
 
